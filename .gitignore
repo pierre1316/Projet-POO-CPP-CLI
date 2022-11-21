@@ -4,3 +4,8 @@ Projet_Poo/.vs/Projet_Poo/v17/.suo
 Projet_Poo/.vs/Projet_Poo/v17/Browse.VC.db
 *.opendb
 
+*.vsidx
+Projet_Poo/.vs/Projet_Poo/v17/.suo
+*.db-shm
+Projet_Poo/.vs/Projet_Poo/v17/Browse.VC.db-wal
+*.db-wal
