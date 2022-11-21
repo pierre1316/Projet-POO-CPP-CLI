@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="Projet_POO" id="Project-1bc0" database="LogicalDesign" >
+	<schema name="INSTANCE" catalogname="Projet_POO" >
+		<table name="People" prior="entity" >
+			<column name="id" type="INT" jt="4" mandatory="y" >
+				<comment><![CDATA[People's ID]]></comment>
+			</column>
+			<index name="pk_people" unique="PRIMARY_KEY" >
+				<column name="id" />
+			</index>
+		</table>
+	</schema>
+	<layout name="Default Layout" id="Layout-e3c" show_relation="columns" >
+		<entity schema="Projet_POO.INSTANCE" name="People" color="C1D8EE" x="48" y="48" />
+	</layout>
+</project>
