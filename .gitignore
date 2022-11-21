@@ -22,7 +22,9 @@ mono_crash.*
 [Rr]elease/
 [Rr]eleases/
 x64/
+Projet_Poo/x64/
 x86/
+Projet_Poo/x86/
 [Ww][Ii][Nn]32/
 [Aa][Rr][Mm]/
 [Aa][Rr][Mm]64/
@@ -35,6 +37,7 @@ bld/
 
 # Visual Studio 2015/2017 cache/options directory
 .vs/
+Projet_Poo/.vs/
 # Uncomment if you have tasks that create the project's static files in wwwroot
 #wwwroot/
 
