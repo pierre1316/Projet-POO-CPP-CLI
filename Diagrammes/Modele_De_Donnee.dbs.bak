@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<project name="Projet_POO" id="Project-1bc0" database="LogicalDesign" >
-	<schema name="INSTANCE" catalogname="Projet_POO" />
-	<layout name="Default Layout" id="Layout-e3c" show_relation="columns" />
-</project>
