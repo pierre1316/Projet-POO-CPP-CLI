@@ -361,3 +361,9 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+*.ipch
+*.db
+*.vsidx
+*.db-wal
+*.ipch
+Projet_Poo/.vs/*
