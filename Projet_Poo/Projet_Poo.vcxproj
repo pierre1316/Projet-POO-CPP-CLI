@@ -123,18 +123,30 @@
   <ItemGroup>
     <ClCompile Include="CLcad.cpp" />
     <ClCompile Include="CLmapTB.cpp" />
+<<<<<<< Updated upstream
     <ClCompile Include="CLpeople.cpp" />
     <ClCompile Include="CLservPeople.cpp" />
     <ClCompile Include="CreateCustomerForm.cpp" />
+=======
+    <ClCompile Include="CLservPeople.cpp" />
+    <ClCompile Include="CLservStaff.cpp" />
+    <ClCompile Include="CreatePeopleForm.cpp" />
+>>>>>>> Stashed changes
     <ClCompile Include="MainForm.cpp" />
     <ClCompile Include="PeopleForm.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CLcad.h" />
     <ClInclude Include="CLmapTB.h" />
+<<<<<<< Updated upstream
     <ClInclude Include="CLpeople.h" />
     <ClInclude Include="CLservPeople.h" />
     <ClInclude Include="CreateCustomerForm.h">
+=======
+    <ClInclude Include="CLservPeople.h" />
+    <ClInclude Include="CLservStaff.h" />
+    <ClInclude Include="CreatePeopleForm.h">
+>>>>>>> Stashed changes
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="MainForm.h">
@@ -145,8 +157,8 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="CreateCustomerForm.resx">
-      <DependentUpon>CreateCustomerForm.h</DependentUpon>
+    <EmbeddedResource Include="CreatePeopleForm.resx">
+      <DependentUpon>CreatePeopleForm.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.h</DependentUpon>
