@@ -7,6 +7,5 @@ CLmapTB::CLmapTB(void) {
 }
 
 System::String^ CLmapTB::GetAllPeople(System::Void) {
-	//return "EXEC GetPeople";
-	return "SELECT * FROM People";
+	return "EXEC GetPeople";
 }
