@@ -57,6 +57,7 @@ CREATE TABLE Staff(
    hiring_date DATE NOT NULL,
    idSuperior INT NOT NULL,
    idAddress INT,
+   passorword varchar(100) default 'mdp',
    PRIMARY KEY(idPeople),
    UNIQUE(idAddress),
    FOREIGN KEY(idPeople) REFERENCES People(idPeople),

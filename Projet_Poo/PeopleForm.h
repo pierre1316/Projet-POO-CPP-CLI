@@ -1,5 +1,5 @@
 #pragma once
-#include "CreateCustomerForm.h"
+#include "CreatePeopleForm.h"
 
 namespace ProjetPoo {
 
@@ -35,7 +35,9 @@ namespace ProjetPoo {
 				delete components;
 			}
 		}
-	private: System::Windows::Forms::Button^ button_create_customer;
+	private: System::Windows::Forms::Button^ button_create_people;
+	protected:
+
 	protected:
 
 	protected:
@@ -53,26 +55,28 @@ namespace ProjetPoo {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			this->button_create_customer = (gcnew System::Windows::Forms::Button());
+			this->button_create_people = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
 			// 
-			// button_create_customer
+			// button_create_people
 			// 
-			this->button_create_customer->Location = System::Drawing::Point(12, 12);
-			this->button_create_customer->Name = L"button_create_customer";
-			this->button_create_customer->Size = System::Drawing::Size(138, 67);
-			this->button_create_customer->TabIndex = 0;
-			this->button_create_customer->Text = L"Créer un \r\nClient";
-			this->button_create_customer->UseVisualStyleBackColor = true;
-			this->button_create_customer->Click += gcnew System::EventHandler(this, &PeopleForm::button_create_customer_Click);
+			this->button_create_people->Location = System::Drawing::Point(16, 15);
+			this->button_create_people->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->button_create_people->Name = L"button_create_people";
+			this->button_create_people->Size = System::Drawing::Size(184, 82);
+			this->button_create_people->TabIndex = 0;
+			this->button_create_people->Text = L"Créer une Personne";
+			this->button_create_people->UseVisualStyleBackColor = true;
+			this->button_create_people->Click += gcnew System::EventHandler(this, &PeopleForm::button_create_customer_Click);
 			// 
 			// PeopleForm
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::SystemColors::ActiveCaption;
-			this->ClientSize = System::Drawing::Size(1061, 570);
-			this->Controls->Add(this->button_create_customer);
+			this->ClientSize = System::Drawing::Size(1415, 702);
+			this->Controls->Add(this->button_create_people);
+			this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->Name = L"PeopleForm";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterParent;
 			this->Text = L"PeopleForm";
@@ -84,8 +88,8 @@ namespace ProjetPoo {
 	private: System::Void PeopleForm_Load(System::Object^ sender, System::EventArgs^ e) {
 	}
 	private: System::Void button_create_customer_Click(System::Object^ sender, System::EventArgs^ e) {
-		CreateCustomerForm^ newcustForm = gcnew CreateCustomerForm();
-		newcustForm->ShowDialog();
+		CreatePeopleForm^ newpeoForm = gcnew CreatePeopleForm();
+		newpeoForm->ShowDialog();
 	}
 
 	};
