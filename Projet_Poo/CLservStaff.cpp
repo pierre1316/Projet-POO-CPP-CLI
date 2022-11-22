@@ -19,11 +19,10 @@ System::Data::DataSet^ CLservStaff::selectAllStaff(System::String^ dataTableName
 }
 
 
-System::Void CLservStaff::createStaff(int idPeople, System::DateTime^ hiring_date, int idSuperior, System::String^ password) {
+System::Void CLservStaff::createStaff(int idPeople, System::String^ hiring_date, int idSuperior, System::String^ password) {
 	System::String^ sql;
 	sql = this->oMappTB->createStaff(idPeople, hiring_date);
 	this->oCad->actionRows(sql);
-	//sql = this->oMappTB->GetAllStaff();
-	//this->oDs = this->oCad->getRows("rsl", sql);
-	//this->oDs->Tables["rsl"]->Rows[oDs->Tables["rsl"]->Rows->Count - 1];
+	sql = this->oMappTB->setSuperior(idPeople, idSuperior);
+	this->oCad->actionRows(sql);
 }

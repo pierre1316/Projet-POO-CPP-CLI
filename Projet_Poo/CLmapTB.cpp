@@ -11,14 +11,25 @@ System::String^ CLmapTB::GetAllPeople(System::Void) {
 }
 
 System::String^ CLmapTB::GetAllStaff(System::Void) {
-	return "EXEC GetAllStaff";
+	return "EXEC getAllStaff";
+}
+
+System::String^ CLmapTB::GetAllCustomers(System::Void) {
+	return "EXEC getAllCustomers";
 }
 
 
 System::String^ CLmapTB::createPeople(System::String^ first_name, System::String^ last_name) {
-	return "EXEC createPeople @first_name = N'" + first_name + "', @last_name = N'" + last_name + "' GO";
+	return "EXEC createPeople @first_name = N'" + first_name + "', @last_name = N'" + last_name + "'";
 }
 
-System::String^ CLmapTB::createStaff(int idPeople, System::DateTime^ hiring_date) {
-	return "EXEC createStaff @idPeople = '" + idPeople + "', @date = '" + hiring_date + "' GO";
+System::String^ CLmapTB::createStaff(int idPeople, System::String^ hiring_date) {
+	return "EXEC createStaff @idPeople = '" + idPeople + "', @date = '" + hiring_date + "'";
+}
+System::String^ CLmapTB::setSuperior(int idPeople, int idSuperior) {
+	return "EXEC setSuperior @idPeople = '" + idPeople + "', @idSuperior = '" + idSuperior + "'";
+}
+
+System::String^ CLmapTB::createCustomer(int idPeople, System::String^ birth_date) {
+	return "EXEC createCustomer @idPeople = '" + idPeople + "', @date_birthday = '" + birth_date + "'";
 }

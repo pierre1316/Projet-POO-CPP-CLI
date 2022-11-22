@@ -1,6 +1,7 @@
 #pragma once
 #include "CLservpeople.h"
 #include "CLservStaff.h"
+#include "CLservCustomer.h"
 #include "CLcad.h" 
 
 namespace ProjetPoo {
@@ -44,6 +45,8 @@ namespace ProjetPoo {
 	private: System::Data::DataSet^ oDs;
 	private: NS_Comp_Svc::CLservPeople^ oPeople;
 	private: NS_Comp_Svc::CLservStaff^ oStaff;
+	private: NS_Comp_Svc::CLservCustomer^ oCust;
+
 	private: System::Windows::Forms::ComboBox^ combo_people;
 
 	private: System::Windows::Forms::RadioButton^ radio_staff_select;
@@ -62,7 +65,7 @@ namespace ProjetPoo {
 	private: System::Windows::Forms::Label^ label5;
 	private: System::Windows::Forms::Button^ button_register;
 	private: System::Windows::Forms::Button^ button_address;
-	private: System::Windows::Forms::Label^ label6;
+
 
 
 
@@ -101,7 +104,6 @@ namespace ProjetPoo {
 			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->button_register = (gcnew System::Windows::Forms::Button());
 			this->button_address = (gcnew System::Windows::Forms::Button());
-			this->label6 = (gcnew System::Windows::Forms::Label());
 			this->groupBox1->SuspendLayout();
 			this->groupBox2->SuspendLayout();
 			this->SuspendLayout();
@@ -261,6 +263,7 @@ namespace ProjetPoo {
 			// 
 			// date_hiring
 			// 
+			this->date_hiring->CustomFormat = L"";
 			this->date_hiring->Enabled = false;
 			this->date_hiring->Location = System::Drawing::Point(249, 270);
 			this->date_hiring->Name = L"date_hiring";
@@ -296,22 +299,12 @@ namespace ProjetPoo {
 			this->button_address->UseVisualStyleBackColor = true;
 			this->button_address->Click += gcnew System::EventHandler(this, &CreatePeopleForm::button_address_Click);
 			// 
-			// label6
-			// 
-			this->label6->AutoSize = true;
-			this->label6->Location = System::Drawing::Point(501, 28);
-			this->label6->Name = L"label6";
-			this->label6->Size = System::Drawing::Size(44, 16);
-			this->label6->TabIndex = 20;
-			this->label6->Text = L"label6";
-			// 
 			// CreatePeopleForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::SystemColors::ActiveCaption;
 			this->ClientSize = System::Drawing::Size(697, 326);
-			this->Controls->Add(this->label6);
 			this->Controls->Add(this->button_address);
 			this->Controls->Add(this->button_register);
 			this->Controls->Add(this->date_hiring);
@@ -346,13 +339,23 @@ namespace ProjetPoo {
 	}
 	private: System::Void CreateCustomerForm_Load(System::Object^ sender, System::EventArgs^ e) {
 		this->oPeople = gcnew NS_Comp_Svc::CLservPeople();
-		combo_people_Load();
-		
+		this->oStaff = gcnew NS_Comp_Svc::CLservStaff();
+		this->oCust = gcnew NS_Comp_Svc::CLservCustomer();
+		combo_superior_Load();
+		combo_people_Load("Cust");
+		radio_customer_select_CheckedChanged(sender, e);
+		radiobutt_new_people_CheckedChanged(sender, e);
 	}
 
-private: System::Void combo_people_Load(System::Void) {
+private: System::Void combo_people_Load(System::String^ type) {
 	this->combo_people->Text = L"Sélectionnez une personne";
-	this->oDs = this->oPeople->selectAllPeople("rsl");
+	this->oDs->Clear();
+	if (type == "Cust") {
+		this->oDs = this->oCust->selectAllCustomer("rsl");
+	}
+	else {
+		this->oDs = this->oStaff->selectAllStaff("rsl");
+	}
 	this->combo_people->Items->Clear();
 	for (int i = 0; i < this->oDs->Tables["rsl"]->Rows->Count; i++) {
 		this->combo_people->Items->Add(
@@ -361,13 +364,24 @@ private: System::Void combo_people_Load(System::Void) {
 			this->oDs->Tables["rsl"]->Rows[i]->ItemArray[2]->ToString());
 	}
 }
+
+private: System::Void combo_superior_Load(System::Void) {
+	this->combo_superior->Text = L"Sélectionnez un supérieur";
+	this->oDs = this->oStaff->selectAllStaff("staff");
+	this->combo_superior->Items->Clear();
+	for (int i = 0; i < this->oDs->Tables["staff"]->Rows->Count; i++) {
+		this->combo_superior->Items->Add(
+			this->oDs->Tables["staff"]->Rows[i]->ItemArray[0]->ToString() + " " +
+			this->oDs->Tables["staff"]->Rows[i]->ItemArray[1]->ToString() + " " +
+			this->oDs->Tables["staff"]->Rows[i]->ItemArray[2]->ToString());
+	}
+}
 private: System::Void comboBox1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
 	int index = this->combo_people->SelectedIndex;
 	this->textBox_last_name->Text = this->oDs->Tables["rsl"]->Rows[index]->ItemArray[1]->ToString();
 	this->textBox_first_name->Text = this->oDs->Tables["rsl"]->Rows[index]->ItemArray[2]->ToString();
 }
 private: System::Void radiobutt_new_people_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
-	combo_people_Load();
 	this->textBox_last_name->Text = "";
 	this->textBox_first_name->Text = "";
 	this->combo_people->Text = L"Sélectionnez une personne";
@@ -381,18 +395,27 @@ private: System::Void radiobutt_new_people_CheckedChanged(System::Object^ sender
 		this->textBox_last_name->Enabled = true;
 		this->textBox_first_name->Enabled = true;
 	}
+	if (radio_staff_select->Checked) {
+		combo_people_Load("Staff");
+	}
+	else {
+		combo_people_Load("Cust");
+	}
 }
 
 private: System::Void radio_customer_select_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
+	combo_superior_Load();
 	this->combo_people->Text = L"Sélectionnez une personne";
 	this->date_hiring->ResetText();
 	this->date_birthday->ResetText();
 	if (this->radio_customer_select->Checked) {
+		combo_people_Load("Cust");
 		this->combo_superior->Enabled = false;
 		this->date_hiring->Enabled = false;
 		this->date_birthday->Enabled = true;
 	}
 	else {
+		combo_people_Load("Staff");
 		this->combo_superior->Enabled = true;
 		this->date_hiring->Enabled = true;
 		this->date_birthday->Enabled = false;
@@ -408,58 +431,54 @@ private: System::Void combo_people_SelectionChangeCommitted(System::Object^ send
 
 private: System::Void button_register_Click(System::Object^ sender, System::EventArgs^ e) {
 	//Enregistre les données dans la database
+	System::Data::DataRow^ row;
 	int idPeople;
-	if (this->radio_staff_select->Checked) {
-		// Créer un Staff
-		int indexStaff;
-		if (this->radiobutt_existing_people->Checked) {
-			// Personne existante
-			int indexPeople = this->combo_people->SelectedIndex;
-			this->oDs = this->oPeople->selectAllPeople("rsl");
-			idPeople = System::Convert::ToInt32(this->oDs->Tables["rsl"]->Rows[indexPeople]->ItemArray[0]);
-		}
-		else {
-			// Nouvelle personne
+	if (this->radiobutt_existing_people->Checked) {
+		// Personne existante
+		int indexPeople = this->combo_people->SelectedIndex;
+		this->oDs = this->oPeople->selectAllPeople("rsl");
+		idPeople = System::Convert::ToInt32(this->oDs->Tables["rsl"]->Rows[indexPeople]->ItemArray[0]);
+	}
+	else {
+		// Nouvelle personne
+		row = this->oPeople->createPeople(this->textBox_first_name->Text, this->textBox_last_name->Text);
+		idPeople = System::Convert::ToInt32(row->ItemArray[0]);
 
-		}
+	}
+	if (this->radio_staff_select->Checked) {
+		// Créer un staff
+		int indexStaff;
 		int idSuperior = -1;
-		this->label6->Text = System::Convert::ToString(this->combo_superior->SelectedIndex);
 		if (this->combo_superior->SelectedIndex != -1) {
 			this->oDs = this->oStaff->selectAllStaff("staff");
 			indexStaff = this->combo_superior->SelectedIndex;
 			idSuperior = System::Convert::ToInt32(this->oDs->Tables["staff"]->Rows[indexStaff]->ItemArray[0]);
-			this->oStaff->createStaff(idPeople, this->date_hiring->Value, idSuperior, "");
 		}
+		System::DateTime^ date = this->date_hiring->Value;
+		System::String^ dateString = System::Convert::ToString(date->Month) + "/";
+		dateString += System::Convert::ToString(date->Day) + "/";
+		dateString += System::Convert::ToString(date->Year);
+		this->oStaff->createStaff(idPeople, dateString, idSuperior, "");
 	}
 	else {
 		// Créer un client
+		System::DateTime^ date = this->date_birthday->Value;
+		System::String^ dateString = System::Convert::ToString(date->Month) + "/";
+		dateString += System::Convert::ToString(date->Day) + "/";
+		dateString += System::Convert::ToString(date->Year);
+		this->oCust->createCustomer(idPeople, dateString);
 	}
+		
 	this->radio_customer_select->Checked = true;
 	this->radiobutt_new_people->Checked = true;
 	radio_customer_select_CheckedChanged(sender, e);
 	radiobutt_new_people_CheckedChanged(sender, e);
 }
 private: System::Void button_address_Click(System::Object^ sender, System::EventArgs^ e) {
-	System::DateTime^ datetime = this->date_hiring->Value;
 	
-	//SQL_DATE_STRUCT date;
-	//date.day = datetime->Day;
-	//date.month = datetime->Month;
-	//date.year = datetime->Year;
 
 
-	/*System::String^ date = System::Convert::ToString(datetime->Day);
-	date += "/";
-	date += System::Convert::ToString(datetime->Month);
-	date += "/";
-	date += System::Convert::ToString(datetime->Year);
-	datetime = System::Convert::ToDateTime(date);*/
 	
-	//this->label6->Text = System::Convert::ToString(date);
-	
-	NS_Comp_Data::CLcad^ cad = gcnew NS_Comp_Data::CLcad();
-	System::String^ sql = "INSERT INTO Staff (idPeople, hiring_date) values(1, '"+ datetime +"')";
-	cad->actionRows(sql);
 }
 };
 }

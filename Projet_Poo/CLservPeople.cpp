@@ -25,7 +25,7 @@ System::Data::DataRow^ CLservPeople::createPeople(System::String^ first_name, Sy
 	sql = this->oMappTB->createPeople(first_name, last_name);
 	this->oCad->actionRows(sql);
 	sql = this->oMappTB->GetAllPeople();
-	this->oDs = this->oCad->getRows("rsl", sql);
+	this->oDs = this->oCad->getRows(sql, "result");
 
-	return this->oDs->Tables["rsl"]->Rows[oDs->Tables["rsl"]->Rows->Count - 1];
+	return this->oDs->Tables["result"]->Rows[oDs->Tables["result"]->Rows->Count - 1];
 }
