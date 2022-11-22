@@ -55,7 +55,7 @@ CREATE TABLE Address(
 CREATE TABLE Staff(
    idPeople INT,
    hiring_date DATE NOT NULL,
-   idSuperior INT NOT NULL,
+   idSuperior INT,
    idAddress INT,
    PRIMARY KEY(idPeople),
    UNIQUE(idAddress),
