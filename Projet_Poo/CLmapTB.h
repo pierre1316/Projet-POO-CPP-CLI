@@ -7,6 +7,9 @@ namespace NS_Comp_Mappage {
 
 	public :
 		CLmapTB(void);
+
+		// People
+	public :
 		System::String^ GetAllPeople(System::Void);
 	};
 }
