@@ -55,7 +55,7 @@ CREATE TABLE Address(
 CREATE TABLE Staff(
    idPeople INT,
    hiring_date DATE NOT NULL,
-   idSuperior INT,
+   idSuperior INT NOT NULL,
    idAddress INT,
    passorword varchar(100) default 'mdp',
    PRIMARY KEY(idPeople),

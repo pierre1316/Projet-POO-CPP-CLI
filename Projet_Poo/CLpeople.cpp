@@ -1,14 +1,17 @@
 #include "CLpeople.h"
 
-using namespace NS_Comp_People;
+using namespace NS_Comp_Svc;
 
-CLpeople::CLpeople(int id)
+NS_Comp_Svc::CLpeople::CLpeople(void)
 {
-
+	this->oCad = gcnew NS_Comp_Data::CLcad();
+	this->oMappTB = gcnew NS_Comp_Mappage::CLmapTB();
 }
-CLpeople::CLpeople(System::String^ first_name, System::String^ last_name) {
 
-}
-System::Data::DataSet^ CLpeople::selectAllPeople(System::String^) {
+System::Data::DataSet^ CLpeople::selectAllPeople(System::String^ dataTableName)
+{
+	System::String^ sql;
 
+	sql = this->oMappTB->GetAllPeople();
+	return this->oCad->getRows(sql, dataTableName);
 }

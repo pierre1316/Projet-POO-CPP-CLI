@@ -125,7 +125,6 @@
     <ClCompile Include="CLmapTB.cpp" />
 <<<<<<< Updated upstream
     <ClCompile Include="CLpeople.cpp" />
-    <ClCompile Include="CLservPeople.cpp" />
     <ClCompile Include="CreateCustomerForm.cpp" />
 =======
     <ClCompile Include="CLservPeople.cpp" />
@@ -140,7 +139,6 @@
     <ClInclude Include="CLmapTB.h" />
 <<<<<<< Updated upstream
     <ClInclude Include="CLpeople.h" />
-    <ClInclude Include="CLservPeople.h" />
     <ClInclude Include="CreateCustomerForm.h">
 =======
     <ClInclude Include="CLservPeople.h" />

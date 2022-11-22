@@ -2,16 +2,14 @@
 #include "CLmapTB.h"
 #include "CLcad.h"
 
-namespace NS_Comp_People {
+namespace NS_Comp_Svc {
 	ref class CLpeople
 	{
 	private :
-		int id;
-		System::String^ first_name;
-		System::String^ last_name;
+		NS_Comp_Data::CLcad^ oCad;
+		NS_Comp_Mappage::CLmapTB^ oMappTB;
 	public :
-		CLpeople(int id);
-		CLpeople(System::String^ first_name, System::String^ last_name);
+		CLpeople(void);
 		System::Data::DataSet^ selectAllPeople(System::String^);
 
 	};
