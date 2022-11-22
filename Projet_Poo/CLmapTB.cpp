@@ -7,11 +7,6 @@ CLmapTB::CLmapTB(void) {
 }
 
 System::String^ CLmapTB::GetAllPeople(System::Void) {
-<<<<<<< Updated upstream
-	//return "EXEC GetPeople";
-	return "SELECT * FROM People";
-}
-=======
 	return "EXEC GetPeople";
 }
 
@@ -27,4 +22,3 @@ System::String^ CLmapTB::createPeople(System::String^ first_name, System::String
 System::String^ CLmapTB::createStaff(int idPeople, System::DateTime^ hiring_date) {
 	return "EXEC createStaff @idPeople = '" + idPeople + "', @date = '" + hiring_date + "' GO";
 }
->>>>>>> Stashed changes

@@ -1,8 +1,7 @@
 #pragma once
 #include "CLservpeople.h"
 #include "CLservStaff.h"
-#include "CLcad.h"
-#include <Sqlext.h>  
+#include "CLcad.h" 
 
 namespace ProjetPoo {
 
@@ -443,10 +442,10 @@ private: System::Void button_register_Click(System::Object^ sender, System::Even
 private: System::Void button_address_Click(System::Object^ sender, System::EventArgs^ e) {
 	System::DateTime^ datetime = this->date_hiring->Value;
 	
-	SQL_DATE_STRUCT date;
-	date.day = datetime->Day;
-	date.month = datetime->Month;
-	date.year = datetime->Year;
+	//SQL_DATE_STRUCT date;
+	//date.day = datetime->Day;
+	//date.month = datetime->Month;
+	//date.year = datetime->Year;
 
 
 	/*System::String^ date = System::Convert::ToString(datetime->Day);
@@ -459,7 +458,7 @@ private: System::Void button_address_Click(System::Object^ sender, System::Event
 	//this->label6->Text = System::Convert::ToString(date);
 	
 	NS_Comp_Data::CLcad^ cad = gcnew NS_Comp_Data::CLcad();
-	System::String^ sql = "INSERT INTO Staff (idPeople, hiring_date) values(1, '"+ date +"')";
+	System::String^ sql = "INSERT INTO Staff (idPeople, hiring_date) values(1, '"+ datetime +"')";
 	cad->actionRows(sql);
 }
 };
