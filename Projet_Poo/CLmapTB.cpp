@@ -41,3 +41,7 @@ System::String^ CLmapTB::setSuperior(int idPeople, int idSuperior) {
 System::String^ CLmapTB::createCustomer(int idPeople, System::String^ birth_date) {
 	return "EXEC createCustomer @idPeople = '" + idPeople + "', @date_birthday = '" + birth_date + "'";
 }
+
+System::String^ CLmapTB::updatePeople(int idPeople, System::String^ last_name, System::String^ first_name) {
+	return "EXEC updatePeople @idPeople = '" + idPeople + "', @last_name = '" + last_name + "', @first_name = '" + first_name;
+}

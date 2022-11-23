@@ -29,3 +29,10 @@ System::Data::DataRow^ CLservPeople::createPeople(System::String^ first_name, Sy
 
 	return this->oDs->Tables["result"]->Rows[oDs->Tables["result"]->Rows->Count - 1];
 }
+
+System::Void CLservPeople::modifyPeople(int idPeople, System::String^ first_name, System::String^ last_name) {
+
+	System::String^ sql;
+	sql = this->oMappTB->updatePeople(idPeople, first_name, last_name);
+	this->oCad->actionRows(sql);
+}

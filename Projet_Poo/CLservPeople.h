@@ -13,6 +13,7 @@ namespace NS_Comp_Svc {
 		CLservPeople(void);
 		System::Data::DataSet^ selectAllPeople(System::String^);
 		System::Data::DataRow^ createPeople(System::String^ first_name, System::String^ last_name);
+		System::Void modifyPeople(int idPeople, System::String^ first_name, System::String^ last_name);
 	};
 }
 

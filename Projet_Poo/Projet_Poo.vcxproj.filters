@@ -1,18 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="CLcad.cpp" />
     <ClCompile Include="CLmapTB.cpp" />
     <ClCompile Include="CLservCustomer.cpp" />
     <ClCompile Include="CLservPeople.cpp" />
     <ClCompile Include="CLservStaff.cpp" />
-    <ClCompile Include="CreatePeopleForm.cpp" />
     <ClCompile Include="MainForm.cpp" />
     <ClCompile Include="PeopleForm.cpp" />
     <ClCompile Include="ModifyPeopleForm.cpp" />
+    <ClCompile Include="CreatePeopleForm.cpp">
+      <Filter>Classes Terminéées</Filter>
+    </ClCompile>
+    <ClCompile Include="CLcad.cpp">
+      <Filter>Classes Terminéées</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CLcad.h" />
     <ClInclude Include="CLmapTB.h" />
     <ClInclude Include="CLservCustomer.h" />
     <ClInclude Include="CLservPeople.h" />
@@ -21,5 +24,13 @@
     <ClInclude Include="MainForm.h" />
     <ClInclude Include="PeopleForm.h" />
     <ClInclude Include="ModifyPeopleForm.h" />
+    <ClInclude Include="CLcad.h">
+      <Filter>Classes Terminéées</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Classes Terminéées">
+      <UniqueIdentifier>{88e4ddd4-854e-43e9-a83a-ddf965195cab}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>

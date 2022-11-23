@@ -157,6 +157,9 @@
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ModifyPeopleForm.resx">
+      <DependentUpon>ModifyPeopleForm.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PeopleForm.resx">
       <DependentUpon>PeopleForm.h</DependentUpon>
     </EmbeddedResource>

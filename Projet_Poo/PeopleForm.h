@@ -1,5 +1,6 @@
 #pragma once
 #include "CreatePeopleForm.h"
+#include "ModifyPeopleForm.h"
 
 namespace ProjetPoo {
 
@@ -80,6 +81,7 @@ namespace ProjetPoo {
 			this->button_modify_people->TabIndex = 1;
 			this->button_modify_people->Text = L"Modifier une Personne";
 			this->button_modify_people->UseVisualStyleBackColor = true;
+			this->button_modify_people->Click += gcnew System::EventHandler(this, &PeopleForm::button_modify_people_Click);
 			// 
 			// PeopleForm
 			// 
@@ -105,5 +107,9 @@ namespace ProjetPoo {
 		newpeoForm->ShowDialog();
 	}
 
+	private: System::Void button_modify_people_Click(System::Object^ sender, System::EventArgs^ e) {
+		ModifyPeopleForm^ modpeoForm = gcnew ModifyPeopleForm();
+		modpeoForm->ShowDialog();
+	}
 	};
 }
