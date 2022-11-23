@@ -8,7 +8,6 @@ namespace NS_Comp_Svc {
 	{
 	private:
 		System::Data::DataSet^ oDs;
-		NS_Comp_Svc::CLservPeople^ cPeo;
 		NS_Comp_Data::CLcad^ oCad;
 		NS_Comp_Mappage::CLmapTB^ oMappTB;
 	public:
