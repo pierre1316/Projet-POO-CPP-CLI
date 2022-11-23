@@ -1,5 +1,5 @@
 ﻿#pragma once
-#include "CLpeople.h"
+#include "CLservPeople.h"
 #include "CLservStaff.h"
 #include "CLservCustomer.h"
 
@@ -97,6 +97,9 @@ namespace ProjetPoo {
 			this->textBox_last_name = (gcnew System::Windows::Forms::TextBox());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->label6 = (gcnew System::Windows::Forms::Label());
+			this->oCust = gcnew NS_Comp_Svc::CLservCustomer();
+			this->oStaff = gcnew NS_Comp_Svc::CLservStaff();
+			this->oPeo = gcnew NS_Comp_Svc::CLservPeople();
 			this->SuspendLayout();
 			// 
 			// listbox_people
@@ -275,6 +278,13 @@ namespace ProjetPoo {
 
 		}
 #pragma endregion
+	private: System::Void window_components_load(System::Void) {
+		listbox_people_load();
+		if (this->radio_customer->Checked) {
+
+		}
+	}
+
 	private: System::Void listbox_people_load(System::Void) {
 		if (this->radio_customer->Checked) {
 			this->oDs = this->oCust->selectAllCustomer("rsl");
@@ -291,10 +301,10 @@ namespace ProjetPoo {
 		}
 	}
 
+
+
 	private: System::Void ModifyPeopleForm_Load(System::Object^ sender, System::EventArgs^ e) {
-		this->oCust = gcnew NS_Comp_Svc::CLservCustomer();
-		this->oStaff = gcnew NS_Comp_Svc::CLservStaff();
-		this->oPeo = gcnew NS_Comp_Svc::CLservPeople();
+		
 		listbox_people_load();
 	}
 	private: System::Void richTextBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
@@ -315,6 +325,7 @@ namespace ProjetPoo {
 
 		
 		//}
+		listbox_people_load();
 	}
 	};
 }
