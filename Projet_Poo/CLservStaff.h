@@ -14,6 +14,7 @@ namespace NS_Comp_Svc {
 	public:
 		CLservStaff(void);
 		System::Data::DataSet^ selectAllStaff(System::String^);
+		System::Data::DataSet^ selectStaffNoCust(System::String^ dataTableName);
 		System::Void createStaff(int idPeople, System::String^ hiring_date, int idSuperior, System::String^ password);
 	};
 }

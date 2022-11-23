@@ -128,6 +128,7 @@
     <ClCompile Include="CLservStaff.cpp" />
     <ClCompile Include="CreatePeopleForm.cpp" />
     <ClCompile Include="MainForm.cpp" />
+    <ClCompile Include="ModifyPeopleForm.cpp" />
     <ClCompile Include="PeopleForm.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -140,6 +141,9 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="MainForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="ModifyPeopleForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="PeopleForm.h">

@@ -14,8 +14,16 @@ System::String^ CLmapTB::GetAllStaff(System::Void) {
 	return "EXEC getAllStaff";
 }
 
+System::String^ CLmapTB::getStaffNoCustomer(System::Void) {
+	return "EXEC getStaffNoCustomer";
+}
+
 System::String^ CLmapTB::GetAllCustomers(System::Void) {
 	return "EXEC getAllCustomers";
+}
+
+System::String^ CLmapTB::getCustomerNoStaff(System::Void) {
+	return "EXEC getCustomerNoStaff";
 }
 
 

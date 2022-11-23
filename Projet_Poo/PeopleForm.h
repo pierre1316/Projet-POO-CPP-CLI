@@ -36,6 +36,7 @@ namespace ProjetPoo {
 			}
 		}
 	private: System::Windows::Forms::Button^ button_create_people;
+	private: System::Windows::Forms::Button^ button_modify_people;
 	protected:
 
 	protected:
@@ -56,12 +57,13 @@ namespace ProjetPoo {
 		void InitializeComponent(void)
 		{
 			this->button_create_people = (gcnew System::Windows::Forms::Button());
+			this->button_modify_people = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
 			// 
 			// button_create_people
 			// 
 			this->button_create_people->Location = System::Drawing::Point(16, 15);
-			this->button_create_people->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->button_create_people->Margin = System::Windows::Forms::Padding(4);
 			this->button_create_people->Name = L"button_create_people";
 			this->button_create_people->Size = System::Drawing::Size(184, 82);
 			this->button_create_people->TabIndex = 0;
@@ -69,14 +71,25 @@ namespace ProjetPoo {
 			this->button_create_people->UseVisualStyleBackColor = true;
 			this->button_create_people->Click += gcnew System::EventHandler(this, &PeopleForm::button_create_customer_Click);
 			// 
+			// button_modify_people
+			// 
+			this->button_modify_people->Location = System::Drawing::Point(208, 13);
+			this->button_modify_people->Margin = System::Windows::Forms::Padding(4);
+			this->button_modify_people->Name = L"button_modify_people";
+			this->button_modify_people->Size = System::Drawing::Size(184, 82);
+			this->button_modify_people->TabIndex = 1;
+			this->button_modify_people->Text = L"Modifier une Personne";
+			this->button_modify_people->UseVisualStyleBackColor = true;
+			// 
 			// PeopleForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::SystemColors::ActiveCaption;
 			this->ClientSize = System::Drawing::Size(1415, 702);
+			this->Controls->Add(this->button_modify_people);
 			this->Controls->Add(this->button_create_people);
-			this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->Margin = System::Windows::Forms::Padding(4);
 			this->Name = L"PeopleForm";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterParent;
 			this->Text = L"PeopleForm";

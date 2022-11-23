@@ -18,11 +18,21 @@ System::Data::DataSet^ CLservStaff::selectAllStaff(System::String^ dataTableName
 	return this->oCad->getRows(sql, dataTableName);
 }
 
+System::Data::DataSet^ CLservStaff::selectStaffNoCust(System::String^ dataTableName)
+{
+	System::String^ sql;
+
+	sql = this->oMappTB->getStaffNoCustomer();
+	return this->oCad->getRows(sql, dataTableName);
+}
 
 System::Void CLservStaff::createStaff(int idPeople, System::String^ hiring_date, int idSuperior, System::String^ password) {
 	System::String^ sql;
 	sql = this->oMappTB->createStaff(idPeople, hiring_date);
 	this->oCad->actionRows(sql);
-	sql = this->oMappTB->setSuperior(idPeople, idSuperior);
-	this->oCad->actionRows(sql);
+	if (idSuperior != -1) {
+		sql = this->oMappTB->setSuperior(idPeople, idSuperior);
+		this->oCad->actionRows(sql);
+	}
+	
 }

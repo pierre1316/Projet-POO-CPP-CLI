@@ -17,6 +17,13 @@ System::Data::DataSet^ CLservCustomer::selectAllCustomer(System::String^ dataTab
 	return this->oCad->getRows(sql, dataTableName);
 }
 
+System::Data::DataSet^ CLservCustomer::selectCustomerNoStaff(System::String^ dataTableName)
+{
+	System::String^ sql;
+
+	sql = this->oMappTB->getCustomerNoStaff();
+	return this->oCad->getRows(sql, dataTableName);
+}
 
 
 System::Void CLservCustomer::createCustomer(int idPeople, System::String^ birth_date) {

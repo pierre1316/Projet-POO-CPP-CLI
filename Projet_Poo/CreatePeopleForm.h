@@ -197,7 +197,7 @@ namespace ProjetPoo {
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(168, 150);
+			this->label1->Location = System::Drawing::Point(144, 150);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(42, 16);
 			this->label1->TabIndex = 8;
@@ -206,7 +206,7 @@ namespace ProjetPoo {
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(150, 181);
+			this->label2->Location = System::Drawing::Point(126, 181);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(60, 16);
 			this->label2->TabIndex = 9;
@@ -214,14 +214,14 @@ namespace ProjetPoo {
 			// 
 			// textBox_last_name
 			// 
-			this->textBox_last_name->Location = System::Drawing::Point(249, 144);
+			this->textBox_last_name->Location = System::Drawing::Point(217, 144);
 			this->textBox_last_name->Name = L"textBox_last_name";
 			this->textBox_last_name->Size = System::Drawing::Size(257, 22);
 			this->textBox_last_name->TabIndex = 10;
 			// 
 			// textBox_first_name
 			// 
-			this->textBox_first_name->Location = System::Drawing::Point(249, 178);
+			this->textBox_first_name->Location = System::Drawing::Point(217, 178);
 			this->textBox_first_name->Name = L"textBox_first_name";
 			this->textBox_first_name->Size = System::Drawing::Size(257, 22);
 			this->textBox_first_name->TabIndex = 11;
@@ -229,7 +229,7 @@ namespace ProjetPoo {
 			// label3
 			// 
 			this->label3->AutoSize = true;
-			this->label3->Location = System::Drawing::Point(81, 214);
+			this->label3->Location = System::Drawing::Point(57, 214);
 			this->label3->Name = L"label3";
 			this->label3->Size = System::Drawing::Size(129, 16);
 			this->label3->TabIndex = 12;
@@ -237,7 +237,7 @@ namespace ProjetPoo {
 			// 
 			// date_birthday
 			// 
-			this->date_birthday->Location = System::Drawing::Point(249, 209);
+			this->date_birthday->Location = System::Drawing::Point(217, 209);
 			this->date_birthday->Name = L"date_birthday";
 			this->date_birthday->Size = System::Drawing::Size(257, 22);
 			this->date_birthday->TabIndex = 13;
@@ -245,7 +245,7 @@ namespace ProjetPoo {
 			// label4
 			// 
 			this->label4->AutoSize = true;
-			this->label4->Location = System::Drawing::Point(59, 244);
+			this->label4->Location = System::Drawing::Point(35, 244);
 			this->label4->Name = L"label4";
 			this->label4->Size = System::Drawing::Size(151, 16);
 			this->label4->TabIndex = 14;
@@ -255,7 +255,7 @@ namespace ProjetPoo {
 			// 
 			this->combo_superior->Enabled = false;
 			this->combo_superior->FormattingEnabled = true;
-			this->combo_superior->Location = System::Drawing::Point(249, 241);
+			this->combo_superior->Location = System::Drawing::Point(217, 241);
 			this->combo_superior->Name = L"combo_superior";
 			this->combo_superior->Size = System::Drawing::Size(257, 24);
 			this->combo_superior->TabIndex = 15;
@@ -265,7 +265,7 @@ namespace ProjetPoo {
 			// 
 			this->date_hiring->CustomFormat = L"";
 			this->date_hiring->Enabled = false;
-			this->date_hiring->Location = System::Drawing::Point(249, 270);
+			this->date_hiring->Location = System::Drawing::Point(217, 270);
 			this->date_hiring->Name = L"date_hiring";
 			this->date_hiring->Size = System::Drawing::Size(257, 22);
 			this->date_hiring->TabIndex = 17;
@@ -273,7 +273,7 @@ namespace ProjetPoo {
 			// label5
 			// 
 			this->label5->AutoSize = true;
-			this->label5->Location = System::Drawing::Point(90, 275);
+			this->label5->Location = System::Drawing::Point(66, 275);
 			this->label5->Name = L"label5";
 			this->label5->Size = System::Drawing::Size(120, 16);
 			this->label5->TabIndex = 16;
@@ -281,7 +281,7 @@ namespace ProjetPoo {
 			// 
 			// button_register
 			// 
-			this->button_register->Location = System::Drawing::Point(536, 143);
+			this->button_register->Location = System::Drawing::Point(515, 143);
 			this->button_register->Name = L"button_register";
 			this->button_register->Size = System::Drawing::Size(149, 67);
 			this->button_register->TabIndex = 18;
@@ -291,7 +291,7 @@ namespace ProjetPoo {
 			// 
 			// button_address
 			// 
-			this->button_address->Location = System::Drawing::Point(536, 216);
+			this->button_address->Location = System::Drawing::Point(515, 216);
 			this->button_address->Name = L"button_address";
 			this->button_address->Size = System::Drawing::Size(149, 75);
 			this->button_address->TabIndex = 19;
@@ -342,7 +342,7 @@ namespace ProjetPoo {
 		this->oStaff = gcnew NS_Comp_Svc::CLservStaff();
 		this->oCust = gcnew NS_Comp_Svc::CLservCustomer();
 		combo_superior_Load();
-		combo_people_Load("Cust");
+		combo_people_Load("Staff");
 		radio_customer_select_CheckedChanged(sender, e);
 		radiobutt_new_people_CheckedChanged(sender, e);
 	}
@@ -351,10 +351,10 @@ private: System::Void combo_people_Load(System::String^ type) {
 	this->combo_people->Text = L"Sélectionnez une personne";
 	this->oDs->Clear();
 	if (type == "Cust") {
-		this->oDs = this->oCust->selectAllCustomer("rsl");
+		this->oDs = this->oCust->selectCustomerNoStaff("rsl");
 	}
 	else {
-		this->oDs = this->oStaff->selectAllStaff("rsl");
+		this->oDs = this->oStaff->selectStaffNoCust("rsl");
 	}
 	this->combo_people->Items->Clear();
 	for (int i = 0; i < this->oDs->Tables["rsl"]->Rows->Count; i++) {
@@ -396,10 +396,10 @@ private: System::Void radiobutt_new_people_CheckedChanged(System::Object^ sender
 		this->textBox_first_name->Enabled = true;
 	}
 	if (radio_staff_select->Checked) {
-		combo_people_Load("Staff");
+		combo_people_Load("Cust");
 	}
 	else {
-		combo_people_Load("Cust");
+		combo_people_Load("Staff");
 	}
 }
 
@@ -409,13 +409,13 @@ private: System::Void radio_customer_select_CheckedChanged(System::Object^ sende
 	this->date_hiring->ResetText();
 	this->date_birthday->ResetText();
 	if (this->radio_customer_select->Checked) {
-		combo_people_Load("Cust");
+		combo_people_Load("Staff");
 		this->combo_superior->Enabled = false;
 		this->date_hiring->Enabled = false;
 		this->date_birthday->Enabled = true;
 	}
 	else {
-		combo_people_Load("Staff");
+		combo_people_Load("Cust");
 		this->combo_superior->Enabled = true;
 		this->date_hiring->Enabled = true;
 		this->date_birthday->Enabled = false;
@@ -475,10 +475,7 @@ private: System::Void button_register_Click(System::Object^ sender, System::Even
 	radiobutt_new_people_CheckedChanged(sender, e);
 }
 private: System::Void button_address_Click(System::Object^ sender, System::EventArgs^ e) {
-	
-
-
-	
+	// Aller sur le Form de création / modification d'addresse
 }
 };
 }
