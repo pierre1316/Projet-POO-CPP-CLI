@@ -42,6 +42,10 @@ System::String^ CLmapTB::setSuperior(int idPeople, int idSuperior) {
 	return "EXEC setSuperior @idPeople = '" + idPeople + "', @idSuperior = '" + idSuperior + "'";
 }
 
+System::String^ CLmapTB::setSuperiorNULL(int idPeople) {
+	return "EXEC setSuperiorNULL @idPeople = '" + idPeople + "'";
+}
+
 System::String^ CLmapTB::createCustomer(int idPeople, System::String^ birth_date) {
 	return "EXEC createCustomer @idPeople = '" + idPeople + "', @date_birthday = '" + birth_date + "'";
 }
@@ -49,6 +53,11 @@ System::String^ CLmapTB::createCustomer(int idPeople, System::String^ birth_date
 System::String^ CLmapTB::updatePeople(int idPeople, System::String^ last_name, System::String^ first_name) {
 	return "EXEC updatePeople @idPeople = '" + idPeople + "', @last_name = '" + last_name + "', @first_name = '" + first_name + "'";
 }
+
 System::String^ CLmapTB::updateCustomer(int idPeople, System::String^ date_birth) {
 	return "EXEC updateCustomer @idPeople = '" + idPeople + "', @birthday = '" + date_birth + "'";
+}
+
+System::String^ CLmapTB::updateStaff(int idPeople, System::String^ date_hiring) {
+	return "EXEC updateStaff @idPeople = '" + idPeople + "', @hiring_date = '" + date_hiring + "'";
 }

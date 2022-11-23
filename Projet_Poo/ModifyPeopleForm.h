@@ -333,6 +333,12 @@ namespace ProjetPoo {
 		window_components_load();
 	}
 	private: System::Void listbox_people_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
+		if (this->radio_customer->Checked) {
+			this->oDs = this->oCust->selectAllCustomer("rsl");
+		}
+		else {
+			this->oDs = this->oStaff->selectAllStaff("rsl");
+		}
 		int index = this->listbox_people->SelectedIndex;
 		this->textBox_last_name->Text = this->oDs->Tables["rsl"]->Rows[index]->ItemArray[1]->ToString();
 		this->textBox_first_name->Text = this->oDs->Tables["rsl"]->Rows[index]->ItemArray[2]->ToString();
@@ -342,35 +348,42 @@ namespace ProjetPoo {
 			this->date_birthday->Value = System::Convert::ToDateTime(this->oDs->Tables["rsl"]->Rows[index]->ItemArray[3]);
 		}
 		else {
+			this->date_hiring->Value = System::Convert::ToDateTime(this->oDs->Tables["rsl"]->Rows[index]->ItemArray[4]);
 			System::String^ indexstaff = System::Convert::ToString(this->oDs->Tables["rsl"]->Rows[index]->ItemArray[3]);
+			System::Data::DataSet^ staff = this->oStaff->selectAllStaffForStaff("staff", System::Convert::ToInt32(this->oDs->Tables["rsl"]->Rows[index]->ItemArray[0]));
+			this->combo_superior->Items->Clear();
+			for (int i = 0; i < staff->Tables["staff"]->Rows->Count; i++) {
+				this->combo_superior->Items->Add(
+					staff->Tables["staff"]->Rows[i]->ItemArray[0]->ToString() + " " +
+					staff->Tables["staff"]->Rows[i]->ItemArray[1]->ToString() + " " +
+					staff->Tables["staff"]->Rows[i]->ItemArray[2]->ToString());
+			}
 			if (indexstaff != "") {
-				System::Data::DataSet^ staff = this->oStaff->selectAllStaffForStaff("staff", System::Convert::ToInt32(indexstaff));
-				this->combo_superior->Items->Clear();
-				for (int i = 0; i < staff->Tables["staff"]->Rows->Count; i++) {
-					this->combo_superior->Items->Add(
-						staff->Tables["staff"]->Rows[i]->ItemArray[0]->ToString() + " " +
-						staff->Tables["staff"]->Rows[i]->ItemArray[1]->ToString() + " " +
-						staff->Tables["staff"]->Rows[i]->ItemArray[2]->ToString());
-				}
+				
 				int nbstaff;
-				for (int i = 0; i < staff->Tables["staff"]->Rows->Count -1; i++) {
+				for (int i = 0; i < staff->Tables["staff"]->Rows->Count; i++) {
 					if (System::Convert::ToString(staff->Tables["staff"]->Rows[i]->ItemArray[0]) == indexstaff) {
-						nbstaff = i;
-						break;
+					nbstaff = i;
 					}
 				}
-				this->button_address->Text = System::Convert::ToString(nbstaff);
-				//this->combo_superior->SelectedIndex = nbstaff;
+				this->combo_superior->SelectedIndex = nbstaff;
 			}
 			else {
 				this->combo_superior->ResetText();
+				this->combo_superior->Text = L"Sélectionnez un Supérieur";
 			}
-			this->date_hiring->Value = System::Convert::ToDateTime(this->oDs->Tables["rsl"]->Rows[index]->ItemArray[4]);
+			
 			
 			
 		}
 	}
 	private: System::Void button_register_Click(System::Object^ sender, System::EventArgs^ e) {
+		if (this->radio_customer->Checked) {
+			this->oDs = this->oCust->selectAllCustomer("rsl");
+		}
+		else {
+			this->oDs = this->oStaff->selectAllStaff("rsl");
+		}
 		int index = this->listbox_people->SelectedIndex;
 		int idPeople = System::Convert::ToInt32(this->oDs->Tables["rsl"]->Rows[index]->ItemArray[0]);
 		this->oPeo->modifyPeople(idPeople, this->textBox_last_name->Text, this->textBox_first_name->Text);
@@ -383,6 +396,25 @@ namespace ProjetPoo {
 		}
 		else {
 			//modifie staff
+			int idSuperior;
+			int indexStaff = this->combo_superior->SelectedIndex; 
+			System::Data::DataSet^ staff = this->oStaff->selectAllStaffForStaff("staff", System::Convert::ToInt32(this->oDs->Tables["rsl"]->Rows[index]->ItemArray[0]));
+
+			if (this->combo_superior->Text == "") {
+				this->oStaff->setSuperiorNULL(idPeople);
+				idSuperior = -1;
+			}
+			else {
+				if (indexStaff != -1) {
+					idSuperior = System::Convert::ToInt32(staff->Tables["staff"]->Rows[indexStaff]->ItemArray[0]);
+				}
+			}
+			System::DateTime^ date = this->date_hiring->Value;
+			System::String^ dateString = System::Convert::ToString(date->Month) + "/";
+			dateString += System::Convert::ToString(date->Day) + "/";
+			dateString += System::Convert::ToString(date->Year);
+			this->oStaff->modifyStaff(idPeople, dateString, idSuperior);
+			
 		}
 		window_components_load();
 	}

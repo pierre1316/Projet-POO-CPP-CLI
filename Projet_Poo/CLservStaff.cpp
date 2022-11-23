@@ -44,3 +44,21 @@ System::Void CLservStaff::createStaff(int idPeople, System::String^ hiring_date,
 	}
 	
 }
+
+System::Void CLservStaff::modifyStaff(int idPeople, System::String^ hiring_date, int idSuperior) {
+	System::String^ sql;
+	sql = this->oMappTB->updateStaff(idPeople, hiring_date);
+	this->oCad->actionRows(sql);
+	if (idSuperior != -1) {
+		sql = this->oMappTB->setSuperior(idPeople, idSuperior);
+		this->oCad->actionRows(sql);
+	}
+	
+}
+
+System::Void CLservStaff::setSuperiorNULL(int idPeople) {
+	System::String^ sql;
+	sql = this->oMappTB->setSuperiorNULL(idPeople);
+	this->oCad->actionRows(sql);
+	
+}
