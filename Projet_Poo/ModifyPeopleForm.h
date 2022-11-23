@@ -311,9 +311,9 @@ private: System::Void button_register_Click(System::Object^ sender, System::Even
 	int index = this->listbox_people->SelectedIndex;
 	int idPeople = System::Convert::ToInt32(this->oDs->Tables["rsl"]->Rows[index]->ItemArray[0]);
 	this->oPeo->modifyPeople(idPeople, this->textBox_last_name->Text, this->textBox_first_name->Text);
-	if (this->radio_customer->Checked) {
+	//if (this->radio_customer->Checked) {
 
-	}
+	//}
 }
 };
 }
