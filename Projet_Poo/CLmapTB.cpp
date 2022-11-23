@@ -14,6 +14,10 @@ System::String^ CLmapTB::GetAllStaff(System::Void) {
 	return "EXEC getAllStaff";
 }
 
+System::String^ CLmapTB::GetAllStaffForStaff(int idPeople) {
+	return "EXEC getAllStaffForStaff @idPeople = '" + idPeople + "'";
+}
+
 System::String^ CLmapTB::getStaffNoCustomer(System::Void) {
 	return "EXEC getStaffNoCustomer";
 }
@@ -44,4 +48,7 @@ System::String^ CLmapTB::createCustomer(int idPeople, System::String^ birth_date
 
 System::String^ CLmapTB::updatePeople(int idPeople, System::String^ last_name, System::String^ first_name) {
 	return "EXEC updatePeople @idPeople = '" + idPeople + "', @last_name = '" + last_name + "', @first_name = '" + first_name + "'";
+}
+System::String^ CLmapTB::updateCustomer(int idPeople, System::String^ date_birth) {
+	return "EXEC updateCustomer @idPeople = '" + idPeople + "', @birthday = '" + date_birth + "'";
 }

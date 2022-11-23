@@ -18,6 +18,14 @@ System::Data::DataSet^ CLservStaff::selectAllStaff(System::String^ dataTableName
 	return this->oCad->getRows(sql, dataTableName);
 }
 
+System::Data::DataSet^ CLservStaff::selectAllStaffForStaff(System::String^ dataTableName, int idPeople)
+{
+	System::String^ sql;
+
+	sql = this->oMappTB->GetAllStaffForStaff(idPeople);
+	return this->oCad->getRows(sql, dataTableName);
+}
+
 System::Data::DataSet^ CLservStaff::selectStaffNoCust(System::String^ dataTableName)
 {
 	System::String^ sql;

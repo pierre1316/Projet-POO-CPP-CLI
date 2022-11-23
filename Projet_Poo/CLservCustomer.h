@@ -14,5 +14,6 @@ namespace NS_Comp_Svc {
 		System::Data::DataSet^ selectAllCustomer(System::String^);
 		System::Data::DataSet^ selectCustomerNoStaff(System::String^ dataTableName);
 		System::Void createCustomer(int idPeople, System::String^ birth_date);
+		System::Void modifyCustomer(int idPeople, System::String^ birth_date);
 	};
 }

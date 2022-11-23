@@ -280,8 +280,29 @@ namespace ProjetPoo {
 #pragma endregion
 	private: System::Void window_components_load(System::Void) {
 		listbox_people_load();
+		this->combo_superior->ResetText();
+		this->combo_superior->Text = L"Sélectionnez un Supérieur";
+		
+		this->date_birthday->ResetText();
+		this->date_hiring->ResetText();
+		this->textBox_last_name->ResetText();
+		this->textBox_first_name->ResetText();
 		if (this->radio_customer->Checked) {
-
+			this->date_birthday->Enabled = true;
+			this->date_hiring->Enabled = false;
+			this->combo_superior->Enabled = false;
+		}
+		else {
+			this->date_birthday->Enabled = false;
+			this->date_hiring->Enabled = true;
+			this->combo_superior->Enabled = true;
+			this->combo_superior->Items->Clear();
+			for (int i = 0; i < this->oDs->Tables["rsl"]->Rows->Count; i++) {
+				this->combo_superior->Items->Add(
+					this->oDs->Tables["rsl"]->Rows[i]->ItemArray[0]->ToString() + " " +
+					this->oDs->Tables["rsl"]->Rows[i]->ItemArray[1]->ToString() + " " +
+					this->oDs->Tables["rsl"]->Rows[i]->ItemArray[2]->ToString());
+			}
 		}
 	}
 
@@ -304,28 +325,66 @@ namespace ProjetPoo {
 
 
 	private: System::Void ModifyPeopleForm_Load(System::Object^ sender, System::EventArgs^ e) {
-		
-		listbox_people_load();
+		window_components_load();
 	}
 	private: System::Void richTextBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 	}
 	private: System::Void radio_customer_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
-		listbox_people_load();
+		window_components_load();
 	}
 	private: System::Void listbox_people_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
 		int index = this->listbox_people->SelectedIndex;
 		this->textBox_last_name->Text = this->oDs->Tables["rsl"]->Rows[index]->ItemArray[1]->ToString();
 		this->textBox_first_name->Text = this->oDs->Tables["rsl"]->Rows[index]->ItemArray[2]->ToString();
+		
+		
+		if (this->radio_customer->Checked) {
+			this->date_birthday->Value = System::Convert::ToDateTime(this->oDs->Tables["rsl"]->Rows[index]->ItemArray[3]);
+		}
+		else {
+			System::String^ indexstaff = System::Convert::ToString(this->oDs->Tables["rsl"]->Rows[index]->ItemArray[3]);
+			if (indexstaff != "") {
+				System::Data::DataSet^ staff = this->oStaff->selectAllStaffForStaff("staff", System::Convert::ToInt32(indexstaff));
+				this->combo_superior->Items->Clear();
+				for (int i = 0; i < staff->Tables["staff"]->Rows->Count; i++) {
+					this->combo_superior->Items->Add(
+						staff->Tables["staff"]->Rows[i]->ItemArray[0]->ToString() + " " +
+						staff->Tables["staff"]->Rows[i]->ItemArray[1]->ToString() + " " +
+						staff->Tables["staff"]->Rows[i]->ItemArray[2]->ToString());
+				}
+				int nbstaff;
+				for (int i = 0; i < staff->Tables["staff"]->Rows->Count -1; i++) {
+					if (System::Convert::ToString(staff->Tables["staff"]->Rows[i]->ItemArray[0]) == indexstaff) {
+						nbstaff = i;
+						break;
+					}
+				}
+				this->button_address->Text = System::Convert::ToString(nbstaff);
+				//this->combo_superior->SelectedIndex = nbstaff;
+			}
+			else {
+				this->combo_superior->ResetText();
+			}
+			this->date_hiring->Value = System::Convert::ToDateTime(this->oDs->Tables["rsl"]->Rows[index]->ItemArray[4]);
+			
+			
+		}
 	}
 	private: System::Void button_register_Click(System::Object^ sender, System::EventArgs^ e) {
 		int index = this->listbox_people->SelectedIndex;
 		int idPeople = System::Convert::ToInt32(this->oDs->Tables["rsl"]->Rows[index]->ItemArray[0]);
 		this->oPeo->modifyPeople(idPeople, this->textBox_last_name->Text, this->textBox_first_name->Text);
-		//if (this->radio_customer->Checked) {
-
-		
-		//}
-		listbox_people_load();
+		if (this->radio_customer->Checked) {
+			System::DateTime^ date = this->date_birthday->Value;
+			System::String^ dateString = System::Convert::ToString(date->Month) + "/";
+			dateString += System::Convert::ToString(date->Day) + "/";
+			dateString += System::Convert::ToString(date->Year);
+			this->oCust->modifyCustomer(idPeople, dateString);
+		}
+		else {
+			//modifie staff
+		}
+		window_components_load();
 	}
 	};
 }

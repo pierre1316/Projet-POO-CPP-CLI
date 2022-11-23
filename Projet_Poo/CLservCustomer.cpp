@@ -31,3 +31,9 @@ System::Void CLservCustomer::createCustomer(int idPeople, System::String^ birth_
 	sql = this->oMappTB->createCustomer(idPeople, birth_date);
 	this->oCad->actionRows(sql);
 }
+
+System::Void CLservCustomer::modifyCustomer(int idPeople, System::String^ birth_date) {
+	System::String^ sql;
+	sql = this->oMappTB->updateCustomer(idPeople, birth_date);
+	this->oCad->actionRows(sql);
+}
