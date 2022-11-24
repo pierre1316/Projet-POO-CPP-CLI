@@ -17,6 +17,14 @@ System::Data::DataSet^ CLservCustomer::selectAllCustomer(System::String^ dataTab
 	return this->oCad->getRows(sql, dataTableName);
 }
 
+System::Data::DataSet^ CLservCustomer::getTheCustomer(System::String^ dataTableName, int idPeople)
+{
+	System::String^ sql;
+
+	sql = this->oMappTB->selectTheCustomer(idPeople);
+	return this->oCad->getRows(sql, dataTableName);
+}
+
 System::Data::DataSet^ CLservCustomer::selectCustomerNoStaff(System::String^ dataTableName)
 {
 	System::String^ sql;
@@ -35,5 +43,11 @@ System::Void CLservCustomer::createCustomer(int idPeople, System::String^ birth_
 System::Void CLservCustomer::modifyCustomer(int idPeople, System::String^ birth_date) {
 	System::String^ sql;
 	sql = this->oMappTB->updateCustomer(idPeople, birth_date);
+	this->oCad->actionRows(sql);
+}
+
+System::Void CLservCustomer::deleteCustomer(int idPeople) {
+	System::String^ sql;
+	sql = this->oMappTB->deleteCustomer(idPeople);
 	this->oCad->actionRows(sql);
 }

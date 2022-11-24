@@ -61,3 +61,23 @@ System::String^ CLmapTB::updateCustomer(int idPeople, System::String^ date_birth
 System::String^ CLmapTB::updateStaff(int idPeople, System::String^ date_hiring) {
 	return "EXEC updateStaff @idPeople = '" + idPeople + "', @hiring_date = '" + date_hiring + "'";
 }
+
+System::String^ CLmapTB::selectTheStaff(int idPeople) {
+	return "EXEC selectTheStaff @idPeople = '" + idPeople + "'";
+}
+
+System::String^ CLmapTB::selectTheCustomer(int idPeople) {
+	return "EXEC selectTheCustomer @idPeople = '" + idPeople + "'";
+}
+
+System::String^ CLmapTB::deletePeople(int idPeople) {
+	return "EXEC deletePeople @idPeople = '" + idPeople + "'";
+}
+
+System::String^ CLmapTB::deleteStaff(int idPeople) {
+	return "EXEC deleteStaff @idPeople = '" + idPeople + "'";
+}
+
+System::String^ CLmapTB::deleteCustomer(int idPeople) {
+	return "EXEC deleteCustomer @idPeople = '" + idPeople + "'";
+}
