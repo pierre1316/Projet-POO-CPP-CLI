@@ -64,7 +64,7 @@ namespace ProjetPoo {
 	private: System::Windows::Forms::DateTimePicker^ date_hiring;
 	private: System::Windows::Forms::Label^ label5;
 	private: System::Windows::Forms::Button^ button_register;
-	private: System::Windows::Forms::Button^ button_address;
+
 
 
 
@@ -103,7 +103,6 @@ namespace ProjetPoo {
 			this->date_hiring = (gcnew System::Windows::Forms::DateTimePicker());
 			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->button_register = (gcnew System::Windows::Forms::Button());
-			this->button_address = (gcnew System::Windows::Forms::Button());
 			this->groupBox1->SuspendLayout();
 			this->groupBox2->SuspendLayout();
 			this->SuspendLayout();
@@ -281,7 +280,7 @@ namespace ProjetPoo {
 			// 
 			// button_register
 			// 
-			this->button_register->Location = System::Drawing::Point(515, 143);
+			this->button_register->Location = System::Drawing::Point(515, 184);
 			this->button_register->Name = L"button_register";
 			this->button_register->Size = System::Drawing::Size(149, 67);
 			this->button_register->TabIndex = 18;
@@ -289,23 +288,12 @@ namespace ProjetPoo {
 			this->button_register->UseVisualStyleBackColor = true;
 			this->button_register->Click += gcnew System::EventHandler(this, &CreatePeopleForm::button_register_Click);
 			// 
-			// button_address
-			// 
-			this->button_address->Location = System::Drawing::Point(515, 216);
-			this->button_address->Name = L"button_address";
-			this->button_address->Size = System::Drawing::Size(149, 75);
-			this->button_address->TabIndex = 19;
-			this->button_address->Text = L"Ajouter des adresses";
-			this->button_address->UseVisualStyleBackColor = true;
-			this->button_address->Click += gcnew System::EventHandler(this, &CreatePeopleForm::button_address_Click);
-			// 
 			// CreatePeopleForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::SystemColors::ActiveCaption;
 			this->ClientSize = System::Drawing::Size(697, 326);
-			this->Controls->Add(this->button_address);
 			this->Controls->Add(this->button_register);
 			this->Controls->Add(this->date_hiring);
 			this->Controls->Add(this->label5);

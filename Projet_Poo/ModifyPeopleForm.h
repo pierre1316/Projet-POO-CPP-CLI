@@ -149,7 +149,7 @@ namespace ProjetPoo {
 			this->button_address->Name = L"button_address";
 			this->button_address->Size = System::Drawing::Size(126, 52);
 			this->button_address->TabIndex = 31;
-			this->button_address->Text = L"Ajouter des adresses";
+			this->button_address->Text = L"Gérer les adresses";
 			this->button_address->UseVisualStyleBackColor = true;
 			// 
 			// button_register
@@ -353,6 +353,9 @@ namespace ProjetPoo {
 			this->oDs = this->oStaff->selectAllStaff("rsl");
 		}
 		int index = this->listbox_people->SelectedIndex;
+		if (index == -1) {
+			return;
+		}
 		this->textBox_last_name->Text = this->oDs->Tables["rsl"]->Rows[index]->ItemArray[1]->ToString();
 		this->textBox_first_name->Text = this->oDs->Tables["rsl"]->Rows[index]->ItemArray[2]->ToString();
 		
