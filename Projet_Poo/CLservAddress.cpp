@@ -52,3 +52,27 @@ System::Void CLservAddress::deleteAddress(int idAddress)
 	sql = this->oMappTB->deleteAddress(idAddress);
 	this->oCad->actionRows(sql);
 }
+
+System::Void CLservAddress::linkAddressCustomer(int idPeople, int idAddress, int billing, int delivery) {
+	System::String^ sql;
+
+	sql = this->oMappTB->linkAddressCustomer(idPeople, idAddress, billing, delivery);
+	this->oCad->actionRows(sql);
+}
+
+
+System::Data::DataSet^ CLservAddress::selectAddressBilling(System::String^ dataTableName, int idPeople)
+{
+	System::String^ sql;
+
+	sql = this->oMappTB->selectAddressBilling(idPeople);
+	return this->oCad->getRows(sql, dataTableName);
+}
+
+System::Data::DataSet^ CLservAddress::selectAddressDelivery(System::String^ dataTableName, int idPeople)
+{
+	System::String^ sql;
+
+	sql = this->oMappTB->selectAddressDelivery(idPeople);
+	return this->oCad->getRows(sql, dataTableName);
+}

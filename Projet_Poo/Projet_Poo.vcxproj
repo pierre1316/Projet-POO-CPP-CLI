@@ -128,6 +128,7 @@
     <ClCompile Include="CLservCustomer.cpp" />
     <ClCompile Include="CLservPeople.cpp" />
     <ClCompile Include="CLservStaff.cpp" />
+    <ClCompile Include="CreateAddressForm.cpp" />
     <ClCompile Include="CreatePeopleForm.cpp" />
     <ClCompile Include="MainForm.cpp" />
     <ClCompile Include="ModifyPeopleForm.cpp" />
@@ -143,6 +144,9 @@
     <ClInclude Include="CLservCustomer.h" />
     <ClInclude Include="CLservPeople.h" />
     <ClInclude Include="CLservStaff.h" />
+    <ClInclude Include="CreateAddressForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="CreatePeopleForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -159,6 +163,9 @@
   <ItemGroup>
     <EmbeddedResource Include="AddressForm.resx">
       <DependentUpon>AddressForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreateAddressForm.resx">
+      <DependentUpon>CreateAddressForm.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CreatePeopleForm.resx">
       <DependentUpon>CreatePeopleForm.h</DependentUpon>

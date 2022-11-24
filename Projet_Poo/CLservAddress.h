@@ -16,5 +16,8 @@ namespace NS_Comp_Svc {
 		int createAddress(System::String^ last_name, System::String^ first_name, System::String^ text, System::String^ postal_code, System::String^ city_name);
 		System::Void modifyAddress(int idAddress, System::String^ last_name, System::String^ first_name, System::String^ text, System::String^ postal_code, System::String^ city_name);
 		System::Void deleteAddress(int idAddress);
+		System::Void linkAddressCustomer(int idPeople, int idAddress, int billing, int delivery);
+		System::Data::DataSet^ selectAddressBilling(System::String^ dataTableName, int idPeople);
+		System::Data::DataSet^ selectAddressDelivery(System::String^ dataTableName, int idPeople);
 	};
 }

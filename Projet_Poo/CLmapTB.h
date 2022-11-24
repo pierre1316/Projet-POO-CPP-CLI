@@ -34,5 +34,8 @@ namespace NS_Comp_Mappage {
 		System::String^ getAllAddress();
 		System::String^ updateStaffAddress(int idPeople, int idAddress);
 		System::String^ deleteAddress(int idAddress);
+		System::String^ linkAddressCustomer(int idPeople, int idAddress, int billing, int delivery);
+		System::String^ selectAddressDelivery(int idPeople);
+		System::String^ selectAddressBilling(int idPeople);
 	};
 }

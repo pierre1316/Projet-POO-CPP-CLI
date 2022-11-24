@@ -115,3 +115,15 @@ System::String^ CLmapTB::deleteAddress(int idAddress) {
 System::String^ CLmapTB::updateStaffAddress(int idPeople, int idAddress) {
 	return "EXEC updateStaffAddress @idPeople = '" + idPeople + "', @idAddress = '" + idAddress + "'";
 }
+
+System::String^ CLmapTB::linkAddressCustomer(int idPeople, int idAddress, int billing, int delivery) {
+	return "EXEC linkAddressCustomer @idPeople = '" + idPeople + "', @idAddress = '" + idAddress + "', @billing = '" + billing + "', @delivery = '" + delivery + "'";
+}
+
+System::String^ CLmapTB::selectAddressDelivery(int idPeople) {
+	return "EXEC selectAddressDelivery @idPeople = '" + idPeople + "'";
+}
+
+System::String^ CLmapTB::selectAddressBilling(int idPeople) {
+	return "EXEC selectAddressBilling @idPeople = '" + idPeople + "'";
+}

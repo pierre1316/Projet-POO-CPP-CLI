@@ -2,6 +2,7 @@
 #include "CLservPeople.h"
 #include "CLservStaff.h"
 #include "CLservCustomer.h"
+#include "CLservAddress.h"
 #include "AddressForm.h"
 
 
@@ -49,6 +50,7 @@ namespace ProjetPoo {
 	private: NS_Comp_Svc::CLservCustomer^ oCust;
 	private: NS_Comp_Svc::CLservStaff^ oStaff;
 	private: NS_Comp_Svc::CLservPeople^ oPeo;
+	private: NS_Comp_Svc::CLservAddress^ oAddress;
 	private: System::Data::DataSet^ oDs;
 
 
@@ -65,6 +67,12 @@ namespace ProjetPoo {
 	private: System::Windows::Forms::Label^ label2;
 	private: System::Windows::Forms::Label^ label6;
 	private: System::Windows::Forms::Button^ button_suppr;
+	private: System::Windows::Forms::TextBox^ textBox_city;
+	private: System::Windows::Forms::TextBox^ textBox_postalcode;
+	private: System::Windows::Forms::TextBox^ textBox_address;
+	private: System::Windows::Forms::Label^ label8;
+	private: System::Windows::Forms::Label^ label7;
+	private: System::Windows::Forms::Label^ label9;
 
 
 
@@ -100,6 +108,12 @@ namespace ProjetPoo {
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->label6 = (gcnew System::Windows::Forms::Label());
 			this->button_suppr = (gcnew System::Windows::Forms::Button());
+			this->textBox_city = (gcnew System::Windows::Forms::TextBox());
+			this->textBox_postalcode = (gcnew System::Windows::Forms::TextBox());
+			this->textBox_address = (gcnew System::Windows::Forms::TextBox());
+			this->label8 = (gcnew System::Windows::Forms::Label());
+			this->label7 = (gcnew System::Windows::Forms::Label());
+			this->label9 = (gcnew System::Windows::Forms::Label());
 			this->SuspendLayout();
 			// 
 			// listbox_people
@@ -168,7 +182,7 @@ namespace ProjetPoo {
 			// 
 			this->date_hiring->CustomFormat = L"";
 			this->date_hiring->Enabled = false;
-			this->date_hiring->Location = System::Drawing::Point(411, 243);
+			this->date_hiring->Location = System::Drawing::Point(411, 209);
 			this->date_hiring->Name = L"date_hiring";
 			this->date_hiring->Size = System::Drawing::Size(257, 22);
 			this->date_hiring->TabIndex = 29;
@@ -176,7 +190,7 @@ namespace ProjetPoo {
 			// label5
 			// 
 			this->label5->AutoSize = true;
-			this->label5->Location = System::Drawing::Point(260, 248);
+			this->label5->Location = System::Drawing::Point(260, 214);
 			this->label5->Name = L"label5";
 			this->label5->Size = System::Drawing::Size(120, 16);
 			this->label5->TabIndex = 28;
@@ -186,7 +200,7 @@ namespace ProjetPoo {
 			// 
 			this->combo_superior->Enabled = false;
 			this->combo_superior->FormattingEnabled = true;
-			this->combo_superior->Location = System::Drawing::Point(411, 214);
+			this->combo_superior->Location = System::Drawing::Point(411, 180);
 			this->combo_superior->Name = L"combo_superior";
 			this->combo_superior->Size = System::Drawing::Size(257, 24);
 			this->combo_superior->TabIndex = 27;
@@ -195,7 +209,7 @@ namespace ProjetPoo {
 			// label4
 			// 
 			this->label4->AutoSize = true;
-			this->label4->Location = System::Drawing::Point(229, 217);
+			this->label4->Location = System::Drawing::Point(229, 183);
 			this->label4->Name = L"label4";
 			this->label4->Size = System::Drawing::Size(151, 16);
 			this->label4->TabIndex = 26;
@@ -203,7 +217,7 @@ namespace ProjetPoo {
 			// 
 			// date_birthday
 			// 
-			this->date_birthday->Location = System::Drawing::Point(411, 182);
+			this->date_birthday->Location = System::Drawing::Point(411, 148);
 			this->date_birthday->Name = L"date_birthday";
 			this->date_birthday->Size = System::Drawing::Size(257, 22);
 			this->date_birthday->TabIndex = 25;
@@ -211,7 +225,7 @@ namespace ProjetPoo {
 			// label3
 			// 
 			this->label3->AutoSize = true;
-			this->label3->Location = System::Drawing::Point(251, 187);
+			this->label3->Location = System::Drawing::Point(251, 153);
 			this->label3->Name = L"label3";
 			this->label3->Size = System::Drawing::Size(129, 16);
 			this->label3->TabIndex = 24;
@@ -219,14 +233,14 @@ namespace ProjetPoo {
 			// 
 			// textBox_first_name
 			// 
-			this->textBox_first_name->Location = System::Drawing::Point(411, 151);
+			this->textBox_first_name->Location = System::Drawing::Point(411, 117);
 			this->textBox_first_name->Name = L"textBox_first_name";
 			this->textBox_first_name->Size = System::Drawing::Size(257, 22);
 			this->textBox_first_name->TabIndex = 23;
 			// 
 			// textBox_last_name
 			// 
-			this->textBox_last_name->Location = System::Drawing::Point(411, 117);
+			this->textBox_last_name->Location = System::Drawing::Point(411, 83);
 			this->textBox_last_name->Name = L"textBox_last_name";
 			this->textBox_last_name->Size = System::Drawing::Size(257, 22);
 			this->textBox_last_name->TabIndex = 22;
@@ -234,7 +248,7 @@ namespace ProjetPoo {
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(320, 154);
+			this->label2->Location = System::Drawing::Point(320, 120);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(60, 16);
 			this->label2->TabIndex = 21;
@@ -243,7 +257,7 @@ namespace ProjetPoo {
 			// label6
 			// 
 			this->label6->AutoSize = true;
-			this->label6->Location = System::Drawing::Point(338, 123);
+			this->label6->Location = System::Drawing::Point(338, 89);
 			this->label6->Name = L"label6";
 			this->label6->Size = System::Drawing::Size(42, 16);
 			this->label6->TabIndex = 20;
@@ -259,12 +273,69 @@ namespace ProjetPoo {
 			this->button_suppr->UseVisualStyleBackColor = true;
 			this->button_suppr->Click += gcnew System::EventHandler(this, &ModifyPeopleForm::button_suppr_Click);
 			// 
+			// textBox_city
+			// 
+			this->textBox_city->Enabled = false;
+			this->textBox_city->Location = System::Drawing::Point(411, 292);
+			this->textBox_city->Name = L"textBox_city";
+			this->textBox_city->Size = System::Drawing::Size(257, 22);
+			this->textBox_city->TabIndex = 38;
+			// 
+			// textBox_postalcode
+			// 
+			this->textBox_postalcode->Enabled = false;
+			this->textBox_postalcode->Location = System::Drawing::Point(411, 264);
+			this->textBox_postalcode->Name = L"textBox_postalcode";
+			this->textBox_postalcode->Size = System::Drawing::Size(257, 22);
+			this->textBox_postalcode->TabIndex = 37;
+			// 
+			// textBox_address
+			// 
+			this->textBox_address->Enabled = false;
+			this->textBox_address->Location = System::Drawing::Point(411, 236);
+			this->textBox_address->Name = L"textBox_address";
+			this->textBox_address->Size = System::Drawing::Size(257, 22);
+			this->textBox_address->TabIndex = 36;
+			// 
+			// label8
+			// 
+			this->label8->AutoSize = true;
+			this->label8->Location = System::Drawing::Point(339, 296);
+			this->label8->Name = L"label8";
+			this->label8->Size = System::Drawing::Size(42, 16);
+			this->label8->TabIndex = 35;
+			this->label8->Text = L"Ville : ";
+			// 
+			// label7
+			// 
+			this->label7->AutoSize = true;
+			this->label7->Location = System::Drawing::Point(291, 267);
+			this->label7->Name = L"label7";
+			this->label7->Size = System::Drawing::Size(87, 16);
+			this->label7->TabIndex = 34;
+			this->label7->Text = L"Code Postal :";
+			// 
+			// label9
+			// 
+			this->label9->AutoSize = true;
+			this->label9->Location = System::Drawing::Point(314, 239);
+			this->label9->Name = L"label9";
+			this->label9->Size = System::Drawing::Size(64, 16);
+			this->label9->TabIndex = 33;
+			this->label9->Text = L"Adresse :";
+			// 
 			// ModifyPeopleForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::SystemColors::ActiveCaption;
 			this->ClientSize = System::Drawing::Size(697, 326);
+			this->Controls->Add(this->textBox_city);
+			this->Controls->Add(this->textBox_postalcode);
+			this->Controls->Add(this->textBox_address);
+			this->Controls->Add(this->label8);
+			this->Controls->Add(this->label7);
+			this->Controls->Add(this->label9);
 			this->Controls->Add(this->button_suppr);
 			this->Controls->Add(this->button_address);
 			this->Controls->Add(this->button_register);
@@ -300,15 +371,26 @@ namespace ProjetPoo {
 		this->date_hiring->ResetText();
 		this->textBox_last_name->ResetText();
 		this->textBox_first_name->ResetText();
+		this->textBox_address->ResetText();
+		this->textBox_postalcode->ResetText();
+		this->textBox_city->ResetText();
 		if (this->radio_customer->Checked) {
 			this->date_birthday->Enabled = true;
 			this->date_hiring->Enabled = false;
 			this->combo_superior->Enabled = false;
+			this->textBox_address->Enabled = false;
+			this->textBox_postalcode->Enabled = false;
+			this->textBox_city->Enabled = false;
+			this->button_address->Enabled = true;
 		}
 		else {
 			this->date_birthday->Enabled = false;
 			this->date_hiring->Enabled = true;
 			this->combo_superior->Enabled = true;
+			this->textBox_address->Enabled = true;
+			this->textBox_postalcode->Enabled = true;
+			this->textBox_city->Enabled = true;
+			this->button_address->Enabled = false;
 			this->combo_superior->Items->Clear();
 			for (int i = 0; i < this->oDs->Tables["rsl"]->Rows->Count; i++) {
 				this->combo_superior->Items->Add(
@@ -341,6 +423,7 @@ namespace ProjetPoo {
 		this->oCust = gcnew NS_Comp_Svc::CLservCustomer();
 		this->oStaff = gcnew NS_Comp_Svc::CLservStaff();
 		this->oPeo = gcnew NS_Comp_Svc::CLservPeople();
+		this->oAddress = gcnew NS_Comp_Svc::CLservAddress();
 		window_components_load();
 	}
 	private: System::Void richTextBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
@@ -361,12 +444,13 @@ namespace ProjetPoo {
 		}
 		this->textBox_last_name->Text = this->oDs->Tables["rsl"]->Rows[index]->ItemArray[1]->ToString();
 		this->textBox_first_name->Text = this->oDs->Tables["rsl"]->Rows[index]->ItemArray[2]->ToString();
-		
+		int idPeople = System::Convert::ToInt32(this->oDs->Tables["rsl"]->Rows[index]->ItemArray[0]);
 		
 		if (this->radio_customer->Checked) {
 			this->date_birthday->Value = System::Convert::ToDateTime(this->oDs->Tables["rsl"]->Rows[index]->ItemArray[3]);
 		}
 		else {
+			int idAddress = System::Convert::ToInt32(this->oDs->Tables["rsl"]->Rows[index]->ItemArray[5]);
 			this->date_hiring->Value = System::Convert::ToDateTime(this->oDs->Tables["rsl"]->Rows[index]->ItemArray[4]);
 			System::String^ indexstaff = System::Convert::ToString(this->oDs->Tables["rsl"]->Rows[index]->ItemArray[3]);
 			System::Data::DataSet^ staff = this->oStaff->selectAllStaffForStaff("staff", System::Convert::ToInt32(this->oDs->Tables["rsl"]->Rows[index]->ItemArray[0]));
@@ -391,6 +475,10 @@ namespace ProjetPoo {
 				this->combo_superior->ResetText();
 				this->combo_superior->Text = L"Sélectionnez un Supérieur";
 			}
+			this->oDs = this->oAddress->selectAddress("address", idAddress);
+			this->textBox_address->Text = this->oDs->Tables["address"]->Rows[0]->ItemArray[3]->ToString();
+			this->textBox_postalcode->Text = this->oDs->Tables["address"]->Rows[0]->ItemArray[4]->ToString();
+			this->textBox_city->Text = this->oDs->Tables["address"]->Rows[0]->ItemArray[5]->ToString();
 			
 			
 			
@@ -415,11 +503,12 @@ namespace ProjetPoo {
 		}
 		else {
 			//modifie staff
+			int idAddress = System::Convert::ToInt32(this->oDs->Tables["rsl"]->Rows[index]->ItemArray[5]);
 			int idSuperior;
-			int indexStaff = this->combo_superior->SelectedIndex; 
+			int indexStaff = this->combo_superior->SelectedIndex;
 			System::Data::DataSet^ staff = this->oStaff->selectAllStaffForStaff("staff", System::Convert::ToInt32(this->oDs->Tables["rsl"]->Rows[index]->ItemArray[0]));
 
-			if (this->combo_superior->Text == "") {
+			if (this->combo_superior->Text == "" || indexStaff == -1) {
 				this->oStaff->setSuperiorNULL(idPeople);
 				idSuperior = -1;
 			}
@@ -433,9 +522,9 @@ namespace ProjetPoo {
 			dateString += System::Convert::ToString(date->Day) + "/";
 			dateString += System::Convert::ToString(date->Year);
 			this->oStaff->modifyStaff(idPeople, dateString, idSuperior);
-			
+			this->oAddress->modifyAddress(idAddress, "", "", this->textBox_address->Text, this->textBox_postalcode->Text, this->textBox_city->Text);
+			window_components_load();
 		}
-		window_components_load();
 	}
 	private: System::Void button_suppr_Click(System::Object^ sender, System::EventArgs^ e) {
 		int index = this->listbox_people->SelectedIndex;

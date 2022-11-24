@@ -16,6 +16,7 @@
     </ClCompile>
     <ClCompile Include="AddressForm.cpp" />
     <ClCompile Include="CLservAddress.cpp" />
+    <ClCompile Include="CreateAddressForm.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CLmapTB.h" />
@@ -31,6 +32,7 @@
     </ClInclude>
     <ClInclude Include="AddressForm.h" />
     <ClInclude Include="CLservAddress.h" />
+    <ClInclude Include="CreateAddressForm.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Classes Terminéées">

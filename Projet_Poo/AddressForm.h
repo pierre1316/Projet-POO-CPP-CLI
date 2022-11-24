@@ -3,6 +3,7 @@
 #include "CLservStaff.h"
 #include "CLservPeople.h"
 #include "CLservAddress.h"
+#include "CreateAddressForm.h"
 
 namespace ProjetPoo {
 
@@ -38,18 +39,24 @@ namespace ProjetPoo {
 				delete components;
 			}
 		}
-	private: System::Windows::Forms::RadioButton^ radio_staff;
+
 	protected:
-	private: System::Windows::Forms::RadioButton^ radio_customer;
+
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::ListBox^ listbox_people;
-	private: System::Windows::Forms::DataGridView^ data_address;
+	private: System::Windows::Forms::DataGridView^ data_address_deli;
 
+	private: int idPeople;
 	private: NS_Comp_Svc::CLservCustomer^ oCust;
 	private: NS_Comp_Svc::CLservStaff^ oStaff;
 	private: NS_Comp_Svc::CLservPeople^ oPeo;
 	private: NS_Comp_Svc::CLservAddress^ oAddress;
 	private: System::Data::DataSet^ oDs;
+	private: System::Windows::Forms::DataGridView^ data_address_bill;
+
+	private: System::Windows::Forms::Label^ label2;
+	private: System::Windows::Forms::Label^ label3;
+	private: System::Windows::Forms::Button^ button_create_address;
 
 	private:
 		/// <summary>
@@ -64,42 +71,21 @@ namespace ProjetPoo {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			this->radio_staff = (gcnew System::Windows::Forms::RadioButton());
-			this->radio_customer = (gcnew System::Windows::Forms::RadioButton());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->listbox_people = (gcnew System::Windows::Forms::ListBox());
-			this->data_address = (gcnew System::Windows::Forms::DataGridView());
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->data_address))->BeginInit();
+			this->data_address_deli = (gcnew System::Windows::Forms::DataGridView());
+			this->data_address_bill = (gcnew System::Windows::Forms::DataGridView());
+			this->label2 = (gcnew System::Windows::Forms::Label());
+			this->label3 = (gcnew System::Windows::Forms::Label());
+			this->button_create_address = (gcnew System::Windows::Forms::Button());
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->data_address_deli))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->data_address_bill))->BeginInit();
 			this->SuspendLayout();
-			// 
-			// radio_staff
-			// 
-			this->radio_staff->AutoSize = true;
-			this->radio_staff->Location = System::Drawing::Point(119, 33);
-			this->radio_staff->Name = L"radio_staff";
-			this->radio_staff->Size = System::Drawing::Size(89, 20);
-			this->radio_staff->TabIndex = 7;
-			this->radio_staff->Text = L"Personnel";
-			this->radio_staff->UseVisualStyleBackColor = true;
-			this->radio_staff->CheckedChanged += gcnew System::EventHandler(this, &AddressForm::radio_staff_CheckedChanged);
-			// 
-			// radio_customer
-			// 
-			this->radio_customer->AutoSize = true;
-			this->radio_customer->Checked = true;
-			this->radio_customer->Location = System::Drawing::Point(35, 33);
-			this->radio_customer->Name = L"radio_customer";
-			this->radio_customer->Size = System::Drawing::Size(61, 20);
-			this->radio_customer->TabIndex = 6;
-			this->radio_customer->TabStop = true;
-			this->radio_customer->Text = L"Client";
-			this->radio_customer->UseVisualStyleBackColor = true;
-			this->radio_customer->CheckedChanged += gcnew System::EventHandler(this, &AddressForm::radio_customer_CheckedChanged);
 			// 
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(20, 9);
+			this->label1->Location = System::Drawing::Point(16, 37);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(139, 16);
 			this->label1->TabIndex = 5;
@@ -111,22 +97,69 @@ namespace ProjetPoo {
 			this->listbox_people->ItemHeight = 16;
 			this->listbox_people->Location = System::Drawing::Point(19, 59);
 			this->listbox_people->Name = L"listbox_people";
-			this->listbox_people->Size = System::Drawing::Size(203, 388);
+			this->listbox_people->Size = System::Drawing::Size(203, 308);
 			this->listbox_people->TabIndex = 4;
 			this->listbox_people->SelectedIndexChanged += gcnew System::EventHandler(this, &AddressForm::listbox_people_SelectedIndexChanged);
 			// 
-			// data_address
+			// data_address_deli
 			// 
-			this->data_address->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::AllCells;
-			this->data_address->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->data_address->Location = System::Drawing::Point(256, 59);
-			this->data_address->Name = L"data_address";
-			this->data_address->RowHeadersWidth = 51;
-			this->data_address->RowTemplate->Height = 24;
-			this->data_address->Size = System::Drawing::Size(992, 388);
-			this->data_address->TabIndex = 8;
-			this->data_address->CellValueChanged += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &AddressForm::data_address_CellValueChanged);
-			this->data_address->UserDeletingRow += gcnew System::Windows::Forms::DataGridViewRowCancelEventHandler(this, &AddressForm::data_address_UserDeletingRow);
+			this->data_address_deli->AllowUserToAddRows = false;
+			this->data_address_deli->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::AllCells;
+			this->data_address_deli->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->data_address_deli->Location = System::Drawing::Point(256, 59);
+			this->data_address_deli->MultiSelect = false;
+			this->data_address_deli->Name = L"data_address_deli";
+			this->data_address_deli->RowHeadersWidth = 51;
+			this->data_address_deli->RowTemplate->Height = 24;
+			this->data_address_deli->Size = System::Drawing::Size(992, 172);
+			this->data_address_deli->TabIndex = 8;
+			this->data_address_deli->CellValueChanged += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &AddressForm::data_address_deli_CellValueChanged);
+			this->data_address_deli->UserDeletingRow += gcnew System::Windows::Forms::DataGridViewRowCancelEventHandler(this, &AddressForm::data_address_deli_UserDeletingRow);
+			// 
+			// data_address_bill
+			// 
+			this->data_address_bill->AllowUserToAddRows = false;
+			this->data_address_bill->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::AllCells;
+			this->data_address_bill->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->data_address_bill->Location = System::Drawing::Point(256, 265);
+			this->data_address_bill->MultiSelect = false;
+			this->data_address_bill->Name = L"data_address_bill";
+			this->data_address_bill->RowHeadersWidth = 51;
+			this->data_address_bill->RowTemplate->Height = 24;
+			this->data_address_bill->Size = System::Drawing::Size(992, 181);
+			this->data_address_bill->TabIndex = 9;
+			this->data_address_bill->CellValueChanged += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &AddressForm::data_address_bill_CellValueChanged);
+			this->data_address_bill->UserDeletingRow += gcnew System::Windows::Forms::DataGridViewRowCancelEventHandler(this, &AddressForm::data_address_bill_UserDeletingRow);
+			// 
+			// label2
+			// 
+			this->label2->AutoSize = true;
+			this->label2->Location = System::Drawing::Point(263, 37);
+			this->label2->Name = L"label2";
+			this->label2->Size = System::Drawing::Size(151, 16);
+			this->label2->TabIndex = 10;
+			this->label2->Text = L"Addresses de livraison :";
+			this->label2->Click += gcnew System::EventHandler(this, &AddressForm::label2_Click);
+			// 
+			// label3
+			// 
+			this->label3->AutoSize = true;
+			this->label3->Location = System::Drawing::Point(263, 246);
+			this->label3->Name = L"label3";
+			this->label3->Size = System::Drawing::Size(162, 16);
+			this->label3->TabIndex = 11;
+			this->label3->Text = L"Addresses de facturation :";
+			// 
+			// button_create_address
+			// 
+			this->button_create_address->Enabled = false;
+			this->button_create_address->Location = System::Drawing::Point(19, 373);
+			this->button_create_address->Name = L"button_create_address";
+			this->button_create_address->Size = System::Drawing::Size(203, 72);
+			this->button_create_address->TabIndex = 12;
+			this->button_create_address->Text = L"Ajouter une nouvelle \r\naddresse";
+			this->button_create_address->UseVisualStyleBackColor = true;
+			this->button_create_address->Click += gcnew System::EventHandler(this, &AddressForm::button_create_address_Click);
 			// 
 			// AddressForm
 			// 
@@ -134,87 +167,70 @@ namespace ProjetPoo {
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::SystemColors::ActiveCaption;
 			this->ClientSize = System::Drawing::Size(1260, 458);
-			this->Controls->Add(this->data_address);
-			this->Controls->Add(this->radio_staff);
-			this->Controls->Add(this->radio_customer);
+			this->Controls->Add(this->button_create_address);
+			this->Controls->Add(this->label3);
+			this->Controls->Add(this->label2);
+			this->Controls->Add(this->data_address_bill);
+			this->Controls->Add(this->data_address_deli);
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->listbox_people);
 			this->Name = L"AddressForm";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterParent;
 			this->Text = L"AddressForm";
 			this->Load += gcnew System::EventHandler(this, &AddressForm::AddressForm_Load);
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->data_address))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->data_address_deli))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->data_address_bill))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
 		}
 #pragma endregion
-		private: System::Void listbox_people_load(System::Void) {
-			if (this->radio_customer->Checked) {
-				this->oDs = this->oCust->selectAllCustomer("rsl");
-			}
-			else {
-				this->oDs = this->oStaff->selectAllStaff("rsl");
-			}
-			this->listbox_people->Items->Clear();
-			for (int i = 0; i < this->oDs->Tables["rsl"]->Rows->Count; i++) {
-				this->listbox_people->Items->Add(
-					this->oDs->Tables["rsl"]->Rows[i]->ItemArray[0]->ToString() + " " +
-					this->oDs->Tables["rsl"]->Rows[i]->ItemArray[1]->ToString() + " " +
-					this->oDs->Tables["rsl"]->Rows[i]->ItemArray[2]->ToString());
-			}
-		}
+private: System::Void listbox_people_load(System::Void) {
+	this->oDs = this->oCust->selectAllCustomer("rsl");
+	this->listbox_people->Items->Clear();
+	for (int i = 0; i < this->oDs->Tables["rsl"]->Rows->Count; i++) {
+		this->listbox_people->Items->Add(
+			this->oDs->Tables["rsl"]->Rows[i]->ItemArray[0]->ToString() + " " +
+			this->oDs->Tables["rsl"]->Rows[i]->ItemArray[1]->ToString() + " " +
+			this->oDs->Tables["rsl"]->Rows[i]->ItemArray[2]->ToString());
+	}
+}
 
 private: System::Void reloadAddress(System::Void) {
-	this->data_address->Refresh();
-	this->data_address->AllowUserToAddRows = true;
-	if (this->radio_customer->Checked) {
-		this->oDs = this->oCust->selectAllCustomer("rsl");
-	}
-	else {
-		this->oDs = this->oStaff->selectAllStaff("rsl");
-	}
+	
 	int index = this->listbox_people->SelectedIndex;
 	if (index == -1) {
 		return;
 	}
-	int idPeople = System::Convert::ToInt32(this->oDs->Tables["rsl"]->Rows[index]->ItemArray[0]);
-	if (this->radio_customer->Checked) {
-		// Rien
-	}
-	else {
-		System::Data::DataSet^ lol = this->oAddress->getStaffAddressNULL("null", idPeople);
-		int idAddress;
-		if (lol->Tables["null"]->Rows->Count == 0) {
-			idAddress = System::Convert::ToInt32(this->oDs->Tables["rsl"]->Rows[index]->ItemArray[5]);
-			this->data_address->AllowUserToAddRows = false;
-		}
-		
-		else {
-			idAddress = -1;
-			this->data_address->AllowUserToAddRows = true;
-		}
-		this->oDs = this->oAddress->selectAddress("rsl", idAddress);
-		this->data_address->DataMember = "rsl";
-		this->data_address->DataSource = this->oDs;
-	}
-	this->data_address->Columns[0]->ReadOnly = true;
+
+	this->data_address_deli->Refresh();
+	System::Data::DataSet^ addrDeli;
+	addrDeli = this->oAddress->selectAddressDelivery("deli", this->idPeople);
+	this->data_address_deli->DataMember = "deli";
+	this->data_address_deli->DataSource = addrDeli;
+
+
+	this->data_address_bill->Refresh();
+	System::Data::DataSet^ addrBill;
+	addrBill = this->oAddress->selectAddressBilling("bill", this->idPeople);
+	this->data_address_bill->DataMember = "bill";
+	this->data_address_bill->DataSource = addrBill;
+
+
+	
 }
 
 
 
 private: System::Void window_components_load(System::Void) {
 	listbox_people_load();
-	reloadAddress();
 	
 }
-private: System::Void radio_customer_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
-	window_components_load();
-}
 
-private: System::Void radio_staff_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
-	}
 	private: System::Void listbox_people_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
+		this->button_create_address->Enabled = true;
+		this->oDs = this->oCust->selectAllCustomer("rsl");
+		this->idPeople = System::Convert::ToInt32(this->oDs->Tables["rsl"]->Rows[this->listbox_people->SelectedIndex]->ItemArray[0]);
 		reloadAddress();
 		//actualiser addresse
 	}
@@ -223,29 +239,31 @@ private: System::Void AddressForm_Load(System::Object^ sender, System::EventArgs
 	this->oStaff = gcnew NS_Comp_Svc::CLservStaff();
 	this->oPeo = gcnew NS_Comp_Svc::CLservPeople();
 	this->oAddress = gcnew NS_Comp_Svc::CLservAddress();
-	window_components_load();
+	listbox_people_load();
+	this->button_create_address->Enabled = false;
 }
-private: System::Void data_address_CellValueChanged(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
-	System::String^ id = data_address->Rows[e->RowIndex]->Cells["idAddress"]->Value->ToString();
-	if (id == "") {
-		if (this->radio_customer->Checked) {
-			this->oDs = this->oCust->selectAllCustomer("rsl");
-		}
-		else {
-			this->oDs = this->oStaff->selectAllStaff("rsl");
-		}
-		int index = this->listbox_people->SelectedIndex;
-		int idPeople = System::Convert::ToInt32(this->oDs->Tables["rsl"]->Rows[index]->ItemArray[0]);
-		int idAddress = this->oAddress->createAddress(data_address->Rows[e->RowIndex]->Cells["last_name"]->Value->ToString(), data_address->Rows[e->RowIndex]->Cells["first_name"]->Value->ToString(), data_address->Rows[e->RowIndex]->Cells["text"]->Value->ToString(), data_address->Rows[e->RowIndex]->Cells["postal_code"]->Value->ToString(), data_address->Rows[e->RowIndex]->Cells["city_name"]->Value->ToString());
-		this->oStaff->updateStaffAddress(idPeople, idAddress);
-	}
-	else {
-		this->oAddress->modifyAddress(System::Convert::ToInt32(data_address->Rows[e->RowIndex]->Cells["idAddress"]->Value), data_address->Rows[e->RowIndex]->Cells["last_name"]->Value->ToString(), data_address->Rows[e->RowIndex]->Cells["first_name"]->Value->ToString(), data_address->Rows[e->RowIndex]->Cells["text"]->Value->ToString(), data_address->Rows[e->RowIndex]->Cells["postal_code"]->Value->ToString(), data_address->Rows[e->RowIndex]->Cells["city_name"]->Value->ToString());
-	}
+
+private: System::Void data_grid_view_data_changed(System::Windows::Forms::DataGridView^ dgv, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
+	this->oAddress->modifyAddress(
+		System::Convert::ToInt32(dgv->Rows[e->RowIndex]->Cells["idAddress"]->Value), 
+		dgv->Rows[e->RowIndex]->Cells["last_name"]->Value->ToString(),
+		dgv->Rows[e->RowIndex]->Cells["first_name"]->Value->ToString(),
+		dgv->Rows[e->RowIndex]->Cells["text"]->Value->ToString(),
+		dgv->Rows[e->RowIndex]->Cells["postal_code"]->Value->ToString(),
+		dgv->Rows[e->RowIndex]->Cells["city_name"]->Value->ToString());
 	reloadAddress();
 }
-private: System::Void data_address_UserDeletingRow(System::Object^ sender, System::Windows::Forms::DataGridViewRowCancelEventArgs^ e) {
-	if (this->radio_customer->Checked) {
+
+
+
+private: System::Void data_address_deli_CellValueChanged(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
+	data_grid_view_data_changed(this->data_address_deli, e);
+}
+private: System::Void data_address_bill_CellValueChanged(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
+	data_grid_view_data_changed(this->data_address_bill, e);
+}
+private: System::Void data_address_deli_UserDeletingRow(System::Object^ sender, System::Windows::Forms::DataGridViewRowCancelEventArgs^ e) {
+	/*if (this->radio_customer->Checked) {
 		this->oDs = this->oCust->selectAllCustomer("rsl");
 	}
 	else {
@@ -262,7 +280,17 @@ private: System::Void data_address_UserDeletingRow(System::Object^ sender, Syste
 		this->data_address->AllowUserToAddRows = true;
 	}
 	this->oAddress->deleteAddress(idAddress);
+*/
+}
+private: System::Void label2_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void button_create_address_Click(System::Object^ sender, System::EventArgs^ e) {
+	CreateAddressForm creaddrform(this->idPeople);
+	creaddrform.ShowDialog();
+	reloadAddress();
+}
 
+private: System::Void data_address_bill_UserDeletingRow(System::Object^ sender, System::Windows::Forms::DataGridViewRowCancelEventArgs^ e) {
 }
 };
 }
