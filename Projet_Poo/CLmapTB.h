@@ -21,5 +21,10 @@ namespace NS_Comp_Mappage {
 		System::String^ updatePeople(int idPeople, System::String^ last_name, System::String^ first_name);
 		System::String^ updateCustomer(int idPeople, System::String^ date_birth);
 		System::String^ updateStaff(int idPeople, System::String^ date_hiring);
+		System::String^ selectTheStaff(int idPeople);
+		System::String^ selectTheCustomer(int idPeople);
+		System::String^ deletePeople(int idPeople);
+		System::String^ deleteStaff(int idPeople);
+		System::String^ deleteCustomer(int idPeople);
 	};
 }

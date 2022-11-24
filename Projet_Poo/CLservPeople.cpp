@@ -36,3 +36,9 @@ System::Void CLservPeople::modifyPeople(int idPeople, System::String^ first_name
 	sql = this->oMappTB->updatePeople(idPeople, first_name, last_name);
 	this->oCad->actionRows(sql);
 }
+
+System::Void CLservPeople::deletePeople(int idPeople) {
+	System::String^ sql;
+	sql = this->oMappTB->deletePeople(idPeople);
+	this->oCad->actionRows(sql);
+}

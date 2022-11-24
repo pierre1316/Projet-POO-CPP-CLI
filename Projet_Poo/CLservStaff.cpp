@@ -18,6 +18,14 @@ System::Data::DataSet^ CLservStaff::selectAllStaff(System::String^ dataTableName
 	return this->oCad->getRows(sql, dataTableName);
 }
 
+System::Data::DataSet^ CLservStaff::getTheStaff(System::String^ dataTableName, int idPeople)
+{
+	System::String^ sql;
+
+	sql = this->oMappTB->selectTheStaff(idPeople);
+	return this->oCad->getRows(sql, dataTableName);
+}
+
 System::Data::DataSet^ CLservStaff::selectAllStaffForStaff(System::String^ dataTableName, int idPeople)
 {
 	System::String^ sql;
@@ -61,4 +69,10 @@ System::Void CLservStaff::setSuperiorNULL(int idPeople) {
 	sql = this->oMappTB->setSuperiorNULL(idPeople);
 	this->oCad->actionRows(sql);
 	
+}
+
+System::Void CLservStaff::deleteStaff(int idPeople) {
+	System::String^ sql;
+	sql = this->oMappTB->deleteStaff(idPeople);
+	this->oCad->actionRows(sql);
 }

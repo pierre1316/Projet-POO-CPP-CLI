@@ -63,6 +63,7 @@ namespace ProjetPoo {
 	private: System::Windows::Forms::TextBox^ textBox_last_name;
 	private: System::Windows::Forms::Label^ label2;
 	private: System::Windows::Forms::Label^ label6;
+	private: System::Windows::Forms::Button^ button_suppr;
 
 
 
@@ -97,9 +98,7 @@ namespace ProjetPoo {
 			this->textBox_last_name = (gcnew System::Windows::Forms::TextBox());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->label6 = (gcnew System::Windows::Forms::Label());
-			this->oCust = gcnew NS_Comp_Svc::CLservCustomer();
-			this->oStaff = gcnew NS_Comp_Svc::CLservStaff();
-			this->oPeo = gcnew NS_Comp_Svc::CLservPeople();
+			this->button_suppr = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
 			// 
 			// listbox_people
@@ -146,18 +145,18 @@ namespace ProjetPoo {
 			// 
 			// button_address
 			// 
-			this->button_address->Location = System::Drawing::Point(536, 12);
+			this->button_address->Location = System::Drawing::Point(556, 12);
 			this->button_address->Name = L"button_address";
-			this->button_address->Size = System::Drawing::Size(149, 52);
+			this->button_address->Size = System::Drawing::Size(126, 52);
 			this->button_address->TabIndex = 31;
 			this->button_address->Text = L"Ajouter des adresses";
 			this->button_address->UseVisualStyleBackColor = true;
 			// 
 			// button_register
 			// 
-			this->button_register->Location = System::Drawing::Point(370, 12);
+			this->button_register->Location = System::Drawing::Point(409, 12);
 			this->button_register->Name = L"button_register";
-			this->button_register->Size = System::Drawing::Size(149, 52);
+			this->button_register->Size = System::Drawing::Size(126, 52);
 			this->button_register->TabIndex = 30;
 			this->button_register->Text = L"Enregistrer";
 			this->button_register->UseVisualStyleBackColor = true;
@@ -248,12 +247,23 @@ namespace ProjetPoo {
 			this->label6->TabIndex = 20;
 			this->label6->Text = L"Nom :";
 			// 
+			// button_suppr
+			// 
+			this->button_suppr->Location = System::Drawing::Point(263, 12);
+			this->button_suppr->Name = L"button_suppr";
+			this->button_suppr->Size = System::Drawing::Size(126, 52);
+			this->button_suppr->TabIndex = 32;
+			this->button_suppr->Text = L"Supprimer";
+			this->button_suppr->UseVisualStyleBackColor = true;
+			this->button_suppr->Click += gcnew System::EventHandler(this, &ModifyPeopleForm::button_suppr_Click);
+			// 
 			// ModifyPeopleForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::SystemColors::ActiveCaption;
 			this->ClientSize = System::Drawing::Size(697, 326);
+			this->Controls->Add(this->button_suppr);
 			this->Controls->Add(this->button_address);
 			this->Controls->Add(this->button_register);
 			this->Controls->Add(this->date_hiring);
@@ -325,6 +335,9 @@ namespace ProjetPoo {
 
 
 	private: System::Void ModifyPeopleForm_Load(System::Object^ sender, System::EventArgs^ e) {
+		this->oCust = gcnew NS_Comp_Svc::CLservCustomer();
+		this->oStaff = gcnew NS_Comp_Svc::CLservStaff();
+		this->oPeo = gcnew NS_Comp_Svc::CLservPeople();
 		window_components_load();
 	}
 	private: System::Void richTextBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
@@ -418,5 +431,36 @@ namespace ProjetPoo {
 		}
 		window_components_load();
 	}
-	};
+	private: System::Void button_suppr_Click(System::Object^ sender, System::EventArgs^ e) {
+		int index = this->listbox_people->SelectedIndex;
+		int idPeople = System::Convert::ToInt32(this->oDs->Tables["rsl"]->Rows[index]->ItemArray[0]);
+		if (this->radio_customer->Checked) {
+			// On supprime un client
+			this->oDs = this->oStaff->getTheStaff("rsl", idPeople);
+			if (this->oDs->Tables["rsl"]->Rows->Count != 0) {
+				// Le client est aussi staff 
+				this->oCust->deleteCustomer(idPeople);
+			}
+			else {
+				//Le client n'est pas staff
+				this->oCust->deleteCustomer(idPeople);
+				this->oPeo->deletePeople(idPeople);
+			}
+		}
+		else {
+			// on supprime un staff
+			this->oDs = this->oCust->getTheCustomer("rsl", idPeople);
+			if (this->oDs->Tables["rsl"]->Rows->Count != 0) {
+				// Le staff est aussi client
+				this->oStaff->deleteStaff(idPeople);
+			}
+			else {
+				// le staff n'est pas client
+				this->oStaff->deleteStaff(idPeople);
+				this->oPeo->deletePeople(idPeople);
+			}
+		}
+		window_components_load();
+	}
+};
 }
