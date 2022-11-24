@@ -127,3 +127,15 @@ System::String^ CLmapTB::selectAddressDelivery(int idPeople) {
 System::String^ CLmapTB::selectAddressBilling(int idPeople) {
 	return "EXEC selectAddressBilling @idPeople = '" + idPeople + "'";
 }
+
+System::String^ CLmapTB::getHaveForAddress(int idAddress) {
+	return "EXEC getHaveForAddress @idAddress = '" + idAddress + "'";
+}
+
+System::String^ CLmapTB::modifyHave(int idAddress, int idPeople, int billing, int delivery) {
+	return "EXEC modifyHave @idAddress = '" + idAddress + "', @idPeople = '" + idPeople + "', @billing = '" + billing + "', @delivery = '" + delivery + "'";
+}
+
+System::String^ CLmapTB::deleteHave(int idAddress, int idPeople) {
+	return "EXEC deleteHave @idAddress = '" + idAddress + "', @idPeople = '" + idPeople + "'";
+}

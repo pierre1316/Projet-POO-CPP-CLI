@@ -19,5 +19,8 @@ namespace NS_Comp_Svc {
 		System::Void linkAddressCustomer(int idPeople, int idAddress, int billing, int delivery);
 		System::Data::DataSet^ selectAddressBilling(System::String^ dataTableName, int idPeople);
 		System::Data::DataSet^ selectAddressDelivery(System::String^ dataTableName, int idPeople);
+		System::Data::DataSet^ getHaveForAddress(System::String^ dataTableName, int idAddress);
+		System::Void CLservAddress::modifyHave(int idPeople, int idAddress, int billing, int delivery);
+		System::Void CLservAddress::deleteHave(int idPeople, int idAddress);
 	};
 }

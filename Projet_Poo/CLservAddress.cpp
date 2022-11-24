@@ -76,3 +76,25 @@ System::Data::DataSet^ CLservAddress::selectAddressDelivery(System::String^ data
 	sql = this->oMappTB->selectAddressDelivery(idPeople);
 	return this->oCad->getRows(sql, dataTableName);
 }
+
+System::Data::DataSet^ CLservAddress::getHaveForAddress(System::String^ dataTableName, int idAddress)
+{
+	System::String^ sql;
+
+	sql = this->oMappTB->getHaveForAddress(idAddress);
+	return this->oCad->getRows(sql, dataTableName);
+}
+
+System::Void CLservAddress::modifyHave(int idPeople, int idAddress, int billing, int delivery) {
+	System::String^ sql;
+
+	sql = this->oMappTB->modifyHave(idAddress, idPeople, billing, delivery);
+	this->oCad->actionRows(sql);
+}
+
+System::Void CLservAddress::deleteHave(int idPeople, int idAddress) {
+	System::String^ sql;
+
+	sql = this->oMappTB->deleteHave(idAddress, idPeople);
+	this->oCad->actionRows(sql);
+}

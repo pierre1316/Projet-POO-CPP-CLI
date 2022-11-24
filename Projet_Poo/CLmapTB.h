@@ -37,5 +37,8 @@ namespace NS_Comp_Mappage {
 		System::String^ linkAddressCustomer(int idPeople, int idAddress, int billing, int delivery);
 		System::String^ selectAddressDelivery(int idPeople);
 		System::String^ selectAddressBilling(int idPeople);
+		System::String^ getHaveForAddress(int idAddress);
+		System::String^ modifyHave(int idAddress, int idPeople, int billing, int delivery);
+		System::String^ deleteHave(int idAddress, int idPeople);
 	};
 }
