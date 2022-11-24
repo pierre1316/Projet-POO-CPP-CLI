@@ -64,6 +64,13 @@ System::Void CLservStaff::modifyStaff(int idPeople, System::String^ hiring_date,
 	
 }
 
+System::Void CLservStaff::updateStaffAddress(int idPeople, int idAddress) {
+	System::String^ sql;
+	sql = this->oMappTB->updateStaffAddress(idPeople, idAddress);
+	this->oCad->actionRows(sql);
+	
+}
+
 System::Void CLservStaff::setSuperiorNULL(int idPeople) {
 	System::String^ sql;
 	sql = this->oMappTB->setSuperiorNULL(idPeople);
@@ -74,5 +81,10 @@ System::Void CLservStaff::setSuperiorNULL(int idPeople) {
 System::Void CLservStaff::deleteStaff(int idPeople) {
 	System::String^ sql;
 	sql = this->oMappTB->deleteStaff(idPeople);
+	this->oCad->actionRows(sql);
+}
+System::Void CLservStaff::setStaffAddressToNULL(int idPeople) {
+	System::String^ sql;
+	sql = this->oMappTB->setStaffAddressToNULL(idPeople);
 	this->oCad->actionRows(sql);
 }

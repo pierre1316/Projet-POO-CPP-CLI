@@ -15,6 +15,7 @@
       <Filter>Classes Terminéées</Filter>
     </ClCompile>
     <ClCompile Include="AddressForm.cpp" />
+    <ClCompile Include="CLservAddress.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CLmapTB.h" />
@@ -29,6 +30,7 @@
       <Filter>Classes Terminéées</Filter>
     </ClInclude>
     <ClInclude Include="AddressForm.h" />
+    <ClInclude Include="CLservAddress.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Classes Terminéées">

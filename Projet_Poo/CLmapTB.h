@@ -26,5 +26,13 @@ namespace NS_Comp_Mappage {
 		System::String^ deletePeople(int idPeople);
 		System::String^ deleteStaff(int idPeople);
 		System::String^ deleteCustomer(int idPeople);
+		System::String^ setStaffAddressToNULL(int idPeople);
+		System::String^ selectAddress(int idAddress);
+		System::String^ updateAddress(int idAddress, System::String^ last_name, System::String^ first_name, System::String^ text, System::String^ postal_code, System::String^ city_name);
+		System::String^ createAddress(System::String^ last_name, System::String^ first_name, System::String^ text, System::String^ postal_code, System::String^ city_name);
+		System::String^ getStaffAddressNULL(int idPeople);
+		System::String^ getAllAddress();
+		System::String^ updateStaffAddress(int idPeople, int idAddress);
+		System::String^ deleteAddress(int idAddress);
 	};
 }

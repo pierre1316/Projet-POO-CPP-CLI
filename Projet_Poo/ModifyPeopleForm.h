@@ -2,6 +2,7 @@
 #include "CLservPeople.h"
 #include "CLservStaff.h"
 #include "CLservCustomer.h"
+#include "AddressForm.h"
 
 
 namespace ProjetPoo {
@@ -151,6 +152,7 @@ namespace ProjetPoo {
 			this->button_address->TabIndex = 31;
 			this->button_address->Text = L"Gérer les adresses";
 			this->button_address->UseVisualStyleBackColor = true;
+			this->button_address->Click += gcnew System::EventHandler(this, &ModifyPeopleForm::button_address_Click);
 			// 
 			// button_register
 			// 
@@ -281,6 +283,7 @@ namespace ProjetPoo {
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->listbox_people);
 			this->Name = L"ModifyPeopleForm";
+			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterParent;
 			this->Text = L"ModifyPeopleForm";
 			this->Load += gcnew System::EventHandler(this, &ModifyPeopleForm::ModifyPeopleForm_Load);
 			this->ResumeLayout(false);
@@ -465,5 +468,9 @@ namespace ProjetPoo {
 		}
 		window_components_load();
 	}
+private: System::Void button_address_Click(System::Object^ sender, System::EventArgs^ e) {
+	AddressForm^ addressform = gcnew AddressForm();
+	addressform->ShowDialog();
+}
 };
 }

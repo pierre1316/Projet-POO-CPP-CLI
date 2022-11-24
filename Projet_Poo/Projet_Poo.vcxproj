@@ -124,6 +124,7 @@
     <ClCompile Include="AddressForm.cpp" />
     <ClCompile Include="CLcad.cpp" />
     <ClCompile Include="CLmapTB.cpp" />
+    <ClCompile Include="CLservAddress.cpp" />
     <ClCompile Include="CLservCustomer.cpp" />
     <ClCompile Include="CLservPeople.cpp" />
     <ClCompile Include="CLservStaff.cpp" />
@@ -138,6 +139,7 @@
     </ClInclude>
     <ClInclude Include="CLcad.h" />
     <ClInclude Include="CLmapTB.h" />
+    <ClInclude Include="CLservAddress.h" />
     <ClInclude Include="CLservCustomer.h" />
     <ClInclude Include="CLservPeople.h" />
     <ClInclude Include="CLservStaff.h" />
@@ -155,6 +157,9 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="AddressForm.resx">
+      <DependentUpon>AddressForm.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CreatePeopleForm.resx">
       <DependentUpon>CreatePeopleForm.h</DependentUpon>
     </EmbeddedResource>
