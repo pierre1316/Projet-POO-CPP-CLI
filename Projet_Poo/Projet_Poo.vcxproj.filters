@@ -33,6 +33,13 @@
     <ClCompile Include="CLpeople.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
+<<<<<<< Updated upstream
+=======
+    <ClCompile Include="AddressForm.cpp" />
+    <ClCompile Include="CLservAddress.cpp" />
+    <ClCompile Include="CreateAddressForm.cpp" />
+    <ClCompile Include="CatalogForm.cpp" />
+>>>>>>> Stashed changes
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CLcad.h">
@@ -53,5 +60,17 @@
     <ClInclude Include="CLpeople.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
+<<<<<<< Updated upstream
+=======
+    <ClInclude Include="AddressForm.h" />
+    <ClInclude Include="CLservAddress.h" />
+    <ClInclude Include="CreateAddressForm.h" />
+    <ClInclude Include="CatalogForm.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Classes Terminéées">
+      <UniqueIdentifier>{88e4ddd4-854e-43e9-a83a-ddf965195cab}</UniqueIdentifier>
+    </Filter>
+>>>>>>> Stashed changes
   </ItemGroup>
 </Project>

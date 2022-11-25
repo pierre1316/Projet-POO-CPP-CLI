@@ -1,5 +1,6 @@
 #pragma once
 #include "PeopleForm.h"
+#include "CatalogForm.h"
 
 namespace ProjetPoo {
 
@@ -36,6 +37,7 @@ namespace ProjetPoo {
 			}
 		}
 	private: System::Windows::Forms::Button^ button_people_management;
+	private: System::Windows::Forms::Button^ button_catalog;
 	protected:
 
 	protected:
@@ -56,25 +58,40 @@ namespace ProjetPoo {
 		void InitializeComponent(void)
 		{
 			this->button_people_management = (gcnew System::Windows::Forms::Button());
+			this->button_catalog = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
 			// 
 			// button_people_management
 			// 
-			this->button_people_management->Location = System::Drawing::Point(12, 12);
+			this->button_people_management->Location = System::Drawing::Point(16, 15);
+			this->button_people_management->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->button_people_management->Name = L"button_people_management";
-			this->button_people_management->Size = System::Drawing::Size(138, 67);
+			this->button_people_management->Size = System::Drawing::Size(184, 82);
 			this->button_people_management->TabIndex = 0;
 			this->button_people_management->Text = L"Gestion des\r\nPersonnes";
 			this->button_people_management->UseVisualStyleBackColor = true;
 			this->button_people_management->Click += gcnew System::EventHandler(this, &MainForm::button_people_management_Click);
 			// 
+			// button_catalog
+			// 
+			this->button_catalog->Location = System::Drawing::Point(13, 105);
+			this->button_catalog->Margin = System::Windows::Forms::Padding(4);
+			this->button_catalog->Name = L"button_catalog";
+			this->button_catalog->Size = System::Drawing::Size(184, 82);
+			this->button_catalog->TabIndex = 1;
+			this->button_catalog->Text = L"Catalogue";
+			this->button_catalog->UseVisualStyleBackColor = true;
+			this->button_catalog->Click += gcnew System::EventHandler(this, &MainForm::button_catalog_Click);
+			// 
 			// MainForm
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::SystemColors::ActiveCaption;
-			this->ClientSize = System::Drawing::Size(1061, 570);
+			this->ClientSize = System::Drawing::Size(1415, 702);
+			this->Controls->Add(this->button_catalog);
 			this->Controls->Add(this->button_people_management);
+			this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->Name = L"MainForm";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"MainForm";
@@ -88,6 +105,10 @@ namespace ProjetPoo {
 	private: System::Void button_people_management_Click(System::Object^ sender, System::EventArgs^ e) {
 		PeopleForm^ peopleform = gcnew PeopleForm();
 		peopleform->ShowDialog();
+	}
+	private: System::Void button_catalog_Click(System::Object^ sender, System::EventArgs^ e) {
+		CatalogForm catalogform;
+		catalogform.ShowDialog();
 	}
 	};
 }
