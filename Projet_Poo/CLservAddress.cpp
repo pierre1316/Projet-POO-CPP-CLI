@@ -85,14 +85,14 @@ System::Data::DataSet^ CLservAddress::getHaveForAddress(System::String^ dataTabl
 	return this->oCad->getRows(sql, dataTableName);
 }
 
-System::Void CLservAddress::modifyHave(int idPeople, int idAddress, int billing, int delivery) {
+System::Void CLservAddress::modifyHave(int idAddress, int idPeople, int billing, int delivery) {
 	System::String^ sql;
 
 	sql = this->oMappTB->modifyHave(idAddress, idPeople, billing, delivery);
 	this->oCad->actionRows(sql);
 }
 
-System::Void CLservAddress::deleteHave(int idPeople, int idAddress) {
+System::Void CLservAddress::deleteHave(int idAddress, int idPeople) {
 	System::String^ sql;
 
 	sql = this->oMappTB->deleteHave(idAddress, idPeople);

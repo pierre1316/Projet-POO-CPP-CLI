@@ -20,7 +20,7 @@ namespace NS_Comp_Svc {
 		System::Data::DataSet^ selectAddressBilling(System::String^ dataTableName, int idPeople);
 		System::Data::DataSet^ selectAddressDelivery(System::String^ dataTableName, int idPeople);
 		System::Data::DataSet^ getHaveForAddress(System::String^ dataTableName, int idAddress);
-		System::Void CLservAddress::modifyHave(int idPeople, int idAddress, int billing, int delivery);
-		System::Void CLservAddress::deleteHave(int idPeople, int idAddress);
+		System::Void CLservAddress::modifyHave(int idAddress, int idPeople, int billing, int delivery);
+		System::Void CLservAddress::deleteHave(int idAddress, int idPeople);
 	};
 }
