@@ -18,8 +18,10 @@ namespace NS_Comp_Svc {
 		System::Data::DataSet^ selectStaffNoCust(System::String^ dataTableName);
 		System::Void createStaff(int idPeople, System::String^ hiring_date, int idSuperior, System::String^ password);
 		System::Void modifyStaff(int idPeople, System::String^ hiring_date, int idSuperior);
+		System::Void updateStaffAddress(int idPeople, int idAddress);
 		System::Void setSuperiorNULL(int idPeople);
 		System::Void deleteStaff(int idPeople);
+		System::Void setStaffAddressToNULL(int idPeople);
 	};
 }
 

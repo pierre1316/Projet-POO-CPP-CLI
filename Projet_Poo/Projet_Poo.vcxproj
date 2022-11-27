@@ -122,11 +122,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AddressForm.cpp" />
+    <ClCompile Include="CatalogForm.cpp" />
     <ClCompile Include="CLcad.cpp" />
     <ClCompile Include="CLmapTB.cpp" />
+    <ClCompile Include="CLservAddress.cpp" />
     <ClCompile Include="CLservCustomer.cpp" />
     <ClCompile Include="CLservPeople.cpp" />
     <ClCompile Include="CLservStaff.cpp" />
+    <ClCompile Include="CreateAddressForm.cpp" />
     <ClCompile Include="CreatePeopleForm.cpp" />
     <ClCompile Include="MainForm.cpp" />
     <ClCompile Include="ModifyPeopleForm.cpp" />
@@ -136,11 +139,18 @@
     <ClInclude Include="AddressForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="CatalogForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="CLcad.h" />
     <ClInclude Include="CLmapTB.h" />
+    <ClInclude Include="CLservAddress.h" />
     <ClInclude Include="CLservCustomer.h" />
     <ClInclude Include="CLservPeople.h" />
     <ClInclude Include="CLservStaff.h" />
+    <ClInclude Include="CreateAddressForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="CreatePeopleForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -155,6 +165,15 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="AddressForm.resx">
+      <DependentUpon>AddressForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CatalogForm.resx">
+      <DependentUpon>CatalogForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreateAddressForm.resx">
+      <DependentUpon>CreateAddressForm.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CreatePeopleForm.resx">
       <DependentUpon>CreatePeopleForm.h</DependentUpon>
     </EmbeddedResource>
