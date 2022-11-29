@@ -83,7 +83,7 @@
     <Link>
       <AdditionalDependencies />
       <SubSystem>Windows</SubSystem>
-      <EntryPointSymbol>Main</EntryPointSymbol>
+      <EntryPointSymbol>CreateCategoryMain</EntryPointSymbol>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -122,6 +122,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AddressForm.cpp" />
+    <ClCompile Include="Catalog.cpp" />
     <ClCompile Include="CatalogForm.cpp" />
     <ClCompile Include="CLcad.cpp" />
     <ClCompile Include="CLmapTB.cpp" />
@@ -130,6 +131,7 @@
     <ClCompile Include="CLservPeople.cpp" />
     <ClCompile Include="CLservStaff.cpp" />
     <ClCompile Include="CreateAddressForm.cpp" />
+    <ClCompile Include="CreateCategoryForm.cpp" />
     <ClCompile Include="CreatePeopleForm.cpp" />
     <ClCompile Include="MainForm.cpp" />
     <ClCompile Include="ModifyPeopleForm.cpp" />
@@ -139,6 +141,7 @@
     <ClInclude Include="AddressForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="Catalog.h" />
     <ClInclude Include="CatalogForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -149,6 +152,9 @@
     <ClInclude Include="CLservPeople.h" />
     <ClInclude Include="CLservStaff.h" />
     <ClInclude Include="CreateAddressForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="CreateCategoryForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="CreatePeopleForm.h">
@@ -173,6 +179,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CreateAddressForm.resx">
       <DependentUpon>CreateAddressForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreateCategoryForm.resx">
+      <DependentUpon>CreateCategoryForm.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CreatePeopleForm.resx">
       <DependentUpon>CreatePeopleForm.h</DependentUpon>

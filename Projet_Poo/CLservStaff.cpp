@@ -50,7 +50,6 @@ System::Void CLservStaff::createStaff(int idPeople, System::String^ hiring_date,
 		sql = this->oMappTB->setSuperior(idPeople, idSuperior);
 		this->oCad->actionRows(sql);
 	}
-	
 }
 
 System::Void CLservStaff::modifyStaff(int idPeople, System::String^ hiring_date, int idSuperior) {
@@ -61,7 +60,6 @@ System::Void CLservStaff::modifyStaff(int idPeople, System::String^ hiring_date,
 		sql = this->oMappTB->setSuperior(idPeople, idSuperior);
 		this->oCad->actionRows(sql);
 	}
-	
 }
 
 System::Void CLservStaff::updateStaffAddress(int idPeople, int idAddress) {

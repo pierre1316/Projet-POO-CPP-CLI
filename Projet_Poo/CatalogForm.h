@@ -1,4 +1,5 @@
 #pragma once
+#include "CreateCategoryForm.h"
 
 namespace ProjetPoo {
 
@@ -35,6 +36,7 @@ namespace ProjetPoo {
 			}
 		}
 	private: System::Windows::Forms::Button^ button_create_item;
+	private: System::Windows::Forms::Button^ button_create_category;
 	protected:
 
 	private:
@@ -51,11 +53,12 @@ namespace ProjetPoo {
 		void InitializeComponent(void)
 		{
 			this->button_create_item = (gcnew System::Windows::Forms::Button());
+			this->button_create_category = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
 			// 
 			// button_create_item
 			// 
-			this->button_create_item->Location = System::Drawing::Point(13, 13);
+			this->button_create_item->Location = System::Drawing::Point(13, 103);
 			this->button_create_item->Margin = System::Windows::Forms::Padding(4);
 			this->button_create_item->Name = L"button_create_item";
 			this->button_create_item->Size = System::Drawing::Size(184, 82);
@@ -63,12 +66,24 @@ namespace ProjetPoo {
 			this->button_create_item->Text = L"Créer un Article";
 			this->button_create_item->UseVisualStyleBackColor = true;
 			// 
+			// button_create_category
+			// 
+			this->button_create_category->Location = System::Drawing::Point(13, 13);
+			this->button_create_category->Margin = System::Windows::Forms::Padding(4);
+			this->button_create_category->Name = L"button_create_category";
+			this->button_create_category->Size = System::Drawing::Size(184, 82);
+			this->button_create_category->TabIndex = 3;
+			this->button_create_category->Text = L"Gérer les Catégorie";
+			this->button_create_category->UseVisualStyleBackColor = true;
+			this->button_create_category->Click += gcnew System::EventHandler(this, &CatalogForm::button_create_category_Click);
+			// 
 			// CatalogForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::SystemColors::ActiveCaption;
 			this->ClientSize = System::Drawing::Size(1415, 702);
+			this->Controls->Add(this->button_create_category);
 			this->Controls->Add(this->button_create_item);
 			this->Name = L"CatalogForm";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterParent;
@@ -79,6 +94,12 @@ namespace ProjetPoo {
 		}
 #pragma endregion
 	private: System::Void CatalogForm_Load(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void button_create_category_Click(System::Object^ sender, System::EventArgs^ e) {
+		CreateCategoryForm form;
+		this->Hide();
+		form.ShowDialog();
+
 	}
 	};
 }

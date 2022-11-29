@@ -18,6 +18,8 @@
     <ClCompile Include="CLservAddress.cpp" />
     <ClCompile Include="CreateAddressForm.cpp" />
     <ClCompile Include="CatalogForm.cpp" />
+    <ClCompile Include="CreateCategoryForm.cpp" />
+    <ClCompile Include="Catalog.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CLmapTB.h" />
@@ -35,6 +37,8 @@
     <ClInclude Include="CLservAddress.h" />
     <ClInclude Include="CreateAddressForm.h" />
     <ClInclude Include="CatalogForm.h" />
+    <ClInclude Include="CreateCategoryForm.h" />
+    <ClInclude Include="Catalog.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Classes Terminéées">
