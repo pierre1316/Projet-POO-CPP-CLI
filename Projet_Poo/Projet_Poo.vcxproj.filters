@@ -2,7 +2,7 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="CLmapTB.cpp" />
-    <ClCompile Include="CLservCustomer.cpp" />
+    <ClCompile Include="Customer.cpp" />
     <ClCompile Include="CLservPeople.cpp" />
     <ClCompile Include="CLservStaff.cpp" />
     <ClCompile Include="MainForm.cpp" />
@@ -15,7 +15,7 @@
       <Filter>Classes Terminéées</Filter>
     </ClCompile>
     <ClCompile Include="AddressForm.cpp" />
-    <ClCompile Include="CLservAddress.cpp" />
+    <ClCompile Include="Address.cpp" />
     <ClCompile Include="CreateAddressForm.cpp" />
     <ClCompile Include="CatalogForm.cpp" />
     <ClCompile Include="CreateCategoryForm.cpp" />
@@ -24,7 +24,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CLmapTB.h" />
-    <ClInclude Include="CLservCustomer.h" />
+    <ClInclude Include="Customer.h" />
     <ClInclude Include="CLservPeople.h" />
     <ClInclude Include="CLservStaff.h" />
     <ClInclude Include="CreatePeopleForm.h" />
@@ -35,7 +35,7 @@
       <Filter>Classes Terminéées</Filter>
     </ClInclude>
     <ClInclude Include="AddressForm.h" />
-    <ClInclude Include="CLservAddress.h" />
+    <ClInclude Include="Address.h" />
     <ClInclude Include="CreateAddressForm.h" />
     <ClInclude Include="CatalogForm.h" />
     <ClInclude Include="CreateCategoryForm.h" />

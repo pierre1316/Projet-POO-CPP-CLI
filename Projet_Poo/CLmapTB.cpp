@@ -88,54 +88,52 @@ System::String^ CLmapTB::selectAddress(int idAddress) {
 
 System::String^ CLmapTB::createAddress(System::String^ last_name, System::String^ first_name, System::String^ text, System::String^ postal_code,System::String^ city_name) {
 	return "EXEC PS_ADDRESS_CREATE @last_name = '" + last_name + "', @first_name = '" + first_name + "', @text = '" + text + "', @postal_code = '" + postal_code + "', @city_name = '" + city_name + "'";
-
 }
 
 System::String^ CLmapTB::updateAddress(int idAddress, System::String^ last_name, System::String^ first_name, System::String^ text, System::String^ postal_code,System::String^ city_name) {
 	return "EXEC PS_ADDRESS_UPDATE @idAddress = '" + idAddress + "', @last_name = '" + last_name + "', @first_name = '" + first_name + "', @text = '" + text + "', @postal_code = '" + postal_code + "', @city_name = '" + city_name + "'";
-
 }
 
 System::String^ CLmapTB::getStaffAddressNULL(int idPeople) {
-	return "EXEC getStaffAddressNULL @idPeople = '" + idPeople + "'";
+	return "EXEC PS_STAFF_ADDRESS_NULL @idPeople = '" + idPeople + "'";
 }
 
 System::String^ CLmapTB::getAllAddress() {
-	return "EXEC getAllAddress";
+	return "EXEC PS_ADDRESS_SELECT";
 }
 
 System::String^ CLmapTB::setStaffAddressToNULL(int idPeople) {
-	return "EXEC setStaffAddressToNULL @idStaff = '" + idPeople + "'";
+	return "EXEC PS_STAFF_ADDRESS_UPTADE_NULL @idStaff = '" + idPeople + "'";
 }
 
 System::String^ CLmapTB::deleteAddress(int idAddress) {
-	return "EXEC deleteAddress @idAddress = '" + idAddress + "'";
+	return "EXEC PS_ADDRESS_DELETE @idAddress = '" + idAddress + "'";
 }
 
 System::String^ CLmapTB::updateStaffAddress(int idPeople, int idAddress) {
-	return "EXEC updateStaffAddress @idPeople = '" + idPeople + "', @idAddress = '" + idAddress + "'";
+	return "EXEC PS_STAFF_ADDRESS_UPDATE @idPeople = '" + idPeople + "', @idAddress = '" + idAddress + "'";
 }
 
 System::String^ CLmapTB::linkAddressCustomer(int idPeople, int idAddress, int billing, int delivery) {
-	return "EXEC linkAddressCustomer @idPeople = '" + idPeople + "', @idAddress = '" + idAddress + "', @billing = '" + billing + "', @delivery = '" + delivery + "'";
+	return "EXEC PS_HAVE_CREATE @idPeople = '" + idPeople + "', @idAddress = '" + idAddress + "', @billing = '" + billing + "', @delivery = '" + delivery + "'";
 }
 
 System::String^ CLmapTB::selectAddressDelivery(int idPeople) {
-	return "EXEC selectAddressDelivery @idPeople = '" + idPeople + "'";
+	return "EXEC PS_ADDRESS_SELECT_DELIVERY @idPeople = '" + idPeople + "'";
 }
 
 System::String^ CLmapTB::selectAddressBilling(int idPeople) {
-	return "EXEC selectAddressBilling @idPeople = '" + idPeople + "'";
+	return "EXEC PS_ADDRESS_SELECT_BILLING @idPeople = '" + idPeople + "'";
 }
 
 System::String^ CLmapTB::getHaveForAddress(int idAddress) {
-	return "EXEC getHaveForAddress @idAddress = '" + idAddress + "'";
+	return "EXEC PS_HAVE_ADDRESS_SELECT @idAddress = '" + idAddress + "'";
 }
 
 System::String^ CLmapTB::modifyHave(int idAddress, int idPeople, int billing, int delivery) {
-	return "EXEC modifyHave @idAddress = '" + idAddress + "', @idPeople = '" + idPeople + "', @billing = '" + billing + "', @delivery = '" + delivery + "'";
+	return "EXEC PS_HAVE_UPDATE @idAddress = '" + idAddress + "', @idPeople = '" + idPeople + "', @billing = '" + billing + "', @delivery = '" + delivery + "'";
 }
 
 System::String^ CLmapTB::deleteHave(int idAddress, int idPeople) {
-	return "EXEC deleteHave @idAddress = '" + idAddress + "', @idPeople = '" + idPeople + "'";
+	return "EXEC PS_HAVE_DELETE @idAddress = '" + idAddress + "', @idPeople = '" + idPeople + "'";
 }

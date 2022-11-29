@@ -126,8 +126,8 @@
     <ClCompile Include="CatalogForm.cpp" />
     <ClCompile Include="CLcad.cpp" />
     <ClCompile Include="CLmapTB.cpp" />
-    <ClCompile Include="CLservAddress.cpp" />
-    <ClCompile Include="CLservCustomer.cpp" />
+    <ClCompile Include="Address.cpp" />
+    <ClCompile Include="Customer.cpp" />
     <ClCompile Include="CLservPeople.cpp" />
     <ClCompile Include="CLservStaff.cpp" />
     <ClCompile Include="CreateAddressForm.cpp" />
@@ -148,8 +148,8 @@
     </ClInclude>
     <ClInclude Include="CLcad.h" />
     <ClInclude Include="CLmapTB.h" />
-    <ClInclude Include="CLservAddress.h" />
-    <ClInclude Include="CLservCustomer.h" />
+    <ClInclude Include="Address.h" />
+    <ClInclude Include="Customer.h" />
     <ClInclude Include="CLservPeople.h" />
     <ClInclude Include="CLservStaff.h" />
     <ClInclude Include="CreateAddressForm.h">
