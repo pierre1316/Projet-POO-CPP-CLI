@@ -83,7 +83,7 @@
     <Link>
       <AdditionalDependencies />
       <SubSystem>Windows</SubSystem>
-      <EntryPointSymbol>CreateCategoryMain</EntryPointSymbol>
+      <EntryPointSymbol>Main</EntryPointSymbol>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -132,6 +132,7 @@
     <ClCompile Include="CLservStaff.cpp" />
     <ClCompile Include="CreateAddressForm.cpp" />
     <ClCompile Include="CreateCategoryForm.cpp" />
+    <ClCompile Include="CreateItemForm.cpp" />
     <ClCompile Include="CreatePeopleForm.cpp" />
     <ClCompile Include="MainForm.cpp" />
     <ClCompile Include="ModifyPeopleForm.cpp" />
@@ -155,6 +156,9 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="CreateCategoryForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="CreateItemForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="CreatePeopleForm.h">
@@ -182,6 +186,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CreateCategoryForm.resx">
       <DependentUpon>CreateCategoryForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreateItemForm.resx">
+      <DependentUpon>CreateItemForm.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CreatePeopleForm.resx">
       <DependentUpon>CreatePeopleForm.h</DependentUpon>

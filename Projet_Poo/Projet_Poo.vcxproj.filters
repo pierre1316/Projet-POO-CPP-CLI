@@ -20,6 +20,7 @@
     <ClCompile Include="CatalogForm.cpp" />
     <ClCompile Include="CreateCategoryForm.cpp" />
     <ClCompile Include="Catalog.cpp" />
+    <ClCompile Include="CreateItemForm.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CLmapTB.h" />
@@ -39,6 +40,7 @@
     <ClInclude Include="CatalogForm.h" />
     <ClInclude Include="CreateCategoryForm.h" />
     <ClInclude Include="Catalog.h" />
+    <ClInclude Include="CreateItemForm.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Classes Terminéées">
