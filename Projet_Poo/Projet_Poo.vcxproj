@@ -128,8 +128,8 @@
     <ClCompile Include="CLmapTB.cpp" />
     <ClCompile Include="Address.cpp" />
     <ClCompile Include="Customer.cpp" />
-    <ClCompile Include="CLservPeople.cpp" />
-    <ClCompile Include="CLservStaff.cpp" />
+    <ClCompile Include="People.cpp" />
+    <ClCompile Include="Staff.cpp" />
     <ClCompile Include="CreateAddressForm.cpp" />
     <ClCompile Include="CreateCategoryForm.cpp" />
     <ClCompile Include="CreateItemForm.cpp" />
@@ -150,8 +150,8 @@
     <ClInclude Include="CLmapTB.h" />
     <ClInclude Include="Address.h" />
     <ClInclude Include="Customer.h" />
-    <ClInclude Include="CLservPeople.h" />
-    <ClInclude Include="CLservStaff.h" />
+    <ClInclude Include="People.h" />
+    <ClInclude Include="Staff.h" />
     <ClInclude Include="CreateAddressForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>

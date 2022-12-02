@@ -4,7 +4,7 @@ using namespace System;
 using namespace System::Windows::Forms;
 
 [STAThreadAttribute]
-void NewCustomerMain(array<String^>^ args) {
+void NewItemMain(array<String^>^ args) {
     Application::EnableVisualStyles();
     Application::SetCompatibleTextRenderingDefault(false);
     //WinformCDemo is jour project name

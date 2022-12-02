@@ -5,7 +5,6 @@ using namespace NS_Comp_Svc;
 NS_Comp_Svc::Customer::Customer(void)
 {
 	this->oCad = gcnew NS_Comp_Data::CLcad();
-	this->oMappTB = gcnew NS_Comp_Mappage::CLmapTB();
 }
 
 System::Data::DataSet^ Customer::selectAllCustomer(System::String^ dataTableName)

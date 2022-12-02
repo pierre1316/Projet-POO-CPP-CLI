@@ -1,50 +1,78 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="CLmapTB.cpp" />
-    <ClCompile Include="Customer.cpp" />
-    <ClCompile Include="CLservPeople.cpp" />
-    <ClCompile Include="CLservStaff.cpp" />
     <ClCompile Include="MainForm.cpp" />
     <ClCompile Include="PeopleForm.cpp" />
     <ClCompile Include="ModifyPeopleForm.cpp" />
-    <ClCompile Include="CreatePeopleForm.cpp">
-      <Filter>Classes Terminéées</Filter>
-    </ClCompile>
-    <ClCompile Include="CLcad.cpp">
-      <Filter>Classes Terminéées</Filter>
-    </ClCompile>
     <ClCompile Include="AddressForm.cpp" />
-    <ClCompile Include="Address.cpp" />
-    <ClCompile Include="CreateAddressForm.cpp" />
     <ClCompile Include="CatalogForm.cpp" />
     <ClCompile Include="CreateCategoryForm.cpp" />
-    <ClCompile Include="Catalog.cpp" />
     <ClCompile Include="CreateItemForm.cpp" />
+    <ClCompile Include="CreatePeopleForm.cpp" />
+    <ClCompile Include="CreateAddressForm.cpp" />
+    <ClCompile Include="Address.cpp">
+      <Filter>Classes de Service</Filter>
+    </ClCompile>
+    <ClCompile Include="Catalog.cpp">
+      <Filter>Classes de Service</Filter>
+    </ClCompile>
+    <ClCompile Include="Customer.cpp">
+      <Filter>Classes de Service</Filter>
+    </ClCompile>
+    <ClCompile Include="Staff.cpp">
+      <Filter>Classes de Service</Filter>
+    </ClCompile>
+    <ClCompile Include="People.cpp">
+      <Filter>Classes de Service</Filter>
+    </ClCompile>
+    <ClCompile Include="CLcad.cpp">
+      <Filter>Classes de Communication</Filter>
+    </ClCompile>
+    <ClCompile Include="CLmapTB.cpp">
+      <Filter>Classes de Mappage</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CLmapTB.h" />
-    <ClInclude Include="Customer.h" />
-    <ClInclude Include="CLservPeople.h" />
-    <ClInclude Include="CLservStaff.h" />
     <ClInclude Include="CreatePeopleForm.h" />
     <ClInclude Include="MainForm.h" />
     <ClInclude Include="PeopleForm.h" />
     <ClInclude Include="ModifyPeopleForm.h" />
-    <ClInclude Include="CLcad.h">
-      <Filter>Classes Terminéées</Filter>
-    </ClInclude>
     <ClInclude Include="AddressForm.h" />
-    <ClInclude Include="Address.h" />
     <ClInclude Include="CreateAddressForm.h" />
     <ClInclude Include="CatalogForm.h" />
     <ClInclude Include="CreateCategoryForm.h" />
-    <ClInclude Include="Catalog.h" />
     <ClInclude Include="CreateItemForm.h" />
+    <ClInclude Include="Address.h">
+      <Filter>Classes de Service</Filter>
+    </ClInclude>
+    <ClInclude Include="Catalog.h">
+      <Filter>Classes de Service</Filter>
+    </ClInclude>
+    <ClInclude Include="Customer.h">
+      <Filter>Classes de Service</Filter>
+    </ClInclude>
+    <ClInclude Include="Staff.h">
+      <Filter>Classes de Service</Filter>
+    </ClInclude>
+    <ClInclude Include="People.h">
+      <Filter>Classes de Service</Filter>
+    </ClInclude>
+    <ClInclude Include="CLcad.h">
+      <Filter>Classes de Communication</Filter>
+    </ClInclude>
+    <ClInclude Include="CLmapTB.h">
+      <Filter>Classes de Mappage</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Filter Include="Classes Terminéées">
+    <Filter Include="Classes de Service">
       <UniqueIdentifier>{88e4ddd4-854e-43e9-a83a-ddf965195cab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes de Mappage">
+      <UniqueIdentifier>{a9289979-3ab6-42bf-9d40-8d6f79eff24c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes de Communication">
+      <UniqueIdentifier>{a103435f-d257-4d8f-92e0-529b44414c3c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

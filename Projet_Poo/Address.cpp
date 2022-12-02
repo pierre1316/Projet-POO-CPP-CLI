@@ -21,18 +21,18 @@ System::Data::DataSet^ Address::getStaffAddressNULL(System::String^ dataTableNam
 	return this->oCad->getRows(this->sql, dataTableName);
 }
 
-int Address::createAddress(System::String^ last_name, System::String^ first_name, System::String^ text, System::String^ postal_code, System::String^ city_name)
+int Address::createAddress(System::String^ last_name, System::String^ first_name, System::String^ text, int id_city)
 {
-	this->sql = "EXEC PS_ADDRESS_CREATE @last_name = '" + last_name + "', @first_name = '" + first_name + "', @text = '" + text + "', @postal_code = '" + postal_code + "', @city_name = '" + city_name + "'";
+	this->sql = "EXEC PS_ADDRESS_CREATE @last_name = '" + last_name + "', @first_name = '" + first_name + "', @text = '" + text + "', @id_city = '" + id_city + "'";
 	this->oCad->actionRows(this->sql);
 	this->sql = "EXEC PS_ADDRESS_SELECT";
 	this->oDs = this->oCad->getRows(this->sql, "rsl");
 	return System::Convert::ToInt32(this->oDs->Tables["rsl"]->Rows[this->oDs->Tables["rsl"]->Rows->Count-1]->ItemArray[0]);
 }
 
-System::Void Address::modifyAddress(int idAddress, System::String^ last_name, System::String^ first_name, System::String^ text, System::String^ postal_code, System::String^ city_name)
+System::Void Address::modifyAddress(int idAddress, System::String^ last_name, System::String^ first_name, System::String^ text, int id_city)
 {
-	this->sql = "EXEC PS_ADDRESS_UPDATE @idAddress = '" + idAddress + "', @last_name = '" + last_name + "', @first_name = '" + first_name + "', @text = '" + text + "', @postal_code = '" + postal_code + "', @city_name = '" + city_name + "'";
+	this->sql = "EXEC PS_ADDRESS_UPDATE @idAddress = '" + idAddress + "', @last_name = '" + last_name + "', @first_name = '" + first_name + "', @text = '" + text + "', @id_city = '" + id_city + "'";
 	this->oCad->actionRows(this->sql);
 }
 
@@ -64,6 +64,12 @@ System::Data::DataSet^ Address::selectAddressDelivery(System::String^ dataTableN
 System::Data::DataSet^ Address::getHaveForAddress(System::String^ dataTableName, int idAddress)
 {
 	this->sql = "EXEC PS_HAVE_ADDRESS_SELECT @idAddress = '" + idAddress + "'";
+	return this->oCad->getRows(this->sql, dataTableName);
+}
+
+System::Data::DataSet^ Address::selectCityFromPostalcode(System::String^ dataTableName, System::String^ postal_code)
+{
+	this->sql = "EXEC PS_CITY_SELECT_POSTALCODE @postal_code = '" + postal_code + "'";
 	return this->oCad->getRows(this->sql, dataTableName);
 }
 

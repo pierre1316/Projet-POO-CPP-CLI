@@ -1,5 +1,6 @@
 #pragma once
 #include "CreateCategoryForm.h"
+#include "CreateItemForm.h"
 
 namespace ProjetPoo {
 
@@ -65,6 +66,7 @@ namespace ProjetPoo {
 			this->button_create_item->TabIndex = 2;
 			this->button_create_item->Text = L"Créer un Article";
 			this->button_create_item->UseVisualStyleBackColor = true;
+			this->button_create_item->Click += gcnew System::EventHandler(this, &CatalogForm::button_create_item_Click);
 			// 
 			// button_create_category
 			// 
@@ -100,6 +102,11 @@ namespace ProjetPoo {
 		this->Hide();
 		form.ShowDialog();
 
+	}
+	private: System::Void button_create_item_Click(System::Object^ sender, System::EventArgs^ e) {
+		CreateItemForm itemform;
+		this->Hide();
+		itemform.ShowDialog();
 	}
 	};
 }

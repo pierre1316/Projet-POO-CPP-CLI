@@ -1,8 +1,8 @@
 #pragma once
-#include "CLservpeople.h"
-#include "CLservStaff.h"
-#include "CLservCustomer.h"
-#include "CLservAddress.h"
+#include "people.h"
+#include "Staff.h"
+#include "Customer.h"
+#include "Address.h"
 #include "CLcad.h" 
 
 namespace ProjetPoo {
@@ -44,10 +44,12 @@ namespace ProjetPoo {
 	private: System::Windows::Forms::RadioButton^ radiobutt_existing_people;
 
 	private: System::Data::DataSet^ oDs;
-	private: NS_Comp_Svc::CLservPeople^ oPeople;
-	private: NS_Comp_Svc::CLservStaff^ oStaff;
-	private: NS_Comp_Svc::CLservCustomer^ oCust;
-	private: NS_Comp_Svc::CLservAddress^ oAddress;
+	private: NS_Comp_Svc::People^ oPeople;
+	private: NS_Comp_Svc::Staff^ oStaff;
+	private: NS_Comp_Svc::Customer^ oCust;
+	private: NS_Comp_Svc::Address^ oAddress;
+	private: System::Data::DataSet^ Cities;
+	private: int id_City;
 
 	private: System::Windows::Forms::ComboBox^ combo_people;
 
@@ -71,7 +73,8 @@ namespace ProjetPoo {
 	private: System::Windows::Forms::Label^ label8;
 	private: System::Windows::Forms::TextBox^ textBox_address;
 	private: System::Windows::Forms::TextBox^ textBox_postalcode;
-	private: System::Windows::Forms::TextBox^ textBox_city;
+	private: System::Windows::Forms::ComboBox^ comboBox_city;
+
 
 
 
@@ -119,7 +122,7 @@ namespace ProjetPoo {
 			this->label8 = (gcnew System::Windows::Forms::Label());
 			this->textBox_address = (gcnew System::Windows::Forms::TextBox());
 			this->textBox_postalcode = (gcnew System::Windows::Forms::TextBox());
-			this->textBox_city = (gcnew System::Windows::Forms::TextBox());
+			this->comboBox_city = (gcnew System::Windows::Forms::ComboBox());
 			this->groupBox1->SuspendLayout();
 			this->groupBox2->SuspendLayout();
 			this->SuspendLayout();
@@ -347,14 +350,16 @@ namespace ProjetPoo {
 			this->textBox_postalcode->Name = L"textBox_postalcode";
 			this->textBox_postalcode->Size = System::Drawing::Size(257, 22);
 			this->textBox_postalcode->TabIndex = 23;
+			this->textBox_postalcode->Leave += gcnew System::EventHandler(this, &CreatePeopleForm::textBox_postalcode_Leave);
 			// 
-			// textBox_city
+			// comboBox_city
 			// 
-			this->textBox_city->Enabled = false;
-			this->textBox_city->Location = System::Drawing::Point(217, 325);
-			this->textBox_city->Name = L"textBox_city";
-			this->textBox_city->Size = System::Drawing::Size(257, 22);
-			this->textBox_city->TabIndex = 24;
+			this->comboBox_city->FormattingEnabled = true;
+			this->comboBox_city->Location = System::Drawing::Point(217, 326);
+			this->comboBox_city->Name = L"comboBox_city";
+			this->comboBox_city->Size = System::Drawing::Size(257, 24);
+			this->comboBox_city->TabIndex = 53;
+			this->comboBox_city->SelectedIndexChanged += gcnew System::EventHandler(this, &CreatePeopleForm::comboBox_city_SelectedIndexChanged);
 			// 
 			// CreatePeopleForm
 			// 
@@ -362,7 +367,7 @@ namespace ProjetPoo {
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::SystemColors::ActiveCaption;
 			this->ClientSize = System::Drawing::Size(697, 368);
-			this->Controls->Add(this->textBox_city);
+			this->Controls->Add(this->comboBox_city);
 			this->Controls->Add(this->textBox_postalcode);
 			this->Controls->Add(this->textBox_address);
 			this->Controls->Add(this->label8);
@@ -400,10 +405,10 @@ namespace ProjetPoo {
 		
 	}
 	private: System::Void CreateCustomerForm_Load(System::Object^ sender, System::EventArgs^ e) {
-		this->oPeople = gcnew NS_Comp_Svc::CLservPeople();
-		this->oStaff = gcnew NS_Comp_Svc::CLservStaff();
-		this->oCust = gcnew NS_Comp_Svc::CLservCustomer();
-		this->oAddress = gcnew NS_Comp_Svc::CLservAddress();
+		this->oPeople = gcnew NS_Comp_Svc::People();
+		this->oStaff = gcnew NS_Comp_Svc::Staff();
+		this->oCust = gcnew NS_Comp_Svc::Customer();
+		this->oAddress = gcnew NS_Comp_Svc::Address();
 		combo_superior_Load();
 		combo_people_Load("Staff");
 		radio_customer_select_CheckedChanged(sender, e);
@@ -473,7 +478,7 @@ private: System::Void radio_customer_select_CheckedChanged(System::Object^ sende
 	this->date_birthday->ResetText();
 	this->textBox_address->ResetText();
 	this->textBox_postalcode->ResetText();
-	this->textBox_city->ResetText();
+	this->comboBox_city->ResetText();
 	if (this->radio_customer_select->Checked) {
 		combo_people_Load("Staff");
 		this->combo_superior->Enabled = false;
@@ -481,7 +486,7 @@ private: System::Void radio_customer_select_CheckedChanged(System::Object^ sende
 		this->date_birthday->Enabled = true;
 		this->textBox_address->Enabled = false;
 		this->textBox_postalcode->Enabled = false;
-		this->textBox_city->Enabled = false;
+		this->comboBox_city->Enabled = false;
 	}
 	else {
 		combo_people_Load("Cust");
@@ -490,7 +495,7 @@ private: System::Void radio_customer_select_CheckedChanged(System::Object^ sende
 		this->date_birthday->Enabled = false;
 		this->textBox_address->Enabled = true;
 		this->textBox_postalcode->Enabled = true;
-		this->textBox_city->Enabled = true;
+		this->comboBox_city->Enabled = true;
 	}
 }
 
@@ -531,7 +536,7 @@ private: System::Void button_register_Click(System::Object^ sender, System::Even
 		dateString += System::Convert::ToString(date->Day) + "/";
 		dateString += System::Convert::ToString(date->Year);
 		this->oStaff->createStaff(idPeople, dateString, idSuperior, "");
-		int idAddress = this->oAddress->createAddress("", "", this->textBox_address->Text, this->textBox_postalcode->Text, this->textBox_city->Text);
+		int idAddress = this->oAddress->createAddress("", "", this->textBox_address->Text, this->id_City);
 		this->oStaff->updateStaffAddress(idPeople, idAddress);
 	}
 	else {
@@ -548,8 +553,18 @@ private: System::Void button_register_Click(System::Object^ sender, System::Even
 	radio_customer_select_CheckedChanged(sender, e);
 	radiobutt_new_people_CheckedChanged(sender, e);
 }
-private: System::Void button_address_Click(System::Object^ sender, System::EventArgs^ e) {
-	// Aller sur le Form de création / modification d'addresse
+
+private: System::Void textBox_postalcode_Leave(System::Object^ sender, System::EventArgs^ e) {
+	this->Cities = this->oAddress->selectCityFromPostalcode("cities", this->textBox_postalcode->Text);
+	this->comboBox_city->Items->Clear();
+	for (int i = 0; i < this->Cities->Tables["cities"]->Rows->Count; i++) {
+		this->comboBox_city->Items->Add(this->Cities->Tables["cities"]->Rows[i]->ItemArray[2]->ToString());
+	}
+}
+private: System::Void comboBox_city_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
+	if (this->comboBox_city->SelectedIndex != -1) {
+		this->id_City = Convert::ToInt32(this->Cities->Tables["cities"]->Rows[this->comboBox_city->SelectedIndex]->ItemArray[0]);
+	}
 }
 };
 }
