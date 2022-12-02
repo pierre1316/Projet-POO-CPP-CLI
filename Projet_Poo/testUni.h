@@ -21,7 +21,7 @@ private: NS_Comp_Svc::CLservAddress^ oAddress;
 		   char city;
 	   public:
 		   testUni();
-		   testUni();
+		   testUni(char t_first_name, char t_last_name, int t_sup, string t_hire_date, char t_adress, int t_CP, char t_city);
 		   CreateStaff(char t_first_name, char t_last_name, int t_sup, string t_hire_date, char t_address, int t_CP, char t_city);
 		   DeleteStaff();
 		   ~testUni();
