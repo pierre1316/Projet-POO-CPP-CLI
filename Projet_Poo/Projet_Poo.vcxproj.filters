@@ -31,6 +31,8 @@
     <ClCompile Include="CLmapTB.cpp">
       <Filter>Classes de Mappage</Filter>
     </ClCompile>
+    <ClCompile Include="OrderForm.cpp" />
+    <ClCompile Include="PaymentForm.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CreatePeopleForm.h" />
@@ -63,6 +65,8 @@
     <ClInclude Include="CLmapTB.h">
       <Filter>Classes de Mappage</Filter>
     </ClInclude>
+    <ClInclude Include="OrderForm.h" />
+    <ClInclude Include="PaymentForm.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Classes de Service">

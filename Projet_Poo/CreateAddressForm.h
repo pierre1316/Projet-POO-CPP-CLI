@@ -287,6 +287,7 @@ private: System::Void textBox_postalcode_Leave(System::Object^ sender, System::E
 private: System::Void comboBox_city_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
 	if (this->comboBox_city->SelectedIndex != -1) {
 		this->id_City = Convert::ToInt32(this->Cities->Tables["cities"]->Rows[this->comboBox_city->SelectedIndex]->ItemArray[0]);
+		this->textBox_postalcode->Text = this->Cities->Tables["cities"]->Rows[this->comboBox_city->SelectedIndex]->ItemArray[1]->ToString();
 	}
 }
 };

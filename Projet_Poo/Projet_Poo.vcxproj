@@ -128,6 +128,8 @@
     <ClCompile Include="CLmapTB.cpp" />
     <ClCompile Include="Address.cpp" />
     <ClCompile Include="Customer.cpp" />
+    <ClCompile Include="OrderForm.cpp" />
+    <ClCompile Include="PaymentForm.cpp" />
     <ClCompile Include="People.cpp" />
     <ClCompile Include="Staff.cpp" />
     <ClCompile Include="CreateAddressForm.cpp" />
@@ -150,6 +152,12 @@
     <ClInclude Include="CLmapTB.h" />
     <ClInclude Include="Address.h" />
     <ClInclude Include="Customer.h" />
+    <ClInclude Include="OrderForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="PaymentForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="People.h" />
     <ClInclude Include="Staff.h" />
     <ClInclude Include="CreateAddressForm.h">
@@ -198,6 +206,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ModifyPeopleForm.resx">
       <DependentUpon>ModifyPeopleForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OrderForm.resx">
+      <DependentUpon>OrderForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PaymentForm.resx">
+      <DependentUpon>PaymentForm.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PeopleForm.resx">
       <DependentUpon>PeopleForm.h</DependentUpon>

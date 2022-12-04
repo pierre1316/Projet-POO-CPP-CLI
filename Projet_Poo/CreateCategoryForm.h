@@ -227,18 +227,19 @@ private: System::Void reload_components(System::Void) {
 		this->listBox_categories->Enabled = true;
 		this->button_delete->Enabled = true;
 		this->listBox_categories->Items->Clear();
-		for (int i = 0; i < this->oDs->Tables["categories"]->Rows->Count; i++) {
-			this->listBox_categories->Items->Add(
-				this->oDs->Tables["categories"]->Rows[i]->ItemArray[0]->ToString() + " | Nom : " +
-				this->oDs->Tables["categories"]->Rows[i]->ItemArray[1]->ToString() + " | TVA : " +
-				this->oDs->Tables["categories"]->Rows[i]->ItemArray[2]->ToString() + "%");
-		}
+	}
+	for (int i = 0; i < this->oDs->Tables["categories"]->Rows->Count; i++) {
+		this->listBox_categories->Items->Add(
+			this->oDs->Tables["categories"]->Rows[i]->ItemArray[0]->ToString() + " | Nom : " +
+			this->oDs->Tables["categories"]->Rows[i]->ItemArray[1]->ToString() + " | TVA : " +
+			this->oDs->Tables["categories"]->Rows[i]->ItemArray[2]->ToString() + "%");
 	}
 }
 
-	private: System::Void CreateCategoryForm_Load(System::Object^ sender, System::EventArgs^ e) {
-		this->oCatalog = gcnew NS_Comp_Svc::Catalog();
-	}
+private: System::Void CreateCategoryForm_Load(System::Object^ sender, System::EventArgs^ e) {
+	this->oCatalog = gcnew NS_Comp_Svc::Catalog();
+	reload_components();
+}
 private: System::Void radio_create_category_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
 	reload_components();
 }
