@@ -96,21 +96,21 @@ namespace ProjetPoo {
 	private: System::Windows::Forms::TextBox^ textBox_quantity;
 
 	private: System::Windows::Forms::Label^ label14;
-	private: System::Windows::Forms::TextBox^ textBox_color_r;
 
 
-	private: System::Windows::Forms::Label^ label15;
-	private: System::Windows::Forms::Button^ button_pick;
+
+
+
 
 	private: System::Windows::Forms::Label^ label3;
 	private: System::Windows::Forms::TextBox^ textBox_quantity_max;
 	private: System::Windows::Forms::GroupBox^ groupBox1;
-	private: System::Windows::Forms::TextBox^ textBox_color_b;
 
-	private: System::Windows::Forms::Label^ label17;
-	private: System::Windows::Forms::TextBox^ textBox_color_g;
 
-	private: System::Windows::Forms::Label^ label16;
+
+
+
+
 	private: System::Windows::Forms::GroupBox^ groupBox2;
 
 
@@ -158,16 +158,9 @@ namespace ProjetPoo {
 			this->label13 = (gcnew System::Windows::Forms::Label());
 			this->textBox_quantity = (gcnew System::Windows::Forms::TextBox());
 			this->label14 = (gcnew System::Windows::Forms::Label());
-			this->textBox_color_r = (gcnew System::Windows::Forms::TextBox());
-			this->label15 = (gcnew System::Windows::Forms::Label());
-			this->button_pick = (gcnew System::Windows::Forms::Button());
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->textBox_quantity_max = (gcnew System::Windows::Forms::TextBox());
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
-			this->textBox_color_b = (gcnew System::Windows::Forms::TextBox());
-			this->label17 = (gcnew System::Windows::Forms::Label());
-			this->textBox_color_g = (gcnew System::Windows::Forms::TextBox());
-			this->label16 = (gcnew System::Windows::Forms::Label());
 			this->groupBox2 = (gcnew System::Windows::Forms::GroupBox());
 			this->groupBox1->SuspendLayout();
 			this->groupBox2->SuspendLayout();
@@ -405,7 +398,7 @@ namespace ProjetPoo {
 			// 
 			// textBox_color_name
 			// 
-			this->textBox_color_name->Location = System::Drawing::Point(244, 68);
+			this->textBox_color_name->Location = System::Drawing::Point(244, 122);
 			this->textBox_color_name->Name = L"textBox_color_name";
 			this->textBox_color_name->Size = System::Drawing::Size(164, 22);
 			this->textBox_color_name->TabIndex = 42;
@@ -413,7 +406,7 @@ namespace ProjetPoo {
 			// label12
 			// 
 			this->label12->AutoSize = true;
-			this->label12->Location = System::Drawing::Point(196, 71);
+			this->label12->Location = System::Drawing::Point(196, 125);
 			this->label12->Name = L"label12";
 			this->label12->Size = System::Drawing::Size(42, 16);
 			this->label12->TabIndex = 41;
@@ -421,7 +414,7 @@ namespace ProjetPoo {
 			// 
 			// textBox_price_multiplicateur
 			// 
-			this->textBox_price_multiplicateur->Location = System::Drawing::Point(323, 105);
+			this->textBox_price_multiplicateur->Location = System::Drawing::Point(323, 159);
 			this->textBox_price_multiplicateur->Name = L"textBox_price_multiplicateur";
 			this->textBox_price_multiplicateur->Size = System::Drawing::Size(85, 22);
 			this->textBox_price_multiplicateur->TabIndex = 44;
@@ -430,7 +423,7 @@ namespace ProjetPoo {
 			// label13
 			// 
 			this->label13->AutoSize = true;
-			this->label13->Location = System::Drawing::Point(208, 108);
+			this->label13->Location = System::Drawing::Point(208, 162);
 			this->label13->Name = L"label13";
 			this->label13->Size = System::Drawing::Size(91, 16);
 			this->label13->TabIndex = 43;
@@ -438,7 +431,7 @@ namespace ProjetPoo {
 			// 
 			// textBox_quantity
 			// 
-			this->textBox_quantity->Location = System::Drawing::Point(323, 146);
+			this->textBox_quantity->Location = System::Drawing::Point(323, 200);
 			this->textBox_quantity->Name = L"textBox_quantity";
 			this->textBox_quantity->Size = System::Drawing::Size(85, 22);
 			this->textBox_quantity->TabIndex = 46;
@@ -447,38 +440,11 @@ namespace ProjetPoo {
 			// label14
 			// 
 			this->label14->AutoSize = true;
-			this->label14->Location = System::Drawing::Point(193, 149);
+			this->label14->Location = System::Drawing::Point(193, 203);
 			this->label14->Name = L"label14";
 			this->label14->Size = System::Drawing::Size(115, 16);
 			this->label14->TabIndex = 45;
 			this->label14->Text = L"Quantité en stock :";
-			// 
-			// textBox_color_r
-			// 
-			this->textBox_color_r->Location = System::Drawing::Point(256, 180);
-			this->textBox_color_r->Name = L"textBox_color_r";
-			this->textBox_color_r->ReadOnly = true;
-			this->textBox_color_r->Size = System::Drawing::Size(52, 22);
-			this->textBox_color_r->TabIndex = 48;
-			// 
-			// label15
-			// 
-			this->label15->AutoSize = true;
-			this->label15->Location = System::Drawing::Point(193, 183);
-			this->label15->Name = L"label15";
-			this->label15->Size = System::Drawing::Size(54, 16);
-			this->label15->TabIndex = 47;
-			this->label15->Text = L"Rouge :";
-			// 
-			// button_pick
-			// 
-			this->button_pick->Location = System::Drawing::Point(319, 183);
-			this->button_pick->Name = L"button_pick";
-			this->button_pick->Size = System::Drawing::Size(93, 72);
-			this->button_pick->TabIndex = 49;
-			this->button_pick->Text = L"Sélectionner\r\nla\r\nCouleur";
-			this->button_pick->UseVisualStyleBackColor = true;
-			this->button_pick->Click += gcnew System::EventHandler(this, &CreateItemForm::button_pick_Click);
 			// 
 			// label3
 			// 
@@ -498,13 +464,6 @@ namespace ProjetPoo {
 			// 
 			// groupBox1
 			// 
-			this->groupBox1->Controls->Add(this->textBox_color_b);
-			this->groupBox1->Controls->Add(this->label17);
-			this->groupBox1->Controls->Add(this->textBox_color_g);
-			this->groupBox1->Controls->Add(this->label16);
-			this->groupBox1->Controls->Add(this->button_pick);
-			this->groupBox1->Controls->Add(this->textBox_color_r);
-			this->groupBox1->Controls->Add(this->label15);
 			this->groupBox1->Controls->Add(this->textBox_quantity);
 			this->groupBox1->Controls->Add(this->label14);
 			this->groupBox1->Controls->Add(this->textBox_price_multiplicateur);
@@ -522,40 +481,6 @@ namespace ProjetPoo {
 			this->groupBox1->TabIndex = 50;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Gestion des couleurs :";
-			// 
-			// textBox_color_b
-			// 
-			this->textBox_color_b->Location = System::Drawing::Point(256, 236);
-			this->textBox_color_b->Name = L"textBox_color_b";
-			this->textBox_color_b->ReadOnly = true;
-			this->textBox_color_b->Size = System::Drawing::Size(52, 22);
-			this->textBox_color_b->TabIndex = 53;
-			// 
-			// label17
-			// 
-			this->label17->AutoSize = true;
-			this->label17->Location = System::Drawing::Point(193, 239);
-			this->label17->Name = L"label17";
-			this->label17->Size = System::Drawing::Size(40, 16);
-			this->label17->TabIndex = 52;
-			this->label17->Text = L"Bleu :";
-			// 
-			// textBox_color_g
-			// 
-			this->textBox_color_g->Location = System::Drawing::Point(256, 208);
-			this->textBox_color_g->Name = L"textBox_color_g";
-			this->textBox_color_g->ReadOnly = true;
-			this->textBox_color_g->Size = System::Drawing::Size(52, 22);
-			this->textBox_color_g->TabIndex = 51;
-			// 
-			// label16
-			// 
-			this->label16->AutoSize = true;
-			this->label16->Location = System::Drawing::Point(193, 211);
-			this->label16->Name = L"label16";
-			this->label16->Size = System::Drawing::Size(37, 16);
-			this->label16->TabIndex = 50;
-			this->label16->Text = L"Vert :";
 			// 
 			// groupBox2
 			// 
@@ -619,10 +544,6 @@ private: System::Void reload_color_part(Void) {
 	this->textBox_color_name->ResetText();
 	this->textBox_quantity->ResetText();
 	this->textBox_price_multiplicateur->ResetText();
-	this->textBox_color_r->ResetText();
-	this->textBox_color_g->ResetText();
-	this->textBox_color_b->ResetText();
-	this->button_pick->BackColor = this->button_pick->DefaultBackColor;
 	if (this->radio_create_color->Checked) {
 		this->listBox_colors->Enabled = false;
 		this->button_color_delete->Enabled = false;
@@ -709,26 +630,8 @@ private: System::Void button_enter_Click(System::Object^ sender, System::EventAr
 
 
 
-private: System::Void button_pick_Click(System::Object^ sender, System::EventArgs^ e) {
-	ColorDialog^ MyDialog = gcnew ColorDialog();
-	// Keeps the user from selecting a custom color.
-	MyDialog->AllowFullOpen = true;
-	// Allows the user to get help. (The default is false.)
-	MyDialog->ShowHelp = true;
-	// Sets the initial color select to the current text color.
-	MyDialog->Color = Color::White;
 
-	// Update the text box color if the user clicks OK 
 
-	MyDialog->ShowDialog();
-	Color hello;
-	hello = MyDialog->Color;;
-	this->textBox_color_r->Text = Convert::ToString(hello.R);
-	this->textBox_color_g->Text = Convert::ToString(hello.G);
-	this->textBox_color_b->Text = Convert::ToString(hello.B);
-	this->button_pick->BackColor = hello;
-
-}
 private: System::Void combo_category_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
 	this->id_category = Convert::ToInt32(this->CategoryList->Tables["categories"]->Rows[this->combo_category->SelectedIndex]->ItemArray[0]);
 	
@@ -775,10 +678,7 @@ private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e
 		this->id_item,
 		this->textBox_color_name->Text,
 		this->textBox_price_multiplicateur->Text,
-		Convert::ToInt32(this->textBox_quantity->Text),
-		Convert::ToInt32(this->textBox_color_r->Text),
-		Convert::ToInt32(this->textBox_color_g->Text),
-		Convert::ToInt32(this->textBox_color_b->Text)
+		Convert::ToInt32(this->textBox_quantity->Text)
 	);
 	reload_color_part();
 
@@ -794,12 +694,6 @@ private: System::Void listBox_colors_SelectedIndexChanged(System::Object^ sender
 	this->textBox_color_name->Text = this->ColorList->Tables["colors"]->Rows[this->listBox_colors->SelectedIndex]->ItemArray[1]->ToString();
 	this->textBox_price_multiplicateur->Text = this->ColorList->Tables["colors"]->Rows[this->listBox_colors->SelectedIndex]->ItemArray[2]->ToString();
 	this->textBox_quantity->Text = this->ColorList->Tables["colors"]->Rows[this->listBox_colors->SelectedIndex]->ItemArray[3]->ToString();
-	this->textBox_color_r->Text = this->ColorList->Tables["colors"]->Rows[this->listBox_colors->SelectedIndex]->ItemArray[4]->ToString();
-	this->textBox_color_g->Text = this->ColorList->Tables["colors"]->Rows[this->listBox_colors->SelectedIndex]->ItemArray[5]->ToString();
-	this->textBox_color_b->Text = this->ColorList->Tables["colors"]->Rows[this->listBox_colors->SelectedIndex]->ItemArray[6]->ToString();
-	//Color^ button_color = gcnew Color();
-	//button_color = Color::FromArgb(Convert::ToInt32(this->textBox_color_r->Text), Convert::ToInt32(this->textBox_color_g->Text), Convert::ToInt32(this->textBox_color_b->Text));
-	this->button_pick->BackColor = Color::FromArgb(Convert::ToInt32(this->textBox_color_r->Text), Convert::ToInt32(this->textBox_color_g->Text), Convert::ToInt32(this->textBox_color_b->Text));
 }
 private: System::Void button_color_delete_Click(System::Object^ sender, System::EventArgs^ e) {
 	this->oCatalog->deleteColor(this->id_item, this->ColorList->Tables["colors"]->Rows[this->listBox_colors->SelectedIndex]->ItemArray[1]->ToString());

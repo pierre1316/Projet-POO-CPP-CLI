@@ -1,4 +1,5 @@
 #pragma once
+#include "ArchivedOrdersForm.h"
 #include "Catalog.h"
 #include "Customer.h"
 #include "Address.h"
@@ -116,7 +117,8 @@ namespace ProjetPoo {
 	private: System::Windows::Forms::Label^ label8;
 	private: System::Windows::Forms::TextBox^ textBox_quantity_in_stock;
 	private: System::Windows::Forms::Label^ label9;
-	private: System::Windows::Forms::Button^ button1;
+	private: System::Windows::Forms::Button^ button_order_delete;
+
 
 
 	private: System::Windows::Forms::Button^ button_current_clear;
@@ -132,9 +134,9 @@ namespace ProjetPoo {
 	private: System::Windows::Forms::ComboBox^ comboBox_bill;
 	private: System::Windows::Forms::Label^ label13;
 	private: System::Windows::Forms::DateTimePicker^ dateTimePicker_deli;
-	private: System::Windows::Forms::CheckBox^ checkBox_issue;
+
 	private: System::Windows::Forms::CheckBox^ checkBox_payment;
-	private: System::Windows::Forms::DateTimePicker^ dateTimePicker_issue;
+
 	private: System::Windows::Forms::DateTimePicker^ dateTimePicker_payment;
 	private: System::Windows::Forms::Label^ label14;
 	private: System::Windows::Forms::ComboBox^ comboBox_payment_method;
@@ -147,9 +149,11 @@ namespace ProjetPoo {
 	private: System::Windows::Forms::Label^ label18;
 	private: System::Windows::Forms::Label^ label19;
 	private: System::Windows::Forms::Button^ button_order_enter;
-	private: System::Windows::Forms::Button^ button3;
+private: System::Windows::Forms::Button^ button_archive_order;
+
 	private: System::Windows::Forms::Button^ button_generate_reference;
-	private: System::Windows::Forms::DataGridView^ dataGridView1;
+private: System::Windows::Forms::Button^ button_archived_orders;
+
 
 
 
@@ -189,7 +193,7 @@ namespace ProjetPoo {
 			this->label8 = (gcnew System::Windows::Forms::Label());
 			this->textBox_quantity_in_stock = (gcnew System::Windows::Forms::TextBox());
 			this->label9 = (gcnew System::Windows::Forms::Label());
-			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->button_order_delete = (gcnew System::Windows::Forms::Button());
 			this->button_current_clear = (gcnew System::Windows::Forms::Button());
 			this->label20 = (gcnew System::Windows::Forms::Label());
 			this->label21 = (gcnew System::Windows::Forms::Label());
@@ -201,9 +205,7 @@ namespace ProjetPoo {
 			this->comboBox_bill = (gcnew System::Windows::Forms::ComboBox());
 			this->label13 = (gcnew System::Windows::Forms::Label());
 			this->dateTimePicker_deli = (gcnew System::Windows::Forms::DateTimePicker());
-			this->checkBox_issue = (gcnew System::Windows::Forms::CheckBox());
 			this->checkBox_payment = (gcnew System::Windows::Forms::CheckBox());
-			this->dateTimePicker_issue = (gcnew System::Windows::Forms::DateTimePicker());
 			this->dateTimePicker_payment = (gcnew System::Windows::Forms::DateTimePicker());
 			this->label14 = (gcnew System::Windows::Forms::Label());
 			this->comboBox_payment_method = (gcnew System::Windows::Forms::ComboBox());
@@ -216,11 +218,10 @@ namespace ProjetPoo {
 			this->label18 = (gcnew System::Windows::Forms::Label());
 			this->label19 = (gcnew System::Windows::Forms::Label());
 			this->button_order_enter = (gcnew System::Windows::Forms::Button());
-			this->button3 = (gcnew System::Windows::Forms::Button());
+			this->button_archive_order = (gcnew System::Windows::Forms::Button());
 			this->button_generate_reference = (gcnew System::Windows::Forms::Button());
-			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
+			this->button_archived_orders = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numericUpDown_quantity))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// listBox_orders
@@ -281,7 +282,7 @@ namespace ProjetPoo {
 			this->listBox_items->ItemHeight = 16;
 			this->listBox_items->Location = System::Drawing::Point(242, 65);
 			this->listBox_items->Name = L"listBox_items";
-			this->listBox_items->Size = System::Drawing::Size(224, 308);
+			this->listBox_items->Size = System::Drawing::Size(224, 244);
 			this->listBox_items->TabIndex = 5;
 			this->listBox_items->SelectedIndexChanged += gcnew System::EventHandler(this, &OrderForm::listBox_items_SelectedIndexChanged);
 			// 
@@ -447,14 +448,16 @@ namespace ProjetPoo {
 			this->label9->TabIndex = 21;
 			this->label9->Text = L"Quantité en stock :";
 			// 
-			// button1
+			// button_order_delete
 			// 
-			this->button1->Location = System::Drawing::Point(12, 315);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(224, 58);
-			this->button1->TabIndex = 23;
-			this->button1->Text = L"Supprimer la commande";
-			this->button1->UseVisualStyleBackColor = true;
+			this->button_order_delete->Enabled = false;
+			this->button_order_delete->Location = System::Drawing::Point(12, 315);
+			this->button_order_delete->Name = L"button_order_delete";
+			this->button_order_delete->Size = System::Drawing::Size(224, 58);
+			this->button_order_delete->TabIndex = 23;
+			this->button_order_delete->Text = L"Annuler la commande";
+			this->button_order_delete->UseVisualStyleBackColor = true;
+			this->button_order_delete->Click += gcnew System::EventHandler(this, &OrderForm::button1_Click);
 			// 
 			// button_current_clear
 			// 
@@ -487,7 +490,7 @@ namespace ProjetPoo {
 			// label10
 			// 
 			this->label10->AutoSize = true;
-			this->label10->Location = System::Drawing::Point(25, 401);
+			this->label10->Location = System::Drawing::Point(25, 417);
 			this->label10->Name = L"label10";
 			this->label10->Size = System::Drawing::Size(105, 16);
 			this->label10->TabIndex = 24;
@@ -496,7 +499,7 @@ namespace ProjetPoo {
 			// label11
 			// 
 			this->label11->AutoSize = true;
-			this->label11->Location = System::Drawing::Point(25, 428);
+			this->label11->Location = System::Drawing::Point(25, 444);
 			this->label11->Name = L"label11";
 			this->label11->Size = System::Drawing::Size(204, 16);
 			this->label11->TabIndex = 28;
@@ -505,7 +508,7 @@ namespace ProjetPoo {
 			// comboBox_customer
 			// 
 			this->comboBox_customer->FormattingEnabled = true;
-			this->comboBox_customer->Location = System::Drawing::Point(242, 398);
+			this->comboBox_customer->Location = System::Drawing::Point(242, 414);
 			this->comboBox_customer->Name = L"comboBox_customer";
 			this->comboBox_customer->Size = System::Drawing::Size(355, 24);
 			this->comboBox_customer->TabIndex = 29;
@@ -516,7 +519,7 @@ namespace ProjetPoo {
 			// label12
 			// 
 			this->label12->AutoSize = true;
-			this->label12->Location = System::Drawing::Point(25, 455);
+			this->label12->Location = System::Drawing::Point(25, 471);
 			this->label12->Name = L"label12";
 			this->label12->Size = System::Drawing::Size(215, 16);
 			this->label12->TabIndex = 30;
@@ -525,7 +528,7 @@ namespace ProjetPoo {
 			// comboBox_deli
 			// 
 			this->comboBox_deli->FormattingEnabled = true;
-			this->comboBox_deli->Location = System::Drawing::Point(242, 425);
+			this->comboBox_deli->Location = System::Drawing::Point(242, 441);
 			this->comboBox_deli->Name = L"comboBox_deli";
 			this->comboBox_deli->Size = System::Drawing::Size(355, 24);
 			this->comboBox_deli->TabIndex = 31;
@@ -536,7 +539,7 @@ namespace ProjetPoo {
 			// comboBox_bill
 			// 
 			this->comboBox_bill->FormattingEnabled = true;
-			this->comboBox_bill->Location = System::Drawing::Point(242, 452);
+			this->comboBox_bill->Location = System::Drawing::Point(242, 468);
 			this->comboBox_bill->Name = L"comboBox_bill";
 			this->comboBox_bill->Size = System::Drawing::Size(355, 24);
 			this->comboBox_bill->TabIndex = 32;
@@ -547,7 +550,7 @@ namespace ProjetPoo {
 			// label13
 			// 
 			this->label13->AutoSize = true;
-			this->label13->Location = System::Drawing::Point(25, 482);
+			this->label13->Location = System::Drawing::Point(25, 498);
 			this->label13->Name = L"label13";
 			this->label13->Size = System::Drawing::Size(159, 16);
 			this->label13->TabIndex = 33;
@@ -555,26 +558,15 @@ namespace ProjetPoo {
 			// 
 			// dateTimePicker_deli
 			// 
-			this->dateTimePicker_deli->Location = System::Drawing::Point(242, 479);
+			this->dateTimePicker_deli->Location = System::Drawing::Point(242, 495);
 			this->dateTimePicker_deli->Name = L"dateTimePicker_deli";
 			this->dateTimePicker_deli->Size = System::Drawing::Size(355, 22);
 			this->dateTimePicker_deli->TabIndex = 34;
 			// 
-			// checkBox_issue
-			// 
-			this->checkBox_issue->AutoSize = true;
-			this->checkBox_issue->Location = System::Drawing::Point(28, 510);
-			this->checkBox_issue->Name = L"checkBox_issue";
-			this->checkBox_issue->Size = System::Drawing::Size(111, 20);
-			this->checkBox_issue->TabIndex = 35;
-			this->checkBox_issue->Text = L"Date d\'envoi :";
-			this->checkBox_issue->UseVisualStyleBackColor = true;
-			this->checkBox_issue->CheckedChanged += gcnew System::EventHandler(this, &OrderForm::checkBox_issue_CheckedChanged);
-			// 
 			// checkBox_payment
 			// 
 			this->checkBox_payment->AutoSize = true;
-			this->checkBox_payment->Location = System::Drawing::Point(28, 536);
+			this->checkBox_payment->Location = System::Drawing::Point(28, 524);
 			this->checkBox_payment->Name = L"checkBox_payment";
 			this->checkBox_payment->Size = System::Drawing::Size(134, 20);
 			this->checkBox_payment->TabIndex = 36;
@@ -582,18 +574,10 @@ namespace ProjetPoo {
 			this->checkBox_payment->UseVisualStyleBackColor = true;
 			this->checkBox_payment->CheckedChanged += gcnew System::EventHandler(this, &OrderForm::checkBox_payment_CheckedChanged);
 			// 
-			// dateTimePicker_issue
-			// 
-			this->dateTimePicker_issue->Enabled = false;
-			this->dateTimePicker_issue->Location = System::Drawing::Point(242, 508);
-			this->dateTimePicker_issue->Name = L"dateTimePicker_issue";
-			this->dateTimePicker_issue->Size = System::Drawing::Size(355, 22);
-			this->dateTimePicker_issue->TabIndex = 37;
-			// 
 			// dateTimePicker_payment
 			// 
 			this->dateTimePicker_payment->Enabled = false;
-			this->dateTimePicker_payment->Location = System::Drawing::Point(242, 536);
+			this->dateTimePicker_payment->Location = System::Drawing::Point(242, 524);
 			this->dateTimePicker_payment->Name = L"dateTimePicker_payment";
 			this->dateTimePicker_payment->Size = System::Drawing::Size(355, 22);
 			this->dateTimePicker_payment->TabIndex = 38;
@@ -601,7 +585,7 @@ namespace ProjetPoo {
 			// label14
 			// 
 			this->label14->AutoSize = true;
-			this->label14->Location = System::Drawing::Point(25, 565);
+			this->label14->Location = System::Drawing::Point(25, 553);
 			this->label14->Name = L"label14";
 			this->label14->Size = System::Drawing::Size(124, 16);
 			this->label14->TabIndex = 39;
@@ -610,7 +594,7 @@ namespace ProjetPoo {
 			// comboBox_payment_method
 			// 
 			this->comboBox_payment_method->FormattingEnabled = true;
-			this->comboBox_payment_method->Location = System::Drawing::Point(242, 562);
+			this->comboBox_payment_method->Location = System::Drawing::Point(242, 550);
 			this->comboBox_payment_method->Name = L"comboBox_payment_method";
 			this->comboBox_payment_method->Size = System::Drawing::Size(355, 24);
 			this->comboBox_payment_method->TabIndex = 40;
@@ -701,14 +685,15 @@ namespace ProjetPoo {
 			this->button_order_enter->UseVisualStyleBackColor = true;
 			this->button_order_enter->Click += gcnew System::EventHandler(this, &OrderForm::button2_Click);
 			// 
-			// button3
+			// button_archive_order
 			// 
-			this->button3->Location = System::Drawing::Point(858, 482);
-			this->button3->Name = L"button3";
-			this->button3->Size = System::Drawing::Size(245, 104);
-			this->button3->TabIndex = 53;
-			this->button3->Text = L"Créer une facture et \r\narchiver la commande";
-			this->button3->UseVisualStyleBackColor = true;
+			this->button_archive_order->Location = System::Drawing::Point(858, 482);
+			this->button_archive_order->Name = L"button_archive_order";
+			this->button_archive_order->Size = System::Drawing::Size(245, 104);
+			this->button_archive_order->TabIndex = 53;
+			this->button_archive_order->Text = L"Créer une facture et \r\narchiver la commande";
+			this->button_archive_order->UseVisualStyleBackColor = true;
+			this->button_archive_order->Click += gcnew System::EventHandler(this, &OrderForm::button_archive_order_Click);
 			// 
 			// button_generate_reference
 			// 
@@ -720,25 +705,25 @@ namespace ProjetPoo {
 			this->button_generate_reference->UseVisualStyleBackColor = true;
 			this->button_generate_reference->Click += gcnew System::EventHandler(this, &OrderForm::button_generate_reference_Click);
 			// 
-			// dataGridView1
+			// button_archived_orders
 			// 
-			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dataGridView1->Location = System::Drawing::Point(1116, 20);
-			this->dataGridView1->Name = L"dataGridView1";
-			this->dataGridView1->RowHeadersWidth = 51;
-			this->dataGridView1->RowTemplate->Height = 24;
-			this->dataGridView1->Size = System::Drawing::Size(502, 235);
-			this->dataGridView1->TabIndex = 55;
+			this->button_archived_orders->Location = System::Drawing::Point(242, 315);
+			this->button_archived_orders->Name = L"button_archived_orders";
+			this->button_archived_orders->Size = System::Drawing::Size(224, 58);
+			this->button_archived_orders->TabIndex = 55;
+			this->button_archived_orders->Text = L"Afficher les commandes archivées";
+			this->button_archived_orders->UseVisualStyleBackColor = true;
+			this->button_archived_orders->Click += gcnew System::EventHandler(this, &OrderForm::button_archived_orders_Click);
 			// 
 			// OrderForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::SystemColors::ActiveCaption;
-			this->ClientSize = System::Drawing::Size(1630, 601);
-			this->Controls->Add(this->dataGridView1);
+			this->ClientSize = System::Drawing::Size(1112, 601);
+			this->Controls->Add(this->button_archived_orders);
 			this->Controls->Add(this->button_generate_reference);
-			this->Controls->Add(this->button3);
+			this->Controls->Add(this->button_archive_order);
 			this->Controls->Add(this->label21);
 			this->Controls->Add(this->button_order_enter);
 			this->Controls->Add(this->label19);
@@ -746,7 +731,7 @@ namespace ProjetPoo {
 			this->Controls->Add(this->label18);
 			this->Controls->Add(this->button_current_clear);
 			this->Controls->Add(this->textBox_price_total_ttc);
-			this->Controls->Add(this->button1);
+			this->Controls->Add(this->button_order_delete);
 			this->Controls->Add(this->textBox_price_total_ht);
 			this->Controls->Add(this->textBox_quantity_in_stock);
 			this->Controls->Add(this->textBox_order_reference);
@@ -763,11 +748,9 @@ namespace ProjetPoo {
 			this->Controls->Add(this->button_delete);
 			this->Controls->Add(this->dateTimePicker_payment);
 			this->Controls->Add(this->button_add);
-			this->Controls->Add(this->dateTimePicker_issue);
 			this->Controls->Add(this->textBox_price_over_level_ttc);
 			this->Controls->Add(this->checkBox_payment);
 			this->Controls->Add(this->label5);
-			this->Controls->Add(this->checkBox_issue);
 			this->Controls->Add(this->textBox_price_ttc);
 			this->Controls->Add(this->dateTimePicker_deli);
 			this->Controls->Add(this->label4);
@@ -793,7 +776,6 @@ namespace ProjetPoo {
 			this->Text = L"OrderForm";
 			this->Load += gcnew System::EventHandler(this, &OrderForm::OrderForm_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numericUpDown_quantity))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -808,7 +790,6 @@ private: System::Void OrderForm_Load(System::Object^ sender, System::EventArgs^ 
 	this->currentTable->Clear();
 	this->oDs = this->oCatalog->selectContain("contains", "test");
 	this->currentTable = this->oDs->Tables["contains"]->Clone();
-	this->dataGridView1->DataSource = this->currentTable;
 	reload_all_components();
 }
 private: System::Void reload_all_components(System::Void) {
@@ -820,7 +801,6 @@ private: System::Void reload_all_components(System::Void) {
 	}
 	else {
 		this->listBox_orders->Enabled = true;
-		this->button_generate_reference->Enabled = false;
 		this->button_order_enter->Enabled = true;
 		this->comboBox_customer->Enabled = false;
 		this->button_generate_reference->Visible = false;
@@ -838,8 +818,6 @@ private: System::Void reload_down_components(System::Void) {
 	this->comboBox_deli->Text = "Choisir une adresse de livraison";
 	this->comboBox_bill->Text = "Choisir une adresse de facturation";
 	this->dateTimePicker_deli->ResetText();
-	this->checkBox_issue->Checked = false;
-	this->dateTimePicker_issue->ResetText();
 	this->checkBox_payment->Checked = false;
 	this->dateTimePicker_payment->ResetText();
 	this->comboBox_payment_method->Text = "Choisir un moyen de paiment";
@@ -849,7 +827,6 @@ private: System::Void reload_down_components(System::Void) {
 }
 
 private: System::Void radioButton_order_create_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
-
 	reload_all_components();
 }
 
@@ -857,7 +834,7 @@ private: System::Void radioButton_order_create_CheckedChanged(System::Object^ se
 // Gestion de la liste des commandes :
 //
 private: System::Void listbox_orders_load(System::Void) {
-	this->oDs = this->oCatalog->selectOrder("orders");
+	this->oDs = this->oCatalog->selectOrderNonArchived("orders");
 	this->listBox_orders->Items->Clear();
 	for (int i = 0; i < this->oDs->Tables["orders"]->Rows->Count; i++) {
 		this->listBox_orders->Items->Add(
@@ -871,18 +848,12 @@ private: System::Void listBox_orders_SelectedIndexChanged(System::Object^ sender
 	if (index == -1) {
 		return;
 	}
-	this->oDs = this->oCatalog->selectOrder("orders");
+	this->button_order_delete->Enabled = true;
+	this->oDs = this->oCatalog->selectOrderNonArchived("orders");
 	this->reference_order = this->oDs->Tables["orders"]->Rows[index]->ItemArray[0]->ToString();
 	this->textBox_order_reference->Text = this->reference_order;
 	this->dateTimePicker_deli->Value = Convert::ToDateTime(this->oDs->Tables["orders"]->Rows[index]->ItemArray[1]);
-	if (this->oDs->Tables["orders"]->Rows[index]->ItemArray[2]->ToString() != "") {
-		this->checkBox_issue->Checked = true;
-		this->dateTimePicker_issue->Value = Convert::ToDateTime(this->oDs->Tables["orders"]->Rows[index]->ItemArray[2]);
-	}
-	else {
-		this->checkBox_issue->Checked = false;
-		this->dateTimePicker_issue->ResetText();
-	}
+	
 	if (this->oDs->Tables["orders"]->Rows[index]->ItemArray[3]->ToString() != "") {
 		this->checkBox_payment->Checked = true;
 		this->dateTimePicker_payment->Value = Convert::ToDateTime(this->oDs->Tables["orders"]->Rows[index]->ItemArray[3]);
@@ -933,7 +904,16 @@ private: System::Void listBox_orders_SelectedIndexChanged(System::Object^ sender
 	this->currentTable = this->oDs->Tables["contains"]->Copy();
 	load_current_listbox();
 }
+private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+	this->oCatalog->deleteOrder(this->reference_order);
+	listbox_orders_load();
+}
 
+private: System::Void button_archived_orders_Click(System::Object^ sender, System::EventArgs^ e) {
+	ArchivedOrdersForm form;
+	form.ShowDialog();
+	//afficher les commandes archivées
+}
 
 //
 // Gestion des catégories :
@@ -1051,7 +1031,6 @@ private: System::Void load_current_listbox(System::Void) {
 			this->currentTable->Rows[i]->ItemArray[2]->ToString()
 		);
 	}
-	this->dataGridView1->DataSource = currentTable;
 	load_prices();
 }
 private: System::Void load_prices(System::Void) {
@@ -1220,17 +1199,11 @@ private: System::Void comboBox_payment_method_SelectedIndexChanged(System::Objec
 //
 // Gestion des CheckBoxes des Dates :
 //
-private: System::Void checkBox_issue_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
-	if (this->checkBox_issue->Checked) {
-		this->dateTimePicker_issue->Enabled = true;
-	}
-	else {
-		this->dateTimePicker_issue->Enabled = false;
-	}
-}
+
 private: System::Void checkBox_payment_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
 	if (this->checkBox_payment->Checked) {
 		this->dateTimePicker_payment->Enabled = true;
+
 	}
 	else {
 		this->dateTimePicker_payment->Enabled = false;
@@ -1247,7 +1220,7 @@ private: System::Void button_generate_reference_Click(System::Object^ sender, Sy
 	String^ year = Convert::ToString(date->Year);
 	String^ city = Convert::ToString(this->city->Remove(3))->ToUpperInvariant();
 	this->new_reference_order = firstName + lastName + year + city;
-	this->oDs = this->oCatalog->searchOrder("searchorder", this->reference_order);
+	this->oDs = this->oCatalog->searchOrder("searchorder", this->new_reference_order);
 	int number = this->oDs->Tables["searchorder"]->Rows->Count;
 	this->new_reference_order += number;
 	this->textBox_order_reference->Text = new_reference_order;
@@ -1262,15 +1235,6 @@ private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e
 	this->delivery_date = System::Convert::ToString(date->Month) + "/";
 	this->delivery_date += System::Convert::ToString(date->Day) + "/";
 	this->delivery_date += System::Convert::ToString(date->Year);
-	if (this->checkBox_issue->Checked) {
-		System::DateTime^ date = this->dateTimePicker_issue->Value;
-		this->issue_date = "'" + System::Convert::ToString(date->Month) + "/";
-		this->issue_date += System::Convert::ToString(date->Day) + "/";
-		this->issue_date += System::Convert::ToString(date->Year) + "'";
-	}
-	else {
-		this->issue_date = "NULL";
-	}
 	if (this->checkBox_payment->Checked) {
 		System::DateTime^ date = this->dateTimePicker_payment->Value;
 		this->payment_date = "'" + System::Convert::ToString(date->Month) + "/";
@@ -1282,13 +1246,13 @@ private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e
 	}
 	if (this->radioButton_order_create->Checked) {
 		this->oCatalog->createOrder(this->reference_order,
-			this->delivery_date, this->issue_date, this->payment_date,
+			this->delivery_date, "NULL", this->payment_date,
 			this->id_payment_method, this->id_customer, this->id_bill, this->id_deli,
 			this->currentTable);
 	}
 	else {
 		this->oCatalog->updateOrder(this->reference_order,
-			this->delivery_date, this->issue_date, this->payment_date,
+			this->delivery_date, "NULL", this->payment_date,
 			this->id_payment_method, this->id_bill, this->id_deli, this->currentTable);
 	}
 	this->currentTable->Clear();
@@ -1304,6 +1268,18 @@ private: System::Void listBox_currents_SelectedIndexChanged(System::Object^ send
 private: System::Void button_current_clear_Click(System::Object^ sender, System::EventArgs^ e) {
 	this->currentTable->Clear();
 	load_current_listbox();
+}
+
+
+private: System::Void button_archive_order_Click(System::Object^ sender, System::EventArgs^ e) {
+	button2_Click(sender, e);
+	System::DateTime^ date = DateTime::Now;
+	this->issue_date = System::Convert::ToString(date->Month) + "/";
+	this->issue_date += System::Convert::ToString(date->Day) + "/";
+	this->issue_date += System::Convert::ToString(date->Year);
+	this->oCatalog->setOrderIssueDate(this->reference_order, this->issue_date);
+	this->oCatalog->archiveOrder(this->reference_order);
+	reload_all_components();
 }
 };
 }
