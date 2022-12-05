@@ -1,4 +1,5 @@
 #pragma once
+#include <string>
 #include <iostream>
 #include "testUni.h"
 using namespace std;
@@ -10,11 +11,11 @@ ProjetPoo::testUni::testUni() {
 
 }
 
-ProjetPoo::testUni::testUni(char t_first_name, char t_last_name, int t_sup, string t_hire_date, char t_adress, int t_CP, char t_city) 
+ProjetPoo::testUni::testUni(char first_name, char last_name, int sup, string hire_date, char address, int CP, char city) 
 {
 	for (int i = 0; i < 10; i++)
 	{
-		CreateStaff(t_first_name, t_last_name, t_sup, t_hire_date, t_adress, t_CP, t_city);
+		CreateStaff(first_name, last_name, sup, hire_date, address, CP, city);
 	}
 	cout << selectTheStaff << endl;
 	bool x;
@@ -30,12 +31,12 @@ ProjetPoo::testUni::testUni(char t_first_name, char t_last_name, int t_sup, stri
 	}
 }
 
-ProjetPoo::testUni::CreateStaff(char t_first_name, char t_last_name,int t_sup,string t_hire_date,char t_address, int t_address, int t_CP, char t_city)
+ProjetPoo::testUni::CreateStaff(char first_name, char last_name,int sup,string hire_date,char address, int address, int CP, char city)
 {
 	// Créer People
 	System::Data::DataRow^ row;
 	int idPeople;
-	row = this->oPeople->createPeople(t_first_name, t_last_name);
+	row = this->oPeople->createPeople(first_name, last_name);
 	idPeople = System::Convert::ToInt32(row->ItemArray[0]);
 
 	System::Data::DataRow^ row;
@@ -47,12 +48,12 @@ ProjetPoo::testUni::CreateStaff(char t_first_name, char t_last_name,int t_sup,st
 		sup = System::Convert::ToInt32(this->oDs->Tables["staff"]->Rows[indexStaff]->ItemArray[0]);
 	}
 
-	System::DateTime^ date = t_hire_date;
+	System::DateTime^ date = hire_date;
 	System::String^ dateString = System::Convert::ToString(date->Month) + "/";
 	dateString += System::Convert::ToString(date->Day) + "/";
 	dateString += System::Convert::ToString(date->Year);
 	this->oStaff->createStaff(idPeople, dateString, sup, "");
-	int idAddress = this->oAddress->createAddress("", "", t_address, t_CP, t_city);
+	int idAddress = this->oAddress->createAddress("", "", address, CP, city);
 	this->oStaff->updateStaffAddress(idPeople, idAddress);
 }
 
