@@ -65,10 +65,9 @@ namespace ProjetPoo {
 			// 
 			// button_create_item
 			// 
-			this->button_create_item->Location = System::Drawing::Point(13, 103);
-			this->button_create_item->Margin = System::Windows::Forms::Padding(4);
+			this->button_create_item->Location = System::Drawing::Point(10, 84);
 			this->button_create_item->Name = L"button_create_item";
-			this->button_create_item->Size = System::Drawing::Size(184, 82);
+			this->button_create_item->Size = System::Drawing::Size(138, 67);
 			this->button_create_item->TabIndex = 2;
 			this->button_create_item->Text = L"Gérer les Article";
 			this->button_create_item->UseVisualStyleBackColor = true;
@@ -76,47 +75,45 @@ namespace ProjetPoo {
 			// 
 			// button_create_category
 			// 
-			this->button_create_category->Location = System::Drawing::Point(13, 13);
-			this->button_create_category->Margin = System::Windows::Forms::Padding(4);
+			this->button_create_category->Location = System::Drawing::Point(10, 11);
 			this->button_create_category->Name = L"button_create_category";
-			this->button_create_category->Size = System::Drawing::Size(184, 82);
-			this->button_create_category->TabIndex = 3;
+			this->button_create_category->Size = System::Drawing::Size(138, 67);
+			this->button_create_category->TabIndex = 1;
 			this->button_create_category->Text = L"Gérer les Catégorie";
 			this->button_create_category->UseVisualStyleBackColor = true;
 			this->button_create_category->Click += gcnew System::EventHandler(this, &CatalogForm::button_create_category_Click);
 			// 
 			// button_orders
 			// 
-			this->button_orders->Location = System::Drawing::Point(13, 193);
-			this->button_orders->Margin = System::Windows::Forms::Padding(4);
+			this->button_orders->Location = System::Drawing::Point(10, 157);
 			this->button_orders->Name = L"button_orders";
-			this->button_orders->Size = System::Drawing::Size(184, 82);
-			this->button_orders->TabIndex = 4;
+			this->button_orders->Size = System::Drawing::Size(138, 67);
+			this->button_orders->TabIndex = 3;
 			this->button_orders->Text = L"Gérer les Commandes";
 			this->button_orders->UseVisualStyleBackColor = true;
 			this->button_orders->Click += gcnew System::EventHandler(this, &CatalogForm::button_orders_Click);
 			// 
 			// button_payments
 			// 
-			this->button_payments->Location = System::Drawing::Point(13, 283);
-			this->button_payments->Margin = System::Windows::Forms::Padding(4);
+			this->button_payments->Location = System::Drawing::Point(10, 230);
 			this->button_payments->Name = L"button_payments";
-			this->button_payments->Size = System::Drawing::Size(184, 82);
-			this->button_payments->TabIndex = 5;
+			this->button_payments->Size = System::Drawing::Size(138, 67);
+			this->button_payments->TabIndex = 4;
 			this->button_payments->Text = L"Gérer les Moyens de Paiment";
 			this->button_payments->UseVisualStyleBackColor = true;
 			this->button_payments->Click += gcnew System::EventHandler(this, &CatalogForm::button_payments_Click);
 			// 
 			// CatalogForm
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::SystemColors::ActiveCaption;
-			this->ClientSize = System::Drawing::Size(1415, 702);
+			this->ClientSize = System::Drawing::Size(1061, 570);
 			this->Controls->Add(this->button_payments);
 			this->Controls->Add(this->button_orders);
 			this->Controls->Add(this->button_create_category);
 			this->Controls->Add(this->button_create_item);
+			this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->Name = L"CatalogForm";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterParent;
 			this->Text = L"CatalogForm";

@@ -70,22 +70,20 @@ namespace ProjetPoo {
 			// 
 			// button_people_management
 			// 
-			this->button_people_management->Location = System::Drawing::Point(16, 15);
-			this->button_people_management->Margin = System::Windows::Forms::Padding(4);
+			this->button_people_management->Location = System::Drawing::Point(12, 12);
 			this->button_people_management->Name = L"button_people_management";
-			this->button_people_management->Size = System::Drawing::Size(184, 82);
-			this->button_people_management->TabIndex = 0;
+			this->button_people_management->Size = System::Drawing::Size(138, 67);
+			this->button_people_management->TabIndex = 1;
 			this->button_people_management->Text = L"Gestion des\r\nPersonnes";
 			this->button_people_management->UseVisualStyleBackColor = true;
 			this->button_people_management->Click += gcnew System::EventHandler(this, &MainForm::button_people_management_Click);
 			// 
 			// button_catalog
 			// 
-			this->button_catalog->Location = System::Drawing::Point(13, 105);
-			this->button_catalog->Margin = System::Windows::Forms::Padding(4);
+			this->button_catalog->Location = System::Drawing::Point(10, 85);
 			this->button_catalog->Name = L"button_catalog";
-			this->button_catalog->Size = System::Drawing::Size(184, 82);
-			this->button_catalog->TabIndex = 1;
+			this->button_catalog->Size = System::Drawing::Size(138, 67);
+			this->button_catalog->TabIndex = 2;
 			this->button_catalog->Text = L"Catalogue";
 			this->button_catalog->UseVisualStyleBackColor = true;
 			this->button_catalog->Click += gcnew System::EventHandler(this, &MainForm::button_catalog_Click);
@@ -93,22 +91,22 @@ namespace ProjetPoo {
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(457, 48);
+			this->label1->Location = System::Drawing::Point(343, 39);
+			this->label1->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(44, 16);
-			this->label1->TabIndex = 2;
+			this->label1->Size = System::Drawing::Size(35, 13);
+			this->label1->TabIndex = 0;
 			this->label1->Text = L"label1";
 			// 
 			// MainForm
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::SystemColors::ActiveCaption;
-			this->ClientSize = System::Drawing::Size(1415, 702);
+			this->ClientSize = System::Drawing::Size(1061, 570);
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->button_catalog);
 			this->Controls->Add(this->button_people_management);
-			this->Margin = System::Windows::Forms::Padding(4);
 			this->Name = L"MainForm";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"MainForm";

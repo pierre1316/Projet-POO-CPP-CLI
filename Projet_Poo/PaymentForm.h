@@ -86,10 +86,11 @@ namespace ProjetPoo {
 			// 
 			this->radio_create_method->AutoSize = true;
 			this->radio_create_method->Checked = true;
-			this->radio_create_method->Location = System::Drawing::Point(12, 35);
+			this->radio_create_method->Location = System::Drawing::Point(9, 28);
+			this->radio_create_method->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->radio_create_method->Name = L"radio_create_method";
-			this->radio_create_method->Size = System::Drawing::Size(61, 20);
-			this->radio_create_method->TabIndex = 0;
+			this->radio_create_method->Size = System::Drawing::Size(50, 17);
+			this->radio_create_method->TabIndex = 1;
 			this->radio_create_method->TabStop = true;
 			this->radio_create_method->Text = L"Créer";
 			this->radio_create_method->UseVisualStyleBackColor = true;
@@ -98,55 +99,60 @@ namespace ProjetPoo {
 			// radio_modify_method
 			// 
 			this->radio_modify_method->AutoSize = true;
-			this->radio_modify_method->Location = System::Drawing::Point(88, 35);
+			this->radio_modify_method->Location = System::Drawing::Point(66, 28);
+			this->radio_modify_method->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->radio_modify_method->Name = L"radio_modify_method";
-			this->radio_modify_method->Size = System::Drawing::Size(76, 20);
-			this->radio_modify_method->TabIndex = 1;
+			this->radio_modify_method->Size = System::Drawing::Size(62, 17);
+			this->radio_modify_method->TabIndex = 2;
 			this->radio_modify_method->Text = L"Modifier";
 			this->radio_modify_method->UseVisualStyleBackColor = true;
 			// 
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(12, 13);
+			this->label1->Location = System::Drawing::Point(9, 11);
+			this->label1->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(206, 16);
-			this->label1->TabIndex = 2;
+			this->label1->Size = System::Drawing::Size(163, 13);
+			this->label1->TabIndex = 0;
 			this->label1->Text = L"Gestion des moyens de paiment :\r\n";
 			// 
 			// listBox_payments_methods
 			// 
 			this->listBox_payments_methods->Enabled = false;
 			this->listBox_payments_methods->FormattingEnabled = true;
-			this->listBox_payments_methods->ItemHeight = 16;
-			this->listBox_payments_methods->Location = System::Drawing::Point(12, 61);
+			this->listBox_payments_methods->Location = System::Drawing::Point(9, 50);
+			this->listBox_payments_methods->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->listBox_payments_methods->Name = L"listBox_payments_methods";
-			this->listBox_payments_methods->Size = System::Drawing::Size(247, 180);
+			this->listBox_payments_methods->Size = System::Drawing::Size(186, 147);
 			this->listBox_payments_methods->TabIndex = 3;
 			this->listBox_payments_methods->SelectedIndexChanged += gcnew System::EventHandler(this, &PaymentForm::listBox_categories_SelectedIndexChanged);
 			// 
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(322, 113);
+			this->label2->Location = System::Drawing::Point(242, 92);
+			this->label2->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(42, 16);
-			this->label2->TabIndex = 4;
+			this->label2->Size = System::Drawing::Size(35, 13);
+			this->label2->TabIndex = 0;
 			this->label2->Text = L"Nom :";
 			// 
 			// textBox_name
 			// 
-			this->textBox_name->Location = System::Drawing::Point(370, 110);
+			this->textBox_name->Location = System::Drawing::Point(278, 89);
+			this->textBox_name->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->textBox_name->Name = L"textBox_name";
-			this->textBox_name->Size = System::Drawing::Size(200, 22);
-			this->textBox_name->TabIndex = 6;
+			this->textBox_name->Size = System::Drawing::Size(151, 20);
+			this->textBox_name->TabIndex = 4;
 			// 
 			// button_enter
 			// 
-			this->button_enter->Location = System::Drawing::Point(441, 181);
+			this->button_enter->Location = System::Drawing::Point(331, 147);
+			this->button_enter->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->button_enter->Name = L"button_enter";
-			this->button_enter->Size = System::Drawing::Size(163, 47);
-			this->button_enter->TabIndex = 9;
+			this->button_enter->Size = System::Drawing::Size(122, 38);
+			this->button_enter->TabIndex = 5;
 			this->button_enter->Text = L"Enregistrer";
 			this->button_enter->UseVisualStyleBackColor = true;
 			this->button_enter->Click += gcnew System::EventHandler(this, &PaymentForm::button_enter_Click);
@@ -154,20 +160,21 @@ namespace ProjetPoo {
 			// button_delete
 			// 
 			this->button_delete->Enabled = false;
-			this->button_delete->Location = System::Drawing::Point(265, 181);
+			this->button_delete->Location = System::Drawing::Point(199, 147);
+			this->button_delete->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->button_delete->Name = L"button_delete";
-			this->button_delete->Size = System::Drawing::Size(163, 47);
-			this->button_delete->TabIndex = 10;
+			this->button_delete->Size = System::Drawing::Size(122, 38);
+			this->button_delete->TabIndex = 6;
 			this->button_delete->Text = L"Supprimer";
 			this->button_delete->UseVisualStyleBackColor = true;
 			this->button_delete->Click += gcnew System::EventHandler(this, &PaymentForm::button_delete_Click);
 			// 
 			// PaymentForm
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::SystemColors::ActiveCaption;
-			this->ClientSize = System::Drawing::Size(618, 252);
+			this->ClientSize = System::Drawing::Size(464, 205);
 			this->Controls->Add(this->button_delete);
 			this->Controls->Add(this->button_enter);
 			this->Controls->Add(this->textBox_name);
@@ -176,6 +183,7 @@ namespace ProjetPoo {
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->radio_modify_method);
 			this->Controls->Add(this->radio_create_method);
+			this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->Name = L"PaymentForm";
 			this->Text = L"CreateCategoryForm";
 			this->Load += gcnew System::EventHandler(this, &PaymentForm::CreateCategoryForm_Load);

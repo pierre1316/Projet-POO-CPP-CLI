@@ -74,7 +74,7 @@ namespace ProjetPoo {
 			this->label1->Location = System::Drawing::Point(84, 119);
 			this->label1->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(166, 25);
+			this->label1->Size = System::Drawing::Size(134, 20);
 			this->label1->TabIndex = 0;
 			this->label1->Text = L"Nom d\'utilisateur :";
 			// 
@@ -84,8 +84,8 @@ namespace ProjetPoo {
 			this->label2->Location = System::Drawing::Point(84, 209);
 			this->label2->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(141, 25);
-			this->label2->TabIndex = 1;
+			this->label2->Size = System::Drawing::Size(113, 20);
+			this->label2->TabIndex = 0;
 			this->label2->Text = L"Mot de passe :";
 			// 
 			// textBox1
@@ -93,8 +93,8 @@ namespace ProjetPoo {
 			this->textBox1->Location = System::Drawing::Point(269, 116);
 			this->textBox1->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(148, 30);
-			this->textBox1->TabIndex = 2;
+			this->textBox1->Size = System::Drawing::Size(148, 26);
+			this->textBox1->TabIndex = 1;
 			// 
 			// textBox2
 			// 
@@ -102,8 +102,8 @@ namespace ProjetPoo {
 			this->textBox2->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->textBox2->Name = L"textBox2";
 			this->textBox2->PasswordChar = '*';
-			this->textBox2->Size = System::Drawing::Size(148, 30);
-			this->textBox2->TabIndex = 3;
+			this->textBox2->Size = System::Drawing::Size(148, 26);
+			this->textBox2->TabIndex = 2;
 			// 
 			// button1
 			// 
@@ -111,7 +111,7 @@ namespace ProjetPoo {
 			this->button1->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(136, 36);
-			this->button1->TabIndex = 4;
+			this->button1->TabIndex = 3;
 			this->button1->Text = L"Connection";
 			this->button1->UseVisualStyleBackColor = true;
 			this->button1->Click += gcnew System::EventHandler(this, &ConnexionForm::button1_Click);
@@ -122,12 +122,12 @@ namespace ProjetPoo {
 			this->label3->Location = System::Drawing::Point(207, 44);
 			this->label3->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(0, 25);
+			this->label3->Size = System::Drawing::Size(0, 20);
 			this->label3->TabIndex = 5;
 			// 
 			// ConnexionForm
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(12, 25);
+			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::SystemColors::ActiveCaption;
 			this->ClientSize = System::Drawing::Size(573, 441);
