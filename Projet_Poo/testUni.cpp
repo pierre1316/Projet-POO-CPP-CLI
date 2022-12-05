@@ -17,7 +17,7 @@ ProjetPoo::testUni::testUni(char first_name, char last_name, int sup, string hir
 	{
 		CreateStaff(first_name, last_name, sup, hire_date, address, CP, city);
 	}
-	cout << selectTheStaff << endl;
+	cout << selectAllStaff << endl;
 	bool x;
 	cout << "Voulez vous passer à la suppression des données ?" << endl;
 	cin >> x;
