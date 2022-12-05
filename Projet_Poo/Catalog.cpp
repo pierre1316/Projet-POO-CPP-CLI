@@ -6,7 +6,6 @@ Catalog::Catalog(void)
 {
 	this->oDs = gcnew System::Data::DataSet();
 	this->oCad = gcnew NS_Comp_Data::CLcad();
-	this->oMappTB = gcnew NS_Comp_Mappage::CLmapTB();
 }
 
 System::Void Catalog::createCategory(System::String^ category_name, System::String^ tva_rate)

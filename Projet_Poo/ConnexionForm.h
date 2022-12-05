@@ -46,6 +46,7 @@ namespace ProjetPoo {
 	private: System::Windows::Forms::Button^ button1;
 	private: System::Windows::Forms::Label^ label3;
 	private: int id_staff;
+	private: System::Windows::Forms::Button^ button2;
 
 	private:
 		/// <summary>
@@ -66,6 +67,7 @@ namespace ProjetPoo {
 			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->label3 = (gcnew System::Windows::Forms::Label());
+			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
 			// 
 			// label1
@@ -104,6 +106,7 @@ namespace ProjetPoo {
 			this->textBox2->PasswordChar = '*';
 			this->textBox2->Size = System::Drawing::Size(148, 26);
 			this->textBox2->TabIndex = 2;
+			this->textBox2->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &ConnexionForm::textBox2_KeyDown);
 			// 
 			// button1
 			// 
@@ -122,8 +125,19 @@ namespace ProjetPoo {
 			this->label3->Location = System::Drawing::Point(207, 44);
 			this->label3->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(0, 20);
+			this->label3->Size = System::Drawing::Size(38, 20);
 			this->label3->TabIndex = 5;
+			this->label3->Text = L"Ahh";
+			// 
+			// button2
+			// 
+			this->button2->Location = System::Drawing::Point(462, 306);
+			this->button2->Name = L"button2";
+			this->button2->Size = System::Drawing::Size(80, 36);
+			this->button2->TabIndex = 6;
+			this->button2->Text = L"button2";
+			this->button2->UseVisualStyleBackColor = true;
+			this->button2->Click += gcnew System::EventHandler(this, &ConnexionForm::button2_Click);
 			// 
 			// ConnexionForm
 			// 
@@ -131,6 +145,7 @@ namespace ProjetPoo {
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::SystemColors::ActiveCaption;
 			this->ClientSize = System::Drawing::Size(573, 441);
+			this->Controls->Add(this->button2);
 			this->Controls->Add(this->label3);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->textBox2);
@@ -169,5 +184,17 @@ public: int get_id_staff(System::Void) {
 	return this->id_staff;
 }
 
+
+
+private: System::Void textBox2_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
+	if (e->KeyCode == Keys::Enter) {
+		button1_Click(sender, e);
+	}
+}
+private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+	this->id_staff = 4;
+	this->DialogResult = System::Windows::Forms::DialogResult::OK;
+	this->Close();
+}
 };
 }

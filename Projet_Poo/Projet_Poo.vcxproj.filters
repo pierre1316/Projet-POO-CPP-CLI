@@ -28,13 +28,11 @@
     <ClCompile Include="CLcad.cpp">
       <Filter>Classes de Communication</Filter>
     </ClCompile>
-    <ClCompile Include="CLmapTB.cpp">
-      <Filter>Classes de Mappage</Filter>
-    </ClCompile>
     <ClCompile Include="OrderForm.cpp" />
     <ClCompile Include="PaymentForm.cpp" />
     <ClCompile Include="ArchivedOrdersForm.cpp" />
     <ClCompile Include="ConnexionForm.cpp" />
+    <ClCompile Include="ChangePasswordForm.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CreatePeopleForm.h" />
@@ -64,13 +62,11 @@
     <ClInclude Include="CLcad.h">
       <Filter>Classes de Communication</Filter>
     </ClInclude>
-    <ClInclude Include="CLmapTB.h">
-      <Filter>Classes de Mappage</Filter>
-    </ClInclude>
     <ClInclude Include="OrderForm.h" />
     <ClInclude Include="PaymentForm.h" />
     <ClInclude Include="ArchivedOrdersForm.h" />
     <ClInclude Include="ConnexionForm.h" />
+    <ClInclude Include="ChangePasswordForm.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Classes de Service">
