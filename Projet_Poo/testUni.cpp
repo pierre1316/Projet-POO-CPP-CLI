@@ -53,7 +53,7 @@ ProjetPoo::testUni::CreateStaff(char first_name, char last_name,int sup,string h
 	dateString += System::Convert::ToString(date->Day) + "/";
 	dateString += System::Convert::ToString(date->Year);
 	this->oStaff->createStaff(idPeople, dateString, sup, "");
-	int idAddress = this->oAddress->createAddress("", "", address, CP, city);
+	int idAddress = this->oAddress->createAddress("", "", address, CP, _city);
 	this->oStaff->updateStaffAddress(idPeople, idAddress);
 }
 
