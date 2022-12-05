@@ -122,11 +122,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AddressForm.cpp" />
+    <ClCompile Include="ArchivedOrdersForm.cpp" />
     <ClCompile Include="Catalog.cpp" />
     <ClCompile Include="CatalogForm.cpp" />
     <ClCompile Include="CLcad.cpp" />
     <ClCompile Include="CLmapTB.cpp" />
     <ClCompile Include="Address.cpp" />
+    <ClCompile Include="ConnexionForm.cpp" />
     <ClCompile Include="Customer.cpp" />
     <ClCompile Include="OrderForm.cpp" />
     <ClCompile Include="PaymentForm.cpp" />
@@ -144,6 +146,9 @@
     <ClInclude Include="AddressForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="ArchivedOrdersForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="Catalog.h" />
     <ClInclude Include="CatalogForm.h">
       <FileType>CppForm</FileType>
@@ -151,6 +156,9 @@
     <ClInclude Include="CLcad.h" />
     <ClInclude Include="CLmapTB.h" />
     <ClInclude Include="Address.h" />
+    <ClInclude Include="ConnexionForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="Customer.h" />
     <ClInclude Include="OrderForm.h">
       <FileType>CppForm</FileType>
@@ -186,8 +194,14 @@
     <EmbeddedResource Include="AddressForm.resx">
       <DependentUpon>AddressForm.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ArchivedOrdersForm.resx">
+      <DependentUpon>ArchivedOrdersForm.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CatalogForm.resx">
       <DependentUpon>CatalogForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConnexionForm.resx">
+      <DependentUpon>ConnexionForm.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CreateAddressForm.resx">
       <DependentUpon>CreateAddressForm.h</DependentUpon>

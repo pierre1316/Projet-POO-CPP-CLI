@@ -37,9 +37,9 @@ System::Data::DataSet^ Staff::selectStaffNoCust(System::String^ dataTableName)
 	return this->oCad->getRows(this->sql, dataTableName);
 }
 
-System::Void Staff::createStaff(int idPeople, System::String^ hiring_date, int idSuperior, System::String^ password) 
+System::Void Staff::createStaff(int idPeople, System::String^ hiring_date, int idSuperior, System::String^ username, System::String^ password) 
 {
-	this->sql = "EXEC PS_STAFF_CREATE @idPeople = '" + idPeople + "', @hiring_date = '" + hiring_date + "'";
+	this->sql = "EXEC PS_STAFF_CREATE @idPeople = '" + idPeople + "', @hiring_date = '" + hiring_date + "', @username = '" + username + "', @password = '" + password + "'";
 	this->oCad->actionRows(this->sql);
 	if (idSuperior != -1) {
 		this->sql = "EXEC PS_SUPERIOR_UPDATE @idPeople = '" + idPeople + "', @idSuperior = '" + idSuperior + "'";
@@ -81,4 +81,11 @@ System::Void Staff::setStaffAddressToNULL(int idPeople)
 {
 	this->sql = "EXEC PS_STAFF_ADDRESS_UPTADE_NULL @idStaff = '" + idPeople + "'";
 	this->oCad->actionRows(this->sql);
+}
+
+System::Data::DataSet^ Staff::getConnexion(System::String^ dataTableName, System::String^ username, System::String^ password)
+{
+	this->sql = "EXEC PS_STAFF_SELECT_CONNEXION @username = '" + username + "', @password = '" + password + "'";
+
+	return this->oCad->getRows(this->sql, dataTableName);
 }

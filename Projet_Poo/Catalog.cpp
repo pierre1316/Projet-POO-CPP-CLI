@@ -72,9 +72,9 @@ System::Void Catalog::deleteItem(int id_item)
 	this->oCad->actionRows(sql);
 }
 
-System::Void Catalog::createColor(int id_item, System::String^ name, System::String^ price_multiplicator, int quantity_in_stock, int color_r, int color_g, int color_b)
+System::Void Catalog::createColor(int id_item, System::String^ name, System::String^ price_multiplicator, int quantity_in_stock)
 {
-	System::String^ sql = "EXEC PS_COLOR_CREATE @id_item = '" + id_item + "', @name = '" + name + "', @price_multiplicator = '" + price_multiplicator + "', @quantity_in_stock = '" + quantity_in_stock + "', @color_r = '" + color_r + "', @color_g = '" + color_g + "', @color_b = '" + color_b + "'";
+	System::String^ sql = "EXEC PS_COLOR_CREATE @id_item = '" + id_item + "', @name = '" + name + "', @price_multiplicator = '" + price_multiplicator + "', @quantity_in_stock = '" + quantity_in_stock + "'";
 
 	this->oCad->actionRows(sql);
 }
@@ -144,6 +144,12 @@ System::Void Catalog::createOrder(System::String^ reference_order, System::Strin
 	}
 }
 
+System::Void Catalog::deleteOrder(System::String^ reference_order) {
+	System::String^ sql = "EXEC PS_ORDER_DELETE @reference_order = '" + reference_order + "'";
+
+	this->oCad->actionRows(sql);
+}
+
 System::Data::DataSet^ Catalog::searchOrder(System::String^ DataTableName, System::String^ reference_order)
 {
 	System::String^ sql = "EXEC PS_ORDER_SEARCH @reference_order = '" + reference_order + "'";
@@ -151,9 +157,16 @@ System::Data::DataSet^ Catalog::searchOrder(System::String^ DataTableName, Syste
 	return this->oCad->getRows(sql, DataTableName);
 }
 
-System::Data::DataSet^ Catalog::selectOrder(System::String^ DataTableName)
+System::Data::DataSet^ Catalog::selectOrderNonArchived(System::String^ DataTableName)
 {
-	System::String^ sql = "EXEC PS_ORDER_SELECT";
+	System::String^ sql = "EXEC PS_ORDER_SELECT_NON_ARCHIVED";
+
+	return this->oCad->getRows(sql, DataTableName);
+}
+
+System::Data::DataSet^ Catalog::selectOrderArchived(System::String^ DataTableName)
+{
+	System::String^ sql = "EXEC PS_ORDER_SELECT_ARCHIVED";
 
 	return this->oCad->getRows(sql, DataTableName);
 }
@@ -179,4 +192,18 @@ System::Void Catalog::updateOrder(System::String^ reference_order, System::Strin
 			"', @color_name = '" + table->Rows[i]->ItemArray[2]->ToString() + "', @quantity = '" + table->Rows[i]->ItemArray[3]->ToString() + "'";
 		this->oCad->actionRows(sql);
 	}
+}
+
+System::Void Catalog::archiveOrder(System::String^ reference_order) 
+{
+	System::String^ sql = "EXEC PS_ORDER_ARCHIVE @reference_order = '" + reference_order + "'";
+
+	this->oCad->actionRows(sql);
+}
+
+System::Void Catalog::setOrderIssueDate(System::String^ reference_order, System::String^ issue_date) 
+{
+	System::String^ sql = "EXEC PS_ORDER_SET_ISSUE_DATE @reference_order = '" + reference_order + "', @issue_date = '" + issue_date + "'";
+
+	this->oCad->actionRows(sql);
 }
