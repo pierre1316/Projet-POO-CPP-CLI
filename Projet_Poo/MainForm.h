@@ -1,6 +1,7 @@
 #pragma once
 #include "PeopleForm.h"
 #include "CatalogForm.h"
+#include "TestUniForm.h"
 
 namespace ProjetPoo {
 
@@ -38,6 +39,8 @@ namespace ProjetPoo {
 		}
 	private: System::Windows::Forms::Button^ button_people_management;
 	private: System::Windows::Forms::Button^ button_catalog;
+	private: System::Windows::Forms::Button^ button_test_uni;
+
 	protected:
 
 	protected:
@@ -59,12 +62,13 @@ namespace ProjetPoo {
 		{
 			this->button_people_management = (gcnew System::Windows::Forms::Button());
 			this->button_catalog = (gcnew System::Windows::Forms::Button());
+			this->button_test_uni = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
 			// 
 			// button_people_management
 			// 
 			this->button_people_management->Location = System::Drawing::Point(16, 15);
-			this->button_people_management->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->button_people_management->Margin = System::Windows::Forms::Padding(4);
 			this->button_people_management->Name = L"button_people_management";
 			this->button_people_management->Size = System::Drawing::Size(184, 82);
 			this->button_people_management->TabIndex = 0;
@@ -74,7 +78,7 @@ namespace ProjetPoo {
 			// 
 			// button_catalog
 			// 
-			this->button_catalog->Location = System::Drawing::Point(13, 105);
+			this->button_catalog->Location = System::Drawing::Point(16, 105);
 			this->button_catalog->Margin = System::Windows::Forms::Padding(4);
 			this->button_catalog->Name = L"button_catalog";
 			this->button_catalog->Size = System::Drawing::Size(184, 82);
@@ -83,15 +87,27 @@ namespace ProjetPoo {
 			this->button_catalog->UseVisualStyleBackColor = true;
 			this->button_catalog->Click += gcnew System::EventHandler(this, &MainForm::button_catalog_Click);
 			// 
+			// button_test_uni
+			// 
+			this->button_test_uni->Location = System::Drawing::Point(16, 195);
+			this->button_test_uni->Margin = System::Windows::Forms::Padding(4);
+			this->button_test_uni->Name = L"button_test_uni";
+			this->button_test_uni->Size = System::Drawing::Size(184, 82);
+			this->button_test_uni->TabIndex = 2;
+			this->button_test_uni->Text = L"Test Unitaire";
+			this->button_test_uni->UseVisualStyleBackColor = true;
+			this->button_test_uni->Click += gcnew System::EventHandler(this, &MainForm::button_test_uni_Click);
+			// 
 			// MainForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::SystemColors::ActiveCaption;
 			this->ClientSize = System::Drawing::Size(1415, 702);
+			this->Controls->Add(this->button_test_uni);
 			this->Controls->Add(this->button_catalog);
 			this->Controls->Add(this->button_people_management);
-			this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->Margin = System::Windows::Forms::Padding(4);
 			this->Name = L"MainForm";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"MainForm";
@@ -110,5 +126,9 @@ namespace ProjetPoo {
 		CatalogForm catalogform;
 		catalogform.ShowDialog();
 	}
-	};
+	private: System::Void button_test_uni_Click(System::Object^ sender, System::EventArgs^ e) {
+		TestUniForm^ testuniform = gcnew TestUniForm();
+		testuniform->ShowDialog();
+	}
+};
 }

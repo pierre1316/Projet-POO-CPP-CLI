@@ -1087,14 +1087,14 @@ private: System::Void load_current_listbox(System::Void) {
 		);
 	}
 }
-private: System::Void load_prices(System::Void) {
-	Decimal total_ht = 0;
-	Decimal total_ttc = 0;
-	for (int i = 0; i < this->currentTable->Rows->Count; i++) {
-		total_ht += si quantité est inférieur à level alors prix_ht sinon prix_ht_over_level * multiplicateur
-		total_ttc += (si quantité est inférieur à mevem alors prix_ht sinon prix_ht_over_level + lui même * tva) * multiplicateur 
-	}
-}
+//private: System::Void load_prices(System::Void) {
+//	Decimal total_ht = 0;
+//	Decimal total_ttc = 0;
+//	for (int i = 0; i < this->currentTable->Rows->Count; i++) {
+//		total_ht += si quantité est inférieur à level alors prix_ht sinon prix_ht_over_level * multiplicateur
+//		total_ttc += (si quantité est inférieur à mevem alors prix_ht sinon prix_ht_over_level + lui même * tva) * multiplicateur 
+//	}
+//}
 
 private: System::Void button_add_Click(System::Object^ sender, System::EventArgs^ e) {
 	int add = 0;

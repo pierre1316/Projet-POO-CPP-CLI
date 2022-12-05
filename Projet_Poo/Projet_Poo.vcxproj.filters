@@ -33,6 +33,7 @@
     </ClCompile>
     <ClCompile Include="OrderForm.cpp" />
     <ClCompile Include="PaymentForm.cpp" />
+    <ClCompile Include="TestUniForm.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CreatePeopleForm.h" />
@@ -67,6 +68,7 @@
     </ClInclude>
     <ClInclude Include="OrderForm.h" />
     <ClInclude Include="PaymentForm.h" />
+    <ClInclude Include="TestUniForm.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Classes de Service">

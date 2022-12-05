@@ -139,6 +139,7 @@
     <ClCompile Include="MainForm.cpp" />
     <ClCompile Include="ModifyPeopleForm.cpp" />
     <ClCompile Include="PeopleForm.cpp" />
+    <ClCompile Include="TestUniForm.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AddressForm.h">
@@ -181,6 +182,9 @@
     <ClInclude Include="PeopleForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="TestUniForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="AddressForm.resx">
@@ -215,6 +219,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PeopleForm.resx">
       <DependentUpon>PeopleForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TestUniForm.resx">
+      <DependentUpon>TestUniForm.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
