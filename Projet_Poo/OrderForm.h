@@ -49,28 +49,38 @@ namespace ProjetPoo {
 	private: NS_Comp_Svc::Address^ oAddress;
 
 	// Catalog :
+		//Category :
+	private: int id_category = -1;
+	private: Decimal tva;
+
+		//Items :
+	private: int id_item = -1;
+	private: String^ item_name;
+	private: Decimal price_ht;
+	private: String^ minimum_quantity;
+	private: Decimal price_over_level;
+	private: int level;
+
+		//Colors :
+	private: String^ color_name;
+	private: Decimal price_multiplier;
+	private: int quantity_in_stock;
+
+		//Order :
 	private: String^ delivery_date;
 	private: String^ issue_date;
 	private: String^ payment_date;
 	private: String^ reference_order;
+	private: int id_payment_method;
 	private: String^ new_reference_order;
-	private: String^ color_name;
-	private: String^ item_name;
+	
+		// Autres :
 	private: DataTable^ currentTable;
-	private: String^ minimum_quantity;
-	private: Decimal price_ht;
 	private: Decimal price_ttc;
-	private: Decimal tva;
-	private: Decimal price_multiplier;
-	private: int level;
-	private: int quantity_in_stock;
-	private: Decimal price_over_level;
 	private: Decimal price_over_level_ttc;
 	private: Data::DataSet^ oDs;
 	private: Data::DataSet^ Items;
-	private: int id_category = -1;
-	private: int id_item = -1;
-	private: int id_payment_method;
+	//
 
 	// Customer :
 	private: int id_customer;
@@ -109,99 +119,37 @@ namespace ProjetPoo {
 	private: System::Windows::Forms::Button^ button1;
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	private: System::Windows::Forms::Button^ button_current_clear;
-
-
-
-
-
-
-
-
 
 
 	private: System::Windows::Forms::Label^ label20;
 	private: System::Windows::Forms::Label^ label21;
-private: System::Windows::Forms::Label^ label10;
-private: System::Windows::Forms::Label^ label11;
-private: System::Windows::Forms::ComboBox^ comboBox_customer;
-private: System::Windows::Forms::Label^ label12;
-private: System::Windows::Forms::ComboBox^ comboBox_deli;
-private: System::Windows::Forms::ComboBox^ comboBox_bill;
-private: System::Windows::Forms::Label^ label13;
-private: System::Windows::Forms::DateTimePicker^ dateTimePicker_deli;
-private: System::Windows::Forms::CheckBox^ checkBox_issue;
-private: System::Windows::Forms::CheckBox^ checkBox_payment;
-private: System::Windows::Forms::DateTimePicker^ dateTimePicker_issue;
-private: System::Windows::Forms::DateTimePicker^ dateTimePicker_payment;
-private: System::Windows::Forms::Label^ label14;
-private: System::Windows::Forms::ComboBox^ comboBox_payment_method;
-private: System::Windows::Forms::Label^ label15;
-private: System::Windows::Forms::Label^ label16;
-private: System::Windows::Forms::Label^ label17;
-private: System::Windows::Forms::TextBox^ textBox_order_reference;
-private: System::Windows::Forms::TextBox^ textBox_price_total_ht;
-private: System::Windows::Forms::TextBox^ textBox_price_total_ttc;
-private: System::Windows::Forms::Label^ label18;
-private: System::Windows::Forms::Label^ label19;
-private: System::Windows::Forms::Button^ button_order_enter;
-private: System::Windows::Forms::Button^ button3;
-private: System::Windows::Forms::Button^ button_generate_reference;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	private: System::Windows::Forms::Label^ label10;
+	private: System::Windows::Forms::Label^ label11;
+	private: System::Windows::Forms::ComboBox^ comboBox_customer;
+	private: System::Windows::Forms::Label^ label12;
+	private: System::Windows::Forms::ComboBox^ comboBox_deli;
+	private: System::Windows::Forms::ComboBox^ comboBox_bill;
+	private: System::Windows::Forms::Label^ label13;
+	private: System::Windows::Forms::DateTimePicker^ dateTimePicker_deli;
+	private: System::Windows::Forms::CheckBox^ checkBox_issue;
+	private: System::Windows::Forms::CheckBox^ checkBox_payment;
+	private: System::Windows::Forms::DateTimePicker^ dateTimePicker_issue;
+	private: System::Windows::Forms::DateTimePicker^ dateTimePicker_payment;
+	private: System::Windows::Forms::Label^ label14;
+	private: System::Windows::Forms::ComboBox^ comboBox_payment_method;
+	private: System::Windows::Forms::Label^ label15;
+	private: System::Windows::Forms::Label^ label16;
+	private: System::Windows::Forms::Label^ label17;
+	private: System::Windows::Forms::TextBox^ textBox_order_reference;
+	private: System::Windows::Forms::TextBox^ textBox_price_total_ht;
+	private: System::Windows::Forms::TextBox^ textBox_price_total_ttc;
+	private: System::Windows::Forms::Label^ label18;
+	private: System::Windows::Forms::Label^ label19;
+	private: System::Windows::Forms::Button^ button_order_enter;
+	private: System::Windows::Forms::Button^ button3;
+	private: System::Windows::Forms::Button^ button_generate_reference;
+	private: System::Windows::Forms::DataGridView^ dataGridView1;
 
 
 
@@ -270,7 +218,9 @@ private: System::Windows::Forms::Button^ button_generate_reference;
 			this->button_order_enter = (gcnew System::Windows::Forms::Button());
 			this->button3 = (gcnew System::Windows::Forms::Button());
 			this->button_generate_reference = (gcnew System::Windows::Forms::Button());
+			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numericUpDown_quantity))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// listBox_orders
@@ -770,12 +720,23 @@ private: System::Windows::Forms::Button^ button_generate_reference;
 			this->button_generate_reference->UseVisualStyleBackColor = true;
 			this->button_generate_reference->Click += gcnew System::EventHandler(this, &OrderForm::button_generate_reference_Click);
 			// 
+			// dataGridView1
+			// 
+			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->dataGridView1->Location = System::Drawing::Point(1116, 20);
+			this->dataGridView1->Name = L"dataGridView1";
+			this->dataGridView1->RowHeadersWidth = 51;
+			this->dataGridView1->RowTemplate->Height = 24;
+			this->dataGridView1->Size = System::Drawing::Size(502, 235);
+			this->dataGridView1->TabIndex = 55;
+			// 
 			// OrderForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::SystemColors::ActiveCaption;
-			this->ClientSize = System::Drawing::Size(1113, 601);
+			this->ClientSize = System::Drawing::Size(1630, 601);
+			this->Controls->Add(this->dataGridView1);
 			this->Controls->Add(this->button_generate_reference);
 			this->Controls->Add(this->button3);
 			this->Controls->Add(this->label21);
@@ -832,6 +793,7 @@ private: System::Windows::Forms::Button^ button_generate_reference;
 			this->Text = L"OrderForm";
 			this->Load += gcnew System::EventHandler(this, &OrderForm::OrderForm_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numericUpDown_quantity))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -846,7 +808,7 @@ private: System::Void OrderForm_Load(System::Object^ sender, System::EventArgs^ 
 	this->currentTable->Clear();
 	this->oDs = this->oCatalog->selectContain("contains", "test");
 	this->currentTable = this->oDs->Tables["contains"]->Clone();
-
+	this->dataGridView1->DataSource = this->currentTable;
 	reload_all_components();
 }
 private: System::Void reload_all_components(System::Void) {
@@ -864,6 +826,8 @@ private: System::Void reload_all_components(System::Void) {
 		this->button_generate_reference->Visible = false;
 	}
 	this->comboBox_category->Text = "Choisir une catégorie";
+	this->currentTable->Clear();
+	load_current_listbox();
 	listbox_orders_load();
 	items_load();
 	reload_down_components();
@@ -885,6 +849,7 @@ private: System::Void reload_down_components(System::Void) {
 }
 
 private: System::Void radioButton_order_create_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
+
 	reload_all_components();
 }
 
@@ -1086,14 +1051,39 @@ private: System::Void load_current_listbox(System::Void) {
 			this->currentTable->Rows[i]->ItemArray[2]->ToString()
 		);
 	}
+	this->dataGridView1->DataSource = currentTable;
+	load_prices();
 }
 private: System::Void load_prices(System::Void) {
 	Decimal total_ht = 0;
 	Decimal total_ttc = 0;
-	for (int i = 0; i < this->currentTable->Rows->Count; i++) {
-		total_ht += si quantité est inférieur à level alors prix_ht sinon prix_ht_over_level * multiplicateur
-		total_ttc += (si quantité est inférieur à mevem alors prix_ht sinon prix_ht_over_level + lui même * tva) * multiplicateur 
+	if (this->currentTable->Rows->Count == 0) {
+		return;
 	}
+	for (int i = 0; i < this->currentTable->Rows->Count; i++) {
+		if (Convert::ToInt32(this->currentTable->Rows[i]->ItemArray[3]) < Convert::ToInt32(this->currentTable->Rows[i]->ItemArray[5])) {
+			total_ht = Decimal::Add(total_ht, 
+				(Convert::ToDecimal(this->currentTable->Rows[i]->ItemArray[4]) * Convert::ToDecimal(this->currentTable->Rows[i]->ItemArray[7])) * Convert::ToInt32(this->currentTable->Rows[i]->ItemArray[3])
+			);
+			total_ttc = Decimal::Add(total_ttc,
+				(Decimal::Add(Convert::ToDecimal(this->currentTable->Rows[i]->ItemArray[4]), Convert::ToDecimal(this->currentTable->Rows[i]->ItemArray[4])* (Convert::ToDecimal(this->currentTable->Rows[i]->ItemArray[9]) / 100)) * Convert::ToDecimal(this->currentTable->Rows[i]->ItemArray[7])) * Convert::ToInt32(this->currentTable->Rows[i]->ItemArray[3])
+			);
+		}
+		else {
+			total_ht = Decimal::Add(total_ht, 
+				(Convert::ToDecimal(this->currentTable->Rows[i]->ItemArray[6]) * Convert::ToDecimal(this->currentTable->Rows[i]->ItemArray[7])) * Convert::ToInt32(this->currentTable->Rows[i]->ItemArray[3])
+			);
+			total_ttc = Decimal::Add(total_ttc,
+				(Decimal::Add(Convert::ToDecimal(this->currentTable->Rows[i]->ItemArray[6]), Convert::ToDecimal(this->currentTable->Rows[i]->ItemArray[4]) * (Convert::ToDecimal(this->currentTable->Rows[i]->ItemArray[9]) / 100)) * Convert::ToDecimal(this->currentTable->Rows[i]->ItemArray[7])) * Convert::ToInt32(this->currentTable->Rows[i]->ItemArray[3])
+			);
+		}
+		//total_ttc = total_ttc + Decimal::Add(price_ht, (price_ht * (tva_rate / 100) * price_multiplicator))
+		;
+		//total_ht += si quantité est inférieur à level alors prix_ht sinon prix_ht_over_level * multiplicateur
+		//total_ttc += (si quantité est inférieur à mevem alors prix_ht sinon prix_ht_over_level + lui même * tva) * multiplicateur 
+	}
+	this->textBox_price_total_ht->Text = Convert::ToString(total_ht);
+	this->textBox_price_total_ttc->Text = Convert::ToString(total_ttc);
 }
 
 private: System::Void button_add_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -1111,6 +1101,12 @@ private: System::Void button_add_Click(System::Object^ sender, System::EventArgs
 	row[1] = Convert::ToString(this->item_name);
 	row[2] = Convert::ToString(this->color_name);
 	row[3] = Convert::ToInt32(this->numericUpDown_quantity->Value) + add;
+	row[4] = Convert::ToDecimal(this->price_ht);
+	row[5] = Convert::ToInt32(this->level);
+	row[6] = Convert::ToDecimal(this->price_over_level);
+	row[7] = Convert::ToDecimal(this->price_multiplier);
+	row[8] = Convert::ToInt32(this->id_category);
+	row[9] = Convert::ToDecimal(this->tva);
 	this->currentTable->Rows->Add(row);
 	load_current_listbox();
 }

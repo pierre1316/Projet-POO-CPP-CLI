@@ -275,6 +275,7 @@ namespace ProjetPoo {
 			delivery = 1;
 		}
 		this->oAddress->linkAddressCustomer(this->idPeople, idAddress, billing, delivery);
+		this->Close();
 	}
 
 private: System::Void textBox_postalcode_Leave(System::Object^ sender, System::EventArgs^ e) {
