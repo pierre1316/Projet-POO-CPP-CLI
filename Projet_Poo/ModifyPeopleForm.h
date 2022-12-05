@@ -1,8 +1,8 @@
 ﻿#pragma once
-#include "CLservPeople.h"
-#include "CLservStaff.h"
-#include "CLservCustomer.h"
-#include "CLservAddress.h"
+#include "People.h"
+#include "Staff.h"
+#include "Customer.h"
+#include "Address.h"
 #include "AddressForm.h"
 
 
@@ -47,11 +47,13 @@ namespace ProjetPoo {
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::RadioButton^ radio_customer;
 	private: System::Windows::Forms::RadioButton^ radio_staff;
-	private: NS_Comp_Svc::CLservCustomer^ oCust;
-	private: NS_Comp_Svc::CLservStaff^ oStaff;
-	private: NS_Comp_Svc::CLservPeople^ oPeo;
-	private: NS_Comp_Svc::CLservAddress^ oAddress;
+	private: NS_Comp_Svc::Customer^ oCust;
+	private: NS_Comp_Svc::Staff^ oStaff;
+	private: NS_Comp_Svc::People^ oPeo;
+	private: NS_Comp_Svc::Address^ oAddress;
 	private: System::Data::DataSet^ oDs;
+	private: System::Data::DataSet^ Cities;
+	private: int id_City;
 
 
 	private: System::Windows::Forms::Button^ button_address;
@@ -67,12 +69,13 @@ namespace ProjetPoo {
 	private: System::Windows::Forms::Label^ label2;
 	private: System::Windows::Forms::Label^ label6;
 	private: System::Windows::Forms::Button^ button_suppr;
-	private: System::Windows::Forms::TextBox^ textBox_city;
+
 	private: System::Windows::Forms::TextBox^ textBox_postalcode;
 	private: System::Windows::Forms::TextBox^ textBox_address;
 	private: System::Windows::Forms::Label^ label8;
 	private: System::Windows::Forms::Label^ label7;
 	private: System::Windows::Forms::Label^ label9;
+	private: System::Windows::Forms::ComboBox^ comboBox_city;
 
 
 
@@ -108,12 +111,12 @@ namespace ProjetPoo {
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->label6 = (gcnew System::Windows::Forms::Label());
 			this->button_suppr = (gcnew System::Windows::Forms::Button());
-			this->textBox_city = (gcnew System::Windows::Forms::TextBox());
 			this->textBox_postalcode = (gcnew System::Windows::Forms::TextBox());
 			this->textBox_address = (gcnew System::Windows::Forms::TextBox());
 			this->label8 = (gcnew System::Windows::Forms::Label());
 			this->label7 = (gcnew System::Windows::Forms::Label());
 			this->label9 = (gcnew System::Windows::Forms::Label());
+			this->comboBox_city = (gcnew System::Windows::Forms::ComboBox());
 			this->SuspendLayout();
 			// 
 			// listbox_people
@@ -273,14 +276,6 @@ namespace ProjetPoo {
 			this->button_suppr->UseVisualStyleBackColor = true;
 			this->button_suppr->Click += gcnew System::EventHandler(this, &ModifyPeopleForm::button_suppr_Click);
 			// 
-			// textBox_city
-			// 
-			this->textBox_city->Enabled = false;
-			this->textBox_city->Location = System::Drawing::Point(411, 292);
-			this->textBox_city->Name = L"textBox_city";
-			this->textBox_city->Size = System::Drawing::Size(257, 22);
-			this->textBox_city->TabIndex = 38;
-			// 
 			// textBox_postalcode
 			// 
 			this->textBox_postalcode->Enabled = false;
@@ -324,13 +319,23 @@ namespace ProjetPoo {
 			this->label9->TabIndex = 33;
 			this->label9->Text = L"Adresse :";
 			// 
+			// comboBox_city
+			// 
+			this->comboBox_city->FormattingEnabled = true;
+			this->comboBox_city->Location = System::Drawing::Point(411, 293);
+			this->comboBox_city->Name = L"comboBox_city";
+			this->comboBox_city->Size = System::Drawing::Size(257, 24);
+			this->comboBox_city->TabIndex = 53;
+			this->comboBox_city->SelectedIndexChanged += gcnew System::EventHandler(this, &ModifyPeopleForm::comboBox_city_SelectedIndexChanged);
+			this->comboBox_city->Enter += gcnew System::EventHandler(this, &ModifyPeopleForm::comboBox_city_Enter);
+			// 
 			// ModifyPeopleForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::SystemColors::ActiveCaption;
 			this->ClientSize = System::Drawing::Size(697, 326);
-			this->Controls->Add(this->textBox_city);
+			this->Controls->Add(this->comboBox_city);
 			this->Controls->Add(this->textBox_postalcode);
 			this->Controls->Add(this->textBox_address);
 			this->Controls->Add(this->label8);
@@ -362,204 +367,232 @@ namespace ProjetPoo {
 
 		}
 #pragma endregion
-	private: System::Void window_components_load(System::Void) {
-		listbox_people_load();
-		this->combo_superior->ResetText();
-		this->combo_superior->Text = L"Sélectionnez un Supérieur";
-		
-		this->date_birthday->ResetText();
-		this->date_hiring->ResetText();
-		this->textBox_last_name->ResetText();
-		this->textBox_first_name->ResetText();
-		this->textBox_address->ResetText();
-		this->textBox_postalcode->ResetText();
-		this->textBox_city->ResetText();
-		if (this->radio_customer->Checked) {
-			this->date_birthday->Enabled = true;
-			this->date_hiring->Enabled = false;
-			this->combo_superior->Enabled = false;
-			this->textBox_address->Enabled = false;
-			this->textBox_postalcode->Enabled = false;
-			this->textBox_city->Enabled = false;
-			this->button_address->Enabled = true;
-		}
-		else {
-			this->date_birthday->Enabled = false;
-			this->date_hiring->Enabled = true;
-			this->combo_superior->Enabled = true;
-			this->textBox_address->Enabled = true;
-			this->textBox_postalcode->Enabled = true;
-			this->textBox_city->Enabled = true;
-			this->button_address->Enabled = false;
-			this->combo_superior->Items->Clear();
-			for (int i = 0; i < this->oDs->Tables["rsl"]->Rows->Count; i++) {
-				this->combo_superior->Items->Add(
-					this->oDs->Tables["rsl"]->Rows[i]->ItemArray[0]->ToString() + " " +
-					this->oDs->Tables["rsl"]->Rows[i]->ItemArray[1]->ToString() + " " +
-					this->oDs->Tables["rsl"]->Rows[i]->ItemArray[2]->ToString());
-			}
-		}
-	}
 
-	private: System::Void listbox_people_load(System::Void) {
-		if (this->radio_customer->Checked) {
-			this->oDs = this->oCust->selectAllCustomer("rsl");
-		}
-		else {
-			this->oDs = this->oStaff->selectAllStaff("rsl");
-		}
-		this->listbox_people->Items->Clear();
+private: System::Void window_components_load(System::Void) {
+	listbox_people_load();
+	this->combo_superior->ResetText();
+	this->combo_superior->Text = L"Sélectionnez un Supérieur";
+		
+	this->date_birthday->ResetText();
+	this->date_hiring->ResetText();
+	this->textBox_last_name->ResetText();
+	this->textBox_first_name->ResetText();
+	this->textBox_address->ResetText();
+	this->textBox_postalcode->ResetText();
+	this->comboBox_city->ResetText();
+	if (this->radio_customer->Checked) {
+		this->date_birthday->Enabled = true;
+		this->date_hiring->Enabled = false;
+		this->combo_superior->Enabled = false;
+		this->textBox_address->Enabled = false;
+		this->textBox_postalcode->Enabled = false;
+		this->comboBox_city->Enabled = false;
+		this->button_address->Enabled = true;
+	}
+	else {
+		this->date_birthday->Enabled = false;
+		this->date_hiring->Enabled = true;
+		this->combo_superior->Enabled = true;
+		this->textBox_address->Enabled = true;
+		this->textBox_postalcode->Enabled = true;
+		this->comboBox_city->Enabled = true;
+		this->button_address->Enabled = false;
+		this->combo_superior->Items->Clear();
 		for (int i = 0; i < this->oDs->Tables["rsl"]->Rows->Count; i++) {
-			this->listbox_people->Items->Add(
+			this->combo_superior->Items->Add(
 				this->oDs->Tables["rsl"]->Rows[i]->ItemArray[0]->ToString() + " " +
 				this->oDs->Tables["rsl"]->Rows[i]->ItemArray[1]->ToString() + " " +
 				this->oDs->Tables["rsl"]->Rows[i]->ItemArray[2]->ToString());
 		}
 	}
+}
+
+private: System::Void listbox_people_load(System::Void) {
+	if (this->radio_customer->Checked) {
+		this->oDs = this->oCust->selectAllCustomer("rsl");
+	}
+	else {
+		this->oDs = this->oStaff->selectAllStaff("rsl");
+	}
+	this->listbox_people->Items->Clear();
+	for (int i = 0; i < this->oDs->Tables["rsl"]->Rows->Count; i++) {
+		this->listbox_people->Items->Add(
+			this->oDs->Tables["rsl"]->Rows[i]->ItemArray[0]->ToString() + " " +
+			this->oDs->Tables["rsl"]->Rows[i]->ItemArray[1]->ToString() + " " +
+			this->oDs->Tables["rsl"]->Rows[i]->ItemArray[2]->ToString());
+	}
+}
 
 
 
-	private: System::Void ModifyPeopleForm_Load(System::Object^ sender, System::EventArgs^ e) {
-		this->oCust = gcnew NS_Comp_Svc::CLservCustomer();
-		this->oStaff = gcnew NS_Comp_Svc::CLservStaff();
-		this->oPeo = gcnew NS_Comp_Svc::CLservPeople();
-		this->oAddress = gcnew NS_Comp_Svc::CLservAddress();
-		window_components_load();
+private: System::Void ModifyPeopleForm_Load(System::Object^ sender, System::EventArgs^ e) {
+	this->oCust = gcnew NS_Comp_Svc::Customer();
+	this->oStaff = gcnew NS_Comp_Svc::Staff();
+	this->oPeo = gcnew NS_Comp_Svc::People();
+	this->oAddress = gcnew NS_Comp_Svc::Address();
+	window_components_load();
+}
+
+
+private: System::Void radio_customer_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
+	window_components_load();
+}
+
+private: System::Void listbox_people_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
+	if (this->radio_customer->Checked) {
+		this->oDs = this->oCust->selectAllCustomer("rsl");
 	}
-	private: System::Void richTextBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+	else {
+		this->oDs = this->oStaff->selectAllStaff("rsl");
 	}
-	private: System::Void radio_customer_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
-		window_components_load();
+	int index = this->listbox_people->SelectedIndex;
+	if (index == -1) {
+		return;
 	}
-	private: System::Void listbox_people_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
-		if (this->radio_customer->Checked) {
-			this->oDs = this->oCust->selectAllCustomer("rsl");
-		}
-		else {
-			this->oDs = this->oStaff->selectAllStaff("rsl");
-		}
-		int index = this->listbox_people->SelectedIndex;
-		if (index == -1) {
-			return;
-		}
-		this->textBox_last_name->Text = this->oDs->Tables["rsl"]->Rows[index]->ItemArray[1]->ToString();
-		this->textBox_first_name->Text = this->oDs->Tables["rsl"]->Rows[index]->ItemArray[2]->ToString();
-		int idPeople = System::Convert::ToInt32(this->oDs->Tables["rsl"]->Rows[index]->ItemArray[0]);
+	this->textBox_last_name->Text = this->oDs->Tables["rsl"]->Rows[index]->ItemArray[1]->ToString();
+	this->textBox_first_name->Text = this->oDs->Tables["rsl"]->Rows[index]->ItemArray[2]->ToString();
+	int idPeople = System::Convert::ToInt32(this->oDs->Tables["rsl"]->Rows[index]->ItemArray[0]);
 		
-		if (this->radio_customer->Checked) {
-			this->date_birthday->Value = System::Convert::ToDateTime(this->oDs->Tables["rsl"]->Rows[index]->ItemArray[3]);
+	if (this->radio_customer->Checked) {
+		this->date_birthday->Value = System::Convert::ToDateTime(this->oDs->Tables["rsl"]->Rows[index]->ItemArray[3]);
+	}
+	else {
+		int idAddress = System::Convert::ToInt32(this->oDs->Tables["rsl"]->Rows[index]->ItemArray[5]);
+		this->date_hiring->Value = System::Convert::ToDateTime(this->oDs->Tables["rsl"]->Rows[index]->ItemArray[4]);
+		System::String^ indexstaff = System::Convert::ToString(this->oDs->Tables["rsl"]->Rows[index]->ItemArray[3]);
+		System::Data::DataSet^ staff = this->oStaff->selectAllStaffForStaff("staff", System::Convert::ToInt32(this->oDs->Tables["rsl"]->Rows[index]->ItemArray[0]));
+		this->combo_superior->Items->Clear();
+		for (int i = 0; i < staff->Tables["staff"]->Rows->Count; i++) {
+			this->combo_superior->Items->Add(
+				staff->Tables["staff"]->Rows[i]->ItemArray[0]->ToString() + " " +
+				staff->Tables["staff"]->Rows[i]->ItemArray[1]->ToString() + " " +
+				staff->Tables["staff"]->Rows[i]->ItemArray[2]->ToString());
 		}
-		else {
-			int idAddress = System::Convert::ToInt32(this->oDs->Tables["rsl"]->Rows[index]->ItemArray[5]);
-			this->date_hiring->Value = System::Convert::ToDateTime(this->oDs->Tables["rsl"]->Rows[index]->ItemArray[4]);
-			System::String^ indexstaff = System::Convert::ToString(this->oDs->Tables["rsl"]->Rows[index]->ItemArray[3]);
-			System::Data::DataSet^ staff = this->oStaff->selectAllStaffForStaff("staff", System::Convert::ToInt32(this->oDs->Tables["rsl"]->Rows[index]->ItemArray[0]));
-			this->combo_superior->Items->Clear();
-			for (int i = 0; i < staff->Tables["staff"]->Rows->Count; i++) {
-				this->combo_superior->Items->Add(
-					staff->Tables["staff"]->Rows[i]->ItemArray[0]->ToString() + " " +
-					staff->Tables["staff"]->Rows[i]->ItemArray[1]->ToString() + " " +
-					staff->Tables["staff"]->Rows[i]->ItemArray[2]->ToString());
-			}
-			if (indexstaff != "") {
+		if (indexstaff != "") {
 				
-				int nbstaff;
-				for (int i = 0; i < staff->Tables["staff"]->Rows->Count; i++) {
-					if (System::Convert::ToString(staff->Tables["staff"]->Rows[i]->ItemArray[0]) == indexstaff) {
-					nbstaff = i;
-					}
+			int nbstaff;
+			for (int i = 0; i < staff->Tables["staff"]->Rows->Count; i++) {
+				if (System::Convert::ToString(staff->Tables["staff"]->Rows[i]->ItemArray[0]) == indexstaff) {
+				nbstaff = i;
 				}
-				this->combo_superior->SelectedIndex = nbstaff;
 			}
-			else {
-				this->combo_superior->ResetText();
-				this->combo_superior->Text = L"Sélectionnez un Supérieur";
-			}
-			this->oDs = this->oAddress->selectAddress("address", idAddress);
-			this->textBox_address->Text = this->oDs->Tables["address"]->Rows[0]->ItemArray[3]->ToString();
-			this->textBox_postalcode->Text = this->oDs->Tables["address"]->Rows[0]->ItemArray[4]->ToString();
-			this->textBox_city->Text = this->oDs->Tables["address"]->Rows[0]->ItemArray[5]->ToString();
-			
-			
-			
+			this->combo_superior->SelectedIndex = nbstaff;
 		}
+		else {
+			this->combo_superior->ResetText();
+			this->combo_superior->Text = L"Sélectionnez un Supérieur";
+		}
+		System::Data::DataSet^ addr;
+		addr = this->oAddress->selectAddress("address", idAddress);
+		this->textBox_address->Text = addr->Tables["address"]->Rows[0]->ItemArray[3]->ToString();
+		this->textBox_postalcode->Text = addr->Tables["address"]->Rows[0]->ItemArray[4]->ToString();
+		this->comboBox_city->Text = addr->Tables["address"]->Rows[0]->ItemArray[5]->ToString();
+		this->id_City = Convert::ToInt32(addr->Tables["address"]->Rows[0]->ItemArray[6]);
+			
+			
 	}
-	private: System::Void button_register_Click(System::Object^ sender, System::EventArgs^ e) {
-		if (this->radio_customer->Checked) {
-			this->oDs = this->oCust->selectAllCustomer("rsl");
-		}
-		else {
-			this->oDs = this->oStaff->selectAllStaff("rsl");
-		}
-		int index = this->listbox_people->SelectedIndex;
-		int idPeople = System::Convert::ToInt32(this->oDs->Tables["rsl"]->Rows[index]->ItemArray[0]);
-		this->oPeo->modifyPeople(idPeople, this->textBox_last_name->Text, this->textBox_first_name->Text);
-		if (this->radio_customer->Checked) {
-			System::DateTime^ date = this->date_birthday->Value;
-			System::String^ dateString = System::Convert::ToString(date->Month) + "/";
-			dateString += System::Convert::ToString(date->Day) + "/";
-			dateString += System::Convert::ToString(date->Year);
-			this->oCust->modifyCustomer(idPeople, dateString);
-		}
-		else {
-			//modifie staff
-			int idAddress = System::Convert::ToInt32(this->oDs->Tables["rsl"]->Rows[index]->ItemArray[5]);
-			int idSuperior;
-			int indexStaff = this->combo_superior->SelectedIndex;
-			System::Data::DataSet^ staff = this->oStaff->selectAllStaffForStaff("staff", System::Convert::ToInt32(this->oDs->Tables["rsl"]->Rows[index]->ItemArray[0]));
+}
 
-			if (this->combo_superior->Text == "" || indexStaff == -1) {
-				this->oStaff->setSuperiorNULL(idPeople);
-				idSuperior = -1;
-			}
-			else {
-				if (indexStaff != -1) {
-					idSuperior = System::Convert::ToInt32(staff->Tables["staff"]->Rows[indexStaff]->ItemArray[0]);
-				}
-			}
-			System::DateTime^ date = this->date_hiring->Value;
-			System::String^ dateString = System::Convert::ToString(date->Month) + "/";
-			dateString += System::Convert::ToString(date->Day) + "/";
-			dateString += System::Convert::ToString(date->Year);
-			this->oStaff->modifyStaff(idPeople, dateString, idSuperior);
-			this->oAddress->modifyAddress(idAddress, "", "", this->textBox_address->Text, this->textBox_postalcode->Text, this->textBox_city->Text);
-			window_components_load();
-		}
+private: System::Void button_register_Click(System::Object^ sender, System::EventArgs^ e) {
+	if (this->radio_customer->Checked) {
+		this->oDs = this->oCust->selectAllCustomer("rsl");
 	}
-	private: System::Void button_suppr_Click(System::Object^ sender, System::EventArgs^ e) {
-		int index = this->listbox_people->SelectedIndex;
-		int idPeople = System::Convert::ToInt32(this->oDs->Tables["rsl"]->Rows[index]->ItemArray[0]);
-		if (this->radio_customer->Checked) {
-			// On supprime un client
-			this->oDs = this->oStaff->getTheStaff("rsl", idPeople);
-			if (this->oDs->Tables["rsl"]->Rows->Count != 0) {
-				// Le client est aussi staff 
-				this->oCust->deleteCustomer(idPeople);
-			}
-			else {
-				//Le client n'est pas staff
-				this->oCust->deleteCustomer(idPeople);
-				this->oPeo->deletePeople(idPeople);
-			}
+	else {
+		this->oDs = this->oStaff->selectAllStaff("rsl");
+	}
+	int index = this->listbox_people->SelectedIndex;
+	int idPeople = System::Convert::ToInt32(this->oDs->Tables["rsl"]->Rows[index]->ItemArray[0]);
+	this->oPeo->modifyPeople(idPeople, this->textBox_last_name->Text, this->textBox_first_name->Text);
+	if (this->radio_customer->Checked) {
+		System::DateTime^ date = this->date_birthday->Value;
+		System::String^ dateString = System::Convert::ToString(date->Month) + "/";
+		dateString += System::Convert::ToString(date->Day) + "/";
+		dateString += System::Convert::ToString(date->Year);
+		this->oCust->modifyCustomer(idPeople, dateString);
+	}
+	else {
+		//modifie staff
+		int idAddress = System::Convert::ToInt32(this->oDs->Tables["rsl"]->Rows[index]->ItemArray[5]);
+		int idSuperior;
+		int indexStaff = this->combo_superior->SelectedIndex;
+		System::Data::DataSet^ staff = this->oStaff->selectAllStaffForStaff("staff", System::Convert::ToInt32(this->oDs->Tables["rsl"]->Rows[index]->ItemArray[0]));
+
+		if (this->combo_superior->Text == "" || indexStaff == -1) {
+			this->oStaff->setSuperiorNULL(idPeople);
+			idSuperior = -1;
 		}
 		else {
-			// on supprime un staff
-			this->oDs = this->oCust->getTheCustomer("rsl", idPeople);
-			if (this->oDs->Tables["rsl"]->Rows->Count != 0) {
-				// Le staff est aussi client
-				this->oStaff->deleteStaff(idPeople);
-			}
-			else {
-				// le staff n'est pas client
-				this->oStaff->deleteStaff(idPeople);
-				this->oPeo->deletePeople(idPeople);
+			if (indexStaff != -1) {
+				idSuperior = System::Convert::ToInt32(staff->Tables["staff"]->Rows[indexStaff]->ItemArray[0]);
 			}
 		}
+		System::DateTime^ date = this->date_hiring->Value;
+		System::String^ dateString = System::Convert::ToString(date->Month) + "/";
+		dateString += System::Convert::ToString(date->Day) + "/";
+		dateString += System::Convert::ToString(date->Year);
+		this->oStaff->modifyStaff(idPeople, dateString, idSuperior);
+		this->oAddress->modifyAddress(idAddress, "", "", this->textBox_address->Text, this->id_City);
 		window_components_load();
 	}
+}
+
+private: System::Void button_suppr_Click(System::Object^ sender, System::EventArgs^ e) {
+	int index = this->listbox_people->SelectedIndex;
+	int idPeople = System::Convert::ToInt32(this->oDs->Tables["rsl"]->Rows[index]->ItemArray[0]);
+	if (this->radio_customer->Checked) {
+		// On supprime un client
+		this->oDs = this->oStaff->getTheStaff("rsl", idPeople);
+		if (this->oDs->Tables["rsl"]->Rows->Count != 0) {
+			// Le client est aussi staff 
+			this->oCust->deleteCustomer(idPeople);
+		}
+		else {
+			//Le client n'est pas staff
+			this->oCust->deleteCustomer(idPeople);
+			this->oPeo->deletePeople(idPeople);
+		}
+	}
+	else {
+		// on supprime un staff
+		this->oDs = this->oCust->getTheCustomer("rsl", idPeople);
+		if (this->oDs->Tables["rsl"]->Rows->Count != 0) {
+			// Le staff est aussi client
+			this->oStaff->deleteStaff(idPeople);
+		}
+		else {
+			// le staff n'est pas client
+			this->oStaff->deleteStaff(idPeople);
+			this->oPeo->deletePeople(idPeople);
+		}
+	}
+	window_components_load();
+}
+
 private: System::Void button_address_Click(System::Object^ sender, System::EventArgs^ e) {
 	AddressForm^ addressform = gcnew AddressForm();
 	addressform->ShowDialog();
 }
+
+private: System::Void insert_cities(System::Void) {
+	this->Cities = this->oAddress->selectCityFromPostalcode("cities", this->textBox_postalcode->Text);
+	this->comboBox_city->Items->Clear();
+	for (int i = 0; i < this->Cities->Tables["cities"]->Rows->Count; i++) {
+		this->comboBox_city->Items->Add(this->Cities->Tables["cities"]->Rows[i]->ItemArray[2]->ToString());
+	}
+}
+
+private: System::Void comboBox_city_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
+	if (this->comboBox_city->SelectedIndex != -1) {
+		this->id_City = Convert::ToInt32(this->Cities->Tables["cities"]->Rows[this->comboBox_city->SelectedIndex]->ItemArray[0]);
+		this->textBox_postalcode->Text = this->Cities->Tables["cities"]->Rows[this->comboBox_city->SelectedIndex]->ItemArray[1]->ToString();
+	}
+}
+
+private: System::Void comboBox_city_Enter(System::Object^ sender, System::EventArgs^ e) {
+	this->Cursor = Cursors::WaitCursor;
+	insert_cities();
+	this->Cursor = Cursors::Default;
+}
+
 };
 }

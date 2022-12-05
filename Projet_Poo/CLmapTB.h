@@ -8,8 +8,6 @@ namespace NS_Comp_Mappage {
 	public :
 		CLmapTB(void);
 		System::String^ GetAllPeople(System::Void);
-<<<<<<< Updated upstream
-=======
 		System::String^ GetAllStaff(System::Void);
 		System::String^ GetAllStaffForStaff(int idPeople);
 		System::String^ getStaffNoCustomer(System::Void);
@@ -42,6 +40,5 @@ namespace NS_Comp_Mappage {
 		System::String^ getHaveForAddress(int idAddress);
 		System::String^ modifyHave(int idAddress, int idPeople, int billing, int delivery);
 		System::String^ deleteHave(int idAddress, int idPeople);
->>>>>>> Stashed changes
 	};
 }

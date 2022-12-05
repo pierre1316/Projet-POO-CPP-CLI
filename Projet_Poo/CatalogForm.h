@@ -1,4 +1,8 @@
 #pragma once
+#include "CreateCategoryForm.h"
+#include "CreateItemForm.h"
+#include "OrderForm.h"
+#include "PaymentForm.h"
 
 namespace ProjetPoo {
 
@@ -35,6 +39,9 @@ namespace ProjetPoo {
 			}
 		}
 	private: System::Windows::Forms::Button^ button_create_item;
+	private: System::Windows::Forms::Button^ button_create_category;
+	private: System::Windows::Forms::Button^ button_orders;
+	private: System::Windows::Forms::Button^ button_payments;
 	protected:
 
 	private:
@@ -51,17 +58,54 @@ namespace ProjetPoo {
 		void InitializeComponent(void)
 		{
 			this->button_create_item = (gcnew System::Windows::Forms::Button());
+			this->button_create_category = (gcnew System::Windows::Forms::Button());
+			this->button_orders = (gcnew System::Windows::Forms::Button());
+			this->button_payments = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
 			// 
 			// button_create_item
 			// 
-			this->button_create_item->Location = System::Drawing::Point(13, 13);
+			this->button_create_item->Location = System::Drawing::Point(13, 103);
 			this->button_create_item->Margin = System::Windows::Forms::Padding(4);
 			this->button_create_item->Name = L"button_create_item";
 			this->button_create_item->Size = System::Drawing::Size(184, 82);
 			this->button_create_item->TabIndex = 2;
-			this->button_create_item->Text = L"Créer un Article";
+			this->button_create_item->Text = L"Gérer les Article";
 			this->button_create_item->UseVisualStyleBackColor = true;
+			this->button_create_item->Click += gcnew System::EventHandler(this, &CatalogForm::button_create_item_Click);
+			// 
+			// button_create_category
+			// 
+			this->button_create_category->Location = System::Drawing::Point(13, 13);
+			this->button_create_category->Margin = System::Windows::Forms::Padding(4);
+			this->button_create_category->Name = L"button_create_category";
+			this->button_create_category->Size = System::Drawing::Size(184, 82);
+			this->button_create_category->TabIndex = 3;
+			this->button_create_category->Text = L"Gérer les Catégorie";
+			this->button_create_category->UseVisualStyleBackColor = true;
+			this->button_create_category->Click += gcnew System::EventHandler(this, &CatalogForm::button_create_category_Click);
+			// 
+			// button_orders
+			// 
+			this->button_orders->Location = System::Drawing::Point(13, 193);
+			this->button_orders->Margin = System::Windows::Forms::Padding(4);
+			this->button_orders->Name = L"button_orders";
+			this->button_orders->Size = System::Drawing::Size(184, 82);
+			this->button_orders->TabIndex = 4;
+			this->button_orders->Text = L"Gérer les Commandes";
+			this->button_orders->UseVisualStyleBackColor = true;
+			this->button_orders->Click += gcnew System::EventHandler(this, &CatalogForm::button_orders_Click);
+			// 
+			// button_payments
+			// 
+			this->button_payments->Location = System::Drawing::Point(13, 283);
+			this->button_payments->Margin = System::Windows::Forms::Padding(4);
+			this->button_payments->Name = L"button_payments";
+			this->button_payments->Size = System::Drawing::Size(184, 82);
+			this->button_payments->TabIndex = 5;
+			this->button_payments->Text = L"Gérer les Moyens de Paiment";
+			this->button_payments->UseVisualStyleBackColor = true;
+			this->button_payments->Click += gcnew System::EventHandler(this, &CatalogForm::button_payments_Click);
 			// 
 			// CatalogForm
 			// 
@@ -69,6 +113,9 @@ namespace ProjetPoo {
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::SystemColors::ActiveCaption;
 			this->ClientSize = System::Drawing::Size(1415, 702);
+			this->Controls->Add(this->button_payments);
+			this->Controls->Add(this->button_orders);
+			this->Controls->Add(this->button_create_category);
 			this->Controls->Add(this->button_create_item);
 			this->Name = L"CatalogForm";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterParent;
@@ -80,5 +127,26 @@ namespace ProjetPoo {
 #pragma endregion
 	private: System::Void CatalogForm_Load(System::Object^ sender, System::EventArgs^ e) {
 	}
-	};
+	private: System::Void button_create_category_Click(System::Object^ sender, System::EventArgs^ e) {
+		CreateCategoryForm form;
+		this->Hide();
+		form.ShowDialog();
+
+	}
+	private: System::Void button_create_item_Click(System::Object^ sender, System::EventArgs^ e) {
+		CreateItemForm itemform;
+		this->Hide();
+		itemform.ShowDialog();
+	}
+	private: System::Void button_orders_Click(System::Object^ sender, System::EventArgs^ e) {
+		OrderForm orderform;
+		this->Hide();
+		orderform.ShowDialog();
+	}
+private: System::Void button_payments_Click(System::Object^ sender, System::EventArgs^ e) {
+	PaymentForm paymentform;
+	this->Hide();
+	paymentform.ShowDialog();
+}
+};
 }

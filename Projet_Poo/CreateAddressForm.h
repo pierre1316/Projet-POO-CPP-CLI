@@ -1,6 +1,6 @@
 #pragma once
-#include "CLservPeople.h"
-#include "CLservAddress.h"
+#include "People.h"
+#include "Address.h"
 
 namespace ProjetPoo {
 
@@ -44,12 +44,14 @@ namespace ProjetPoo {
 		/// </summary>
 		
 	private: int idPeople;
-	private: NS_Comp_Svc::CLservAddress^ oAddress;
-	private: NS_Comp_Svc::CLservPeople^ oPeople;
+	private: NS_Comp_Svc::Address^ oAddress;
+	private: NS_Comp_Svc::People^ oPeople;
 	private: System::Data::DataSet^ oDs;
+	private: System::Data::DataSet^ Cities;
+	private: int id_City;
 	private: int indexPeople;
 	private: System::Windows::Forms::Label^ label1;
-	private: System::Windows::Forms::TextBox^ textBox_city;
+
 	private: System::Windows::Forms::TextBox^ textBox_postalcode;
 	private: System::Windows::Forms::TextBox^ textBox_address;
 	private: System::Windows::Forms::Label^ label8;
@@ -62,6 +64,8 @@ namespace ProjetPoo {
 	private: System::Windows::Forms::CheckBox^ checkBox_deli;
 	private: System::Windows::Forms::CheckBox^ checkBox_bill;
 	private: System::Windows::Forms::Button^ button_enter;
+	private: System::Windows::Forms::ComboBox^ comboBox_city;
+
 		   System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
@@ -72,7 +76,6 @@ namespace ProjetPoo {
 		void InitializeComponent(void)
 		{
 			this->label1 = (gcnew System::Windows::Forms::Label());
-			this->textBox_city = (gcnew System::Windows::Forms::TextBox());
 			this->textBox_postalcode = (gcnew System::Windows::Forms::TextBox());
 			this->textBox_address = (gcnew System::Windows::Forms::TextBox());
 			this->label8 = (gcnew System::Windows::Forms::Label());
@@ -85,6 +88,7 @@ namespace ProjetPoo {
 			this->checkBox_deli = (gcnew System::Windows::Forms::CheckBox());
 			this->checkBox_bill = (gcnew System::Windows::Forms::CheckBox());
 			this->button_enter = (gcnew System::Windows::Forms::Button());
+			this->comboBox_city = (gcnew System::Windows::Forms::ComboBox());
 			this->SuspendLayout();
 			// 
 			// label1
@@ -96,19 +100,13 @@ namespace ProjetPoo {
 			this->label1->TabIndex = 0;
 			this->label1->Text = L"label1";
 			// 
-			// textBox_city
-			// 
-			this->textBox_city->Location = System::Drawing::Point(135, 203);
-			this->textBox_city->Name = L"textBox_city";
-			this->textBox_city->Size = System::Drawing::Size(257, 22);
-			this->textBox_city->TabIndex = 44;
-			// 
 			// textBox_postalcode
 			// 
 			this->textBox_postalcode->Location = System::Drawing::Point(135, 175);
 			this->textBox_postalcode->Name = L"textBox_postalcode";
 			this->textBox_postalcode->Size = System::Drawing::Size(257, 22);
 			this->textBox_postalcode->TabIndex = 43;
+			this->textBox_postalcode->Leave += gcnew System::EventHandler(this, &CreateAddressForm::textBox_postalcode_Leave);
 			// 
 			// textBox_address
 			// 
@@ -206,12 +204,22 @@ namespace ProjetPoo {
 			this->button_enter->UseVisualStyleBackColor = true;
 			this->button_enter->Click += gcnew System::EventHandler(this, &CreateAddressForm::button_enter_Click);
 			// 
+			// comboBox_city
+			// 
+			this->comboBox_city->FormattingEnabled = true;
+			this->comboBox_city->Location = System::Drawing::Point(135, 202);
+			this->comboBox_city->Name = L"comboBox_city";
+			this->comboBox_city->Size = System::Drawing::Size(257, 24);
+			this->comboBox_city->TabIndex = 52;
+			this->comboBox_city->SelectedIndexChanged += gcnew System::EventHandler(this, &CreateAddressForm::comboBox_city_SelectedIndexChanged);
+			// 
 			// CreateAddressForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::SystemColors::ActiveCaption;
 			this->ClientSize = System::Drawing::Size(413, 349);
+			this->Controls->Add(this->comboBox_city);
 			this->Controls->Add(this->button_enter);
 			this->Controls->Add(this->checkBox_bill);
 			this->Controls->Add(this->checkBox_deli);
@@ -219,15 +227,14 @@ namespace ProjetPoo {
 			this->Controls->Add(this->label3);
 			this->Controls->Add(this->textBox_first_name);
 			this->Controls->Add(this->label2);
-			this->Controls->Add(this->textBox_city);
 			this->Controls->Add(this->textBox_postalcode);
 			this->Controls->Add(this->textBox_address);
 			this->Controls->Add(this->label8);
 			this->Controls->Add(this->label7);
 			this->Controls->Add(this->label9);
 			this->Controls->Add(this->label1);
-			this->Name = L"CreateAddressForm";
-			this->Text = L"CreateAddressForm";
+			this->Name = "CreateAddressForm";
+			this->Text = "CreateAddressForm";
 			this->Load += gcnew System::EventHandler(this, &CreateAddressForm::CreateAddressForm_Load);
 			this->ResumeLayout(false);
 			this->PerformLayout();
@@ -235,8 +242,8 @@ namespace ProjetPoo {
 		}
 #pragma endregion
 	private: System::Void CreateAddressForm_Load(System::Object^ sender, System::EventArgs^ e) {
-		this->oAddress = gcnew NS_Comp_Svc::CLservAddress();
-		this->oPeople = gcnew NS_Comp_Svc::CLservPeople();
+		this->oAddress = gcnew NS_Comp_Svc::Address();
+		this->oPeople = gcnew NS_Comp_Svc::People();
 		this->oDs = gcnew System::Data::DataSet();
 		this->oDs = this->oPeople->selectAllPeople("people");
 		for (int i = 0; i < this->oDs->Tables["people"]->Rows->Count; i++) {
@@ -258,8 +265,7 @@ namespace ProjetPoo {
 		int idAddress = this->oAddress->createAddress(this->textBox_last_name->Text,
 			this->textBox_first_name->Text,
 			this->textBox_address->Text,
-			this->textBox_postalcode->Text,
-			this->textBox_city->Text);
+			this->id_City);
 		int billing = 0;
 		int delivery = 0;
 		if (this->checkBox_bill->Checked) {
@@ -269,7 +275,20 @@ namespace ProjetPoo {
 			delivery = 1;
 		}
 		this->oAddress->linkAddressCustomer(this->idPeople, idAddress, billing, delivery);
-		this->Close();
 	}
+
+private: System::Void textBox_postalcode_Leave(System::Object^ sender, System::EventArgs^ e) {
+	this->Cities = this->oAddress->selectCityFromPostalcode("cities", this->textBox_postalcode->Text);
+	this->comboBox_city->Items->Clear();
+	for (int i = 0; i < this->Cities->Tables["cities"]->Rows->Count; i++) {
+		this->comboBox_city->Items->Add(this->Cities->Tables["cities"]->Rows[i]->ItemArray[2]->ToString());
+	}
+}
+private: System::Void comboBox_city_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
+	if (this->comboBox_city->SelectedIndex != -1) {
+		this->id_City = Convert::ToInt32(this->Cities->Tables["cities"]->Rows[this->comboBox_city->SelectedIndex]->ItemArray[0]);
+		this->textBox_postalcode->Text = this->Cities->Tables["cities"]->Rows[this->comboBox_city->SelectedIndex]->ItemArray[1]->ToString();
+	}
+}
 };
 }
