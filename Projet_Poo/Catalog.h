@@ -33,6 +33,10 @@ namespace NS_Comp_Svc {
 	public:
 		System::Void Catalog::createOrder(System::String^ reference_order, System::String^ delivery_date, System::String^ issue_date, System::String^ payment_date, int id_payment_method, int idPeople, int idBill, int idDeli, System::Data::DataTable^ table);
 		System::Data::DataSet^ Catalog::searchOrder(System::String^ DataTableName, System::String^ reference_order);
+		System::Data::DataSet^ Catalog::selectOrder(System::String^ DataTableName);
+		System::Data::DataSet^ Catalog::selectContain(System::String^ DataTableName, System::String^ reference_order);
+		System::Void Catalog::updateOrder(System::String^ reference_order, System::String^ delivery_date, System::String^ issue_date, System::String^ payment_date, int id_payment_method, int idBill, int idDeli, System::Data::DataTable^ table);
+
 
 	};
 }

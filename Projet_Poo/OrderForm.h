@@ -282,6 +282,7 @@ private: System::Windows::Forms::Button^ button_generate_reference;
 			this->listBox_orders->Name = L"listBox_orders";
 			this->listBox_orders->Size = System::Drawing::Size(224, 244);
 			this->listBox_orders->TabIndex = 0;
+			this->listBox_orders->SelectedIndexChanged += gcnew System::EventHandler(this, &OrderForm::listBox_orders_SelectedIndexChanged);
 			// 
 			// radioButton_order_create
 			// 
@@ -294,6 +295,7 @@ private: System::Windows::Forms::Button^ button_generate_reference;
 			this->radioButton_order_create->TabStop = true;
 			this->radioButton_order_create->Text = L"Créer";
 			this->radioButton_order_create->UseVisualStyleBackColor = true;
+			this->radioButton_order_create->CheckedChanged += gcnew System::EventHandler(this, &OrderForm::radioButton_order_create_CheckedChanged);
 			// 
 			// radioButton_update_order
 			// 
@@ -362,6 +364,7 @@ private: System::Windows::Forms::Button^ button_generate_reference;
 			this->listBox_currents->Name = L"listBox_currents";
 			this->listBox_currents->Size = System::Drawing::Size(217, 308);
 			this->listBox_currents->TabIndex = 8;
+			this->listBox_currents->SelectedIndexChanged += gcnew System::EventHandler(this, &OrderForm::listBox_currents_SelectedIndexChanged);
 			// 
 			// label3
 			// 
@@ -419,6 +422,7 @@ private: System::Windows::Forms::Button^ button_generate_reference;
 			// 
 			// button_add
 			// 
+			this->button_add->Enabled = false;
 			this->button_add->Location = System::Drawing::Point(686, 261);
 			this->button_add->Name = L"button_add";
 			this->button_add->Size = System::Drawing::Size(145, 48);
@@ -429,6 +433,7 @@ private: System::Windows::Forms::Button^ button_generate_reference;
 			// 
 			// button_delete
 			// 
+			this->button_delete->Enabled = false;
 			this->button_delete->Location = System::Drawing::Point(686, 315);
 			this->button_delete->Name = L"button_delete";
 			this->button_delete->Size = System::Drawing::Size(145, 48);
@@ -472,7 +477,7 @@ private: System::Windows::Forms::Button^ button_generate_reference;
 			this->label8->Name = L"label8";
 			this->label8->Size = System::Drawing::Size(91, 16);
 			this->label8->TabIndex = 20;
-			this->label8->Text = L"Liste acutelle :";
+			this->label8->Text = L"Liste actuelle :";
 			// 
 			// textBox_quantity_in_stock
 			// 
@@ -509,6 +514,7 @@ private: System::Windows::Forms::Button^ button_generate_reference;
 			this->button_current_clear->TabIndex = 44;
 			this->button_current_clear->Text = L"Clear";
 			this->button_current_clear->UseVisualStyleBackColor = true;
+			this->button_current_clear->Click += gcnew System::EventHandler(this, &OrderForm::button_current_clear_Click);
 			// 
 			// label20
 			// 
@@ -838,36 +844,130 @@ private: System::Void OrderForm_Load(System::Object^ sender, System::EventArgs^ 
 	this->oAddress = gcnew NS_Comp_Svc::Address();
 	this->currentTable = gcnew DataTable();
 	this->currentTable->Clear();
-	load_current_table();
+	this->oDs = this->oCatalog->selectContain("contains", "test");
+	this->currentTable = this->oDs->Tables["contains"]->Clone();
+
+	reload_all_components();
 }
 private: System::Void reload_all_components(System::Void) {
 	if (radioButton_order_create->Checked) {
 		this->listBox_orders->Enabled = false;
-		this->button_generate_reference->Enabled = true;
 		this->button_order_enter->Enabled = false;
+		this->comboBox_customer->Enabled = true;
+		this->button_generate_reference->Visible = true;
 	}
 	else {
 		this->listBox_orders->Enabled = true;
 		this->button_generate_reference->Enabled = false;
 		this->button_order_enter->Enabled = true;
+		this->comboBox_customer->Enabled = false;
+		this->button_generate_reference->Visible = false;
 	}
+	this->comboBox_category->Text = "Choisir une catégorie";
 	listbox_orders_load();
 	items_load();
-	
+	reload_down_components();
 }
 
 private: System::Void reload_down_components(System::Void) {
-
+	this->comboBox_customer->Text = "Choisir un client";
+	this->comboBox_deli->Text = "Choisir une adresse de livraison";
+	this->comboBox_bill->Text = "Choisir une adresse de facturation";
+	this->dateTimePicker_deli->ResetText();
+	this->checkBox_issue->Checked = false;
+	this->dateTimePicker_issue->ResetText();
+	this->checkBox_payment->Checked = false;
+	this->dateTimePicker_payment->ResetText();
+	this->comboBox_payment_method->Text = "Choisir un moyen de paiment";
+	this->textBox_price_total_ht->Text = "";
+	this->textBox_price_total_ttc->Text = "";
+	this->textBox_order_reference->Text = "";
 }
 
+private: System::Void radioButton_order_create_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
+	reload_all_components();
+}
 
 //
 // Gestion de la liste des commandes :
 //
 private: System::Void listbox_orders_load(System::Void) {
-
+	this->oDs = this->oCatalog->selectOrder("orders");
+	this->listBox_orders->Items->Clear();
+	for (int i = 0; i < this->oDs->Tables["orders"]->Rows->Count; i++) {
+		this->listBox_orders->Items->Add(
+			this->oDs->Tables["orders"]->Rows[i]->ItemArray[0]->ToString()
+		);
+	}
 }
-
+private: System::Void listBox_orders_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
+	items_load();
+	int index = listBox_orders->SelectedIndex;
+	if (index == -1) {
+		return;
+	}
+	this->oDs = this->oCatalog->selectOrder("orders");
+	this->reference_order = this->oDs->Tables["orders"]->Rows[index]->ItemArray[0]->ToString();
+	this->textBox_order_reference->Text = this->reference_order;
+	this->dateTimePicker_deli->Value = Convert::ToDateTime(this->oDs->Tables["orders"]->Rows[index]->ItemArray[1]);
+	if (this->oDs->Tables["orders"]->Rows[index]->ItemArray[2]->ToString() != "") {
+		this->checkBox_issue->Checked = true;
+		this->dateTimePicker_issue->Value = Convert::ToDateTime(this->oDs->Tables["orders"]->Rows[index]->ItemArray[2]);
+	}
+	else {
+		this->checkBox_issue->Checked = false;
+		this->dateTimePicker_issue->ResetText();
+	}
+	if (this->oDs->Tables["orders"]->Rows[index]->ItemArray[3]->ToString() != "") {
+		this->checkBox_payment->Checked = true;
+		this->dateTimePicker_payment->Value = Convert::ToDateTime(this->oDs->Tables["orders"]->Rows[index]->ItemArray[3]);
+	}
+	else {
+		this->checkBox_payment->Checked = false;
+		this->dateTimePicker_payment->ResetText();
+	}
+	this->id_payment_method = Convert::ToInt32(this->oDs->Tables["orders"]->Rows[index]->ItemArray[4]);
+	this->id_customer = Convert::ToInt32(this->oDs->Tables["orders"]->Rows[index]->ItemArray[5]);
+	this->id_bill = Convert::ToInt32(this->oDs->Tables["orders"]->Rows[index]->ItemArray[6]);
+	this->id_deli = Convert::ToInt32(this->oDs->Tables["orders"]->Rows[index]->ItemArray[7]);
+	this->oDs = this->oCustomer->selectAllCustomer("customers");
+	for (int i = 0; i < this->oDs->Tables["customers"]->Rows->Count; i++) {
+		if (Convert::ToInt32(this->oDs->Tables["customers"]->Rows[i]->ItemArray[0]) == this->id_customer) {
+			this->comboBox_customer->Text = 
+				this->oDs->Tables["customers"]->Rows[i]->ItemArray[1]->ToString() + " " +
+				this->oDs->Tables["customers"]->Rows[i]->ItemArray[2]->ToString();
+		}
+	}
+	this->oDs = this->oAddress->selectAddressDelivery("deli", this->id_customer);
+	for (int i = 0; i < this->oDs->Tables["deli"]->Rows->Count; i++) {
+		if (Convert::ToInt32(this->oDs->Tables["deli"]->Rows[i]->ItemArray[0]) == this->id_deli) {
+			this->comboBox_deli->Text =
+				this->oDs->Tables["deli"]->Rows[i]->ItemArray[3]->ToString() + " " +
+				this->oDs->Tables["deli"]->Rows[i]->ItemArray[4]->ToString() + " " +
+				this->oDs->Tables["deli"]->Rows[i]->ItemArray[5]->ToString();
+		}
+	}
+	this->oDs = this->oAddress->selectAddressBilling("bill", this->id_customer);
+	for (int i = 0; i < this->oDs->Tables["bill"]->Rows->Count; i++) {
+		if (Convert::ToInt32(this->oDs->Tables["bill"]->Rows[i]->ItemArray[0]) == this->id_bill) {
+			this->comboBox_bill->Text =
+				this->oDs->Tables["bill"]->Rows[i]->ItemArray[3]->ToString() + " " +
+				this->oDs->Tables["bill"]->Rows[i]->ItemArray[4]->ToString() + " " +
+				this->oDs->Tables["bill"]->Rows[i]->ItemArray[5]->ToString();
+		}
+	}
+	this->oDs = this->oCatalog->selectPaymentMethod("methods");
+	for (int i = 0; i < this->oDs->Tables["methods"]->Rows->Count; i++) {
+		if (Convert::ToInt32(this->oDs->Tables["methods"]->Rows[i]->ItemArray[0]) == this->id_payment_method) {
+			this->comboBox_payment_method->Text =
+				this->oDs->Tables["methods"]->Rows[i]->ItemArray[1]->ToString();
+		}
+	}
+	this->currentTable->Clear();
+	this->oDs = this->oCatalog->selectContain("contains", this->reference_order);
+	this->currentTable = this->oDs->Tables["contains"]->Copy();
+	load_current_listbox();
+}
 
 
 //
@@ -912,6 +1012,7 @@ private: System::Void listBox_items_SelectedIndexChanged(System::Object^ sender,
 	if (this->listBox_items->SelectedIndex == -1) {
 		return;
 	}
+	this->oDs = this->oCatalog->selectItemsCategory("items", this->id_category);
 	this->id_item = Convert::ToInt32(this->oDs->Tables["items"]->Rows[this->listBox_items->SelectedIndex]->ItemArray[0]);
 	this->item_name = Convert::ToString(this->oDs->Tables["items"]->Rows[this->listBox_items->SelectedIndex]->ItemArray[1]);
 	this->minimum_quantity = Convert::ToString(this->oDs->Tables["items"]->Rows[this->listBox_items->SelectedIndex]->ItemArray[4]);
@@ -925,7 +1026,7 @@ private: System::Void listBox_items_SelectedIndexChanged(System::Object^ sender,
 // Gestion des couleurs :
 //
 private: System::Void colors_load(System::Void) {
-	this->listBox_color->ClearSelected();
+	this->listBox_color->Items->Clear();
 	this->oDs = this->oCatalog->selectColors("colors", this->id_item);
 	for (int i = 0; i < this->oDs->Tables["colors"]->Rows->Count; i++) {
 		this->listBox_color->Items->Add(
@@ -937,7 +1038,9 @@ private: System::Void listBox_color_SelectedIndexChanged(System::Object^ sender,
 	if (this->listBox_color->SelectedIndex == -1) {
 		return;
 	}
+	this->oDs = this->oCatalog->selectColors("colors", this->id_item);
 	this->color_name = this->oDs->Tables["colors"]->Rows[this->listBox_color->SelectedIndex]->ItemArray[1]->ToString();
+	this->button_add->Enabled = true;
 	load_price_textboxes();
 }
 
@@ -961,7 +1064,8 @@ private: System::Void load_price_textboxes(System::Void) {
 // Gestion du current :
 //
 private: System::Void load_current_table(System::Void) {
-	this->currentTable->Clear();
+	this->currentTable->Reset();
+	this->currentTable->TableName = "contains";
 	this->currentTable->Columns->Add("id_item");
 	this->currentTable->Columns["id_item"]->DataType = Type::GetType("System.Int32");
 	this->currentTable->Columns->Add("name");
@@ -970,6 +1074,8 @@ private: System::Void load_current_table(System::Void) {
 	this->currentTable->Columns["color_name"]->DataType = Type::GetType("System.String");
 	this->currentTable->Columns->Add("quantity");
 	this->currentTable->Columns["quantity"]->DataType = Type::GetType("System.Int32");
+	
+	
 }
 private: System::Void load_current_listbox(System::Void) {
 	this->listBox_currents->Items->Clear();
@@ -981,13 +1087,23 @@ private: System::Void load_current_listbox(System::Void) {
 		);
 	}
 }
+private: System::Void load_prices(System::Void) {
+	Decimal total_ht = 0;
+	Decimal total_ttc = 0;
+	for (int i = 0; i < this->currentTable->Rows->Count; i++) {
+		total_ht += si quantité est inférieur à level alors prix_ht sinon prix_ht_over_level * multiplicateur
+		total_ttc += (si quantité est inférieur à mevem alors prix_ht sinon prix_ht_over_level + lui même * tva) * multiplicateur 
+	}
+}
+
 private: System::Void button_add_Click(System::Object^ sender, System::EventArgs^ e) {
 	int add = 0;
 	for (int i = 0; i < this->currentTable->Rows->Count; i++) {
 		if (Convert::ToInt32(this->currentTable->Rows[i]->ItemArray[0]) == this->id_item &&
-			this->currentTable->Rows[i]->ItemArray[2]->ToString() == Convert::ToString(this->color_name)) {
-			add =  Convert::ToInt32(this->currentTable->Rows[i]->ItemArray[3]);
+			this->currentTable->Rows[i]->ItemArray[2]->ToString() == this->color_name) {
+			add = Convert::ToInt32(this->currentTable->Rows[i]->ItemArray[3]);
 			this->currentTable->Rows[i]->Delete();
+			this->currentTable->AcceptChanges();
 		}
 	}
 	DataRow^ row = currentTable->NewRow();
@@ -1004,6 +1120,7 @@ private: System::Void button_delete_Click(System::Object^ sender, System::EventA
 		return;
 	}
 	this->currentTable->Rows[index]->Delete();
+	this->currentTable->AcceptChanges();
 	load_current_listbox();
 }
 
@@ -1151,28 +1268,46 @@ private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e
 	this->delivery_date += System::Convert::ToString(date->Year);
 	if (this->checkBox_issue->Checked) {
 		System::DateTime^ date = this->dateTimePicker_issue->Value;
-		this->issue_date = System::Convert::ToString(date->Month) + "/";
+		this->issue_date = "'" + System::Convert::ToString(date->Month) + "/";
 		this->issue_date += System::Convert::ToString(date->Day) + "/";
-		this->issue_date += System::Convert::ToString(date->Year);
+		this->issue_date += System::Convert::ToString(date->Year) + "'";
 	}
 	else {
-		this->issue_date = "";
+		this->issue_date = "NULL";
 	}
 	if (this->checkBox_payment->Checked) {
 		System::DateTime^ date = this->dateTimePicker_payment->Value;
-		this->payment_date = System::Convert::ToString(date->Month) + "/";
+		this->payment_date = "'" + System::Convert::ToString(date->Month) + "/";
 		this->payment_date += System::Convert::ToString(date->Day) + "/";
-		this->payment_date += System::Convert::ToString(date->Year);
+		this->payment_date += System::Convert::ToString(date->Year) + "'";
 	}
 	else {
-		this->payment_date = "";
+		this->payment_date = "NULL";
 	}
-
-	this->oCatalog->createOrder(this->reference_order,
-		this->delivery_date, this->issue_date, this->payment_date,
-		this->id_payment_method, this->id_customer, this->id_bill, this->id_deli,
-		this->currentTable);
+	if (this->radioButton_order_create->Checked) {
+		this->oCatalog->createOrder(this->reference_order,
+			this->delivery_date, this->issue_date, this->payment_date,
+			this->id_payment_method, this->id_customer, this->id_bill, this->id_deli,
+			this->currentTable);
+	}
+	else {
+		this->oCatalog->updateOrder(this->reference_order,
+			this->delivery_date, this->issue_date, this->payment_date,
+			this->id_payment_method, this->id_bill, this->id_deli, this->currentTable);
+	}
+	this->currentTable->Clear();
+	load_current_listbox();
+	reload_all_components();
 }
 
+
+
+private: System::Void listBox_currents_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
+	this->button_delete->Enabled = true;
+}
+private: System::Void button_current_clear_Click(System::Object^ sender, System::EventArgs^ e) {
+	this->currentTable->Clear();
+	load_current_listbox();
+}
 };
 }

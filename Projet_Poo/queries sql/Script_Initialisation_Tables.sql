@@ -109,10 +109,10 @@ CREATE TABLE Orders (
     idBill            INT          NOT NULL,
     idDeli            INT          NOT NULL,
     PRIMARY KEY CLUSTERED (reference_order ASC),
-    FOREIGN KEY (idBill) REFERENCES Address (idAddress),
-    FOREIGN KEY (idDeli) REFERENCES Address (idAddress),
-    FOREIGN KEY (idPeople) REFERENCES Customers (idPeople),
-    FOREIGN KEY (id_payment_method) REFERENCES Payment_Method (id_method)
+    FOREIGN KEY (idBill) REFERENCES Address (idAddress) on delete no action,
+    FOREIGN KEY (idDeli) REFERENCES Address (idAddress)on delete no action,
+    FOREIGN KEY (idPeople) REFERENCES Customers (idPeople)on delete no action,
+    FOREIGN KEY (id_payment_method) REFERENCES Payment_Method (id_method)on delete no action
 );
 
 -- Table Have

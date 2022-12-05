@@ -132,13 +132,13 @@ System::Void Catalog::deletePaymentMethod(int id_method)
 System::Void Catalog::createOrder(System::String^ reference_order, System::String^ delivery_date, System::String^ issue_date, System::String^ payment_date, int id_payment_method, int idPeople, int idBill, int idDeli, System::Data::DataTable^ table)
 {
 	System::String^ sql = "EXEC PS_ORDER_CREATE @reference_order = '" + reference_order + 
-		"', @delivery_date = '" + delivery_date + "', @issue_date = '" + issue_date +
-		"', @payment_date = '" + payment_date + "', @id_payment_method = '" + id_payment_method + 
+		"', @delivery_date = '" + delivery_date + "', @issue_date = " + issue_date +
+		", @payment_date = " + payment_date + ", @id_payment_method = '" + id_payment_method + 
 		"', @idPeople = '" + idPeople + "', @idBill = '" + idBill + "', @idDeli = '" + idDeli + "'";
 
 	this->oCad->actionRows(sql);
 	for (int i = 0; i < table->Rows->Count; i++) {
-		sql = "PS_CONTAIN_CREATE @reference_order = '" + reference_order + "', @id_item = '" + table->Rows[i]->ItemArray[0]->ToString() +
+		sql = "EXEC PS_CONTAIN_CREATE @reference_order = '" + reference_order + "', @id_item = '" + table->Rows[i]->ItemArray[0]->ToString() +
 			"', @color_name = '" + table->Rows[i]->ItemArray[2]->ToString() + "', @quantity = '" + table->Rows[i]->ItemArray[3]->ToString() + "'";
 		this->oCad->actionRows(sql);
 	}
@@ -149,4 +149,34 @@ System::Data::DataSet^ Catalog::searchOrder(System::String^ DataTableName, Syste
 	System::String^ sql = "EXEC PS_ORDER_SEARCH @reference_order = '" + reference_order + "'";
 
 	return this->oCad->getRows(sql, DataTableName);
+}
+
+System::Data::DataSet^ Catalog::selectOrder(System::String^ DataTableName)
+{
+	System::String^ sql = "EXEC PS_ORDER_SELECT";
+
+	return this->oCad->getRows(sql, DataTableName);
+}
+
+System::Data::DataSet^ Catalog::selectContain(System::String^ DataTableName, System::String^ reference_order)
+{
+	System::String^ sql = "EXEC PS_CONTAIN_ORDER_SELECT @reference_order = '" + reference_order + "'";
+
+	return this->oCad->getRows(sql, DataTableName);
+}
+
+System::Void Catalog::updateOrder(System::String^ reference_order, System::String^ delivery_date, System::String^ issue_date, System::String^ payment_date, int id_payment_method, int idBill, int idDeli, System::Data::DataTable^ table)
+{
+	System::String^ sql = "EXEC PS_ORDER_UPATE @reference_order = '" + reference_order +
+		"', @delivery_date = '" + delivery_date + "', @issue_date = " + issue_date +
+		", @payment_date = " + payment_date + ", @id_payment_method = '" + id_payment_method +
+		"', @idBill = '" + idBill + "', @idDeli = '" + idDeli + "'";
+	this->oCad->actionRows(sql);
+	sql = "EXEC PS_CONTAIN_DELETE @reference_order = '" + reference_order + "'";
+	this->oCad->actionRows(sql);
+	for (int i = 0; i < table->Rows->Count; i++) {
+		sql = "EXEC PS_CONTAIN_CREATE @reference_order = '" + reference_order + "', @id_item = '" + table->Rows[i]->ItemArray[0]->ToString() +
+			"', @color_name = '" + table->Rows[i]->ItemArray[2]->ToString() + "', @quantity = '" + table->Rows[i]->ItemArray[3]->ToString() + "'";
+		this->oCad->actionRows(sql);
+	}
 }
