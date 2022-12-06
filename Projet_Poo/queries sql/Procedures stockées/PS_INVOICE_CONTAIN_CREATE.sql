@@ -10,7 +10,7 @@
 											@level_amount int,
 											@price_ht_over_level float,
 											@price_ttc_over_level float,
-											@multiplicator int)
+											@multiplicator float)
 as begin
 INSERT INTO Invoice_Contain 
 values (@reference_order,

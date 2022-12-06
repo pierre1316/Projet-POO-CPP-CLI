@@ -33,6 +33,7 @@
     <ClCompile Include="ArchivedOrdersForm.cpp" />
     <ClCompile Include="ConnexionForm.cpp" />
     <ClCompile Include="ChangePasswordForm.cpp" />
+    <ClCompile Include="InvoiceForm.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CreatePeopleForm.h" />
@@ -67,13 +68,11 @@
     <ClInclude Include="ArchivedOrdersForm.h" />
     <ClInclude Include="ConnexionForm.h" />
     <ClInclude Include="ChangePasswordForm.h" />
+    <ClInclude Include="InvoiceForm.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Classes de Service">
       <UniqueIdentifier>{88e4ddd4-854e-43e9-a83a-ddf965195cab}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Classes de Mappage">
-      <UniqueIdentifier>{a9289979-3ab6-42bf-9d40-8d6f79eff24c}</UniqueIdentifier>
     </Filter>
     <Filter Include="Classes de Communication">
       <UniqueIdentifier>{a103435f-d257-4d8f-92e0-529b44414c3c}</UniqueIdentifier>

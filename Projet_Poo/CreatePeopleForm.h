@@ -152,7 +152,7 @@ namespace ProjetPoo {
 			this->radiobutt_new_people->Checked = true;
 			this->radiobutt_new_people->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Bold,
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			this->radiobutt_new_people->ForeColor = System::Drawing::Color::DarkOrange;
+			this->radiobutt_new_people->ForeColor = System::Drawing::Color::SandyBrown;
 			this->radiobutt_new_people->Location = System::Drawing::Point(8, 25);
 			this->radiobutt_new_people->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->radiobutt_new_people->Name = L"radiobutt_new_people";
@@ -168,7 +168,7 @@ namespace ProjetPoo {
 			this->radiobutt_existing_people->AutoSize = true;
 			this->radiobutt_existing_people->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Bold,
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			this->radiobutt_existing_people->ForeColor = System::Drawing::Color::DarkOrange;
+			this->radiobutt_existing_people->ForeColor = System::Drawing::Color::SandyBrown;
 			this->radiobutt_existing_people->Location = System::Drawing::Point(222, 25);
 			this->radiobutt_existing_people->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->radiobutt_existing_people->Name = L"radiobutt_existing_people";
@@ -197,7 +197,7 @@ namespace ProjetPoo {
 			this->radio_staff_select->AutoSize = true;
 			this->radio_staff_select->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Bold,
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			this->radio_staff_select->ForeColor = System::Drawing::Color::DarkOrange;
+			this->radio_staff_select->ForeColor = System::Drawing::Color::SandyBrown;
 			this->radio_staff_select->Location = System::Drawing::Point(169, 25);
 			this->radio_staff_select->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->radio_staff_select->Name = L"radio_staff_select";
@@ -213,7 +213,7 @@ namespace ProjetPoo {
 			this->radio_customer_select->Checked = true;
 			this->radio_customer_select->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Bold,
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			this->radio_customer_select->ForeColor = System::Drawing::Color::DarkOrange;
+			this->radio_customer_select->ForeColor = System::Drawing::Color::SandyBrown;
 			this->radio_customer_select->Location = System::Drawing::Point(12, 24);
 			this->radio_customer_select->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->radio_customer_select->Name = L"radio_customer_select";
@@ -252,7 +252,7 @@ namespace ProjetPoo {
 			this->label1->AutoSize = true;
 			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label1->ForeColor = System::Drawing::Color::DarkOrange;
+			this->label1->ForeColor = System::Drawing::Color::SandyBrown;
 			this->label1->Location = System::Drawing::Point(179, 275);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(66, 24);
@@ -264,7 +264,7 @@ namespace ProjetPoo {
 			this->label2->AutoSize = true;
 			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label2->ForeColor = System::Drawing::Color::DarkOrange;
+			this->label2->ForeColor = System::Drawing::Color::SandyBrown;
 			this->label2->Location = System::Drawing::Point(156, 332);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(95, 24);
@@ -294,7 +294,7 @@ namespace ProjetPoo {
 			this->label3->AutoSize = true;
 			this->label3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label3->ForeColor = System::Drawing::Color::DarkOrange;
+			this->label3->ForeColor = System::Drawing::Color::SandyBrown;
 			this->label3->Location = System::Drawing::Point(48, 393);
 			this->label3->Name = L"label3";
 			this->label3->Size = System::Drawing::Size(197, 24);
@@ -315,7 +315,7 @@ namespace ProjetPoo {
 			this->label4->AutoSize = true;
 			this->label4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label4->ForeColor = System::Drawing::Color::DarkOrange;
+			this->label4->ForeColor = System::Drawing::Color::SandyBrown;
 			this->label4->Location = System::Drawing::Point(644, 278);
 			this->label4->Name = L"label4";
 			this->label4->Size = System::Drawing::Size(241, 24);
@@ -351,7 +351,7 @@ namespace ProjetPoo {
 			this->label5->AutoSize = true;
 			this->label5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label5->ForeColor = System::Drawing::Color::DarkOrange;
+			this->label5->ForeColor = System::Drawing::Color::SandyBrown;
 			this->label5->Location = System::Drawing::Point(59, 453);
 			this->label5->Name = L"label5";
 			this->label5->Size = System::Drawing::Size(186, 24);
@@ -360,7 +360,7 @@ namespace ProjetPoo {
 			// 
 			// button_register
 			// 
-			this->button_register->BackColor = System::Drawing::Color::DarkOrange;
+			this->button_register->BackColor = System::Drawing::Color::SandyBrown;
 			this->button_register->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
 			this->button_register->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 48, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
@@ -377,7 +377,7 @@ namespace ProjetPoo {
 			this->label6->AutoSize = true;
 			this->label6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label6->ForeColor = System::Drawing::Color::DarkOrange;
+			this->label6->ForeColor = System::Drawing::Color::SandyBrown;
 			this->label6->Location = System::Drawing::Point(146, 514);
 			this->label6->Name = L"label6";
 			this->label6->Size = System::Drawing::Size(99, 24);
@@ -389,7 +389,7 @@ namespace ProjetPoo {
 			this->label7->AutoSize = true;
 			this->label7->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label7->ForeColor = System::Drawing::Color::DarkOrange;
+			this->label7->ForeColor = System::Drawing::Color::SandyBrown;
 			this->label7->Location = System::Drawing::Point(111, 574);
 			this->label7->Name = L"label7";
 			this->label7->Size = System::Drawing::Size(134, 24);
@@ -401,7 +401,7 @@ namespace ProjetPoo {
 			this->label8->AutoSize = true;
 			this->label8->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label8->ForeColor = System::Drawing::Color::DarkOrange;
+			this->label8->ForeColor = System::Drawing::Color::SandyBrown;
 			this->label8->Location = System::Drawing::Point(182, 629);
 			this->label8->Name = L"label8";
 			this->label8->Size = System::Drawing::Size(63, 24);
@@ -455,7 +455,7 @@ namespace ProjetPoo {
 			this->label9->AutoSize = true;
 			this->label9->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label9->ForeColor = System::Drawing::Color::DarkOrange;
+			this->label9->ForeColor = System::Drawing::Color::SandyBrown;
 			this->label9->Location = System::Drawing::Point(707, 392);
 			this->label9->Name = L"label9";
 			this->label9->Size = System::Drawing::Size(178, 24);
@@ -478,7 +478,7 @@ namespace ProjetPoo {
 			this->label10->AutoSize = true;
 			this->label10->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label10->ForeColor = System::Drawing::Color::DarkOrange;
+			this->label10->ForeColor = System::Drawing::Color::SandyBrown;
 			this->label10->Location = System::Drawing::Point(738, 451);
 			this->label10->Name = L"label10";
 			this->label10->Size = System::Drawing::Size(147, 24);
@@ -503,7 +503,7 @@ namespace ProjetPoo {
 			this->label11->AutoSize = true;
 			this->label11->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label11->ForeColor = System::Drawing::Color::DarkOrange;
+			this->label11->ForeColor = System::Drawing::Color::SandyBrown;
 			this->label11->Location = System::Drawing::Point(811, 336);
 			this->label11->Name = L"label11";
 			this->label11->Size = System::Drawing::Size(74, 24);

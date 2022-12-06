@@ -9,11 +9,14 @@
 #include "ItemForm.h"
 #include "OrderForm.h"
 #include "PaymentForm.h"
+#include "InvoiceForm.h"
 
 //Autres :
 #include "CatalogForm.h"
 #include "ConnexionForm.h"
 #include "Staff.h"
+
+
 
 namespace ProjetPoo {
 
@@ -70,6 +73,9 @@ namespace ProjetPoo {
 	private: System::Windows::Forms::Button^ button_manage_orders;
 	private: System::Windows::Forms::Button^ button_manage_payment;
 
+	private: System::Windows::Forms::PrintDialog^ printDialog1;
+
+
 
 
 
@@ -106,6 +112,7 @@ namespace ProjetPoo {
 			this->button_manage_item = (gcnew System::Windows::Forms::Button());
 			this->button_manage_orders = (gcnew System::Windows::Forms::Button());
 			this->button_manage_payment = (gcnew System::Windows::Forms::Button());
+			this->printDialog1 = (gcnew System::Windows::Forms::PrintDialog());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->SuspendLayout();
@@ -281,6 +288,10 @@ namespace ProjetPoo {
 			this->button_manage_payment->UseVisualStyleBackColor = false;
 			this->button_manage_payment->Click += gcnew System::EventHandler(this, &MainForm::button_manage_payment_Click);
 			// 
+			// printDialog1
+			// 
+			this->printDialog1->UseEXDialog = true;
+			// 
 			// MainForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
@@ -352,9 +363,9 @@ private: System::Void button_change_password_Click(System::Object^ sender, Syste
 }
 
 private: System::Void button_catalog_Click(System::Object^ sender, System::EventArgs^ e) {
-	CatalogForm catalogform;
+	InvoiceForm invoiceform;
 	this->Hide();
-	catalogform.ShowDialog();
+	invoiceform.ShowDialog();
 	this->Show();
 }
 
@@ -377,7 +388,7 @@ private: System::Void button_manage_orders_Click(System::Object^ sender, System:
 private: System::Void button_manage_payment_Click(System::Object^ sender, System::EventArgs^ e) {
 	PaymentForm paymentform;
 	paymentform.ShowDialog();
-}
+}	
 
 };
 }

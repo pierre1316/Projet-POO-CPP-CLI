@@ -130,6 +130,7 @@
     <ClCompile Include="Address.cpp" />
     <ClCompile Include="ConnexionForm.cpp" />
     <ClCompile Include="Customer.cpp" />
+    <ClCompile Include="InvoiceForm.cpp" />
     <ClCompile Include="OrderForm.cpp" />
     <ClCompile Include="PaymentForm.cpp" />
     <ClCompile Include="People.cpp" />
@@ -162,6 +163,9 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Customer.h" />
+    <ClInclude Include="InvoiceForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="OrderForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -215,6 +219,9 @@
     <EmbeddedResource Include="CategoryForm.resx">
       <DependentUpon>CategoryForm.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="InvoiceForm.resx">
+      <DependentUpon>InvoiceForm.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ItemForm.resx">
       <DependentUpon>ItemForm.h</DependentUpon>
     </EmbeddedResource>
@@ -237,7 +244,26 @@
       <DependentUpon>PeopleForm.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="AcroPDFLib.1.0">
+      <VersionMinor>0</VersionMinor>
+      <VersionMajor>1</VersionMajor>
+      <Guid>05bfd3f1-6319-4f30-b752-c7a22889bcc4</Guid>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>false</Isolated>
+      <EmbedInteropTypes>true</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="AxAcroPDFLib.1.0">
+      <WrapperTool>aximp</WrapperTool>
+      <VersionMinor>0</VersionMinor>
+      <VersionMajor>1</VersionMajor>
+      <Guid>05bfd3f1-6319-4f30-b752-c7a22889bcc4</Guid>
+      <Lcid>0</Lcid>
+      <Isolated>false</Isolated>
+      <EmbedInteropTypes>true</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
-  <ImportGroup Label="ExtensionTargets">
-  </ImportGroup>
+  <ImportGroup Label="ExtensionTargets" />
 </Project>

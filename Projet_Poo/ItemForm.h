@@ -169,10 +169,9 @@ namespace ProjetPoo {
 			// button_delete
 			// 
 			this->button_delete->Enabled = false;
-			this->button_delete->Location = System::Drawing::Point(176, 236);
-			this->button_delete->Margin = System::Windows::Forms::Padding(2);
+			this->button_delete->Location = System::Drawing::Point(332, 552);
 			this->button_delete->Name = L"button_delete";
-			this->button_delete->Size = System::Drawing::Size(122, 38);
+			this->button_delete->Size = System::Drawing::Size(183, 58);
 			this->button_delete->TabIndex = 24;
 			this->button_delete->Text = L"Supprimer";
 			this->button_delete->UseVisualStyleBackColor = true;
@@ -180,10 +179,9 @@ namespace ProjetPoo {
 			// 
 			// button_enter
 			// 
-			this->button_enter->Location = System::Drawing::Point(327, 229);
-			this->button_enter->Margin = System::Windows::Forms::Padding(2);
+			this->button_enter->Location = System::Drawing::Point(490, 352);
 			this->button_enter->Name = L"button_enter";
-			this->button_enter->Size = System::Drawing::Size(122, 38);
+			this->button_enter->Size = System::Drawing::Size(183, 58);
 			this->button_enter->TabIndex = 23;
 			this->button_enter->Text = L"Enregistrer";
 			this->button_enter->UseVisualStyleBackColor = true;
@@ -193,20 +191,19 @@ namespace ProjetPoo {
 			// 
 			this->listBox_items->Enabled = false;
 			this->listBox_items->FormattingEnabled = true;
-			this->listBox_items->Location = System::Drawing::Point(9, 50);
-			this->listBox_items->Margin = System::Windows::Forms::Padding(2);
+			this->listBox_items->ItemHeight = 20;
+			this->listBox_items->Location = System::Drawing::Point(82, 266);
 			this->listBox_items->Name = L"listBox_items";
-			this->listBox_items->Size = System::Drawing::Size(152, 225);
+			this->listBox_items->Size = System::Drawing::Size(226, 344);
 			this->listBox_items->TabIndex = 14;
 			this->listBox_items->SelectedIndexChanged += gcnew System::EventHandler(this, &ItemForm::listBox_items_SelectedIndexChanged);
 			// 
 			// radio_modify_item
 			// 
 			this->radio_modify_item->AutoSize = true;
-			this->radio_modify_item->Location = System::Drawing::Point(66, 29);
-			this->radio_modify_item->Margin = System::Windows::Forms::Padding(2);
+			this->radio_modify_item->Location = System::Drawing::Point(167, 234);
 			this->radio_modify_item->Name = L"radio_modify_item";
-			this->radio_modify_item->Size = System::Drawing::Size(62, 17);
+			this->radio_modify_item->Size = System::Drawing::Size(83, 24);
 			this->radio_modify_item->TabIndex = 12;
 			this->radio_modify_item->Text = L"Modifier";
 			this->radio_modify_item->UseVisualStyleBackColor = true;
@@ -215,10 +212,9 @@ namespace ProjetPoo {
 			// 
 			this->radio_create_item->AutoSize = true;
 			this->radio_create_item->Checked = true;
-			this->radio_create_item->Location = System::Drawing::Point(9, 29);
-			this->radio_create_item->Margin = System::Windows::Forms::Padding(2);
+			this->radio_create_item->Location = System::Drawing::Point(82, 234);
 			this->radio_create_item->Name = L"radio_create_item";
-			this->radio_create_item->Size = System::Drawing::Size(50, 17);
+			this->radio_create_item->Size = System::Drawing::Size(66, 24);
 			this->radio_create_item->TabIndex = 11;
 			this->radio_create_item->TabStop = true;
 			this->radio_create_item->Text = L"Créer";
@@ -227,105 +223,94 @@ namespace ProjetPoo {
 			// 
 			// textBox_price_ht
 			// 
-			this->textBox_price_ht->Location = System::Drawing::Point(302, 87);
-			this->textBox_price_ht->Margin = System::Windows::Forms::Padding(2);
+			this->textBox_price_ht->Location = System::Drawing::Point(521, 323);
 			this->textBox_price_ht->Name = L"textBox_price_ht";
-			this->textBox_price_ht->Size = System::Drawing::Size(65, 20);
+			this->textBox_price_ht->Size = System::Drawing::Size(96, 26);
 			this->textBox_price_ht->TabIndex = 16;
 			this->textBox_price_ht->TextAlign = System::Windows::Forms::HorizontalAlignment::Right;
 			// 
 			// label5
 			// 
 			this->label5->AutoSize = true;
-			this->label5->Location = System::Drawing::Point(228, 87);
-			this->label5->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label5->Location = System::Drawing::Point(410, 323);
 			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(76, 13);
+			this->label5->Size = System::Drawing::Size(111, 20);
 			this->label5->TabIndex = 0;
 			this->label5->Text = L"Prix hors taxe :";
 			// 
 			// label6
 			// 
 			this->label6->AutoSize = true;
-			this->label6->Location = System::Drawing::Point(368, 87);
-			this->label6->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label6->Location = System::Drawing::Point(620, 323);
 			this->label6->Name = L"label6";
-			this->label6->Size = System::Drawing::Size(13, 13);
+			this->label6->Size = System::Drawing::Size(18, 20);
 			this->label6->TabIndex = 0;
 			this->label6->Text = L"€";
 			// 
 			// textBox_quantity_reduction
 			// 
-			this->textBox_quantity_reduction->Location = System::Drawing::Point(302, 130);
-			this->textBox_quantity_reduction->Margin = System::Windows::Forms::Padding(2);
+			this->textBox_quantity_reduction->Location = System::Drawing::Point(521, 389);
 			this->textBox_quantity_reduction->Name = L"textBox_quantity_reduction";
-			this->textBox_quantity_reduction->Size = System::Drawing::Size(151, 20);
+			this->textBox_quantity_reduction->Size = System::Drawing::Size(224, 26);
 			this->textBox_quantity_reduction->TabIndex = 19;
 			// 
 			// label7
 			// 
 			this->label7->AutoSize = true;
-			this->label7->Location = System::Drawing::Point(177, 132);
-			this->label7->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label7->Location = System::Drawing::Point(334, 392);
 			this->label7->Name = L"label7";
-			this->label7->Size = System::Drawing::Size(130, 13);
+			this->label7->Size = System::Drawing::Size(191, 20);
 			this->label7->TabIndex = 0;
 			this->label7->Text = L"Quantité avant réduction :";
 			// 
 			// label4
 			// 
 			this->label4->AutoSize = true;
-			this->label4->Location = System::Drawing::Point(404, 155);
-			this->label4->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label4->Location = System::Drawing::Point(674, 427);
 			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(13, 13);
+			this->label4->Size = System::Drawing::Size(18, 20);
 			this->label4->TabIndex = 0;
 			this->label4->Text = L"€";
 			// 
 			// textBox_price_ht_after_reduc
 			// 
-			this->textBox_price_ht_after_reduc->Location = System::Drawing::Point(338, 153);
-			this->textBox_price_ht_after_reduc->Margin = System::Windows::Forms::Padding(2);
+			this->textBox_price_ht_after_reduc->Location = System::Drawing::Point(575, 424);
 			this->textBox_price_ht_after_reduc->Name = L"textBox_price_ht_after_reduc";
-			this->textBox_price_ht_after_reduc->Size = System::Drawing::Size(65, 20);
+			this->textBox_price_ht_after_reduc->Size = System::Drawing::Size(96, 26);
 			this->textBox_price_ht_after_reduc->TabIndex = 20;
 			this->textBox_price_ht_after_reduc->TextAlign = System::Windows::Forms::HorizontalAlignment::Right;
 			// 
 			// label8
 			// 
 			this->label8->AutoSize = true;
-			this->label8->Location = System::Drawing::Point(184, 155);
-			this->label8->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label8->Location = System::Drawing::Point(344, 427);
 			this->label8->Name = L"label8";
-			this->label8->Size = System::Drawing::Size(152, 13);
+			this->label8->Size = System::Drawing::Size(225, 20);
 			this->label8->TabIndex = 0;
 			this->label8->Text = L"Prix hors taxe après réduction :";
 			// 
 			// textBox_minimum
 			// 
-			this->textBox_minimum->Location = System::Drawing::Point(302, 107);
-			this->textBox_minimum->Margin = System::Windows::Forms::Padding(2);
+			this->textBox_minimum->Location = System::Drawing::Point(521, 354);
 			this->textBox_minimum->Name = L"textBox_minimum";
-			this->textBox_minimum->Size = System::Drawing::Size(151, 20);
+			this->textBox_minimum->Size = System::Drawing::Size(224, 26);
 			this->textBox_minimum->TabIndex = 17;
 			// 
 			// label9
 			// 
 			this->label9->AutoSize = true;
-			this->label9->Location = System::Drawing::Point(208, 110);
-			this->label9->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label9->Location = System::Drawing::Point(380, 358);
 			this->label9->Name = L"label9";
-			this->label9->Size = System::Drawing::Size(96, 13);
+			this->label9->Size = System::Drawing::Size(145, 20);
 			this->label9->TabIndex = 0;
 			this->label9->Text = L"Quantité minimum :";
 			// 
 			// combo_category
 			// 
 			this->combo_category->FormattingEnabled = true;
-			this->combo_category->Location = System::Drawing::Point(302, 198);
-			this->combo_category->Margin = System::Windows::Forms::Padding(2);
+			this->combo_category->Location = System::Drawing::Point(521, 494);
 			this->combo_category->Name = L"combo_category";
-			this->combo_category->Size = System::Drawing::Size(151, 21);
+			this->combo_category->Size = System::Drawing::Size(224, 28);
 			this->combo_category->TabIndex = 22;
 			this->combo_category->Text = L"Sélectionnez une Catégorie";
 			this->combo_category->SelectedIndexChanged += gcnew System::EventHandler(this, &ItemForm::combo_category_SelectedIndexChanged);
@@ -334,10 +319,9 @@ namespace ProjetPoo {
 			// label10
 			// 
 			this->label10->AutoSize = true;
-			this->label10->Location = System::Drawing::Point(240, 201);
-			this->label10->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label10->Location = System::Drawing::Point(428, 498);
 			this->label10->Name = L"label10";
-			this->label10->Size = System::Drawing::Size(58, 13);
+			this->label10->Size = System::Drawing::Size(86, 20);
 			this->label10->TabIndex = 0;
 			this->label10->Text = L"Catégorie :";
 			// 
@@ -345,20 +329,19 @@ namespace ProjetPoo {
 			// 
 			this->listBox_colors->Enabled = false;
 			this->listBox_colors->FormattingEnabled = true;
-			this->listBox_colors->Location = System::Drawing::Point(8, 43);
-			this->listBox_colors->Margin = System::Windows::Forms::Padding(2);
+			this->listBox_colors->ItemHeight = 20;
+			this->listBox_colors->Location = System::Drawing::Point(12, 66);
 			this->listBox_colors->Name = L"listBox_colors";
-			this->listBox_colors->Size = System::Drawing::Size(132, 225);
+			this->listBox_colors->Size = System::Drawing::Size(196, 344);
 			this->listBox_colors->TabIndex = 38;
 			this->listBox_colors->SelectedIndexChanged += gcnew System::EventHandler(this, &ItemForm::listBox_colors_SelectedIndexChanged);
 			// 
 			// radio_modify_color
 			// 
 			this->radio_modify_color->AutoSize = true;
-			this->radio_modify_color->Location = System::Drawing::Point(72, 22);
-			this->radio_modify_color->Margin = System::Windows::Forms::Padding(2);
+			this->radio_modify_color->Location = System::Drawing::Point(108, 34);
 			this->radio_modify_color->Name = L"radio_modify_color";
-			this->radio_modify_color->Size = System::Drawing::Size(62, 17);
+			this->radio_modify_color->Size = System::Drawing::Size(83, 24);
 			this->radio_modify_color->TabIndex = 37;
 			this->radio_modify_color->Text = L"Modifier";
 			this->radio_modify_color->UseVisualStyleBackColor = true;
@@ -367,10 +350,9 @@ namespace ProjetPoo {
 			// 
 			this->radio_create_color->AutoSize = true;
 			this->radio_create_color->Checked = true;
-			this->radio_create_color->Location = System::Drawing::Point(15, 22);
-			this->radio_create_color->Margin = System::Windows::Forms::Padding(2);
+			this->radio_create_color->Location = System::Drawing::Point(22, 34);
 			this->radio_create_color->Name = L"radio_create_color";
-			this->radio_create_color->Size = System::Drawing::Size(50, 17);
+			this->radio_create_color->Size = System::Drawing::Size(66, 24);
 			this->radio_create_color->TabIndex = 36;
 			this->radio_create_color->TabStop = true;
 			this->radio_create_color->Text = L"Créer";
@@ -380,10 +362,9 @@ namespace ProjetPoo {
 			// button_color_delete
 			// 
 			this->button_color_delete->Enabled = false;
-			this->button_color_delete->Location = System::Drawing::Point(144, 229);
-			this->button_color_delete->Margin = System::Windows::Forms::Padding(2);
+			this->button_color_delete->Location = System::Drawing::Point(216, 352);
 			this->button_color_delete->Name = L"button_color_delete";
-			this->button_color_delete->Size = System::Drawing::Size(80, 38);
+			this->button_color_delete->Size = System::Drawing::Size(120, 58);
 			this->button_color_delete->TabIndex = 49;
 			this->button_color_delete->Text = L"Supprimer";
 			this->button_color_delete->UseVisualStyleBackColor = true;
@@ -391,10 +372,9 @@ namespace ProjetPoo {
 			// 
 			// button_color_enter
 			// 
-			this->button_color_enter->Location = System::Drawing::Point(229, 229);
-			this->button_color_enter->Margin = System::Windows::Forms::Padding(2);
+			this->button_color_enter->Location = System::Drawing::Point(344, 352);
 			this->button_color_enter->Name = L"button_color_enter";
-			this->button_color_enter->Size = System::Drawing::Size(80, 38);
+			this->button_color_enter->Size = System::Drawing::Size(120, 58);
 			this->button_color_enter->TabIndex = 48;
 			this->button_color_enter->Text = L"Enregistrer";
 			this->button_color_enter->UseVisualStyleBackColor = true;
@@ -403,93 +383,83 @@ namespace ProjetPoo {
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(266, 64);
-			this->label2->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label2->Location = System::Drawing::Point(467, 287);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(35, 13);
+			this->label2->Size = System::Drawing::Size(50, 20);
 			this->label2->TabIndex = 0;
 			this->label2->Text = L"Nom :";
 			// 
 			// textBox_name
 			// 
-			this->textBox_name->Location = System::Drawing::Point(302, 62);
-			this->textBox_name->Margin = System::Windows::Forms::Padding(2);
+			this->textBox_name->Location = System::Drawing::Point(521, 284);
 			this->textBox_name->Name = L"textBox_name";
-			this->textBox_name->Size = System::Drawing::Size(151, 20);
+			this->textBox_name->Size = System::Drawing::Size(224, 26);
 			this->textBox_name->TabIndex = 15;
 			// 
 			// textBox_color_name
 			// 
-			this->textBox_color_name->Location = System::Drawing::Point(183, 99);
-			this->textBox_color_name->Margin = System::Windows::Forms::Padding(2);
+			this->textBox_color_name->Location = System::Drawing::Point(274, 152);
 			this->textBox_color_name->Name = L"textBox_color_name";
-			this->textBox_color_name->Size = System::Drawing::Size(124, 20);
+			this->textBox_color_name->Size = System::Drawing::Size(184, 26);
 			this->textBox_color_name->TabIndex = 42;
 			// 
 			// label12
 			// 
 			this->label12->AutoSize = true;
-			this->label12->Location = System::Drawing::Point(147, 102);
-			this->label12->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label12->Location = System::Drawing::Point(220, 157);
 			this->label12->Name = L"label12";
-			this->label12->Size = System::Drawing::Size(35, 13);
+			this->label12->Size = System::Drawing::Size(50, 20);
 			this->label12->TabIndex = 0;
 			this->label12->Text = L"Nom :";
 			// 
 			// textBox_price_multiplicateur
 			// 
-			this->textBox_price_multiplicateur->Location = System::Drawing::Point(242, 129);
-			this->textBox_price_multiplicateur->Margin = System::Windows::Forms::Padding(2);
+			this->textBox_price_multiplicateur->Location = System::Drawing::Point(363, 198);
 			this->textBox_price_multiplicateur->Name = L"textBox_price_multiplicateur";
-			this->textBox_price_multiplicateur->Size = System::Drawing::Size(65, 20);
+			this->textBox_price_multiplicateur->Size = System::Drawing::Size(96, 26);
 			this->textBox_price_multiplicateur->TabIndex = 44;
 			this->textBox_price_multiplicateur->TextAlign = System::Windows::Forms::HorizontalAlignment::Right;
 			// 
 			// label13
 			// 
 			this->label13->AutoSize = true;
-			this->label13->Location = System::Drawing::Point(156, 132);
-			this->label13->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label13->Location = System::Drawing::Point(234, 203);
 			this->label13->Name = L"label13";
-			this->label13->Size = System::Drawing::Size(75, 13);
+			this->label13->Size = System::Drawing::Size(110, 20);
 			this->label13->TabIndex = 0;
 			this->label13->Text = L"Multiplicateur :";
 			// 
 			// textBox_quantity
 			// 
-			this->textBox_quantity->Location = System::Drawing::Point(242, 162);
-			this->textBox_quantity->Margin = System::Windows::Forms::Padding(2);
+			this->textBox_quantity->Location = System::Drawing::Point(363, 249);
 			this->textBox_quantity->Name = L"textBox_quantity";
-			this->textBox_quantity->Size = System::Drawing::Size(65, 20);
+			this->textBox_quantity->Size = System::Drawing::Size(96, 26);
 			this->textBox_quantity->TabIndex = 46;
 			this->textBox_quantity->TextAlign = System::Windows::Forms::HorizontalAlignment::Right;
 			// 
 			// label14
 			// 
 			this->label14->AutoSize = true;
-			this->label14->Location = System::Drawing::Point(145, 165);
-			this->label14->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label14->Location = System::Drawing::Point(218, 254);
 			this->label14->Name = L"label14";
-			this->label14->Size = System::Drawing::Size(97, 13);
+			this->label14->Size = System::Drawing::Size(142, 20);
 			this->label14->TabIndex = 0;
 			this->label14->Text = L"Quantité en stock :";
 			// 
 			// label3
 			// 
 			this->label3->AutoSize = true;
-			this->label3->Location = System::Drawing::Point(164, 178);
-			this->label3->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label3->Location = System::Drawing::Point(314, 463);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(143, 13);
+			this->label3->Size = System::Drawing::Size(213, 20);
 			this->label3->TabIndex = 0;
 			this->label3->Text = L"Quantité maximum en stock :";
 			// 
 			// textBox_quantity_max
 			// 
-			this->textBox_quantity_max->Location = System::Drawing::Point(302, 176);
-			this->textBox_quantity_max->Margin = System::Windows::Forms::Padding(2);
+			this->textBox_quantity_max->Location = System::Drawing::Point(521, 460);
 			this->textBox_quantity_max->Name = L"textBox_quantity_max";
-			this->textBox_quantity_max->Size = System::Drawing::Size(151, 20);
+			this->textBox_quantity_max->Size = System::Drawing::Size(224, 26);
 			this->textBox_quantity_max->TabIndex = 21;
 			// 
 			// groupBox1
@@ -505,11 +475,9 @@ namespace ProjetPoo {
 			this->groupBox1->Controls->Add(this->radio_modify_color);
 			this->groupBox1->Controls->Add(this->radio_create_color);
 			this->groupBox1->Controls->Add(this->listBox_colors);
-			this->groupBox1->Location = System::Drawing::Point(472, 7);
-			this->groupBox1->Margin = System::Windows::Forms::Padding(2);
+			this->groupBox1->Location = System::Drawing::Point(776, 200);
 			this->groupBox1->Name = L"groupBox1";
-			this->groupBox1->Padding = System::Windows::Forms::Padding(2);
-			this->groupBox1->Size = System::Drawing::Size(316, 276);
+			this->groupBox1->Size = System::Drawing::Size(474, 425);
 			this->groupBox1->TabIndex = 0;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Gestion des couleurs :";
@@ -517,21 +485,20 @@ namespace ProjetPoo {
 			// groupBox2
 			// 
 			this->groupBox2->Controls->Add(this->button_enter);
-			this->groupBox2->Location = System::Drawing::Point(2, 7);
-			this->groupBox2->Margin = System::Windows::Forms::Padding(2);
+			this->groupBox2->Location = System::Drawing::Point(71, 200);
 			this->groupBox2->Name = L"groupBox2";
-			this->groupBox2->Padding = System::Windows::Forms::Padding(2);
-			this->groupBox2->Size = System::Drawing::Size(466, 276);
+			this->groupBox2->Size = System::Drawing::Size(699, 425);
 			this->groupBox2->TabIndex = 0;
 			this->groupBox2->TabStop = false;
 			this->groupBox2->Text = L"Gestion des articles :";
+			this->groupBox2->Enter += gcnew System::EventHandler(this, &ItemForm::groupBox2_Enter);
 			// 
-			// CreateItemForm
+			// ItemForm
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::SystemColors::ActiveCaption;
-			this->ClientSize = System::Drawing::Size(798, 287);
+			this->ClientSize = System::Drawing::Size(1344, 756);
 			this->Controls->Add(this->groupBox1);
 			this->Controls->Add(this->combo_category);
 			this->Controls->Add(this->label10);
@@ -554,8 +521,9 @@ namespace ProjetPoo {
 			this->Controls->Add(this->radio_modify_item);
 			this->Controls->Add(this->radio_create_item);
 			this->Controls->Add(this->groupBox2);
-			this->Margin = System::Windows::Forms::Padding(2);
-			this->Name = L"CreateItemForm";
+			this->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->Name = L"ItemForm";
 			this->Text = L"CreateItemForm";
 			this->Load += gcnew System::EventHandler(this, &ItemForm::CreateItemForm_Load);
 			this->groupBox1->ResumeLayout(false);
@@ -747,6 +715,8 @@ private: System::Void combo_category_load(System::Void) {
 }
 private: System::Void combo_category_Enter(System::Object^ sender, System::EventArgs^ e) {
 	combo_category_load();
+}
+private: System::Void groupBox2_Enter(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 }

@@ -80,10 +80,13 @@ namespace ProjetPoo {
 	
 		// Autres :
 	private: DataTable^ currentTable;
-	private: Decimal price_ttc;
-	private: Decimal price_over_level_ttc;
+	private: Decimal^ price_ttc;
+	private: Decimal^ price_over_level_ttc;
 	private: Data::DataSet^ oDs;
 	private: Data::DataSet^ Items;
+
+	private: Decimal total_ht;
+	private: Decimal total_ttc;
 	//
 
 	// Customer :
@@ -1092,21 +1095,21 @@ private: System::Void load_current_listbox(System::Void) {
 	load_prices();
 }
 private: System::Void load_prices(System::Void) {
-	Decimal total_ht = 0;
-	Decimal total_ttc = 0;
+	this->total_ht = 0;
+	this->total_ttc = 0;
 	if (this->currentTable->Rows->Count == 0) {
 		return;
 	}
 	for (int i = 0; i < this->currentTable->Rows->Count; i++) {
 		if (Convert::ToInt32(this->currentTable->Rows[i]->ItemArray[6]) < Convert::ToInt32(this->currentTable->Rows[i]->ItemArray[8])) {
-			total_ht = Decimal::Add(total_ht, Convert::ToDecimal(this->currentTable->Rows[i]->ItemArray[5]) * Convert::ToInt32(this->currentTable->Rows[i]->ItemArray[6]));
+			this->total_ht = Decimal::Add(total_ht, Convert::ToDecimal(this->currentTable->Rows[i]->ItemArray[5]) * Convert::ToInt32(this->currentTable->Rows[i]->ItemArray[6]));
 
-			total_ttc = Decimal::Add(total_ttc, Convert::ToDecimal(this->currentTable->Rows[i]->ItemArray[7]) * Convert::ToInt32(this->currentTable->Rows[i]->ItemArray[6]));
+			this->total_ttc = Decimal::Add(total_ttc, Convert::ToDecimal(this->currentTable->Rows[i]->ItemArray[7]) * Convert::ToInt32(this->currentTable->Rows[i]->ItemArray[6]));
 		}
 		else {
-			total_ht = Decimal::Add(total_ht, Convert::ToDecimal(this->currentTable->Rows[i]->ItemArray[9]) * Convert::ToInt32(this->currentTable->Rows[i]->ItemArray[6]));
+			this->total_ht = Decimal::Add(total_ht, Convert::ToDecimal(this->currentTable->Rows[i]->ItemArray[9]) * Convert::ToInt32(this->currentTable->Rows[i]->ItemArray[6]));
 
-			total_ttc = Decimal::Add(total_ttc, Convert::ToDecimal(this->currentTable->Rows[i]->ItemArray[10]) * Convert::ToInt32(this->currentTable->Rows[i]->ItemArray[6]));
+			this->total_ttc = Decimal::Add(total_ttc, Convert::ToDecimal(this->currentTable->Rows[i]->ItemArray[10]) * Convert::ToInt32(this->currentTable->Rows[i]->ItemArray[6]));
 
 		}
 		//total_ttc = total_ttc + Decimal::Add(price_ht, (price_ht * (tva_rate / 100) * price_multiplicator))
@@ -1114,8 +1117,9 @@ private: System::Void load_prices(System::Void) {
 		//total_ht += si quantité est inférieur à level alors prix_ht sinon prix_ht_over_level * multiplicateur
 		//total_ttc += (si quantité est inférieur à mevem alors prix_ht sinon prix_ht_over_level + lui même * tva) * multiplicateur 
 	}
-	this->textBox_price_total_ht->Text = Convert::ToString(total_ht);
-	this->textBox_price_total_ttc->Text = Convert::ToString(total_ttc);
+	
+	this->textBox_price_total_ht->Text = Convert::ToString(this->total_ht);
+	this->textBox_price_total_ttc->Text = Convert::ToString(this->total_ttc);
 }
 
 private: System::Void button_add_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -1328,13 +1332,21 @@ private: System::Void button_current_clear_Click(System::Object^ sender, System:
 
 
 private: System::Void button_archive_order_Click(System::Object^ sender, System::EventArgs^ e) {
-	button2_Click(sender, e);
+	
 	String^ invoice_date;
 	System::DateTime^ date = DateTime::Now;
 	invoice_date = System::Convert::ToString(date->Month) + "/";
 	invoice_date += System::Convert::ToString(date->Day) + "/";
 	invoice_date += System::Convert::ToString(date->Year);
-
+	if (this->checkBox_payment->Checked) {
+		System::DateTime^ date = this->dateTimePicker_payment->Value;
+		this->payment_date = "'" + System::Convert::ToString(date->Month) + "/";
+		this->payment_date += System::Convert::ToString(date->Day) + "/";
+		this->payment_date += System::Convert::ToString(date->Year) + "'";
+	}
+	else {
+		this->payment_date = "NULL";
+	}
 	String^ deli_address;
 	this->oDs = this->oAddress->selectAddressDelivery("deli", this->id_customer);
 	for (int i = 0; i < this->oDs->Tables["deli"]->Rows->Count; i++) {
@@ -1359,13 +1371,13 @@ private: System::Void button_archive_order_Click(System::Object^ sender, System:
 			this->oDs->Tables["bill"]->Rows[i]->ItemArray[5]->ToString()
 		;
 	}
-
+	
 	this->oCatalog->setOrderIssueDate(this->reference_order, invoice_date);
 	this->oCatalog->createInvoice(this->reference_order, this->payment_date,
-		this->payment_method, this->textBox_price_total_ht->Text, this->textBox_price_total_ttc->Text,
+		this->payment_method, Convert::ToString(this->total_ht), Convert::ToString(this->total_ttc),
 		invoice_date, deli_address, bill_address, this->cust_name, this->currentTable);
 	this->oCatalog->archiveOrder(this->reference_order);
-	reload_all_components();
+	button2_Click(sender, e);
 }
 };
 }
