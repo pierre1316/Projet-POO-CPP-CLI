@@ -19,7 +19,7 @@ namespace ProjetPoo {
 	/// </summary>
 	public ref class TestUniForm : public System::Windows::Forms::Form
 	{
-	public:
+		public:
 		TestUniForm(void)
 		{
 			InitializeComponent();
@@ -328,87 +328,86 @@ namespace ProjetPoo {
 
 		}
 #pragma endregion
-	private: System::Void TestUniForm_Load(System::Object^ sender, System::EventArgs^ e) {
-		this->oPeople = gcnew NS_Comp_Svc::People();
-		this->oStaff = gcnew NS_Comp_Svc::Staff();
-		this->oCust = gcnew NS_Comp_Svc::Customer();
-		this->oAddress = gcnew NS_Comp_Svc::Address();
-		textBox_sup_Selected();
-		listBox1_Load();
+		private: System::Void TestUniForm_Load(System::Object^ sender, System::EventArgs^ e) {
+			this->oPeople = gcnew NS_Comp_Svc::People();
+			this->oStaff = gcnew NS_Comp_Svc::Staff();
+			this->oCust = gcnew NS_Comp_Svc::Customer();
+			this->oAddress = gcnew NS_Comp_Svc::Address();
+			textBox_sup_Selected();
+			listBox1_Load();
 
-	}
+		}
 
 
-private: System::Void textBox_sup_Selected(System::Void) {
-	this->textBox_sup->Text = L"Sélectionnez un supérieur";
-	this->oDs = this->oStaff->selectAllStaff("staff");
-	this->textBox_sup->Items->Clear();
-	for (int i = 0; i < this->oDs->Tables["staff"]->Rows->Count; i++) {
-		this->textBox_sup->Items->Add(
-			this->oDs->Tables["staff"]->Rows[i]->ItemArray[0]->ToString() + " " +
-			this->oDs->Tables["staff"]->Rows[i]->ItemArray[1]->ToString() + " " +
-			this->oDs->Tables["staff"]->Rows[i]->ItemArray[2]->ToString());
+		private: System::Void textBox_sup_Selected(System::Void) {
+			this->textBox_sup->Text = L"Sélectionnez un supérieur";
+			this->oDs = this->oStaff->selectAllStaff("staff");
+			this->textBox_sup->Items->Clear();
+			for (int i = 0; i < this->oDs->Tables["staff"]->Rows->Count; i++) {
+				this->textBox_sup->Items->Add(
+				this->oDs->Tables["staff"]->Rows[i]->ItemArray[0]->ToString() + " " +
+				this->oDs->Tables["staff"]->Rows[i]->ItemArray[1]->ToString() + " " +
+				this->oDs->Tables["staff"]->Rows[i]->ItemArray[2]->ToString());
 	
-}
-}
-private: System::Void textBox_city_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
-	if (this->textBox_city->SelectedIndex != -1) {
-		this->id_City = Convert::ToInt32(this->Cities->Tables["cities"]->Rows[this->textBox_city->SelectedIndex]->ItemArray[0]);
-		this->textBox_cp->Text = this->Cities->Tables["cities"]->Rows[this->textBox_city->SelectedIndex]->ItemArray[1]->ToString();
-	}
-}
-	private: System::Void button_register_Click(System::Object^ sender, System::EventArgs^ e) {
-		int n =  Convert::ToInt32 (this->textBox_n->Text);
-		for (int i; i < n; i++) {
+			}
+		}
+		private: System::Void textBox_city_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
+			if (this->textBox_city->SelectedIndex != -1) {
+				this->id_City = Convert::ToInt32(this->Cities->Tables["cities"]->Rows[this->textBox_city->SelectedIndex]->ItemArray[0]);
+				this->textBox_cp->Text = this->Cities->Tables["cities"]->Rows[this->textBox_city->SelectedIndex]->ItemArray[1]->ToString();
+			}
+		}
+		private: System::Void button_register_Click(System::Object^ sender, System::EventArgs^ e) {
 			System::Data::DataRow^ row;
 			int idPeople;
-			row = this->oPeople->createPeople(this->textBox_fn->Text, this->textBox_ln->Text);
-			idPeople = System::Convert::ToInt32(row->ItemArray[0]);
+			int n =  Convert::ToInt32 (this->textBox_n->Text);
+			for (int i; i < n; i++) {
+				row = this->oPeople->createPeople(this->textBox_fn->Text, this->textBox_ln->Text);
+				idPeople = System::Convert::ToInt32(row->ItemArray[0]);
 
-			textBox_sup_Selected();
-			int indexStaff;
-			int idSuperior = -1;
-			if (this->textBox_sup->SelectedIndex != -1) {
-				this->oDs = this->oStaff->selectAllStaff("staff");
-				indexStaff = this->textBox_sup->SelectedIndex;
-				idSuperior = System::Convert::ToInt32(this->oDs->Tables["staff"]->Rows[indexStaff]->ItemArray[0]);
+				int indexStaff;
+				int idSuperior = -1;
+				if (this->textBox_sup->SelectedIndex != -1) {
+					this->oDs = this->oStaff->selectAllStaff("staff");
+					indexStaff = this->textBox_sup->SelectedIndex;
+					idSuperior = System::Convert::ToInt32(this->oDs->Tables["staff"]->Rows[indexStaff]->ItemArray[0]);
+				}
+				System::DateTime^ date = this->textBox_hd->Value;
+				System::String^ dateString = System::Convert::ToString(date->Month) + "/";
+				dateString += System::Convert::ToString(date->Day) + "/";
+				dateString += System::Convert::ToString(date->Year);
+				this->oStaff->createStaff(idPeople, dateString, idSuperior, "");
+				int idAddress = this->oAddress->createAddress("", "", this->textBox_address->Text, this->id_City);
+				this->oStaff->updateStaffAddress(idPeople, idAddress);
 			}
-			System::DateTime^ date = this->textBox_hd->Value;
-			System::String^ dateString = System::Convert::ToString(date->Month) + "/";
-			dateString += System::Convert::ToString(date->Day) + "/";
-			dateString += System::Convert::ToString(date->Year);
-			this->oStaff->createStaff(idPeople, dateString, idSuperior, "");
-			int idAddress = this->oAddress->createAddress("", "", this->textBox_address->Text, this->id_City);
-			this->oStaff->updateStaffAddress(idPeople, idAddress);
+			textBox_sup_Selected();
 		}
-	}
-private: System::Void textBox_cp_Click(System::Object^ sender, System::EventArgs^ e) {
-	this->Cities = this->oAddress->selectCityFromPostalcode("cities", this->textBox_cp->Text);
-	this->textBox_city->Items->Clear();
-	for (int i = 0; i < this->Cities->Tables["cities"]->Rows->Count; i++) {
-		this->textBox_city->Items->Add(this->Cities->Tables["cities"]->Rows[i]->ItemArray[2]->ToString());
-	}
-}
-private: System::Void button_delete_Click(System::Object^ sender, System::EventArgs^ e) {
-	int n = Convert::ToInt32(this->textBox_n->Text);
-	for (int i; i < n; i++) {
-		int index = this->listBox1->SelectedIndex;
-		int idPeople = System::Convert::ToInt32(this->oDs->Tables["rsl"]->Rows[index]->ItemArray[0]);
-		this->oDs = this->oCust->getTheCustomer("rsl", idPeople);
-		this->oStaff->deleteStaff(idPeople);
-		this->oPeo->deletePeople(idPeople);
+		private: System::Void textBox_cp_Click(System::Object^ sender, System::EventArgs^ e) {
+			this->Cities = this->oAddress->selectCityFromPostalcode("cities", this->textBox_cp->Text);
+			this->textBox_city->Items->Clear();
+			for (int i = 0; i < this->Cities->Tables["cities"]->Rows->Count; i++) {
+				this->textBox_city->Items->Add(this->Cities->Tables["cities"]->Rows[i]->ItemArray[2]->ToString());
+			}
+		}
 
-	}
-}
-private: System::Void listBox1_Load(System::Void) {
-	this->oDs = this->oStaff->selectAllStaff("rsl");
-	this->listBox1->Items->Clear();
-	for (int i = 0; i < this->oDs->Tables["rsl"]->Rows->Count; i++) {
-		this->listBox1->Items->Add(
-			this->oDs->Tables["rsl"]->Rows[i]->ItemArray[0]->ToString() + " " +
-			this->oDs->Tables["rsl"]->Rows[i]->ItemArray[1]->ToString() + " " +
-			this->oDs->Tables["rsl"]->Rows[i]->ItemArray[2]->ToString());
-	}
-}
-};
+		private: System::Void button_delete_Click(System::Object^ sender, System::EventArgs^ e) {
+			int n = Convert::ToInt32(this->textBox_n->Text);
+			for (int i; i < n; i++) {
+				int	idPeople = System::Convert::ToInt32(this->oDs->Tables["rsl"]->Rows[-1]->ItemArray[0]);
+				this->oDs = this->oCust->getTheCustomer("rsl", idPeople);
+				this->oStaff->deleteStaff(idPeople);
+				this->oPeo->deletePeople(idPeople);
+			}
+		}
+		private: System::Void listBox1_Load(System::Void) {
+			this->oDs = this->oStaff->selectAllStaff("rsl");
+			this->listBox1->Items->Clear();
+			for (int i = 0; i < this->oDs->Tables["rsl"]->Rows->Count; i++) {
+				this->listBox1->Items->Add(
+				this->oDs->Tables["rsl"]->Rows[i]->ItemArray[0]->ToString() + " " +
+				this->oDs->Tables["rsl"]->Rows[i]->ItemArray[1]->ToString() + " " +
+				this->oDs->Tables["rsl"]->Rows[i]->ItemArray[2]->ToString());
+			}
+		}
+	};
 }

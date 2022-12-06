@@ -125,7 +125,6 @@
     <ClCompile Include="Catalog.cpp" />
     <ClCompile Include="CatalogForm.cpp" />
     <ClCompile Include="CLcad.cpp" />
-    <ClCompile Include="CLmapTB.cpp" />
     <ClCompile Include="Address.cpp" />
     <ClCompile Include="Customer.cpp" />
     <ClCompile Include="OrderForm.cpp" />
@@ -150,7 +149,6 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="CLcad.h" />
-    <ClInclude Include="CLmapTB.h" />
     <ClInclude Include="Address.h" />
     <ClInclude Include="Customer.h" />
     <ClInclude Include="OrderForm.h">

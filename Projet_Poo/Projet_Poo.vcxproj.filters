@@ -28,9 +28,6 @@
     <ClCompile Include="CLcad.cpp">
       <Filter>Classes de Communication</Filter>
     </ClCompile>
-    <ClCompile Include="CLmapTB.cpp">
-      <Filter>Classes de Mappage</Filter>
-    </ClCompile>
     <ClCompile Include="OrderForm.cpp" />
     <ClCompile Include="PaymentForm.cpp" />
     <ClCompile Include="TestUniForm.cpp" />
@@ -63,9 +60,6 @@
     <ClInclude Include="CLcad.h">
       <Filter>Classes de Communication</Filter>
     </ClInclude>
-    <ClInclude Include="CLmapTB.h">
-      <Filter>Classes de Mappage</Filter>
-    </ClInclude>
     <ClInclude Include="OrderForm.h" />
     <ClInclude Include="PaymentForm.h" />
     <ClInclude Include="TestUniForm.h" />
@@ -73,9 +67,6 @@
   <ItemGroup>
     <Filter Include="Classes de Service">
       <UniqueIdentifier>{88e4ddd4-854e-43e9-a83a-ddf965195cab}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Classes de Mappage">
-      <UniqueIdentifier>{a9289979-3ab6-42bf-9d40-8d6f79eff24c}</UniqueIdentifier>
     </Filter>
     <Filter Include="Classes de Communication">
       <UniqueIdentifier>{a103435f-d257-4d8f-92e0-529b44414c3c}</UniqueIdentifier>
