@@ -39,7 +39,7 @@ ORDER BY name_item DESC
 
 /*REQUETE 8:*/
 
-
+SELECT SUM(Color.price_multiplicator * Color.quantity_in_stock) as total_value from Color
 
 /*REQUETE 9:*/
 /*SOUS-REQUETE TVA 1:*/
