@@ -49,8 +49,9 @@ namespace ProjetPoo {
 	private: System::Windows::Forms::Button^ button_people_management;
 	private: System::Windows::Forms::Button^ button_catalog;
 	private: System::Windows::Forms::Label^ label1;
-	private: System::Windows::Forms::Button^ button_folder_select;
-	private: System::Windows::Forms::ListBox^ listBox1;
+
+
+
 
 
 	protected:
@@ -72,72 +73,66 @@ namespace ProjetPoo {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(MainForm::typeid));
 			this->button_people_management = (gcnew System::Windows::Forms::Button());
 			this->button_catalog = (gcnew System::Windows::Forms::Button());
 			this->label1 = (gcnew System::Windows::Forms::Label());
-			this->button_folder_select = (gcnew System::Windows::Forms::Button());
-			this->listBox1 = (gcnew System::Windows::Forms::ListBox());
 			this->SuspendLayout();
 			// 
 			// button_people_management
 			// 
-			this->button_people_management->Location = System::Drawing::Point(12, 12);
+			this->button_people_management->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)),
+				static_cast<System::Int32>(static_cast<System::Byte>(128)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
+			this->button_people_management->ForeColor = System::Drawing::Color::White;
+			this->button_people_management->Location = System::Drawing::Point(15, 304);
+			this->button_people_management->Margin = System::Windows::Forms::Padding(6);
 			this->button_people_management->Name = L"button_people_management";
-			this->button_people_management->Size = System::Drawing::Size(138, 67);
+			this->button_people_management->Size = System::Drawing::Size(184, 91);
 			this->button_people_management->TabIndex = 1;
 			this->button_people_management->Text = L"Gestion des\r\nPersonnes";
-			this->button_people_management->UseVisualStyleBackColor = true;
+			this->button_people_management->UseVisualStyleBackColor = false;
 			this->button_people_management->Click += gcnew System::EventHandler(this, &MainForm::button_people_management_Click);
 			// 
 			// button_catalog
 			// 
-			this->button_catalog->Location = System::Drawing::Point(10, 85);
+			this->button_catalog->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(128)),
+				static_cast<System::Int32>(static_cast<System::Byte>(0)));
+			this->button_catalog->ForeColor = System::Drawing::Color::White;
+			this->button_catalog->Location = System::Drawing::Point(15, 190);
+			this->button_catalog->Margin = System::Windows::Forms::Padding(6);
 			this->button_catalog->Name = L"button_catalog";
-			this->button_catalog->Size = System::Drawing::Size(138, 67);
+			this->button_catalog->Size = System::Drawing::Size(184, 91);
 			this->button_catalog->TabIndex = 2;
 			this->button_catalog->Text = L"Catalogue";
-			this->button_catalog->UseVisualStyleBackColor = true;
+			this->button_catalog->UseVisualStyleBackColor = false;
 			this->button_catalog->Click += gcnew System::EventHandler(this, &MainForm::button_catalog_Click);
 			// 
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(343, 39);
-			this->label1->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label1->BackColor = System::Drawing::Color::Transparent;
+			this->label1->ForeColor = System::Drawing::Color::White;
+			this->label1->Location = System::Drawing::Point(331, 94);
+			this->label1->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(35, 13);
+			this->label1->Size = System::Drawing::Size(51, 20);
 			this->label1->TabIndex = 0;
 			this->label1->Text = L"label1";
 			// 
-			// button_folder_select
-			// 
-			this->button_folder_select->Location = System::Drawing::Point(451, 182);
-			this->button_folder_select->Name = L"button_folder_select";
-			this->button_folder_select->Size = System::Drawing::Size(158, 23);
-			this->button_folder_select->TabIndex = 3;
-			this->button_folder_select->Text = L"Créer pdf";
-			this->button_folder_select->UseVisualStyleBackColor = true;
-			this->button_folder_select->Click += gcnew System::EventHandler(this, &MainForm::button_folder_select_Click);
-			// 
-			// listBox1
-			// 
-			this->listBox1->FormattingEnabled = true;
-			this->listBox1->Location = System::Drawing::Point(715, 94);
-			this->listBox1->Name = L"listBox1";
-			this->listBox1->Size = System::Drawing::Size(294, 368);
-			this->listBox1->TabIndex = 4;
-			// 
 			// MainForm
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->BackColor = System::Drawing::SystemColors::ActiveCaption;
-			this->ClientSize = System::Drawing::Size(1061, 570);
-			this->Controls->Add(this->listBox1);
-			this->Controls->Add(this->button_folder_select);
+			this->BackColor = System::Drawing::Color::Black;
+			this->ClientSize = System::Drawing::Size(1344, 756);
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->button_catalog);
 			this->Controls->Add(this->button_people_management);
+			this->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
+			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
+			this->Margin = System::Windows::Forms::Padding(6);
 			this->Name = L"MainForm";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"MainForm";
@@ -148,6 +143,7 @@ namespace ProjetPoo {
 		}
 #pragma endregion
 	private: System::Void MainForm_Load(System::Object^ sender, System::EventArgs^ e) {
+		
 		this->oStaff = gcnew NS_Comp_Svc::Staff();
 		ConnexionForm^ connForm = gcnew ConnexionForm();
 		connForm->ShowDialog();
@@ -168,11 +164,15 @@ namespace ProjetPoo {
 	}
 	private: System::Void button_people_management_Click(System::Object^ sender, System::EventArgs^ e) {
 		PeopleForm peopleform(this->id_role_user, this->id_staff_user);
+		this->Hide();
 		peopleform.ShowDialog();
+		this->Show();
 	}
 	private: System::Void button_catalog_Click(System::Object^ sender, System::EventArgs^ e) {
 		CatalogForm catalogform;
+		this->Hide();
 		catalogform.ShowDialog();
+		this->Show();
 	}
 	private: System::Void button_folder_select_Click(System::Object^ sender, System::EventArgs^ e) {
 		
