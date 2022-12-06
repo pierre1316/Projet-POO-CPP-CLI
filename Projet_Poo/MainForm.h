@@ -2,6 +2,7 @@
 #include "PeopleForm.h"
 #include "CatalogForm.h"
 #include "ConnexionForm.h"
+#include "TestUniForm.h"
 #include "Staff.h"
 
 namespace ProjetPoo {
@@ -49,6 +50,7 @@ namespace ProjetPoo {
 	private: System::Windows::Forms::Button^ button_people_management;
 	private: System::Windows::Forms::Button^ button_catalog;
 	private: System::Windows::Forms::Label^ label1;
+	private: System::Windows::Forms::Button^ button_test;
 
 
 
@@ -64,7 +66,7 @@ namespace ProjetPoo {
 		/// <summary>
 		/// Variable nécessaire au concepteur.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+		System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -77,6 +79,7 @@ namespace ProjetPoo {
 			this->button_people_management = (gcnew System::Windows::Forms::Button());
 			this->button_catalog = (gcnew System::Windows::Forms::Button());
 			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->button_test = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
 			// 
 			// button_people_management
@@ -84,7 +87,7 @@ namespace ProjetPoo {
 			this->button_people_management->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)),
 				static_cast<System::Int32>(static_cast<System::Byte>(128)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
 			this->button_people_management->ForeColor = System::Drawing::Color::White;
-			this->button_people_management->Location = System::Drawing::Point(15, 304);
+			this->button_people_management->Location = System::Drawing::Point(15, 248);
 			this->button_people_management->Margin = System::Windows::Forms::Padding(6);
 			this->button_people_management->Name = L"button_people_management";
 			this->button_people_management->Size = System::Drawing::Size(184, 91);
@@ -98,7 +101,7 @@ namespace ProjetPoo {
 			this->button_catalog->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(128)),
 				static_cast<System::Int32>(static_cast<System::Byte>(0)));
 			this->button_catalog->ForeColor = System::Drawing::Color::White;
-			this->button_catalog->Location = System::Drawing::Point(15, 190);
+			this->button_catalog->Location = System::Drawing::Point(15, 145);
 			this->button_catalog->Margin = System::Windows::Forms::Padding(6);
 			this->button_catalog->Name = L"button_catalog";
 			this->button_catalog->Size = System::Drawing::Size(184, 91);
@@ -115,16 +118,31 @@ namespace ProjetPoo {
 			this->label1->Location = System::Drawing::Point(331, 94);
 			this->label1->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(51, 20);
+			this->label1->Size = System::Drawing::Size(64, 25);
 			this->label1->TabIndex = 0;
 			this->label1->Text = L"label1";
 			// 
+			// button_test
+			// 
+			this->button_test->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(128)),
+				static_cast<System::Int32>(static_cast<System::Byte>(0)));
+			this->button_test->ForeColor = System::Drawing::Color::White;
+			this->button_test->Location = System::Drawing::Point(15, 351);
+			this->button_test->Margin = System::Windows::Forms::Padding(6);
+			this->button_test->Name = L"button_test";
+			this->button_test->Size = System::Drawing::Size(184, 91);
+			this->button_test->TabIndex = 3;
+			this->button_test->Text = L"Test unitaire";
+			this->button_test->UseVisualStyleBackColor = false;
+			this->button_test->Click += gcnew System::EventHandler(this, &MainForm::button_test_Click);
+			// 
 			// MainForm
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
+			this->AutoScaleDimensions = System::Drawing::SizeF(12, 25);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::Black;
 			this->ClientSize = System::Drawing::Size(1344, 756);
+			this->Controls->Add(this->button_test);
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->button_catalog);
 			this->Controls->Add(this->button_people_management);
@@ -143,7 +161,7 @@ namespace ProjetPoo {
 		}
 #pragma endregion
 	private: System::Void MainForm_Load(System::Object^ sender, System::EventArgs^ e) {
-		
+
 		this->oStaff = gcnew NS_Comp_Svc::Staff();
 		ConnexionForm^ connForm = gcnew ConnexionForm();
 		connForm->ShowDialog();
@@ -175,7 +193,13 @@ namespace ProjetPoo {
 		this->Show();
 	}
 	private: System::Void button_folder_select_Click(System::Object^ sender, System::EventArgs^ e) {
-		
+
 	}
-};
+	private: System::Void button_test_Click(System::Object^ sender, System::EventArgs^ e) {
+		TestUniForm testuniform;
+		this->Hide();
+		testuniform.ShowDialog();
+		this->Show();
+	}
+	};
 }

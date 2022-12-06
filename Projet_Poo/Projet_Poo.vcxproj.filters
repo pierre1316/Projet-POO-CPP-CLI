@@ -33,6 +33,7 @@
     <ClCompile Include="ArchivedOrdersForm.cpp" />
     <ClCompile Include="ConnexionForm.cpp" />
     <ClCompile Include="ChangePasswordForm.cpp" />
+    <ClCompile Include="TestUniForm.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CreatePeopleForm.h" />
@@ -67,6 +68,7 @@
     <ClInclude Include="ArchivedOrdersForm.h" />
     <ClInclude Include="ConnexionForm.h" />
     <ClInclude Include="ChangePasswordForm.h" />
+    <ClInclude Include="TestUniForm.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Classes de Service">
