@@ -1,13 +1,14 @@
-#include "CreatePeopleForm.h"
+#include "ConnexionForm.h"
 
 using namespace System;
 using namespace System::Windows::Forms;
+using namespace ProjetPoo;
+
 
 [STAThreadAttribute]
-void NewItemMain(array<String^>^ args) {
+void ConnexionForm(array<String^>^ args) {
     Application::EnableVisualStyles();
     Application::SetCompatibleTextRenderingDefault(false);
-    //WinformCDemo is jour project name
-    ProjetPoo::CreatePeopleForm form(0);
+    ProjetPoo::ConnexionForm form;
     Application::Run(% form);
 }

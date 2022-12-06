@@ -1,13 +1,13 @@
-#include "CreatePeopleForm.h"
+#include "ChangePasswordForm.h"
 
 using namespace System;
 using namespace System::Windows::Forms;
 
 [STAThreadAttribute]
-void NewItemMain(array<String^>^ args) {
+void PasswordMain(array<String^>^ args) {
     Application::EnableVisualStyles();
     Application::SetCompatibleTextRenderingDefault(false);
     //WinformCDemo is jour project name
-    ProjetPoo::CreatePeopleForm form(0);
+    ProjetPoo::ChangePasswordForm form(0);
     Application::Run(% form);
 }

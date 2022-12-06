@@ -37,9 +37,9 @@ System::Data::DataSet^ Staff::selectStaffNoCust(System::String^ dataTableName)
 	return this->oCad->getRows(this->sql, dataTableName);
 }
 
-System::Void Staff::createStaff(int idPeople, System::String^ hiring_date, int idSuperior, System::String^ password) 
+System::Void Staff::createStaff(int idPeople, System::String^ hiring_date, int idSuperior, System::String^ username, System::String^ password, int id_role) 
 {
-	this->sql = "EXEC PS_STAFF_CREATE @idPeople = '" + idPeople + "', @hiring_date = '" + hiring_date + "'";
+	this->sql = "EXEC PS_STAFF_CREATE @idPeople = '" + idPeople + "', @hiring_date = '" + hiring_date + "', @username = '" + username + "', @password = '" + password + "', @id_role = '" + id_role + "'";
 	this->oCad->actionRows(this->sql);
 	if (idSuperior != -1) {
 		this->sql = "EXEC PS_SUPERIOR_UPDATE @idPeople = '" + idPeople + "', @idSuperior = '" + idSuperior + "'";
@@ -47,9 +47,9 @@ System::Void Staff::createStaff(int idPeople, System::String^ hiring_date, int i
 	}
 }
 
-System::Void Staff::modifyStaff(int idPeople, System::String^ hiring_date, int idSuperior) 
+System::Void Staff::modifyStaff(int idPeople, System::String^ hiring_date, int idSuperior, int id_role) 
 {
-	this->sql = "EXEC PS_STAFF_UPDATE @idPeople = '" + idPeople + "', @hiring_date = '" + hiring_date + "'";
+	this->sql = "EXEC PS_STAFF_UPDATE @idPeople = '" + idPeople + "', @hiring_date = '" + hiring_date + "', @id_role = '" + id_role + "'";
 	this->oCad->actionRows(this->sql);
 	if (idSuperior != -1) {
 		this->sql = "EXEC PS_SUPERIOR_UPDATE @idPeople = '" + idPeople + "', @idSuperior = '" + idSuperior + "'";
@@ -81,4 +81,32 @@ System::Void Staff::setStaffAddressToNULL(int idPeople)
 {
 	this->sql = "EXEC PS_STAFF_ADDRESS_UPTADE_NULL @idStaff = '" + idPeople + "'";
 	this->oCad->actionRows(this->sql);
+}
+
+System::Data::DataSet^ Staff::getConnexion(System::String^ dataTableName, System::String^ username, System::String^ password)
+{
+	this->sql = "EXEC PS_STAFF_SELECT_CONNEXION @username = '" + username + "', @password = '" + password + "'";
+
+	return this->oCad->getRows(this->sql, dataTableName);
+}
+
+System::Data::DataSet^ Staff::selectRoles(System::String^ dataTableName)
+{
+	this->sql = "EXEC PS_ROLE_SELECT";
+
+	return this->oCad->getRows(this->sql, dataTableName);
+}
+int Staff::getRole(int idStaff)
+{
+	this->sql = "EXEC PS_ROLE_USER @idstaff = '" + idStaff + "'";
+
+	return System::Convert::ToInt32((this->oCad->getRows(this->sql, "dataTableName"))->Tables["dataTableName"]->Rows[0]->ItemArray[0]);
+}
+
+
+System::Void Staff::setStaffPassword(int idStaff, System::String^ password)
+{
+	this->sql = "EXEC PS_STAFF_SET_PASSWORD @idstaff = '" + idStaff + "', @password = '" + password + "'";
+	this->oCad->actionRows(this->sql);
+
 }

@@ -30,7 +30,13 @@
     </ClCompile>
     <ClCompile Include="OrderForm.cpp" />
     <ClCompile Include="PaymentForm.cpp" />
+<<<<<<< HEAD
     <ClCompile Include="TestUniForm.cpp" />
+=======
+    <ClCompile Include="ArchivedOrdersForm.cpp" />
+    <ClCompile Include="ConnexionForm.cpp" />
+    <ClCompile Include="ChangePasswordForm.cpp" />
+>>>>>>> main
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CreatePeopleForm.h" />
@@ -62,7 +68,13 @@
     </ClInclude>
     <ClInclude Include="OrderForm.h" />
     <ClInclude Include="PaymentForm.h" />
+<<<<<<< HEAD
     <ClInclude Include="TestUniForm.h" />
+=======
+    <ClInclude Include="ArchivedOrdersForm.h" />
+    <ClInclude Include="ConnexionForm.h" />
+    <ClInclude Include="ChangePasswordForm.h" />
+>>>>>>> main
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Classes de Service">
