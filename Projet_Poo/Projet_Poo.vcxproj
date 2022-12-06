@@ -135,8 +135,8 @@
     <ClCompile Include="People.cpp" />
     <ClCompile Include="Staff.cpp" />
     <ClCompile Include="CreateAddressForm.cpp" />
-    <ClCompile Include="CreateCategoryForm.cpp" />
-    <ClCompile Include="CreateItemForm.cpp" />
+    <ClCompile Include="CategoryForm.cpp" />
+    <ClCompile Include="ItemForm.cpp" />
     <ClCompile Include="CreatePeopleForm.cpp" />
     <ClCompile Include="MainForm.cpp" />
     <ClCompile Include="ModifyPeopleForm.cpp" />
@@ -173,10 +173,10 @@
     <ClInclude Include="CreateAddressForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="CreateCategoryForm.h">
+    <ClInclude Include="CategoryForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="CreateItemForm.h">
+    <ClInclude Include="ItemForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="CreatePeopleForm.h">
@@ -212,11 +212,11 @@
     <EmbeddedResource Include="CreateAddressForm.resx">
       <DependentUpon>CreateAddressForm.h</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CreateCategoryForm.resx">
-      <DependentUpon>CreateCategoryForm.h</DependentUpon>
+    <EmbeddedResource Include="CategoryForm.resx">
+      <DependentUpon>CategoryForm.h</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CreateItemForm.resx">
-      <DependentUpon>CreateItemForm.h</DependentUpon>
+    <EmbeddedResource Include="ItemForm.resx">
+      <DependentUpon>ItemForm.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CreatePeopleForm.resx">
       <DependentUpon>CreatePeopleForm.h</DependentUpon>

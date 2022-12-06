@@ -52,6 +52,7 @@ namespace ProjetPoo {
 	// Catalog :
 		//Category :
 	private: int id_category = -1;
+	private: String^ name_category;
 	private: Decimal tva;
 
 		//Items :
@@ -65,6 +66,7 @@ namespace ProjetPoo {
 		//Colors :
 	private: String^ color_name;
 	private: Decimal price_multiplier;
+	private: Decimal multiplicator;
 	private: int quantity_in_stock;
 
 		//Order :
@@ -73,6 +75,7 @@ namespace ProjetPoo {
 	private: String^ payment_date;
 	private: String^ reference_order;
 	private: int id_payment_method;
+	private: String^ payment_method;
 	private: String^ new_reference_order;
 	
 		// Autres :
@@ -87,6 +90,7 @@ namespace ProjetPoo {
 	private: int id_customer;
 	private: String^ last_name;
 	private: String^ first_name;
+	private: String^ cust_name;
 
 	// Address :
 	private: int id_bill;
@@ -920,6 +924,8 @@ private: System::Void listBox_orders_SelectedIndexChanged(System::Object^ sender
 			this->comboBox_customer->Text = 
 				this->oDs->Tables["customers"]->Rows[i]->ItemArray[1]->ToString() + " " +
 				this->oDs->Tables["customers"]->Rows[i]->ItemArray[2]->ToString();
+			this->cust_name = this->oDs->Tables["customers"]->Rows[i]->ItemArray[1]->ToString() + " " +
+				this->oDs->Tables["customers"]->Rows[i]->ItemArray[2]->ToString();
 		}
 	}
 	this->oDs = this->oAddress->selectAddressDelivery("deli", this->id_customer);
@@ -945,6 +951,7 @@ private: System::Void listBox_orders_SelectedIndexChanged(System::Object^ sender
 		if (Convert::ToInt32(this->oDs->Tables["methods"]->Rows[i]->ItemArray[0]) == this->id_payment_method) {
 			this->comboBox_payment_method->Text =
 				this->oDs->Tables["methods"]->Rows[i]->ItemArray[1]->ToString();
+			this->payment_method = this->oDs->Tables["methods"]->Rows[i]->ItemArray[1]->ToString();
 		}
 	}
 	this->currentTable->Clear();
@@ -979,11 +986,13 @@ private: System::Void category_load(System::Void) {
 	}
 }
 private: System::Void comboBox_category_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
+	int index = this->comboBox_category->SelectedIndex;
 	if (this->comboBox_category->SelectedIndex == -1) {
 		return;
 	}
-	this->id_category = Convert::ToInt32(this->oDs->Tables["categories"]->Rows[this->comboBox_category->SelectedIndex]->ItemArray[0]);
-	this->tva = Convert::ToDecimal(this->oDs->Tables["categories"]->Rows[this->comboBox_category->SelectedIndex]->ItemArray[2]);
+	this->id_category = Convert::ToInt32(this->oDs->Tables["categories"]->Rows[index]->ItemArray[0]);
+	this->name_category = Convert::ToString(this->oDs->Tables["categories"]->Rows[index]->ItemArray[1]);
+	this->tva = Convert::ToDecimal(this->oDs->Tables["categories"]->Rows[index]->ItemArray[2]);
 	items_load();
 	
 }
@@ -1033,6 +1042,7 @@ private: System::Void listBox_color_SelectedIndexChanged(System::Object^ sender,
 	}
 	this->oDs = this->oCatalog->selectColors("colors", this->id_item);
 	this->color_name = this->oDs->Tables["colors"]->Rows[this->listBox_color->SelectedIndex]->ItemArray[1]->ToString();
+	this->multiplicator = Convert::ToDecimal(this->oDs->Tables["colors"]->Rows[this->listBox_color->SelectedIndex]->ItemArray[2]);
 	this->button_add->Enabled = true;
 	load_price_textboxes();
 }
@@ -1074,9 +1084,9 @@ private: System::Void load_current_listbox(System::Void) {
 	this->listBox_currents->Items->Clear();
 	for (int i = 0; i < this->currentTable->Rows->Count; i++) {
 		this->listBox_currents->Items->Add(
-			this->currentTable->Rows[i]->ItemArray[3]->ToString() + "x " +
+			this->currentTable->Rows[i]->ItemArray[6]->ToString() + "x " +
 			this->currentTable->Rows[i]->ItemArray[1]->ToString() + " " +
-			this->currentTable->Rows[i]->ItemArray[2]->ToString()
+			this->currentTable->Rows[i]->ItemArray[0]->ToString()
 		);
 	}
 	load_prices();
@@ -1088,21 +1098,16 @@ private: System::Void load_prices(System::Void) {
 		return;
 	}
 	for (int i = 0; i < this->currentTable->Rows->Count; i++) {
-		if (Convert::ToInt32(this->currentTable->Rows[i]->ItemArray[3]) < Convert::ToInt32(this->currentTable->Rows[i]->ItemArray[5])) {
-			total_ht = Decimal::Add(total_ht, 
-				(Convert::ToDecimal(this->currentTable->Rows[i]->ItemArray[4]) * Convert::ToDecimal(this->currentTable->Rows[i]->ItemArray[7])) * Convert::ToInt32(this->currentTable->Rows[i]->ItemArray[3])
-			);
-			total_ttc = Decimal::Add(total_ttc,
-				(Decimal::Add(Convert::ToDecimal(this->currentTable->Rows[i]->ItemArray[4]), Convert::ToDecimal(this->currentTable->Rows[i]->ItemArray[4])* (Convert::ToDecimal(this->currentTable->Rows[i]->ItemArray[9]) / 100)) * Convert::ToDecimal(this->currentTable->Rows[i]->ItemArray[7])) * Convert::ToInt32(this->currentTable->Rows[i]->ItemArray[3])
-			);
+		if (Convert::ToInt32(this->currentTable->Rows[i]->ItemArray[6]) < Convert::ToInt32(this->currentTable->Rows[i]->ItemArray[8])) {
+			total_ht = Decimal::Add(total_ht, Convert::ToDecimal(this->currentTable->Rows[i]->ItemArray[5]) * Convert::ToInt32(this->currentTable->Rows[i]->ItemArray[6]));
+
+			total_ttc = Decimal::Add(total_ttc, Convert::ToDecimal(this->currentTable->Rows[i]->ItemArray[7]) * Convert::ToInt32(this->currentTable->Rows[i]->ItemArray[6]));
 		}
 		else {
-			total_ht = Decimal::Add(total_ht, 
-				(Convert::ToDecimal(this->currentTable->Rows[i]->ItemArray[6]) * Convert::ToDecimal(this->currentTable->Rows[i]->ItemArray[7])) * Convert::ToInt32(this->currentTable->Rows[i]->ItemArray[3])
-			);
-			total_ttc = Decimal::Add(total_ttc,
-				(Decimal::Add(Convert::ToDecimal(this->currentTable->Rows[i]->ItemArray[6]), Convert::ToDecimal(this->currentTable->Rows[i]->ItemArray[4]) * (Convert::ToDecimal(this->currentTable->Rows[i]->ItemArray[9]) / 100)) * Convert::ToDecimal(this->currentTable->Rows[i]->ItemArray[7])) * Convert::ToInt32(this->currentTable->Rows[i]->ItemArray[3])
-			);
+			total_ht = Decimal::Add(total_ht, Convert::ToDecimal(this->currentTable->Rows[i]->ItemArray[9]) * Convert::ToInt32(this->currentTable->Rows[i]->ItemArray[6]));
+
+			total_ttc = Decimal::Add(total_ttc, Convert::ToDecimal(this->currentTable->Rows[i]->ItemArray[10]) * Convert::ToInt32(this->currentTable->Rows[i]->ItemArray[6]));
+
 		}
 		//total_ttc = total_ttc + Decimal::Add(price_ht, (price_ht * (tva_rate / 100) * price_multiplicator))
 		;
@@ -1116,24 +1121,26 @@ private: System::Void load_prices(System::Void) {
 private: System::Void button_add_Click(System::Object^ sender, System::EventArgs^ e) {
 	int add = 0;
 	for (int i = 0; i < this->currentTable->Rows->Count; i++) {
-		if (Convert::ToInt32(this->currentTable->Rows[i]->ItemArray[0]) == this->id_item &&
-			this->currentTable->Rows[i]->ItemArray[2]->ToString() == this->color_name) {
-			add = Convert::ToInt32(this->currentTable->Rows[i]->ItemArray[3]);
+		if (Convert::ToInt32(this->currentTable->Rows[i]->ItemArray[2]) == this->id_item &&
+			this->currentTable->Rows[i]->ItemArray[0]->ToString() == this->color_name) {
+			add = Convert::ToInt32(this->currentTable->Rows[i]->ItemArray[6]);
 			this->currentTable->Rows[i]->Delete();
 			this->currentTable->AcceptChanges();
 		}
 	}
 	DataRow^ row = currentTable->NewRow();
-	row[0] = Convert::ToInt32(this->id_item);
-	row[1] = Convert::ToString(this->item_name);
-	row[2] = Convert::ToString(this->color_name);
-	row[3] = Convert::ToInt32(this->numericUpDown_quantity->Value) + add;
-	row[4] = Convert::ToDecimal(this->price_ht);
-	row[5] = Convert::ToInt32(this->level);
-	row[6] = Convert::ToDecimal(this->price_over_level);
-	row[7] = Convert::ToDecimal(this->price_multiplier);
-	row[8] = Convert::ToInt32(this->id_category);
-	row[9] = Convert::ToDecimal(this->tva);
+	row[0] = this->color_name;
+	row[1] = this->item_name;
+	row[2] = this->id_item;
+	row[3] = this->name_category;
+	row[4] = this->tva;
+	row[5] = this->price_ht;
+	row[6] = Convert::ToInt32(this->numericUpDown_quantity->Value) + add;
+	row[7] = Decimal::Add(this->price_ht, (this->price_ht * this->tva / 100));
+	row[8] = this->level;
+	row[9] = this->price_over_level;
+	row[10] = Decimal::Add(this->price_over_level, (this->price_over_level * this->tva / 100));
+	row[11] = this->multiplicator;
 	this->currentTable->Rows->Add(row);
 	load_current_listbox();
 }
@@ -1242,6 +1249,7 @@ private: System::Void comboBox_payment_method_SelectedIndexChanged(System::Objec
 		return;
 	}
 	this->id_payment_method = Convert::ToInt32(this->oDs->Tables["methods"]->Rows[this->comboBox_payment_method->SelectedIndex]->ItemArray[0]);
+	this->payment_method = Convert::ToString(this->oDs->Tables["methods"]->Rows[this->comboBox_payment_method->SelectedIndex]->ItemArray[1]);
 }
 
 //
@@ -1321,11 +1329,41 @@ private: System::Void button_current_clear_Click(System::Object^ sender, System:
 
 private: System::Void button_archive_order_Click(System::Object^ sender, System::EventArgs^ e) {
 	button2_Click(sender, e);
+	String^ invoice_date;
 	System::DateTime^ date = DateTime::Now;
-	this->issue_date = System::Convert::ToString(date->Month) + "/";
-	this->issue_date += System::Convert::ToString(date->Day) + "/";
-	this->issue_date += System::Convert::ToString(date->Year);
-	this->oCatalog->setOrderIssueDate(this->reference_order, this->issue_date);
+	invoice_date = System::Convert::ToString(date->Month) + "/";
+	invoice_date += System::Convert::ToString(date->Day) + "/";
+	invoice_date += System::Convert::ToString(date->Year);
+
+	String^ deli_address;
+	this->oDs = this->oAddress->selectAddressDelivery("deli", this->id_customer);
+	for (int i = 0; i < this->oDs->Tables["deli"]->Rows->Count; i++) {
+		if (Convert::ToInt32(this->oDs->Tables["deli"]->Rows[i]->ItemArray[0]) == this->id_deli)
+			deli_address =
+			this->oDs->Tables["deli"]->Rows[i]->ItemArray[1]->ToString() + " " +
+			this->oDs->Tables["deli"]->Rows[i]->ItemArray[2]->ToString() + " " +
+			this->oDs->Tables["deli"]->Rows[i]->ItemArray[3]->ToString() + " " +
+			this->oDs->Tables["deli"]->Rows[i]->ItemArray[4]->ToString() + " " +
+			this->oDs->Tables["deli"]->Rows[i]->ItemArray[5]->ToString()
+			;
+	}
+	String^ bill_address;
+	this->oDs = this->oAddress->selectAddressBilling("bill", this->id_customer);
+	for (int i = 0; i < this->oDs->Tables["bill"]->Rows->Count; i++) {
+		if (Convert::ToInt32(this->oDs->Tables["bill"]->Rows[i]->ItemArray[0]) == this->id_bill)
+		bill_address = 
+			this->oDs->Tables["bill"]->Rows[i]->ItemArray[1]->ToString() + " " +
+			this->oDs->Tables["bill"]->Rows[i]->ItemArray[2]->ToString() + " " +
+			this->oDs->Tables["bill"]->Rows[i]->ItemArray[3]->ToString() + " " +
+			this->oDs->Tables["bill"]->Rows[i]->ItemArray[4]->ToString() + " " +
+			this->oDs->Tables["bill"]->Rows[i]->ItemArray[5]->ToString()
+		;
+	}
+
+	this->oCatalog->setOrderIssueDate(this->reference_order, invoice_date);
+	this->oCatalog->createInvoice(this->reference_order, this->payment_date,
+		this->payment_method, this->textBox_price_total_ht->Text, this->textBox_price_total_ttc->Text,
+		invoice_date, deli_address, bill_address, this->cust_name, this->currentTable);
 	this->oCatalog->archiveOrder(this->reference_order);
 	reload_all_components();
 }

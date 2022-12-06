@@ -1,6 +1,6 @@
 #pragma once
-#include "CreateCategoryForm.h"
-#include "CreateItemForm.h"
+#include "CategoryForm.h"
+#include "ItemForm.h"
 #include "OrderForm.h"
 #include "PaymentForm.h"
 
@@ -125,13 +125,13 @@ namespace ProjetPoo {
 	private: System::Void CatalogForm_Load(System::Object^ sender, System::EventArgs^ e) {
 	}
 	private: System::Void button_create_category_Click(System::Object^ sender, System::EventArgs^ e) {
-		CreateCategoryForm form;
+		CategoryForm form;
 		this->Hide();
 		form.ShowDialog();
 
 	}
 	private: System::Void button_create_item_Click(System::Object^ sender, System::EventArgs^ e) {
-		CreateItemForm itemform;
+		ItemForm itemform;
 		this->Hide();
 		itemform.ShowDialog();
 	}

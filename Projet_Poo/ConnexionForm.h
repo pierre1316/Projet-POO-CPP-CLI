@@ -79,22 +79,28 @@ namespace ProjetPoo {
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->ForeColor = System::Drawing::SystemColors::Window;
+			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label1->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(145)),
+				static_cast<System::Int32>(static_cast<System::Byte>(77)));
 			this->label1->Location = System::Drawing::Point(153, 170);
 			this->label1->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(166, 25);
+			this->label1->Size = System::Drawing::Size(153, 20);
 			this->label1->TabIndex = 0;
 			this->label1->Text = L"Nom d\'utilisateur :";
 			// 
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->ForeColor = System::Drawing::SystemColors::Window;
+			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label2->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(145)),
+				static_cast<System::Int32>(static_cast<System::Byte>(77)));
 			this->label2->Location = System::Drawing::Point(153, 228);
 			this->label2->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(141, 25);
+			this->label2->Size = System::Drawing::Size(127, 20);
 			this->label2->TabIndex = 0;
 			this->label2->Text = L"Mot de passe :";
 			// 
@@ -103,7 +109,7 @@ namespace ProjetPoo {
 			this->textBox1->Location = System::Drawing::Point(338, 167);
 			this->textBox1->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(148, 30);
+			this->textBox1->Size = System::Drawing::Size(148, 26);
 			this->textBox1->TabIndex = 1;
 			// 
 			// textBox2
@@ -112,15 +118,18 @@ namespace ProjetPoo {
 			this->textBox2->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->textBox2->Name = L"textBox2";
 			this->textBox2->PasswordChar = '*';
-			this->textBox2->Size = System::Drawing::Size(148, 30);
+			this->textBox2->Size = System::Drawing::Size(148, 26);
 			this->textBox2->TabIndex = 2;
 			this->textBox2->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &ConnexionForm::textBox2_KeyDown);
 			// 
 			// button1
 			// 
-			this->button1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(128)),
-				static_cast<System::Int32>(static_cast<System::Byte>(0)));
+			this->button1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(145)),
+				static_cast<System::Int32>(static_cast<System::Byte>(77)));
 			this->button1->Cursor = System::Windows::Forms::Cursors::Hand;
+			this->button1->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
+			this->button1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
 			this->button1->Location = System::Drawing::Point(243, 282);
 			this->button1->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->button1->Name = L"button1";
@@ -162,11 +171,10 @@ namespace ProjetPoo {
 			// 
 			// ConnexionForm
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(12, 25);
+			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::Black;
 			this->ClientSize = System::Drawing::Size(642, 351);
-			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedDialog;
 			this->Controls->Add(this->pictureBox2);
 			this->Controls->Add(this->pictureBox1);
 			this->Controls->Add(this->button2);
@@ -177,6 +185,7 @@ namespace ProjetPoo {
 			this->Controls->Add(this->label1);
 			this->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
+			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedDialog;
 			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->Name = L"ConnexionForm";

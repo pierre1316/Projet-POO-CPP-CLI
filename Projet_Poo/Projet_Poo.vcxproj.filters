@@ -6,8 +6,8 @@
     <ClCompile Include="ModifyPeopleForm.cpp" />
     <ClCompile Include="AddressForm.cpp" />
     <ClCompile Include="CatalogForm.cpp" />
-    <ClCompile Include="CreateCategoryForm.cpp" />
-    <ClCompile Include="CreateItemForm.cpp" />
+    <ClCompile Include="CategoryForm.cpp" />
+    <ClCompile Include="ItemForm.cpp" />
     <ClCompile Include="CreatePeopleForm.cpp" />
     <ClCompile Include="CreateAddressForm.cpp" />
     <ClCompile Include="Address.cpp">
@@ -42,8 +42,8 @@
     <ClInclude Include="AddressForm.h" />
     <ClInclude Include="CreateAddressForm.h" />
     <ClInclude Include="CatalogForm.h" />
-    <ClInclude Include="CreateCategoryForm.h" />
-    <ClInclude Include="CreateItemForm.h" />
+    <ClInclude Include="CategoryForm.h" />
+    <ClInclude Include="ItemForm.h" />
     <ClInclude Include="Address.h">
       <Filter>Classes de Service</Filter>
     </ClInclude>

@@ -38,6 +38,10 @@ namespace NS_Comp_Svc {
 		System::Void Catalog::updateOrder(System::String^ reference_order, System::String^ delivery_date, System::String^ issue_date, System::String^ payment_date, int id_payment_method, int idBill, int idDeli, System::Data::DataTable^ table);
 		System::Void Catalog::archiveOrder(System::String^ reference_order);
 		System::Void Catalog::setOrderIssueDate(System::String^ reference_order, System::String^ issue_date);
+	public:
+		System::Void Catalog::createInvoice(System::String^ reference_order, System::String^ payment_date, System::String^ payment_method,
+			System::String^ price_total_ht, System::String^ price_total_ttc, System::String^ invoice_date, System::String^ deli_ddress, 
+			System::String^ bill_ddress, System::String^ customer_name, System::Data::DataTable^ table);
 
 	};
 }

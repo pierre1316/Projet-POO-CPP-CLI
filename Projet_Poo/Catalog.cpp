@@ -187,8 +187,8 @@ System::Void Catalog::updateOrder(System::String^ reference_order, System::Strin
 	sql = "EXEC PS_CONTAIN_DELETE @reference_order = '" + reference_order + "'";
 	this->oCad->actionRows(sql);
 	for (int i = 0; i < table->Rows->Count; i++) {
-		sql = "EXEC PS_CONTAIN_CREATE @reference_order = '" + reference_order + "', @id_item = '" + table->Rows[i]->ItemArray[0]->ToString() +
-			"', @color_name = '" + table->Rows[i]->ItemArray[2]->ToString() + "', @quantity = '" + table->Rows[i]->ItemArray[3]->ToString() + "'";
+		sql = "EXEC PS_CONTAIN_CREATE @reference_order = '" + reference_order + "', @id_item = '" + table->Rows[i]->ItemArray[2]->ToString() +
+			"', @color_name = '" + table->Rows[i]->ItemArray[0]->ToString() + "', @quantity = '" + table->Rows[i]->ItemArray[6]->ToString() + "'";
 		this->oCad->actionRows(sql);
 	}
 }
@@ -205,4 +205,41 @@ System::Void Catalog::setOrderIssueDate(System::String^ reference_order, System:
 	System::String^ sql = "EXEC PS_ORDER_SET_ISSUE_DATE @reference_order = '" + reference_order + "', @issue_date = '" + issue_date + "'";
 
 	this->oCad->actionRows(sql);
+}
+
+//
+// Invoices :
+//
+System::Void Catalog::createInvoice(System::String^ reference_order, System::String^ payment_date, System::String^ payment_method,
+	System::String^ price_total_ht, System::String^ price_total_ttc, System::String^ invoice_date, System::String^ deli_address, 
+	System::String^ bill_address, System::String^ customer_name, System::Data::DataTable^ table)
+{
+	System::String^ sql = 
+		"EXEC PS_INVOICE_CREATE @reference_order = '" + reference_order + 
+		"', @payment_date = " + payment_date +
+		", @payment_method = '" + payment_method +
+		"', @price_total_ht = '" + price_total_ht +
+		"', @price_total_ttc = '" + price_total_ttc +
+		"', @invoice_date = '" + invoice_date +
+		"', @deli_address = '" + deli_address +
+		"', @bill_address = '" + bill_address +
+		"', @customer_name = '" + customer_name +
+		"'";
+	this->oCad->actionRows(sql);
+	for (int i = 0; i < table->Rows->Count; i++) {
+		sql = "EXEC PS_INVOICE_CONTAIN_CREATE @reference_order '" + reference_order +
+			"', @name_color = '" + table->Rows[i]->ItemArray[0]->ToString() +
+			"', @name_item = '" + table->Rows[i]->ItemArray[1]->ToString() +
+			"', @id_item = '" + table->Rows[i]->ItemArray[2]->ToString() +
+			"', @name_category = '" + table->Rows[i]->ItemArray[3]->ToString() +
+			"', @tva_category = '" + table->Rows[i]->ItemArray[4]->ToString() +
+			"', @prix_ht_unite = '" + table->Rows[i]->ItemArray[5]->ToString() +
+			"', @item_quantity = '" + table->Rows[i]->ItemArray[6]->ToString() +
+			"', @prix_ttc_unite = '" + table->Rows[i]->ItemArray[7]->ToString() +
+			"', @level_amount = '" + table->Rows[i]->ItemArray[8]->ToString() +
+			"', @price_ht_over_level = '" + table->Rows[i]->ItemArray[9]->ToString() +
+			"', @price_ttc_over_level = '" + table->Rows[i]->ItemArray[10]->ToString() +
+			"', @multiplicator = '" + table->Rows[i]->ItemArray[11]->ToString() + "'";
+		this->oCad->actionRows(sql);
+	}
 }
