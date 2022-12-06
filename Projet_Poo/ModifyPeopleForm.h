@@ -129,20 +129,20 @@ namespace ProjetPoo {
 			// listbox_people
 			// 
 			this->listbox_people->FormattingEnabled = true;
-			this->listbox_people->Location = System::Drawing::Point(9, 57);
-			this->listbox_people->Margin = System::Windows::Forms::Padding(2);
+			this->listbox_people->ItemHeight = 16;
+			this->listbox_people->Location = System::Drawing::Point(12, 70);
+			this->listbox_people->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->listbox_people->Name = L"listbox_people";
-			this->listbox_people->Size = System::Drawing::Size(153, 238);
+			this->listbox_people->Size = System::Drawing::Size(203, 292);
 			this->listbox_people->TabIndex = 4;
 			this->listbox_people->SelectedIndexChanged += gcnew System::EventHandler(this, &ModifyPeopleForm::listbox_people_SelectedIndexChanged);
 			// 
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(10, 13);
-			this->label1->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label1->Location = System::Drawing::Point(13, 16);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(154, 13);
+			this->label1->Size = System::Drawing::Size(195, 16);
 			this->label1->TabIndex = 0;
 			this->label1->Text = L"Choisir une personne à modifier";
 			// 
@@ -150,10 +150,10 @@ namespace ProjetPoo {
 			// 
 			this->radio_customer->AutoSize = true;
 			this->radio_customer->Checked = true;
-			this->radio_customer->Location = System::Drawing::Point(21, 36);
-			this->radio_customer->Margin = System::Windows::Forms::Padding(2);
+			this->radio_customer->Location = System::Drawing::Point(28, 44);
+			this->radio_customer->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->radio_customer->Name = L"radio_customer";
-			this->radio_customer->Size = System::Drawing::Size(51, 17);
+			this->radio_customer->Size = System::Drawing::Size(61, 20);
 			this->radio_customer->TabIndex = 1;
 			this->radio_customer->TabStop = true;
 			this->radio_customer->Text = L"Client";
@@ -163,20 +163,20 @@ namespace ProjetPoo {
 			// radio_staff
 			// 
 			this->radio_staff->AutoSize = true;
-			this->radio_staff->Location = System::Drawing::Point(84, 36);
-			this->radio_staff->Margin = System::Windows::Forms::Padding(2);
+			this->radio_staff->Location = System::Drawing::Point(112, 44);
+			this->radio_staff->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->radio_staff->Name = L"radio_staff";
-			this->radio_staff->Size = System::Drawing::Size(72, 17);
+			this->radio_staff->Size = System::Drawing::Size(89, 20);
 			this->radio_staff->TabIndex = 2;
 			this->radio_staff->Text = L"Personnel";
 			this->radio_staff->UseVisualStyleBackColor = true;
 			// 
 			// button_address
 			// 
-			this->button_address->Location = System::Drawing::Point(417, 10);
-			this->button_address->Margin = System::Windows::Forms::Padding(2);
+			this->button_address->Location = System::Drawing::Point(556, 12);
+			this->button_address->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->button_address->Name = L"button_address";
-			this->button_address->Size = System::Drawing::Size(94, 42);
+			this->button_address->Size = System::Drawing::Size(125, 52);
 			this->button_address->TabIndex = 16;
 			this->button_address->Text = L"Gérer les adresses";
 			this->button_address->UseVisualStyleBackColor = true;
@@ -184,10 +184,10 @@ namespace ProjetPoo {
 			// 
 			// button_register
 			// 
-			this->button_register->Location = System::Drawing::Point(307, 10);
-			this->button_register->Margin = System::Windows::Forms::Padding(2);
+			this->button_register->Location = System::Drawing::Point(409, 12);
+			this->button_register->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->button_register->Name = L"button_register";
-			this->button_register->Size = System::Drawing::Size(94, 42);
+			this->button_register->Size = System::Drawing::Size(125, 52);
 			this->button_register->TabIndex = 15;
 			this->button_register->Text = L"Enregistrer";
 			this->button_register->UseVisualStyleBackColor = true;
@@ -197,19 +197,18 @@ namespace ProjetPoo {
 			// 
 			this->date_hiring->CustomFormat = L"";
 			this->date_hiring->Enabled = false;
-			this->date_hiring->Location = System::Drawing::Point(308, 172);
-			this->date_hiring->Margin = System::Windows::Forms::Padding(2);
+			this->date_hiring->Location = System::Drawing::Point(411, 212);
+			this->date_hiring->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->date_hiring->Name = L"date_hiring";
-			this->date_hiring->Size = System::Drawing::Size(194, 20);
+			this->date_hiring->Size = System::Drawing::Size(257, 22);
 			this->date_hiring->TabIndex = 10;
 			// 
 			// label5
 			// 
 			this->label5->AutoSize = true;
-			this->label5->Location = System::Drawing::Point(195, 176);
-			this->label5->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label5->Location = System::Drawing::Point(260, 217);
 			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(97, 13);
+			this->label5->Size = System::Drawing::Size(120, 16);
 			this->label5->TabIndex = 0;
 			this->label5->Text = L"Date d\'embauche :";
 			// 
@@ -217,83 +216,79 @@ namespace ProjetPoo {
 			// 
 			this->combo_superior->Enabled = false;
 			this->combo_superior->FormattingEnabled = true;
-			this->combo_superior->Location = System::Drawing::Point(308, 148);
-			this->combo_superior->Margin = System::Windows::Forms::Padding(2);
+			this->combo_superior->Location = System::Drawing::Point(411, 182);
+			this->combo_superior->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->combo_superior->Name = L"combo_superior";
-			this->combo_superior->Size = System::Drawing::Size(194, 21);
+			this->combo_superior->Size = System::Drawing::Size(257, 24);
 			this->combo_superior->TabIndex = 9;
 			this->combo_superior->Text = L"Sélectionnez un Supérieur";
 			// 
 			// label4
 			// 
 			this->label4->AutoSize = true;
-			this->label4->Location = System::Drawing::Point(172, 151);
-			this->label4->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label4->Location = System::Drawing::Point(229, 186);
 			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(121, 13);
+			this->label4->Size = System::Drawing::Size(151, 16);
 			this->label4->TabIndex = 0;
 			this->label4->Text = L"Supérieur Hiérarchique :\r\n";
 			// 
 			// date_birthday
 			// 
-			this->date_birthday->Location = System::Drawing::Point(308, 122);
-			this->date_birthday->Margin = System::Windows::Forms::Padding(2);
+			this->date_birthday->Location = System::Drawing::Point(411, 150);
+			this->date_birthday->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->date_birthday->Name = L"date_birthday";
-			this->date_birthday->Size = System::Drawing::Size(194, 20);
+			this->date_birthday->Size = System::Drawing::Size(257, 22);
 			this->date_birthday->TabIndex = 8;
 			// 
 			// label3
 			// 
 			this->label3->AutoSize = true;
-			this->label3->Location = System::Drawing::Point(188, 126);
-			this->label3->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label3->Location = System::Drawing::Point(251, 155);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(104, 13);
+			this->label3->Size = System::Drawing::Size(129, 16);
 			this->label3->TabIndex = 0;
 			this->label3->Text = L"Date de Naissance :";
 			// 
 			// textBox_first_name
 			// 
-			this->textBox_first_name->Location = System::Drawing::Point(308, 97);
-			this->textBox_first_name->Margin = System::Windows::Forms::Padding(2);
+			this->textBox_first_name->Location = System::Drawing::Point(411, 119);
+			this->textBox_first_name->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->textBox_first_name->Name = L"textBox_first_name";
-			this->textBox_first_name->Size = System::Drawing::Size(194, 20);
+			this->textBox_first_name->Size = System::Drawing::Size(257, 22);
 			this->textBox_first_name->TabIndex = 7;
 			// 
 			// textBox_last_name
 			// 
-			this->textBox_last_name->Location = System::Drawing::Point(308, 69);
-			this->textBox_last_name->Margin = System::Windows::Forms::Padding(2);
+			this->textBox_last_name->Location = System::Drawing::Point(411, 85);
+			this->textBox_last_name->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->textBox_last_name->Name = L"textBox_last_name";
-			this->textBox_last_name->Size = System::Drawing::Size(194, 20);
+			this->textBox_last_name->Size = System::Drawing::Size(257, 22);
 			this->textBox_last_name->TabIndex = 6;
 			// 
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(240, 100);
-			this->label2->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label2->Location = System::Drawing::Point(320, 123);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(49, 13);
+			this->label2->Size = System::Drawing::Size(60, 16);
 			this->label2->TabIndex = 0;
 			this->label2->Text = L"Prénom :";
 			// 
 			// label6
 			// 
 			this->label6->AutoSize = true;
-			this->label6->Location = System::Drawing::Point(254, 74);
-			this->label6->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label6->Location = System::Drawing::Point(339, 91);
 			this->label6->Name = L"label6";
-			this->label6->Size = System::Drawing::Size(35, 13);
+			this->label6->Size = System::Drawing::Size(42, 16);
 			this->label6->TabIndex = 0;
 			this->label6->Text = L"Nom :";
 			// 
 			// button_suppr
 			// 
-			this->button_suppr->Location = System::Drawing::Point(197, 10);
-			this->button_suppr->Margin = System::Windows::Forms::Padding(2);
+			this->button_suppr->Location = System::Drawing::Point(263, 12);
+			this->button_suppr->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->button_suppr->Name = L"button_suppr";
-			this->button_suppr->Size = System::Drawing::Size(94, 42);
+			this->button_suppr->Size = System::Drawing::Size(125, 52);
 			this->button_suppr->TabIndex = 5;
 			this->button_suppr->Text = L"Supprimer";
 			this->button_suppr->UseVisualStyleBackColor = true;
@@ -302,58 +297,55 @@ namespace ProjetPoo {
 			// textBox_postalcode
 			// 
 			this->textBox_postalcode->Enabled = false;
-			this->textBox_postalcode->Location = System::Drawing::Point(308, 216);
-			this->textBox_postalcode->Margin = System::Windows::Forms::Padding(2);
+			this->textBox_postalcode->Location = System::Drawing::Point(411, 266);
+			this->textBox_postalcode->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->textBox_postalcode->Name = L"textBox_postalcode";
-			this->textBox_postalcode->Size = System::Drawing::Size(194, 20);
+			this->textBox_postalcode->Size = System::Drawing::Size(257, 22);
 			this->textBox_postalcode->TabIndex = 12;
 			// 
 			// textBox_address
 			// 
 			this->textBox_address->Enabled = false;
-			this->textBox_address->Location = System::Drawing::Point(308, 194);
-			this->textBox_address->Margin = System::Windows::Forms::Padding(2);
+			this->textBox_address->Location = System::Drawing::Point(411, 239);
+			this->textBox_address->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->textBox_address->Name = L"textBox_address";
-			this->textBox_address->Size = System::Drawing::Size(194, 20);
+			this->textBox_address->Size = System::Drawing::Size(257, 22);
 			this->textBox_address->TabIndex = 11;
 			// 
 			// label8
 			// 
 			this->label8->AutoSize = true;
-			this->label8->Location = System::Drawing::Point(254, 242);
-			this->label8->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label8->Location = System::Drawing::Point(339, 298);
 			this->label8->Name = L"label8";
-			this->label8->Size = System::Drawing::Size(35, 13);
+			this->label8->Size = System::Drawing::Size(42, 16);
 			this->label8->TabIndex = 0;
 			this->label8->Text = L"Ville : ";
 			// 
 			// label7
 			// 
 			this->label7->AutoSize = true;
-			this->label7->Location = System::Drawing::Point(218, 219);
-			this->label7->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label7->Location = System::Drawing::Point(291, 270);
 			this->label7->Name = L"label7";
-			this->label7->Size = System::Drawing::Size(70, 13);
+			this->label7->Size = System::Drawing::Size(87, 16);
 			this->label7->TabIndex = 0;
 			this->label7->Text = L"Code Postal :";
 			// 
 			// label9
 			// 
 			this->label9->AutoSize = true;
-			this->label9->Location = System::Drawing::Point(236, 196);
-			this->label9->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label9->Location = System::Drawing::Point(315, 241);
 			this->label9->Name = L"label9";
-			this->label9->Size = System::Drawing::Size(51, 13);
+			this->label9->Size = System::Drawing::Size(64, 16);
 			this->label9->TabIndex = 0;
 			this->label9->Text = L"Adresse :";
 			// 
 			// comboBox_city
 			// 
 			this->comboBox_city->FormattingEnabled = true;
-			this->comboBox_city->Location = System::Drawing::Point(308, 240);
-			this->comboBox_city->Margin = System::Windows::Forms::Padding(2);
+			this->comboBox_city->Location = System::Drawing::Point(411, 295);
+			this->comboBox_city->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->comboBox_city->Name = L"comboBox_city";
-			this->comboBox_city->Size = System::Drawing::Size(194, 21);
+			this->comboBox_city->Size = System::Drawing::Size(257, 24);
 			this->comboBox_city->TabIndex = 13;
 			this->comboBox_city->SelectedIndexChanged += gcnew System::EventHandler(this, &ModifyPeopleForm::comboBox_city_SelectedIndexChanged);
 			this->comboBox_city->Enter += gcnew System::EventHandler(this, &ModifyPeopleForm::comboBox_city_Enter);
@@ -361,10 +353,10 @@ namespace ProjetPoo {
 			// comboBox_role
 			// 
 			this->comboBox_role->FormattingEnabled = true;
-			this->comboBox_role->Location = System::Drawing::Point(308, 265);
-			this->comboBox_role->Margin = System::Windows::Forms::Padding(2);
+			this->comboBox_role->Location = System::Drawing::Point(411, 326);
+			this->comboBox_role->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->comboBox_role->Name = L"comboBox_role";
-			this->comboBox_role->Size = System::Drawing::Size(194, 21);
+			this->comboBox_role->Size = System::Drawing::Size(257, 24);
 			this->comboBox_role->TabIndex = 22;
 			this->comboBox_role->SelectedIndexChanged += gcnew System::EventHandler(this, &ModifyPeopleForm::comboBox_role_SelectedIndexChanged);
 			this->comboBox_role->Click += gcnew System::EventHandler(this, &ModifyPeopleForm::comboBox_role_Click);
@@ -372,19 +364,18 @@ namespace ProjetPoo {
 			// label11
 			// 
 			this->label11->AutoSize = true;
-			this->label11->Location = System::Drawing::Point(245, 270);
-			this->label11->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label11->Location = System::Drawing::Point(327, 332);
 			this->label11->Name = L"label11";
-			this->label11->Size = System::Drawing::Size(40, 13);
+			this->label11->Size = System::Drawing::Size(48, 16);
 			this->label11->TabIndex = 21;
 			this->label11->Text = L"Poste :";
 			// 
 			// ModifyPeopleForm
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::SystemColors::ActiveCaption;
-			this->ClientSize = System::Drawing::Size(523, 301);
+			this->ClientSize = System::Drawing::Size(697, 370);
 			this->Controls->Add(this->comboBox_role);
 			this->Controls->Add(this->label11);
 			this->Controls->Add(this->comboBox_city);
@@ -410,7 +401,7 @@ namespace ProjetPoo {
 			this->Controls->Add(this->radio_customer);
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->listbox_people);
-			this->Margin = System::Windows::Forms::Padding(2);
+			this->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->Name = L"ModifyPeopleForm";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterParent;
 			this->Text = L"ModifyPeopleForm";
@@ -675,5 +666,27 @@ private: System::Void comboBox_role_SelectedIndexChanged(System::Object^ sender,
 	this->oDs = this->oStaff->selectRoles("roles");
 	this->id_role = Convert::ToInt32(this->oDs->Tables["roles"]->Rows[comboBox_role->SelectedIndex]->ItemArray[0]);
 }
+
+
+private: System::Boolean test_enter(System::Void) {
+	if (this->textBox_first_name->Text == "" || this->textBox_last_name->Text == "") {
+		show_error("Prénom ou Nom vides");
+		return false;
+	}
+	if (this->radio_staff->Checked) {
+		if (this->textBox_address->Text == "") { show_error("Adresse vide"); return false; }
+		if (this->textBox_postalcode->Text == "") { show_error("Code postal vide"); return false; }
+		if (this->comboBox_city->SelectedIndex == -1) { show_error("Ville non sélectionnée"); return false; }
+		if (this->comboBox_role->SelectedIndex == -1) { show_error("Role non sélectionné"); return false; }
+	}
+	return true;
+}
+
+private: System::Void show_error(System::String^ text) {
+	MessageBoxButtons buttons = MessageBoxButtons::OK;
+	MessageBoxIcon icon = MessageBoxIcon::Error;
+	MessageBox::Show(text, "Erreur", buttons, icon);
+}
+
 };
 }
