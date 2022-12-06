@@ -1,4 +1,10 @@
 #pragma once
+#include "people.h"
+#include "Staff.h"
+#include "Customer.h"
+#include "Address.h"
+#include "CLcad.h" 
+
 namespace ProjetPoo {
 
 	using namespace System;
@@ -33,23 +39,26 @@ namespace ProjetPoo {
 				delete components;
 			}
 		}
-
+	protected:
 	private: System::Data::DataSet^ oDs;
 	private: NS_Comp_Svc::People^ oPeople;
+	private: NS_Comp_Svc::People^ oPeo;
 	private: NS_Comp_Svc::Staff^ oStaff;
 	private: NS_Comp_Svc::Customer^ oCust;
 	private: NS_Comp_Svc::Address^ oAddress;
 	private: System::Data::DataSet^ Cities;
+	private: int id_City;
 
 
 	private: System::Windows::Forms::Button^ button_delete;
+	private: System::Windows::Forms::Button^ button_register;
 	private: System::Windows::Forms::TextBox^ textBox_fn;
 	private: System::Windows::Forms::TextBox^ textBox_ln;
-	private: System::Windows::Forms::TextBox^ textBox_sup;
-	private: System::Windows::Forms::TextBox^ textBox_hd;
+	private: System::Windows::Forms::ComboBox^ textBox_sup;
+	private: System::Windows::Forms::DateTimePicker^ textBox_hd;
 	private: System::Windows::Forms::TextBox^ textBox_address;
 	private: System::Windows::Forms::TextBox^ textBox_cp;
-	private: System::Windows::Forms::TextBox^ textBox_city;
+	private: System::Windows::Forms::ComboBox^ textBox_city;
 	private: System::Windows::Forms::TextBox^ textBox1;
 	private: System::Windows::Forms::TextBox^ textBox2;
 	private: System::Windows::Forms::TextBox^ textBox3;
@@ -59,6 +68,11 @@ namespace ProjetPoo {
 	private: System::Windows::Forms::TextBox^ textBox_n;
 	private: System::Windows::Forms::TextBox^ textBox7;
 	private: System::Windows::Forms::TextBox^ textBox9;
+	private: System::Windows::Forms::ListBox^ listBox1;
+
+
+
+
 
 
 
@@ -85,11 +99,11 @@ namespace ProjetPoo {
 			this->button_delete = (gcnew System::Windows::Forms::Button());
 			this->textBox_fn = (gcnew System::Windows::Forms::TextBox());
 			this->textBox_ln = (gcnew System::Windows::Forms::TextBox());
-			this->textBox_sup = (gcnew System::Windows::Forms::TextBox());
-			this->textBox_hd = (gcnew System::Windows::Forms::TextBox());
+			this->textBox_sup = (gcnew System::Windows::Forms::ComboBox());
+			this->textBox_hd = (gcnew System::Windows::Forms::DateTimePicker());
 			this->textBox_address = (gcnew System::Windows::Forms::TextBox());
 			this->textBox_cp = (gcnew System::Windows::Forms::TextBox());
-			this->textBox_city = (gcnew System::Windows::Forms::TextBox());
+			this->textBox_city = (gcnew System::Windows::Forms::ComboBox());
 			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
 			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
 			this->textBox3 = (gcnew System::Windows::Forms::TextBox());
@@ -99,6 +113,8 @@ namespace ProjetPoo {
 			this->textBox_n = (gcnew System::Windows::Forms::TextBox());
 			this->textBox7 = (gcnew System::Windows::Forms::TextBox());
 			this->textBox9 = (gcnew System::Windows::Forms::TextBox());
+			this->button_register = (gcnew System::Windows::Forms::Button());
+			this->listBox1 = (gcnew System::Windows::Forms::ListBox());
 			this->SuspendLayout();
 			// 
 			// button_delete
@@ -106,10 +122,11 @@ namespace ProjetPoo {
 			this->button_delete->Location = System::Drawing::Point(184, 274);
 			this->button_delete->Margin = System::Windows::Forms::Padding(4);
 			this->button_delete->Name = L"button_delete";
-			this->button_delete->Size = System::Drawing::Size(184, 82);
+			this->button_delete->Size = System::Drawing::Size(200, 82);
 			this->button_delete->TabIndex = 2;
 			this->button_delete->Text = L"Suppression donnée";
 			this->button_delete->UseVisualStyleBackColor = true;
+			this->button_delete->Click += gcnew System::EventHandler(this, &TestUniForm::button_delete_Click);
 			// 
 			// textBox_fn
 			// 
@@ -129,12 +146,13 @@ namespace ProjetPoo {
 			// 
 			this->textBox_sup->Location = System::Drawing::Point(184, 71);
 			this->textBox_sup->Name = L"textBox_sup";
-			this->textBox_sup->Size = System::Drawing::Size(200, 22);
+			this->textBox_sup->Size = System::Drawing::Size(200, 24);
 			this->textBox_sup->TabIndex = 20;
-			this->textBox_sup->TextChanged += gcnew System::EventHandler(this, &TestUniForm::textBox2_TextChanged);
+			this->textBox_sup->Text = L"Sélectionnez un Supérieur";
 			// 
 			// textBox_hd
 			// 
+			this->textBox_hd->CustomFormat = L"";
 			this->textBox_hd->Location = System::Drawing::Point(184, 99);
 			this->textBox_hd->Name = L"textBox_hd";
 			this->textBox_hd->Size = System::Drawing::Size(200, 22);
@@ -153,13 +171,15 @@ namespace ProjetPoo {
 			this->textBox_cp->Name = L"textBox_cp";
 			this->textBox_cp->Size = System::Drawing::Size(200, 22);
 			this->textBox_cp->TabIndex = 23;
+			this->textBox_cp->Click += gcnew System::EventHandler(this, &TestUniForm::textBox_cp_Click);
 			// 
 			// textBox_city
 			// 
 			this->textBox_city->Location = System::Drawing::Point(184, 183);
 			this->textBox_city->Name = L"textBox_city";
-			this->textBox_city->Size = System::Drawing::Size(200, 22);
+			this->textBox_city->Size = System::Drawing::Size(200, 24);
 			this->textBox_city->TabIndex = 24;
+			this->textBox_city->SelectedIndexChanged += gcnew System::EventHandler(this, &TestUniForm::textBox_city_SelectedIndexChanged);
 			// 
 			// textBox1
 			// 
@@ -171,7 +191,6 @@ namespace ProjetPoo {
 			this->textBox1->TabIndex = 25;
 			this->textBox1->Text = L"Prénom : ";
 			this->textBox1->TextAlign = System::Windows::Forms::HorizontalAlignment::Right;
-			this->textBox1->TextChanged += gcnew System::EventHandler(this, &TestUniForm::textBox1_TextChanged);
 			// 
 			// textBox2
 			// 
@@ -205,7 +224,6 @@ namespace ProjetPoo {
 			this->textBox4->TabIndex = 28;
 			this->textBox4->Text = L"Date d\'embauche: ";
 			this->textBox4->TextAlign = System::Windows::Forms::HorizontalAlignment::Right;
-			this->textBox4->TextChanged += gcnew System::EventHandler(this, &TestUniForm::textBox4_TextChanged);
 			// 
 			// textBox5
 			// 
@@ -257,7 +275,25 @@ namespace ProjetPoo {
 			this->textBox9->TabIndex = 33;
 			this->textBox9->Text = L"Combien de fois \? ";
 			this->textBox9->TextAlign = System::Windows::Forms::HorizontalAlignment::Right;
-			this->textBox9->TextChanged += gcnew System::EventHandler(this, &TestUniForm::textBox9_TextChanged);
+			// 
+			// button_register
+			// 
+			this->button_register->Location = System::Drawing::Point(412, 9);
+			this->button_register->Name = L"button_register";
+			this->button_register->Size = System::Drawing::Size(162, 53);
+			this->button_register->TabIndex = 34;
+			this->button_register->Text = L"Enregistrer";
+			this->button_register->UseVisualStyleBackColor = true;
+			this->button_register->Click += gcnew System::EventHandler(this, &TestUniForm::button_register_Click);
+			// 
+			// listBox1
+			// 
+			this->listBox1->FormattingEnabled = true;
+			this->listBox1->ItemHeight = 16;
+			this->listBox1->Location = System::Drawing::Point(412, 71);
+			this->listBox1->Name = L"listBox1";
+			this->listBox1->Size = System::Drawing::Size(161, 180);
+			this->listBox1->TabIndex = 35;
 			// 
 			// TestUniForm
 			// 
@@ -265,6 +301,8 @@ namespace ProjetPoo {
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::SystemColors::ActiveCaption;
 			this->ClientSize = System::Drawing::Size(593, 380);
+			this->Controls->Add(this->listBox1);
+			this->Controls->Add(this->button_register);
 			this->Controls->Add(this->textBox9);
 			this->Controls->Add(this->textBox_n);
 			this->Controls->Add(this->textBox7);
@@ -295,15 +333,13 @@ namespace ProjetPoo {
 		this->oStaff = gcnew NS_Comp_Svc::Staff();
 		this->oCust = gcnew NS_Comp_Svc::Customer();
 		this->oAddress = gcnew NS_Comp_Svc::Address();
-		combo_superior_Load();
+		textBox_sup_Selected();
+		listBox1_Load();
+
 	}
-	private: System::Void textBox2_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void textBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void textBox4_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-	}
-private: System::Void combo_superior_Load(System::Void) {
+
+
+private: System::Void textBox_sup_Selected(System::Void) {
 	this->textBox_sup->Text = L"Sélectionnez un supérieur";
 	this->oDs = this->oStaff->selectAllStaff("staff");
 	this->textBox_sup->Items->Clear();
@@ -312,15 +348,67 @@ private: System::Void combo_superior_Load(System::Void) {
 			this->oDs->Tables["staff"]->Rows[i]->ItemArray[0]->ToString() + " " +
 			this->oDs->Tables["staff"]->Rows[i]->ItemArray[1]->ToString() + " " +
 			this->oDs->Tables["staff"]->Rows[i]->ItemArray[2]->ToString());
+	
+}
+}
+private: System::Void textBox_city_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
+	if (this->textBox_city->SelectedIndex != -1) {
+		this->id_City = Convert::ToInt32(this->Cities->Tables["cities"]->Rows[this->textBox_city->SelectedIndex]->ItemArray[0]);
+		this->textBox_cp->Text = this->Cities->Tables["cities"]->Rows[this->textBox_city->SelectedIndex]->ItemArray[1]->ToString();
 	}
 }
-private: System::Void comboBox1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
-	this->textBox_ln->Text = this->oDs->Tables["rsl"]->Rows[index]->ItemArray[1]->ToString();
-	this->textBox_fn->Text = this->oDs->Tables["rsl"]->Rows[index]->ItemArray[2]->ToString();
+	private: System::Void button_register_Click(System::Object^ sender, System::EventArgs^ e) {
+		int n =  Convert::ToInt32 (this->textBox_n->Text);
+		for (int i; i < n; i++) {
+			System::Data::DataRow^ row;
+			int idPeople;
+			row = this->oPeople->createPeople(this->textBox_fn->Text, this->textBox_ln->Text);
+			idPeople = System::Convert::ToInt32(row->ItemArray[0]);
+
+			textBox_sup_Selected();
+			int indexStaff;
+			int idSuperior = -1;
+			if (this->textBox_sup->SelectedIndex != -1) {
+				this->oDs = this->oStaff->selectAllStaff("staff");
+				indexStaff = this->textBox_sup->SelectedIndex;
+				idSuperior = System::Convert::ToInt32(this->oDs->Tables["staff"]->Rows[indexStaff]->ItemArray[0]);
+			}
+			System::DateTime^ date = this->textBox_hd->Value;
+			System::String^ dateString = System::Convert::ToString(date->Month) + "/";
+			dateString += System::Convert::ToString(date->Day) + "/";
+			dateString += System::Convert::ToString(date->Year);
+			this->oStaff->createStaff(idPeople, dateString, idSuperior, "");
+			int idAddress = this->oAddress->createAddress("", "", this->textBox_address->Text, this->id_City);
+			this->oStaff->updateStaffAddress(idPeople, idAddress);
+		}
+	}
+private: System::Void textBox_cp_Click(System::Object^ sender, System::EventArgs^ e) {
+	this->Cities = this->oAddress->selectCityFromPostalcode("cities", this->textBox_cp->Text);
+	this->textBox_city->Items->Clear();
+	for (int i = 0; i < this->Cities->Tables["cities"]->Rows->Count; i++) {
+		this->textBox_city->Items->Add(this->Cities->Tables["cities"]->Rows[i]->ItemArray[2]->ToString());
+	}
 }
-private: System::Void textBox9_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+private: System::Void button_delete_Click(System::Object^ sender, System::EventArgs^ e) {
+	int n = Convert::ToInt32(this->textBox_n->Text);
+	for (int i; i < n; i++) {
+		int index = this->listBox1->SelectedIndex;
+		int idPeople = System::Convert::ToInt32(this->oDs->Tables["rsl"]->Rows[index]->ItemArray[0]);
+		this->oDs = this->oCust->getTheCustomer("rsl", idPeople);
+		this->oStaff->deleteStaff(idPeople);
+		this->oPeo->deletePeople(idPeople);
+
+	}
+}
+private: System::Void listBox1_Load(System::Void) {
+	this->oDs = this->oStaff->selectAllStaff("rsl");
+	this->listBox1->Items->Clear();
+	for (int i = 0; i < this->oDs->Tables["rsl"]->Rows->Count; i++) {
+		this->listBox1->Items->Add(
+			this->oDs->Tables["rsl"]->Rows[i]->ItemArray[0]->ToString() + " " +
+			this->oDs->Tables["rsl"]->Rows[i]->ItemArray[1]->ToString() + " " +
+			this->oDs->Tables["rsl"]->Rows[i]->ItemArray[2]->ToString());
+	}
 }
 };
 }
-
-

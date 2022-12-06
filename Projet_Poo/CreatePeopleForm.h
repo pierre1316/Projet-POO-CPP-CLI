@@ -350,7 +350,6 @@ namespace ProjetPoo {
 			this->textBox_postalcode->Name = L"textBox_postalcode";
 			this->textBox_postalcode->Size = System::Drawing::Size(257, 22);
 			this->textBox_postalcode->TabIndex = 23;
-			this->textBox_postalcode->Leave += gcnew System::EventHandler(this, &CreatePeopleForm::textBox_postalcode_Leave);
 			// 
 			// comboBox_city
 			// 
@@ -360,6 +359,7 @@ namespace ProjetPoo {
 			this->comboBox_city->Size = System::Drawing::Size(257, 24);
 			this->comboBox_city->TabIndex = 53;
 			this->comboBox_city->SelectedIndexChanged += gcnew System::EventHandler(this, &CreatePeopleForm::comboBox_city_SelectedIndexChanged);
+			this->comboBox_city->Click += gcnew System::EventHandler(this, &CreatePeopleForm::comboBox_city_Click);
 			// 
 			// CreatePeopleForm
 			// 
@@ -554,16 +554,17 @@ private: System::Void button_register_Click(System::Object^ sender, System::Even
 	radiobutt_new_people_CheckedChanged(sender, e);
 }
 
-private: System::Void textBox_postalcode_Leave(System::Object^ sender, System::EventArgs^ e) {
+private: System::Void comboBox_city_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
+	if (this->comboBox_city->SelectedIndex != -1) {
+		this->id_City = Convert::ToInt32(this->Cities->Tables["cities"]->Rows[this->comboBox_city->SelectedIndex]->ItemArray[0]);
+		this->textBox_postalcode->Text = this->Cities->Tables["cities"]->Rows[this->comboBox_city->SelectedIndex]->ItemArray[1]->ToString();
+	}
+}
+private: System::Void comboBox_city_Click(System::Object^ sender, System::EventArgs^ e) {
 	this->Cities = this->oAddress->selectCityFromPostalcode("cities", this->textBox_postalcode->Text);
 	this->comboBox_city->Items->Clear();
 	for (int i = 0; i < this->Cities->Tables["cities"]->Rows->Count; i++) {
 		this->comboBox_city->Items->Add(this->Cities->Tables["cities"]->Rows[i]->ItemArray[2]->ToString());
-	}
-}
-private: System::Void comboBox_city_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
-	if (this->comboBox_city->SelectedIndex != -1) {
-		this->id_City = Convert::ToInt32(this->Cities->Tables["cities"]->Rows[this->comboBox_city->SelectedIndex]->ItemArray[0]);
 	}
 }
 };

@@ -36,7 +36,7 @@ System::String^ CLmapTB::createPeople(System::String^ first_name, System::String
 }
 
 System::String^ CLmapTB::createStaff(int idPeople, System::String^ hiring_date) {
-	return "EXEC PS_STAFF_CREATE @idPeople = '" + idPeople + "', @date = '" + hiring_date + "'";
+	return "EXEC PS_STAFF_CREATE @idPeople = '" + idPeople + "', @date = '" + hiring_date + "', @username = 'a', @password = '1234', @id_role = '1'";
 }
 System::String^ CLmapTB::setSuperior(int idPeople, int idSuperior) {
 	return "EXEC PS_SUPERIOR_UPDATE @idPeople = '" + idPeople + "', @idSuperior = '" + idSuperior + "'";
