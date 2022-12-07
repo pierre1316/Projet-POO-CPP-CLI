@@ -43,5 +43,8 @@ namespace NS_Comp_Svc {
 			System::String^ price_total_ht, System::String^ price_total_ttc, System::String^ invoice_date, System::String^ deli_ddress, 
 			System::String^ bill_ddress, System::String^ customer_name, System::Data::DataTable^ table);
 		System::Data::DataSet^ Catalog::selectInvoices(System::String^ DataTableName);
+		System::Data::DataSet^ Catalog::selectOneInvoice(System::String^ DataTableName, System::String^ reference_order);
+		System::Data::DataSet^ Catalog::selectInvoiceContain(System::String^ DataTableName, System::String^ reference_order);
+
 	};
 }

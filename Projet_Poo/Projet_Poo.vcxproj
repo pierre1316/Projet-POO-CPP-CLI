@@ -142,6 +142,7 @@
     <ClCompile Include="MainForm.cpp" />
     <ClCompile Include="ModifyPeopleForm.cpp" />
     <ClCompile Include="PeopleForm.cpp" />
+    <ClCompile Include="Stats.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AddressForm.h">
@@ -195,6 +196,7 @@
     <ClInclude Include="PeopleForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="Stats.h" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="AddressForm.resx">

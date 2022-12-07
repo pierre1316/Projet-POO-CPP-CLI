@@ -251,3 +251,18 @@ System::Data::DataSet^ Catalog::selectInvoices(System::String^ DataTableName)
 
 	return this->oCad->getRows(sql, DataTableName);
 }
+
+System::Data::DataSet^ Catalog::selectOneInvoice(System::String^ DataTableName, System::String^ reference_order)
+{
+	System::String^ sql = "EXEC PS_INVOICE_SELECT_JUST @reference_order = '" + reference_order + "'";
+
+	return this->oCad->getRows(sql, DataTableName);
+}
+
+System::Data::DataSet^ Catalog::selectInvoiceContain(System::String^ DataTableName, System::String^ reference_order)
+{
+	System::String^ sql = "EXEC PS_INVOICE_CONTAIN_SELECT @reference_order = '" + reference_order + "'";
+
+	return this->oCad->getRows(sql, DataTableName);
+}
+

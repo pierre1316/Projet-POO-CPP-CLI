@@ -15,6 +15,7 @@
 #include "CatalogForm.h"
 #include "ConnexionForm.h"
 #include "Staff.h"
+#include "Stats.h"
 
 
 
@@ -57,6 +58,7 @@ namespace ProjetPoo {
 			}
 		}
 	private: NS_Comp_Svc::Staff^ oStaff;
+	private: NS_Comp_Svc::Stats^ oStats;
 	private: DataSet^ oDs;
 	private: int id_staff_user;
 	private: int id_role_user;
@@ -74,6 +76,15 @@ namespace ProjetPoo {
 	private: System::Windows::Forms::Button^ button_manage_payment;
 
 	private: System::Windows::Forms::PrintDialog^ printDialog1;
+	private: System::Windows::Forms::GroupBox^ groupBox_ca;
+	private: System::Windows::Forms::Label^ label_ca;
+
+	private: System::Windows::Forms::ComboBox^ comboBox_ca;
+	private: System::Windows::Forms::GroupBox^ groupBox1;
+	private: System::Windows::Forms::Label^ label_price_average;
+
+
+
 
 
 
@@ -113,8 +124,15 @@ namespace ProjetPoo {
 			this->button_manage_orders = (gcnew System::Windows::Forms::Button());
 			this->button_manage_payment = (gcnew System::Windows::Forms::Button());
 			this->printDialog1 = (gcnew System::Windows::Forms::PrintDialog());
+			this->groupBox_ca = (gcnew System::Windows::Forms::GroupBox());
+			this->label_ca = (gcnew System::Windows::Forms::Label());
+			this->comboBox_ca = (gcnew System::Windows::Forms::ComboBox());
+			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
+			this->label_price_average = (gcnew System::Windows::Forms::Label());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
+			this->groupBox_ca->SuspendLayout();
+			this->groupBox1->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// button_people_create
@@ -292,12 +310,74 @@ namespace ProjetPoo {
 			// 
 			this->printDialog1->UseEXDialog = true;
 			// 
+			// groupBox_ca
+			// 
+			this->groupBox_ca->Controls->Add(this->label_ca);
+			this->groupBox_ca->Controls->Add(this->comboBox_ca);
+			this->groupBox_ca->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->groupBox_ca->ForeColor = System::Drawing::Color::SandyBrown;
+			this->groupBox_ca->Location = System::Drawing::Point(339, 275);
+			this->groupBox_ca->Name = L"groupBox_ca";
+			this->groupBox_ca->Size = System::Drawing::Size(380, 64);
+			this->groupBox_ca->TabIndex = 17;
+			this->groupBox_ca->TabStop = false;
+			this->groupBox_ca->Text = L"Chiffre d\'affaire :";
+			// 
+			// label_ca
+			// 
+			this->label_ca->AutoSize = true;
+			this->label_ca->Location = System::Drawing::Point(233, 28);
+			this->label_ca->Name = L"label_ca";
+			this->label_ca->Size = System::Drawing::Size(0, 20);
+			this->label_ca->TabIndex = 1;
+			// 
+			// comboBox_ca
+			// 
+			this->comboBox_ca->FormattingEnabled = true;
+			this->comboBox_ca->Location = System::Drawing::Point(15, 25);
+			this->comboBox_ca->Name = L"comboBox_ca";
+			this->comboBox_ca->Size = System::Drawing::Size(212, 28);
+			this->comboBox_ca->TabIndex = 0;
+			this->comboBox_ca->SelectedIndexChanged += gcnew System::EventHandler(this, &MainForm::comboBox_ca_SelectedIndexChanged);
+			this->comboBox_ca->Click += gcnew System::EventHandler(this, &MainForm::comboBox1_Click);
+			// 
+			// groupBox1
+			// 
+			this->groupBox1->Controls->Add(this->label_price_average);
+			this->groupBox1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->groupBox1->ForeColor = System::Drawing::Color::SandyBrown;
+			this->groupBox1->Location = System::Drawing::Point(339, 379);
+			this->groupBox1->Name = L"groupBox1";
+			this->groupBox1->Size = System::Drawing::Size(380, 69);
+			this->groupBox1->TabIndex = 18;
+			this->groupBox1->TabStop = false;
+			this->groupBox1->Text = L"Prix du Panier Moyen";
+			// 
+			// label_price_average
+			// 
+			this->label_price_average->AutoSize = true;
+			this->label_price_average->BackColor = System::Drawing::Color::Transparent;
+			this->label_price_average->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 20.25F, System::Drawing::FontStyle::Bold,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->label_price_average->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)),
+				static_cast<System::Int32>(static_cast<System::Byte>(145)), static_cast<System::Int32>(static_cast<System::Byte>(77)));
+			this->label_price_average->Location = System::Drawing::Point(9, 25);
+			this->label_price_average->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->label_price_average->Name = L"label_price_average";
+			this->label_price_average->Size = System::Drawing::Size(277, 31);
+			this->label_price_average->TabIndex = 19;
+			this->label_price_average->Text = L"label_price_average";
+			// 
 			// MainForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::Black;
 			this->ClientSize = System::Drawing::Size(1344, 756);
+			this->Controls->Add(this->groupBox1);
+			this->Controls->Add(this->groupBox_ca);
 			this->Controls->Add(this->button_manage_payment);
 			this->Controls->Add(this->button_manage_orders);
 			this->Controls->Add(this->button_manage_item);
@@ -320,13 +400,17 @@ namespace ProjetPoo {
 			this->Load += gcnew System::EventHandler(this, &MainForm::MainForm_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
+			this->groupBox_ca->ResumeLayout(false);
+			this->groupBox_ca->PerformLayout();
+			this->groupBox1->ResumeLayout(false);
+			this->groupBox1->PerformLayout();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
 		}
 #pragma endregion
 	private: System::Void MainForm_Load(System::Object^ sender, System::EventArgs^ e) {
-		
+		this->oStats = gcnew NS_Comp_Svc::Stats();
 		this->oStaff = gcnew NS_Comp_Svc::Staff();
 		ConnexionForm^ connForm = gcnew ConnexionForm();
 		connForm->ShowDialog();
@@ -344,6 +428,7 @@ namespace ProjetPoo {
 			}
 		}
 		this->id_role_user = this->oStaff->getRole(this->id_staff_user);
+		label_price_average_load();
 	}
 private: System::Void button_people_management_Click(System::Object^ sender, System::EventArgs^ e) {
 	CreatePeopleForm crepeopleform(this->id_role_user);
@@ -390,5 +475,67 @@ private: System::Void button_manage_payment_Click(System::Object^ sender, System
 	paymentform.ShowDialog();
 }	
 
+//
+// Stat CA mois;
+//
+
+private: System::Void comboBox1_Click(System::Object^ sender, System::EventArgs^ e) {
+	this->oDs = this->oStats->caDate("rsl");
+	this->comboBox_ca->Items->Clear();
+	for (int i = 0; i < this->oDs->Tables["rsl"]->Rows->Count; i++) {
+		this->comboBox_ca->Items->Add(
+			getMonthName(Convert::ToInt32(this->oDs->Tables["rsl"]->Rows[i]->ItemArray[0])) + " " +
+			this->oDs->Tables["rsl"]->Rows[i]->ItemArray[1]->ToString()
+		);
+	}
+}
+
+private: System::String^ getMonthName(int monthNumber) {
+	switch (monthNumber) {
+	case 1 :
+		return "Janvier";
+		break;
+	case 2 :
+		return "Février";
+		break;
+	case 3 :
+		return "Mars";
+		break;
+	case 4 :
+		return "Avril";
+		break;
+	case 5 :
+		return "Mai";
+		break;
+	case 6 :
+		return "Juin";
+		break;
+	case 7 :
+		return "Juillet";
+		break;
+	case 8 :
+		return "Août";
+		break;
+	case 9 :
+		return "Septembre";
+		break;
+	case 10 :
+		return "Octobre";
+		break;
+	case 11 :
+		return "Novembre";
+		break;
+	case 12 :
+		return "Décembre";
+		break;
+	}
+}
+private: System::Void comboBox_ca_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
+	this->label_ca->Text = this->oDs->Tables["rsl"]->Rows[comboBox_ca->SelectedIndex]->ItemArray[2]->ToString() + " €";
+}
+
+private: System::Void label_price_average_load(System::Void) {
+	this->label_price_average->Text = Convert::ToString(this->oStats->price_average()) + " €";
+}
 };
 }
