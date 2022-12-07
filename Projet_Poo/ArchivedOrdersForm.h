@@ -140,228 +140,250 @@ namespace ProjetPoo {
 			// listBox_orders
 			// 
 			this->listBox_orders->FormattingEnabled = true;
-			this->listBox_orders->ItemHeight = 16;
-			this->listBox_orders->Location = System::Drawing::Point(12, 38);
+			this->listBox_orders->Location = System::Drawing::Point(9, 31);
+			this->listBox_orders->Margin = System::Windows::Forms::Padding(2);
 			this->listBox_orders->Name = L"listBox_orders";
-			this->listBox_orders->Size = System::Drawing::Size(187, 276);
+			this->listBox_orders->Size = System::Drawing::Size(141, 225);
 			this->listBox_orders->TabIndex = 0;
 			this->listBox_orders->SelectedIndexChanged += gcnew System::EventHandler(this, &ArchivedOrdersForm::listBox_orders_SelectedIndexChanged);
 			// 
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(12, 12);
+			this->label1->Location = System::Drawing::Point(9, 10);
+			this->label1->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(150, 16);
-			this->label1->TabIndex = 1;
+			this->label1->Size = System::Drawing::Size(120, 13);
+			this->label1->TabIndex = 0;
 			this->label1->Text = L"Choisir une commande :";
 			// 
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(229, 60);
+			this->label2->Location = System::Drawing::Point(172, 49);
+			this->label2->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(46, 16);
-			this->label2->TabIndex = 2;
+			this->label2->Size = System::Drawing::Size(39, 13);
+			this->label2->TabIndex = 0;
 			this->label2->Text = L"Client :";
 			// 
 			// textBox_client
 			// 
 			this->textBox_client->BackColor = System::Drawing::SystemColors::Window;
-			this->textBox_client->Location = System::Drawing::Point(429, 57);
+			this->textBox_client->Location = System::Drawing::Point(322, 46);
+			this->textBox_client->Margin = System::Windows::Forms::Padding(2);
 			this->textBox_client->Name = L"textBox_client";
 			this->textBox_client->ReadOnly = true;
-			this->textBox_client->Size = System::Drawing::Size(416, 22);
-			this->textBox_client->TabIndex = 3;
+			this->textBox_client->Size = System::Drawing::Size(313, 20);
+			this->textBox_client->TabIndex = 1;
 			// 
 			// textBox_deli
 			// 
 			this->textBox_deli->BackColor = System::Drawing::SystemColors::Window;
-			this->textBox_deli->Location = System::Drawing::Point(429, 85);
+			this->textBox_deli->Location = System::Drawing::Point(322, 69);
+			this->textBox_deli->Margin = System::Windows::Forms::Padding(2);
 			this->textBox_deli->Name = L"textBox_deli";
 			this->textBox_deli->ReadOnly = true;
-			this->textBox_deli->Size = System::Drawing::Size(416, 22);
-			this->textBox_deli->TabIndex = 5;
+			this->textBox_deli->Size = System::Drawing::Size(313, 20);
+			this->textBox_deli->TabIndex = 2;
 			// 
 			// label3
 			// 
 			this->label3->AutoSize = true;
-			this->label3->Location = System::Drawing::Point(229, 88);
+			this->label3->Location = System::Drawing::Point(172, 72);
+			this->label3->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(130, 16);
-			this->label3->TabIndex = 4;
+			this->label3->Size = System::Drawing::Size(101, 13);
+			this->label3->TabIndex = 0;
 			this->label3->Text = L"Adresse de livraison";
 			// 
 			// textBox_deli_date
 			// 
 			this->textBox_deli_date->BackColor = System::Drawing::SystemColors::Window;
-			this->textBox_deli_date->Location = System::Drawing::Point(429, 142);
+			this->textBox_deli_date->Location = System::Drawing::Point(322, 115);
+			this->textBox_deli_date->Margin = System::Windows::Forms::Padding(2);
 			this->textBox_deli_date->Name = L"textBox_deli_date";
 			this->textBox_deli_date->ReadOnly = true;
-			this->textBox_deli_date->Size = System::Drawing::Size(416, 22);
-			this->textBox_deli_date->TabIndex = 9;
+			this->textBox_deli_date->Size = System::Drawing::Size(313, 20);
+			this->textBox_deli_date->TabIndex = 4;
 			// 
 			// label4
 			// 
 			this->label4->AutoSize = true;
-			this->label4->Location = System::Drawing::Point(229, 145);
+			this->label4->Location = System::Drawing::Point(172, 118);
+			this->label4->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(159, 16);
-			this->label4->TabIndex = 8;
+			this->label4->Size = System::Drawing::Size(128, 13);
+			this->label4->TabIndex = 0;
 			this->label4->Text = L"Date de livraison prévue :";
 			// 
 			// textBox_bill
 			// 
 			this->textBox_bill->BackColor = System::Drawing::SystemColors::Window;
-			this->textBox_bill->Location = System::Drawing::Point(429, 114);
+			this->textBox_bill->Location = System::Drawing::Point(322, 93);
+			this->textBox_bill->Margin = System::Windows::Forms::Padding(2);
 			this->textBox_bill->Name = L"textBox_bill";
 			this->textBox_bill->ReadOnly = true;
-			this->textBox_bill->Size = System::Drawing::Size(416, 22);
-			this->textBox_bill->TabIndex = 7;
+			this->textBox_bill->Size = System::Drawing::Size(313, 20);
+			this->textBox_bill->TabIndex = 3;
 			// 
 			// label5
 			// 
 			this->label5->AutoSize = true;
-			this->label5->Location = System::Drawing::Point(229, 117);
+			this->label5->Location = System::Drawing::Point(172, 95);
+			this->label5->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(152, 16);
-			this->label5->TabIndex = 6;
+			this->label5->Size = System::Drawing::Size(122, 13);
+			this->label5->TabIndex = 0;
 			this->label5->Text = L"Adresse de Facturation :";
 			// 
 			// textBox_issue_date
 			// 
 			this->textBox_issue_date->BackColor = System::Drawing::SystemColors::Window;
-			this->textBox_issue_date->Location = System::Drawing::Point(429, 170);
+			this->textBox_issue_date->Location = System::Drawing::Point(322, 138);
+			this->textBox_issue_date->Margin = System::Windows::Forms::Padding(2);
 			this->textBox_issue_date->Name = L"textBox_issue_date";
 			this->textBox_issue_date->ReadOnly = true;
-			this->textBox_issue_date->Size = System::Drawing::Size(416, 22);
-			this->textBox_issue_date->TabIndex = 11;
+			this->textBox_issue_date->Size = System::Drawing::Size(313, 20);
+			this->textBox_issue_date->TabIndex = 5;
 			// 
 			// label6
 			// 
 			this->label6->AutoSize = true;
-			this->label6->Location = System::Drawing::Point(229, 173);
+			this->label6->Location = System::Drawing::Point(172, 141);
+			this->label6->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label6->Name = L"label6";
-			this->label6->Size = System::Drawing::Size(170, 16);
-			this->label6->TabIndex = 10;
+			this->label6->Size = System::Drawing::Size(138, 13);
+			this->label6->TabIndex = 0;
 			this->label6->Text = L"Date d\'envoi de la Facture :";
 			// 
 			// textBox_payment_date
 			// 
 			this->textBox_payment_date->BackColor = System::Drawing::SystemColors::Window;
-			this->textBox_payment_date->Location = System::Drawing::Point(429, 198);
+			this->textBox_payment_date->Location = System::Drawing::Point(322, 161);
+			this->textBox_payment_date->Margin = System::Windows::Forms::Padding(2);
 			this->textBox_payment_date->Name = L"textBox_payment_date";
 			this->textBox_payment_date->ReadOnly = true;
-			this->textBox_payment_date->Size = System::Drawing::Size(416, 22);
-			this->textBox_payment_date->TabIndex = 13;
+			this->textBox_payment_date->Size = System::Drawing::Size(313, 20);
+			this->textBox_payment_date->TabIndex = 6;
 			// 
 			// label7
 			// 
 			this->label7->AutoSize = true;
-			this->label7->Location = System::Drawing::Point(229, 201);
+			this->label7->Location = System::Drawing::Point(172, 163);
+			this->label7->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label7->Name = L"label7";
-			this->label7->Size = System::Drawing::Size(124, 16);
-			this->label7->TabIndex = 12;
+			this->label7->Size = System::Drawing::Size(101, 13);
+			this->label7->TabIndex = 0;
 			this->label7->Text = L"Date de Paiement : ";
 			// 
 			// textBox_payment_method
 			// 
 			this->textBox_payment_method->BackColor = System::Drawing::SystemColors::Window;
-			this->textBox_payment_method->Location = System::Drawing::Point(429, 226);
+			this->textBox_payment_method->Location = System::Drawing::Point(322, 184);
+			this->textBox_payment_method->Margin = System::Windows::Forms::Padding(2);
 			this->textBox_payment_method->Name = L"textBox_payment_method";
 			this->textBox_payment_method->ReadOnly = true;
-			this->textBox_payment_method->Size = System::Drawing::Size(416, 22);
-			this->textBox_payment_method->TabIndex = 15;
+			this->textBox_payment_method->Size = System::Drawing::Size(313, 20);
+			this->textBox_payment_method->TabIndex = 7;
 			// 
 			// label8
 			// 
 			this->label8->AutoSize = true;
-			this->label8->Location = System::Drawing::Point(229, 229);
+			this->label8->Location = System::Drawing::Point(172, 186);
+			this->label8->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label8->Name = L"label8";
-			this->label8->Size = System::Drawing::Size(132, 16);
-			this->label8->TabIndex = 14;
+			this->label8->Size = System::Drawing::Size(106, 13);
+			this->label8->TabIndex = 0;
 			this->label8->Text = L"Moyen de paiement :";
 			// 
 			// textBox_price_ht
 			// 
 			this->textBox_price_ht->BackColor = System::Drawing::SystemColors::Window;
-			this->textBox_price_ht->Location = System::Drawing::Point(429, 254);
+			this->textBox_price_ht->Location = System::Drawing::Point(322, 206);
+			this->textBox_price_ht->Margin = System::Windows::Forms::Padding(2);
 			this->textBox_price_ht->Name = L"textBox_price_ht";
 			this->textBox_price_ht->ReadOnly = true;
-			this->textBox_price_ht->Size = System::Drawing::Size(373, 22);
-			this->textBox_price_ht->TabIndex = 17;
+			this->textBox_price_ht->Size = System::Drawing::Size(281, 20);
+			this->textBox_price_ht->TabIndex = 8;
 			this->textBox_price_ht->TextAlign = System::Windows::Forms::HorizontalAlignment::Right;
 			// 
 			// label9
 			// 
 			this->label9->AutoSize = true;
-			this->label9->Location = System::Drawing::Point(229, 257);
+			this->label9->Location = System::Drawing::Point(172, 209);
+			this->label9->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label9->Name = L"label9";
-			this->label9->Size = System::Drawing::Size(108, 16);
-			this->label9->TabIndex = 16;
+			this->label9->Size = System::Drawing::Size(87, 13);
+			this->label9->TabIndex = 0;
 			this->label9->Text = L"Prix Hors Taxes :";
 			// 
 			// textBox_price_ttc
 			// 
 			this->textBox_price_ttc->BackColor = System::Drawing::SystemColors::Window;
-			this->textBox_price_ttc->Location = System::Drawing::Point(429, 282);
+			this->textBox_price_ttc->Location = System::Drawing::Point(322, 229);
+			this->textBox_price_ttc->Margin = System::Windows::Forms::Padding(2);
 			this->textBox_price_ttc->Name = L"textBox_price_ttc";
 			this->textBox_price_ttc->ReadOnly = true;
-			this->textBox_price_ttc->Size = System::Drawing::Size(373, 22);
-			this->textBox_price_ttc->TabIndex = 19;
+			this->textBox_price_ttc->Size = System::Drawing::Size(281, 20);
+			this->textBox_price_ttc->TabIndex = 9;
 			this->textBox_price_ttc->TextAlign = System::Windows::Forms::HorizontalAlignment::Right;
 			// 
 			// label10
 			// 
 			this->label10->AutoSize = true;
-			this->label10->Location = System::Drawing::Point(229, 285);
+			this->label10->Location = System::Drawing::Point(172, 232);
+			this->label10->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label10->Name = L"label10";
-			this->label10->Size = System::Drawing::Size(189, 16);
-			this->label10->TabIndex = 18;
+			this->label10->Size = System::Drawing::Size(149, 13);
+			this->label10->TabIndex = 0;
 			this->label10->Text = L"Prix Toutes Taxes Comprises :";
 			// 
 			// listBox_items
 			// 
 			this->listBox_items->FormattingEnabled = true;
-			this->listBox_items->ItemHeight = 16;
-			this->listBox_items->Location = System::Drawing::Point(874, 38);
+			this->listBox_items->Location = System::Drawing::Point(656, 31);
+			this->listBox_items->Margin = System::Windows::Forms::Padding(2);
 			this->listBox_items->Name = L"listBox_items";
-			this->listBox_items->Size = System::Drawing::Size(187, 276);
-			this->listBox_items->TabIndex = 20;
+			this->listBox_items->Size = System::Drawing::Size(141, 225);
+			this->listBox_items->TabIndex = 10;
 			// 
 			// label11
 			// 
 			this->label11->AutoSize = true;
-			this->label11->Location = System::Drawing::Point(889, 9);
+			this->label11->Location = System::Drawing::Point(667, 7);
+			this->label11->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label11->Name = L"label11";
-			this->label11->Size = System::Drawing::Size(57, 16);
-			this->label11->TabIndex = 21;
+			this->label11->Size = System::Drawing::Size(47, 13);
+			this->label11->TabIndex = 0;
 			this->label11->Text = L"Articles :";
 			// 
 			// label12
 			// 
 			this->label12->AutoSize = true;
-			this->label12->Location = System::Drawing::Point(808, 257);
+			this->label12->Location = System::Drawing::Point(606, 209);
+			this->label12->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label12->Name = L"label12";
-			this->label12->Size = System::Drawing::Size(14, 16);
-			this->label12->TabIndex = 22;
+			this->label12->Size = System::Drawing::Size(13, 13);
+			this->label12->TabIndex = 0;
 			this->label12->Text = L"€";
 			// 
 			// label13
 			// 
 			this->label13->AutoSize = true;
-			this->label13->Location = System::Drawing::Point(808, 285);
+			this->label13->Location = System::Drawing::Point(606, 232);
+			this->label13->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label13->Name = L"label13";
-			this->label13->Size = System::Drawing::Size(14, 16);
-			this->label13->TabIndex = 23;
+			this->label13->Size = System::Drawing::Size(13, 13);
+			this->label13->TabIndex = 0;
 			this->label13->Text = L"€";
 			// 
 			// ArchivedOrdersForm
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::SystemColors::ActiveCaption;
-			this->ClientSize = System::Drawing::Size(1080, 333);
+			this->ClientSize = System::Drawing::Size(810, 271);
 			this->Controls->Add(this->label13);
 			this->Controls->Add(this->label12);
 			this->Controls->Add(this->label11);
@@ -386,6 +408,7 @@ namespace ProjetPoo {
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->listBox_orders);
+			this->Margin = System::Windows::Forms::Padding(2);
 			this->Name = L"ArchivedOrdersForm";
 			this->Text = L"ArchivedOrdersForm";
 			this->Load += gcnew System::EventHandler(this, &ArchivedOrdersForm::ArchivedOrdersForm_Load);

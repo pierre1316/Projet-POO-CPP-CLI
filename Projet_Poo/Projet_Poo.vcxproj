@@ -125,18 +125,19 @@
     <ClCompile Include="ArchivedOrdersForm.cpp" />
     <ClCompile Include="Catalog.cpp" />
     <ClCompile Include="CatalogForm.cpp" />
+    <ClCompile Include="ChangePasswordForm.cpp" />
     <ClCompile Include="CLcad.cpp" />
-    <ClCompile Include="CLmapTB.cpp" />
     <ClCompile Include="Address.cpp" />
     <ClCompile Include="ConnexionForm.cpp" />
     <ClCompile Include="Customer.cpp" />
+    <ClCompile Include="InvoiceForm.cpp" />
     <ClCompile Include="OrderForm.cpp" />
     <ClCompile Include="PaymentForm.cpp" />
     <ClCompile Include="People.cpp" />
     <ClCompile Include="Staff.cpp" />
     <ClCompile Include="CreateAddressForm.cpp" />
-    <ClCompile Include="CreateCategoryForm.cpp" />
-    <ClCompile Include="CreateItemForm.cpp" />
+    <ClCompile Include="CategoryForm.cpp" />
+    <ClCompile Include="ItemForm.cpp" />
     <ClCompile Include="CreatePeopleForm.cpp" />
     <ClCompile Include="MainForm.cpp" />
     <ClCompile Include="ModifyPeopleForm.cpp" />
@@ -153,13 +154,18 @@
     <ClInclude Include="CatalogForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="ChangePasswordForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="CLcad.h" />
-    <ClInclude Include="CLmapTB.h" />
     <ClInclude Include="Address.h" />
     <ClInclude Include="ConnexionForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Customer.h" />
+    <ClInclude Include="InvoiceForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="OrderForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -171,10 +177,10 @@
     <ClInclude Include="CreateAddressForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="CreateCategoryForm.h">
+    <ClInclude Include="CategoryForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="CreateItemForm.h">
+    <ClInclude Include="ItemForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="CreatePeopleForm.h">
@@ -200,17 +206,24 @@
     <EmbeddedResource Include="CatalogForm.resx">
       <DependentUpon>CatalogForm.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ChangePasswordForm.resx">
+      <DependentUpon>ChangePasswordForm.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ConnexionForm.resx">
       <DependentUpon>ConnexionForm.h</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="CreateAddressForm.resx">
       <DependentUpon>CreateAddressForm.h</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CreateCategoryForm.resx">
-      <DependentUpon>CreateCategoryForm.h</DependentUpon>
+    <EmbeddedResource Include="CategoryForm.resx">
+      <DependentUpon>CategoryForm.h</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CreateItemForm.resx">
-      <DependentUpon>CreateItemForm.h</DependentUpon>
+    <EmbeddedResource Include="InvoiceForm.resx">
+      <DependentUpon>InvoiceForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemForm.resx">
+      <DependentUpon>ItemForm.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CreatePeopleForm.resx">
       <DependentUpon>CreatePeopleForm.h</DependentUpon>
@@ -231,7 +244,26 @@
       <DependentUpon>PeopleForm.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="AcroPDFLib.1.0">
+      <VersionMinor>0</VersionMinor>
+      <VersionMajor>1</VersionMajor>
+      <Guid>05bfd3f1-6319-4f30-b752-c7a22889bcc4</Guid>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>false</Isolated>
+      <EmbedInteropTypes>true</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="AxAcroPDFLib.1.0">
+      <WrapperTool>aximp</WrapperTool>
+      <VersionMinor>0</VersionMinor>
+      <VersionMajor>1</VersionMajor>
+      <Guid>05bfd3f1-6319-4f30-b752-c7a22889bcc4</Guid>
+      <Lcid>0</Lcid>
+      <Isolated>false</Isolated>
+      <EmbedInteropTypes>true</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
-  <ImportGroup Label="ExtensionTargets">
-  </ImportGroup>
+  <ImportGroup Label="ExtensionTargets" />
 </Project>

@@ -8,6 +8,6 @@ void NewItemMain(array<String^>^ args) {
     Application::EnableVisualStyles();
     Application::SetCompatibleTextRenderingDefault(false);
     //WinformCDemo is jour project name
-    ProjetPoo::CreatePeopleForm form;
+    ProjetPoo::CreatePeopleForm form(0);
     Application::Run(% form);
 }

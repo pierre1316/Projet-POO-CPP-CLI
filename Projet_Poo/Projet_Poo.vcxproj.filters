@@ -6,8 +6,8 @@
     <ClCompile Include="ModifyPeopleForm.cpp" />
     <ClCompile Include="AddressForm.cpp" />
     <ClCompile Include="CatalogForm.cpp" />
-    <ClCompile Include="CreateCategoryForm.cpp" />
-    <ClCompile Include="CreateItemForm.cpp" />
+    <ClCompile Include="CategoryForm.cpp" />
+    <ClCompile Include="ItemForm.cpp" />
     <ClCompile Include="CreatePeopleForm.cpp" />
     <ClCompile Include="CreateAddressForm.cpp" />
     <ClCompile Include="Address.cpp">
@@ -28,13 +28,12 @@
     <ClCompile Include="CLcad.cpp">
       <Filter>Classes de Communication</Filter>
     </ClCompile>
-    <ClCompile Include="CLmapTB.cpp">
-      <Filter>Classes de Mappage</Filter>
-    </ClCompile>
     <ClCompile Include="OrderForm.cpp" />
     <ClCompile Include="PaymentForm.cpp" />
     <ClCompile Include="ArchivedOrdersForm.cpp" />
     <ClCompile Include="ConnexionForm.cpp" />
+    <ClCompile Include="ChangePasswordForm.cpp" />
+    <ClCompile Include="InvoiceForm.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CreatePeopleForm.h" />
@@ -44,8 +43,8 @@
     <ClInclude Include="AddressForm.h" />
     <ClInclude Include="CreateAddressForm.h" />
     <ClInclude Include="CatalogForm.h" />
-    <ClInclude Include="CreateCategoryForm.h" />
-    <ClInclude Include="CreateItemForm.h" />
+    <ClInclude Include="CategoryForm.h" />
+    <ClInclude Include="ItemForm.h" />
     <ClInclude Include="Address.h">
       <Filter>Classes de Service</Filter>
     </ClInclude>
@@ -64,20 +63,16 @@
     <ClInclude Include="CLcad.h">
       <Filter>Classes de Communication</Filter>
     </ClInclude>
-    <ClInclude Include="CLmapTB.h">
-      <Filter>Classes de Mappage</Filter>
-    </ClInclude>
     <ClInclude Include="OrderForm.h" />
     <ClInclude Include="PaymentForm.h" />
     <ClInclude Include="ArchivedOrdersForm.h" />
     <ClInclude Include="ConnexionForm.h" />
+    <ClInclude Include="ChangePasswordForm.h" />
+    <ClInclude Include="InvoiceForm.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Classes de Service">
       <UniqueIdentifier>{88e4ddd4-854e-43e9-a83a-ddf965195cab}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Classes de Mappage">
-      <UniqueIdentifier>{a9289979-3ab6-42bf-9d40-8d6f79eff24c}</UniqueIdentifier>
     </Filter>
     <Filter Include="Classes de Communication">
       <UniqueIdentifier>{a103435f-d257-4d8f-92e0-529b44414c3c}</UniqueIdentifier>

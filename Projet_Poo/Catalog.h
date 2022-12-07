@@ -1,5 +1,4 @@
 #pragma once
-#include "CLmapTB.h"
 #include "CLcad.h"
 
 namespace NS_Comp_Svc {
@@ -8,7 +7,6 @@ namespace NS_Comp_Svc {
 	private:
 		System::Data::DataSet^ oDs;
 		NS_Comp_Data::CLcad^ oCad;
-		NS_Comp_Mappage::CLmapTB^ oMappTB;
 	public:
 		Catalog(void);
 		System::Void createCategory(System::String^ category_name, System::String^ tva_rate);
@@ -40,6 +38,10 @@ namespace NS_Comp_Svc {
 		System::Void Catalog::updateOrder(System::String^ reference_order, System::String^ delivery_date, System::String^ issue_date, System::String^ payment_date, int id_payment_method, int idBill, int idDeli, System::Data::DataTable^ table);
 		System::Void Catalog::archiveOrder(System::String^ reference_order);
 		System::Void Catalog::setOrderIssueDate(System::String^ reference_order, System::String^ issue_date);
-
+	public:
+		System::Void Catalog::createInvoice(System::String^ reference_order, System::String^ payment_date, System::String^ payment_method,
+			System::String^ price_total_ht, System::String^ price_total_ttc, System::String^ invoice_date, System::String^ deli_ddress, 
+			System::String^ bill_ddress, System::String^ customer_name, System::Data::DataTable^ table);
+		System::Data::DataSet^ Catalog::selectInvoices(System::String^ DataTableName);
 	};
 }
