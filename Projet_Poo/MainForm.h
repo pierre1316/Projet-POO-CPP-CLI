@@ -1,8 +1,7 @@
 #pragma once
 #include "PeopleForm.h"
 #include "CatalogForm.h"
-#include "ConnexionForm.h"
-#include "TestUniForm.h"
+#include "ConnexionForm.h
 #include "Staff.h"
 
 namespace ProjetPoo {
@@ -196,10 +195,6 @@ namespace ProjetPoo {
 
 	}
 	private: System::Void button_test_Click(System::Object^ sender, System::EventArgs^ e) {
-		TestUniForm testuniform;
-		this->Hide();
-		testuniform.ShowDialog();
-		this->Show();
 	}
 	};
 }
