@@ -16,6 +16,7 @@
 #include "ConnexionForm.h"
 #include "Staff.h"
 #include "Stats.h"
+#include "Catalog.h"
 
 
 
@@ -59,6 +60,7 @@ namespace ProjetPoo {
 		}
 	private: NS_Comp_Svc::Staff^ oStaff;
 	private: NS_Comp_Svc::Stats^ oStats;
+	private: NS_Comp_Svc::Catalog^ oCatalog;
 	private: DataSet^ oDs;
 	private: int id_staff_user;
 	private: int id_role_user;
@@ -82,6 +84,18 @@ namespace ProjetPoo {
 	private: System::Windows::Forms::ComboBox^ comboBox_ca;
 	private: System::Windows::Forms::GroupBox^ groupBox1;
 	private: System::Windows::Forms::Label^ label_price_average;
+	private: System::Windows::Forms::ListBox^ listBox_seuil;
+	private: System::Windows::Forms::Label^ label2;
+	private: System::Windows::Forms::GroupBox^ groupBox2;
+	private: System::Windows::Forms::Label^ label_commercial_price_total;
+	private: System::Windows::Forms::ListBox^ listBox_best_items;
+	private: System::Windows::Forms::ListBox^ listBox_worst_items;
+	private: System::Windows::Forms::Label^ label3;
+	private: System::Windows::Forms::Label^ label4;
+	private: System::Windows::Forms::ComboBox^ comboBox_listpeople;
+	private: System::Windows::Forms::GroupBox^ groupBox3;
+	private: System::Windows::Forms::Label^ label_total_customer;
+
 
 
 
@@ -129,10 +143,23 @@ namespace ProjetPoo {
 			this->comboBox_ca = (gcnew System::Windows::Forms::ComboBox());
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
 			this->label_price_average = (gcnew System::Windows::Forms::Label());
+			this->listBox_seuil = (gcnew System::Windows::Forms::ListBox());
+			this->label2 = (gcnew System::Windows::Forms::Label());
+			this->groupBox2 = (gcnew System::Windows::Forms::GroupBox());
+			this->label_commercial_price_total = (gcnew System::Windows::Forms::Label());
+			this->listBox_best_items = (gcnew System::Windows::Forms::ListBox());
+			this->listBox_worst_items = (gcnew System::Windows::Forms::ListBox());
+			this->label3 = (gcnew System::Windows::Forms::Label());
+			this->label4 = (gcnew System::Windows::Forms::Label());
+			this->comboBox_listpeople = (gcnew System::Windows::Forms::ComboBox());
+			this->groupBox3 = (gcnew System::Windows::Forms::GroupBox());
+			this->label_total_customer = (gcnew System::Windows::Forms::Label());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->groupBox_ca->SuspendLayout();
 			this->groupBox1->SuspendLayout();
+			this->groupBox2->SuspendLayout();
+			this->groupBox3->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// button_people_create
@@ -317,9 +344,9 @@ namespace ProjetPoo {
 			this->groupBox_ca->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->groupBox_ca->ForeColor = System::Drawing::Color::SandyBrown;
-			this->groupBox_ca->Location = System::Drawing::Point(339, 275);
+			this->groupBox_ca->Location = System::Drawing::Point(268, 221);
 			this->groupBox_ca->Name = L"groupBox_ca";
-			this->groupBox_ca->Size = System::Drawing::Size(380, 64);
+			this->groupBox_ca->Size = System::Drawing::Size(454, 64);
 			this->groupBox_ca->TabIndex = 17;
 			this->groupBox_ca->TabStop = false;
 			this->groupBox_ca->Text = L"Chiffre d\'affaire :";
@@ -348,9 +375,9 @@ namespace ProjetPoo {
 			this->groupBox1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->groupBox1->ForeColor = System::Drawing::Color::SandyBrown;
-			this->groupBox1->Location = System::Drawing::Point(339, 379);
+			this->groupBox1->Location = System::Drawing::Point(268, 324);
 			this->groupBox1->Name = L"groupBox1";
-			this->groupBox1->Size = System::Drawing::Size(380, 69);
+			this->groupBox1->Size = System::Drawing::Size(454, 69);
 			this->groupBox1->TabIndex = 18;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Prix du Panier Moyen";
@@ -370,12 +397,158 @@ namespace ProjetPoo {
 			this->label_price_average->TabIndex = 19;
 			this->label_price_average->Text = L"label_price_average";
 			// 
+			// listBox_seuil
+			// 
+			this->listBox_seuil->FormattingEnabled = true;
+			this->listBox_seuil->ItemHeight = 20;
+			this->listBox_seuil->Location = System::Drawing::Point(745, 380);
+			this->listBox_seuil->Name = L"listBox_seuil";
+			this->listBox_seuil->Size = System::Drawing::Size(346, 344);
+			this->listBox_seuil->TabIndex = 19;
+			// 
+			// label2
+			// 
+			this->label2->AutoSize = true;
+			this->label2->BackColor = System::Drawing::Color::Transparent;
+			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label2->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(145)),
+				static_cast<System::Int32>(static_cast<System::Byte>(77)));
+			this->label2->Location = System::Drawing::Point(741, 324);
+			this->label2->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->label2->Name = L"label2";
+			this->label2->Size = System::Drawing::Size(278, 40);
+			this->label2->TabIndex = 20;
+			this->label2->Text = L"Articles en dessous \r\ndu seuil de réapprovisionnement :";
+			// 
+			// groupBox2
+			// 
+			this->groupBox2->Controls->Add(this->label_commercial_price_total);
+			this->groupBox2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->groupBox2->ForeColor = System::Drawing::Color::SandyBrown;
+			this->groupBox2->Location = System::Drawing::Point(268, 427);
+			this->groupBox2->Name = L"groupBox2";
+			this->groupBox2->Size = System::Drawing::Size(454, 69);
+			this->groupBox2->TabIndex = 20;
+			this->groupBox2->TabStop = false;
+			this->groupBox2->Text = L"Valeur commerciale du Stock";
+			// 
+			// label_commercial_price_total
+			// 
+			this->label_commercial_price_total->AutoSize = true;
+			this->label_commercial_price_total->BackColor = System::Drawing::Color::Transparent;
+			this->label_commercial_price_total->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 20.25F, System::Drawing::FontStyle::Bold,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->label_commercial_price_total->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)),
+				static_cast<System::Int32>(static_cast<System::Byte>(145)), static_cast<System::Int32>(static_cast<System::Byte>(77)));
+			this->label_commercial_price_total->Location = System::Drawing::Point(9, 25);
+			this->label_commercial_price_total->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->label_commercial_price_total->Name = L"label_commercial_price_total";
+			this->label_commercial_price_total->Size = System::Drawing::Size(393, 31);
+			this->label_commercial_price_total->TabIndex = 19;
+			this->label_commercial_price_total->Text = L"label_commercial_price_total";
+			// 
+			// listBox_best_items
+			// 
+			this->listBox_best_items->FormattingEnabled = true;
+			this->listBox_best_items->ItemHeight = 20;
+			this->listBox_best_items->Location = System::Drawing::Point(268, 543);
+			this->listBox_best_items->Name = L"listBox_best_items";
+			this->listBox_best_items->Size = System::Drawing::Size(216, 184);
+			this->listBox_best_items->TabIndex = 21;
+			// 
+			// listBox_worst_items
+			// 
+			this->listBox_worst_items->FormattingEnabled = true;
+			this->listBox_worst_items->ItemHeight = 20;
+			this->listBox_worst_items->Location = System::Drawing::Point(505, 540);
+			this->listBox_worst_items->Name = L"listBox_worst_items";
+			this->listBox_worst_items->Size = System::Drawing::Size(217, 184);
+			this->listBox_worst_items->TabIndex = 22;
+			// 
+			// label3
+			// 
+			this->label3->AutoSize = true;
+			this->label3->BackColor = System::Drawing::Color::Transparent;
+			this->label3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label3->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(145)),
+				static_cast<System::Int32>(static_cast<System::Byte>(77)));
+			this->label3->Location = System::Drawing::Point(264, 510);
+			this->label3->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->label3->Name = L"label3";
+			this->label3->Size = System::Drawing::Size(230, 20);
+			this->label3->TabIndex = 23;
+			this->label3->Text = L"10 articles les plus vendus :";
+			// 
+			// label4
+			// 
+			this->label4->AutoSize = true;
+			this->label4->BackColor = System::Drawing::Color::Transparent;
+			this->label4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label4->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(145)),
+				static_cast<System::Int32>(static_cast<System::Byte>(77)));
+			this->label4->Location = System::Drawing::Point(494, 510);
+			this->label4->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->label4->Name = L"label4";
+			this->label4->Size = System::Drawing::Size(244, 20);
+			this->label4->TabIndex = 24;
+			this->label4->Text = L"10 articles les moins vendus :";
+			// 
+			// comboBox_listpeople
+			// 
+			this->comboBox_listpeople->FormattingEnabled = true;
+			this->comboBox_listpeople->Location = System::Drawing::Point(17, 25);
+			this->comboBox_listpeople->Name = L"comboBox_listpeople";
+			this->comboBox_listpeople->Size = System::Drawing::Size(329, 28);
+			this->comboBox_listpeople->TabIndex = 25;
+			this->comboBox_listpeople->SelectedIndexChanged += gcnew System::EventHandler(this, &MainForm::comboBox_listpeople_SelectedIndexChanged);
+			this->comboBox_listpeople->Click += gcnew System::EventHandler(this, &MainForm::comboBox_listpeople_Click);
+			// 
+			// groupBox3
+			// 
+			this->groupBox3->Controls->Add(this->label_total_customer);
+			this->groupBox3->Controls->Add(this->comboBox_listpeople);
+			this->groupBox3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->groupBox3->ForeColor = System::Drawing::Color::SandyBrown;
+			this->groupBox3->Location = System::Drawing::Point(745, 221);
+			this->groupBox3->Name = L"groupBox3";
+			this->groupBox3->Size = System::Drawing::Size(565, 64);
+			this->groupBox3->TabIndex = 26;
+			this->groupBox3->TabStop = false;
+			this->groupBox3->Text = L"Montant total des achats pour le client :";
+			// 
+			// label_total_customer
+			// 
+			this->label_total_customer->AutoSize = true;
+			this->label_total_customer->BackColor = System::Drawing::Color::Transparent;
+			this->label_total_customer->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 20.25F, System::Drawing::FontStyle::Bold,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->label_total_customer->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)),
+				static_cast<System::Int32>(static_cast<System::Byte>(145)), static_cast<System::Int32>(static_cast<System::Byte>(77)));
+			this->label_total_customer->Location = System::Drawing::Point(362, 22);
+			this->label_total_customer->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->label_total_customer->Name = L"label_total_customer";
+			this->label_total_customer->Size = System::Drawing::Size(0, 31);
+			this->label_total_customer->TabIndex = 20;
+			// 
 			// MainForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::Black;
 			this->ClientSize = System::Drawing::Size(1344, 756);
+			this->Controls->Add(this->groupBox3);
+			this->Controls->Add(this->label4);
+			this->Controls->Add(this->label3);
+			this->Controls->Add(this->listBox_worst_items);
+			this->Controls->Add(this->listBox_best_items);
+			this->Controls->Add(this->groupBox2);
+			this->Controls->Add(this->label2);
+			this->Controls->Add(this->listBox_seuil);
 			this->Controls->Add(this->groupBox1);
 			this->Controls->Add(this->groupBox_ca);
 			this->Controls->Add(this->button_manage_payment);
@@ -404,6 +577,10 @@ namespace ProjetPoo {
 			this->groupBox_ca->PerformLayout();
 			this->groupBox1->ResumeLayout(false);
 			this->groupBox1->PerformLayout();
+			this->groupBox2->ResumeLayout(false);
+			this->groupBox2->PerformLayout();
+			this->groupBox3->ResumeLayout(false);
+			this->groupBox3->PerformLayout();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -412,6 +589,7 @@ namespace ProjetPoo {
 	private: System::Void MainForm_Load(System::Object^ sender, System::EventArgs^ e) {
 		this->oStats = gcnew NS_Comp_Svc::Stats();
 		this->oStaff = gcnew NS_Comp_Svc::Staff();
+		this->oCatalog = gcnew NS_Comp_Svc::Catalog();
 		ConnexionForm^ connForm = gcnew ConnexionForm();
 		connForm->ShowDialog();
 		if (!(connForm->DialogResult == System::Windows::Forms::DialogResult::OK)) {
@@ -429,6 +607,9 @@ namespace ProjetPoo {
 		}
 		this->id_role_user = this->oStaff->getRole(this->id_staff_user);
 		label_price_average_load();
+		listbox_seuil_load();
+		label_commercial_price_total_load();
+		listboxes_items_load();
 	}
 private: System::Void button_people_management_Click(System::Object^ sender, System::EventArgs^ e) {
 	CreatePeopleForm crepeopleform(this->id_role_user);
@@ -480,12 +661,12 @@ private: System::Void button_manage_payment_Click(System::Object^ sender, System
 //
 
 private: System::Void comboBox1_Click(System::Object^ sender, System::EventArgs^ e) {
-	this->oDs = this->oStats->caDate("rsl");
+	this->oDs = this->oStats->caDate("month");
 	this->comboBox_ca->Items->Clear();
-	for (int i = 0; i < this->oDs->Tables["rsl"]->Rows->Count; i++) {
+	for (int i = 0; i < this->oDs->Tables["month"]->Rows->Count; i++) {
 		this->comboBox_ca->Items->Add(
-			getMonthName(Convert::ToInt32(this->oDs->Tables["rsl"]->Rows[i]->ItemArray[0])) + " " +
-			this->oDs->Tables["rsl"]->Rows[i]->ItemArray[1]->ToString()
+			getMonthName(Convert::ToInt32(this->oDs->Tables["month"]->Rows[i]->ItemArray[0])) + " " +
+			this->oDs->Tables["month"]->Rows[i]->ItemArray[1]->ToString()
 		);
 	}
 }
@@ -531,11 +712,60 @@ private: System::String^ getMonthName(int monthNumber) {
 	}
 }
 private: System::Void comboBox_ca_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
-	this->label_ca->Text = this->oDs->Tables["rsl"]->Rows[comboBox_ca->SelectedIndex]->ItemArray[2]->ToString() + " €";
+	this->label_ca->Text = this->oDs->Tables["month"]->Rows[comboBox_ca->SelectedIndex]->ItemArray[2]->ToString() + " €";
 }
 
 private: System::Void label_price_average_load(System::Void) {
 	this->label_price_average->Text = Convert::ToString(this->oStats->price_average()) + " €";
+}
+
+private: System::Void listbox_seuil_load(System::Void) {
+	this->oDs = this->oStats->items_out_of_stock("seuil");
+	this->listBox_seuil->Items->Clear();
+	for (int i = 0; i < this->oDs->Tables["seuil"]->Rows->Count; i++) {
+		this->listBox_seuil->Items->Add(
+			this->oDs->Tables["seuil"]->Rows[i]->ItemArray[2]->ToString() + "x " +
+			this->oDs->Tables["seuil"]->Rows[i]->ItemArray[0]->ToString() + " " +
+			this->oDs->Tables["seuil"]->Rows[i]->ItemArray[1]->ToString()
+
+		);
+	}
+}
+
+private: System::Void label_commercial_price_total_load(System::Void) {
+	this->label_commercial_price_total->Text = Convert::ToString(this->oStats->price_commercial_total()) + " €";
+}
+
+private: Void listboxes_items_load(Void) {
+	this->oDs = this->oStats->tenBestSale("tenbest");
+	this->listBox_best_items->Items->Clear();
+	for (int i = 0; i < this->oDs->Tables["tenbest"]->Rows->Count; i++) {
+		this->listBox_best_items->Items->Add(
+			this->oDs->Tables["tenbest"]->Rows[i]->ItemArray[1]->ToString() + "x " +
+			this->oDs->Tables["tenbest"]->Rows[i]->ItemArray[0]->ToString()
+		);
+	}
+	this->oDs = this->oStats->tenWorstSale("tenworst");
+	this->listBox_worst_items->Items->Clear();
+	for (int i = 0; i < this->oDs->Tables["tenworst"]->Rows->Count; i++) {
+		this->listBox_worst_items->Items->Add(
+			this->oDs->Tables["tenworst"]->Rows[i]->ItemArray[1]->ToString() + "x " +
+			this->oDs->Tables["tenworst"]->Rows[i]->ItemArray[0]->ToString()
+		);
+	}
+}
+
+private: System::Void comboBox_listpeople_Click(System::Object^ sender, System::EventArgs^ e) {
+	this->oDs = this->oStats->selectInvoiceNames("names");
+	this->comboBox_listpeople->Items->Clear();
+	for (int i = 0; i < this->oDs->Tables["names"]->Rows->Count; i++) {
+		this->comboBox_listpeople->Items->Add(this->oDs->Tables["names"]->Rows[i]->ItemArray[0]->ToString());
+	}
+}
+private: System::Void comboBox_listpeople_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
+	String^ name = this->oDs->Tables["names"]->Rows[this->comboBox_listpeople->SelectedIndex]->ItemArray[0]->ToString();
+	label1->Text = name;
+	this->label_total_customer->Text = Convert::ToString(this->oStats->customerTotalPurchase(name)) + " €";
 }
 };
 }
