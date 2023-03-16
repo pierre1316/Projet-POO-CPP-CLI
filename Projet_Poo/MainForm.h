@@ -1,7 +1,7 @@
 #pragma once
 #include "PeopleForm.h"
 #include "CatalogForm.h"
-#include "ConnexionForm.h
+#include "ConnexionForm.h"
 #include "Staff.h"
 
 namespace ProjetPoo {

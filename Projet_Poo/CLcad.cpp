@@ -3,7 +3,7 @@
 
 NS_Comp_Data::CLcad::CLcad(void)
 {
-	this->sCnx = "Data Source = 34.155.20.181;Initial Catalog = BD_ProjetPOO;User ID = sqlserver; Password=leocouture0304";
+	this->sCnx = "Data Source = localhost;Initial Catalog = POO;User ID = root";
 
 	this->sSql = "Rien";
 
